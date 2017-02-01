@@ -18,6 +18,9 @@
 		076344B61E4154AE001E20C9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 076344B51E4154AE001E20C9 /* GoogleService-Info.plist */; };
 		076344B71E4154AE001E20C9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 076344B51E4154AE001E20C9 /* GoogleService-Info.plist */; };
 		076344B81E4154AE001E20C9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 076344B51E4154AE001E20C9 /* GoogleService-Info.plist */; };
+		076344BA1E415DC1001E20C9 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 076344B91E415DC1001E20C9 /* FBSDKLoginKit.framework */; };
+		076344BB1E415DC1001E20C9 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 076344B91E415DC1001E20C9 /* FBSDKLoginKit.framework */; };
+		076344BC1E415DC1001E20C9 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 076344B91E415DC1001E20C9 /* FBSDKLoginKit.framework */; };
 		58C3A872E1D87A2AA2091BAF /* Pods_Woof.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B9FF199C9CAEB89DFB8BD0B /* Pods_Woof.framework */; };
 		B3DE3718303685A0F0AC28FE /* Pods_WoofUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA79A7154CB0E70AED07ACA /* Pods_WoofUITests.framework */; };
 		F701A652CB0884B0CD04CB0A /* Pods_WoofTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8C1D9890B526C0947E28C55 /* Pods_WoofTests.framework */; };
@@ -56,6 +59,7 @@
 		076344A71E415470001E20C9 /* WoofUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WoofUITests.swift; sourceTree = "<group>"; };
 		076344A91E415470001E20C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		076344B51E4154AE001E20C9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		076344B91E415DC1001E20C9 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		155EBE63D3C365708CD5B5D5 /* Pods-WoofUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoofUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WoofUITests/Pods-WoofUITests.release.xcconfig"; sourceTree = "<group>"; };
 		2B9FF199C9CAEB89DFB8BD0B /* Pods_Woof.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Woof.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		417FEE35B18CEC60476A1012 /* Pods-WoofTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoofTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WoofTests/Pods-WoofTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -72,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				076344BA1E415DC1001E20C9 /* FBSDKLoginKit.framework in Frameworks */,
 				58C3A872E1D87A2AA2091BAF /* Pods_Woof.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -80,6 +85,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				076344BB1E415DC1001E20C9 /* FBSDKLoginKit.framework in Frameworks */,
 				F701A652CB0884B0CD04CB0A /* Pods_WoofTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -88,6 +94,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				076344BC1E415DC1001E20C9 /* FBSDKLoginKit.framework in Frameworks */,
 				B3DE3718303685A0F0AC28FE /* Pods_WoofUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -166,6 +173,7 @@
 		5E0C5CD82285AEFBF1A756DA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				076344B91E415DC1001E20C9 /* FBSDKLoginKit.framework */,
 				2B9FF199C9CAEB89DFB8BD0B /* Pods_Woof.framework */,
 				D8C1D9890B526C0947E28C55 /* Pods_WoofTests.framework */,
 				9AA79A7154CB0E70AED07ACA /* Pods_WoofUITests.framework */,
@@ -612,6 +620,10 @@
 			baseConfigurationReference = 6E144974F62DFDBD7A02E026 /* Pods-Woof.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Woof/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Woof.ios.Woof;
@@ -625,6 +637,10 @@
 			baseConfigurationReference = B68EEE3B2DF22BD21798D3A1 /* Pods-Woof.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Woof/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Woof.ios.Woof;
@@ -639,6 +655,10 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = WoofTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Woof.ios.WoofTests;
@@ -654,6 +674,10 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = WoofTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Woof.ios.WoofTests;
@@ -668,6 +692,10 @@
 			baseConfigurationReference = D2D8ECD82229FD1CD3083EC0 /* Pods-WoofUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = WoofUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Woof.ios.WoofUITests;
@@ -682,6 +710,10 @@
 			baseConfigurationReference = 155EBE63D3C365708CD5B5D5 /* Pods-WoofUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = WoofUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Woof.ios.WoofUITests;
