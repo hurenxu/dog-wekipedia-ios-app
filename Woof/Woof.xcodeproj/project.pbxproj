@@ -21,6 +21,7 @@
 		076344BA1E415DC1001E20C9 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 076344B91E415DC1001E20C9 /* FBSDKLoginKit.framework */; };
 		076344BB1E415DC1001E20C9 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 076344B91E415DC1001E20C9 /* FBSDKLoginKit.framework */; };
 		076344BC1E415DC1001E20C9 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 076344B91E415DC1001E20C9 /* FBSDKLoginKit.framework */; };
+		076344BE1E416EA0001E20C9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076344BD1E416EA0001E20C9 /* LoginViewController.swift */; };
 		58C3A872E1D87A2AA2091BAF /* Pods_Woof.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B9FF199C9CAEB89DFB8BD0B /* Pods_Woof.framework */; };
 		B3DE3718303685A0F0AC28FE /* Pods_WoofUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA79A7154CB0E70AED07ACA /* Pods_WoofUITests.framework */; };
 		F701A652CB0884B0CD04CB0A /* Pods_WoofTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8C1D9890B526C0947E28C55 /* Pods_WoofTests.framework */; };
@@ -60,6 +61,7 @@
 		076344A91E415470001E20C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		076344B51E4154AE001E20C9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		076344B91E415DC1001E20C9 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		076344BD1E416EA0001E20C9 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		155EBE63D3C365708CD5B5D5 /* Pods-WoofUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoofUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WoofUITests/Pods-WoofUITests.release.xcconfig"; sourceTree = "<group>"; };
 		2B9FF199C9CAEB89DFB8BD0B /* Pods_Woof.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Woof.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		417FEE35B18CEC60476A1012 /* Pods-WoofTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoofTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WoofTests/Pods-WoofTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				076344851E415470001E20C9 /* AppDelegate.swift */,
+				076344BD1E416EA0001E20C9 /* LoginViewController.swift */,
 				076344871E415470001E20C9 /* FirstViewController.swift */,
 				076344891E415470001E20C9 /* SecondViewController.swift */,
 				0763448B1E415470001E20C9 /* Main.storyboard */,
@@ -465,6 +468,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				076344BE1E416EA0001E20C9 /* LoginViewController.swift in Sources */,
 				0763448A1E415470001E20C9 /* SecondViewController.swift in Sources */,
 				076344861E415470001E20C9 /* AppDelegate.swift in Sources */,
 				076344881E415470001E20C9 /* FirstViewController.swift in Sources */,
