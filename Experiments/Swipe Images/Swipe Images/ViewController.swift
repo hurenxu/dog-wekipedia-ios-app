@@ -39,8 +39,8 @@ class ViewController: UIViewController {
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-        let MIN_X : CGFloat = CGFloat(100)
-        let IMAGE_QRT : CGFloat = CGFloat(imageOne.frame.size.width / 4)
+        let MIN_X : CGFloat = CGFloat(50)
+        let IMAGE_HALF : CGFloat = CGFloat(imageOne.frame.size.width / 2)
         
         let touch : UITouch! = touches.first
         
@@ -56,10 +56,15 @@ class ViewController: UIViewController {
             
             }
             
-            // case to disappear to left, need to figure out animation effect
+            // case to slide to left
             else {
             
-                imageOne.center.x = 0 - IMAGE_QRT
+                UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: UIViewAnimationOptions.curveEaseIn , animations: ({
+                    
+                    self.imageOne.center.x = 0 - IMAGE_HALF
+                    
+                    
+                }), completion: nil)
             }
         }
         
@@ -73,10 +78,14 @@ class ViewController: UIViewController {
                 
             }
                 
-            // case to disappear to right, need to figure out animation effect
+            // case to slide to right
             else {
                 
-                imageOne.center.x = self.view.frame.size.width + IMAGE_QRT
+                UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: UIViewAnimationOptions.curveEaseIn, animations: ({
+                    
+                    self.imageOne.center.x = self.view.frame.size.width + IMAGE_HALF
+                    
+                }), completion: nil)
             }
         }
     }

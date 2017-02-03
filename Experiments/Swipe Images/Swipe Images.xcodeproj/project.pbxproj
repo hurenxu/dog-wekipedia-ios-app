@@ -96,6 +96,7 @@
 				TargetAttributes = {
 					A4FC1D3B1E44A7A80091B7D6 = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 9EPWHD42X7;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -258,6 +259,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 9EPWHD42X7;
 				INFOPLIST_FILE = "Swipe Images/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.example.Swipe-Images";
@@ -270,6 +272,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 9EPWHD42X7;
 				INFOPLIST_FILE = "Swipe Images/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.example.Swipe-Images";
@@ -297,6 +300,7 @@
 				A4FC1D501E44A7A80091B7D6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

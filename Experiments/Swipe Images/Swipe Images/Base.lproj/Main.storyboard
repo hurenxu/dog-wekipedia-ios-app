@@ -22,7 +22,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="arima and kaori 2" translatesAutoresizingMaskIntoConstraints="NO" id="cij-g7-EZ1">
-                                <rect key="frame" x="28" y="79" width="319" height="363"/>
+                                <rect key="frame" x="49" y="70" width="277" height="344"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
