@@ -9,6 +9,11 @@ target 'Woof' do
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
+
+  # Pods for Facebook
+  pod 'Bolts'
+  pod 'FBSDKCoreKit'
+  pod 'FBSDKLoginKit'
   pod 'FacebookCore'
   pod 'FacebookLogin'
   pod 'FacebookShare'
