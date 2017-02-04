@@ -70,6 +70,23 @@ class ViewController: UIViewController {
         }
     }
     
+    func slideOut(_ outsideX: CGFloat, _ outsideY: CGFloat) {
+        
+        UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 3.0, options: UIViewAnimationOptions.curveEaseIn , animations: ({
+            
+            self.imageOne.center.x = outsideX
+            self.imageOne.center.y = outsideY
+            self.borderOne.center.x = outsideX
+            self.borderOne.center.y = CGFloat(outsideY - self.borderRelativeCenter.y)
+            self.labelOne.center.x = outsideX
+            self.labelOne.center.y = CGFloat(outsideY - self.labelRelativeCenter.y)
+            
+        }), completion: {(value: Bool) -> Void in
+            
+            self.updateOne()
+        })
+    }
+
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         let touch : UITouch! = touches.first
@@ -121,19 +138,7 @@ class ViewController: UIViewController {
             // case to slide to left
             else {
             
-                UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 3.0, options: UIViewAnimationOptions.curveEaseIn , animations: ({
-                    
-                    self.imageOne.center.x = outsideX
-                    self.imageOne.center.y = outsideY
-                    self.borderOne.center.x = outsideX
-                    self.borderOne.center.y = CGFloat(outsideY - self.borderRelativeCenter.y)
-                    self.labelOne.center.x = outsideX
-                    self.labelOne.center.y = CGFloat(outsideY - self.labelRelativeCenter.y)
-                    
-                }), completion: {(value: Bool) -> Void in
-                    
-                    self.updateOne()
-                })
+                slideOut(outsideX, outsideY)
             }
         }
         
@@ -154,19 +159,7 @@ class ViewController: UIViewController {
             // case to slide to right
             else {
                 
-                UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 3.0, options: UIViewAnimationOptions.curveEaseOut, animations: ({
-                    
-                    self.imageOne.center.x = outsideX
-                    self.imageOne.center.y = outsideY
-                    self.borderOne.center.x = outsideX
-                    self.borderOne.center.y = CGFloat(outsideY - self.borderRelativeCenter.y)
-                    self.labelOne.center.x = outsideX
-                    self.labelOne.center.y = CGFloat(outsideY - self.labelRelativeCenter.y)
-                    
-                }), completion: {(value: Bool) -> Void in
-                    
-                    self.updateOne()
-                })
+                slideOut(outsideX, outsideY)
             }
         }
     }
@@ -181,19 +174,7 @@ class ViewController: UIViewController {
         let outsideX = CGFloat(imageOneCenter.x)
         let outsideY = CGFloat(0 - IMAGE_HALF - OFFSET)
         
-        UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 3.0, options: UIViewAnimationOptions.curveEaseOut, animations: ({
-            
-            self.imageOne.center.x = outsideX
-            self.imageOne.center.y = outsideY
-            self.borderOne.center.x = outsideX
-            self.borderOne.center.y = CGFloat(outsideY - self.borderRelativeCenter.y)
-            self.labelOne.center.x = outsideX
-            self.labelOne.center.y = CGFloat(outsideY - self.labelRelativeCenter.y)
-            
-        }), completion: {(value: Bool) -> Void in
-            
-            self.updateOne()
-        })
+        slideOut(outsideX, outsideY)
     }
     
     // when pressed go left
@@ -205,19 +186,7 @@ class ViewController: UIViewController {
         let outsideX = CGFloat(0 - IMAGE_HALF - OFFSET)
         let outsideY = CGFloat(imageOneCenter.y)
         
-        UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 3.0, options: UIViewAnimationOptions.curveEaseOut, animations: ({
-            
-            self.imageOne.center.x = outsideX
-            self.imageOne.center.y = outsideY
-            self.borderOne.center.x = outsideX
-            self.borderOne.center.y = CGFloat(outsideY - self.borderRelativeCenter.y)
-            self.labelOne.center.x = outsideX
-            self.labelOne.center.y = CGFloat(outsideY - self.labelRelativeCenter.y)
-            
-        }), completion: {(value: Bool) -> Void in
-            
-            self.updateOne()
-        })
+        slideOut(outsideX, outsideY)
     }
     
     // when pressed go right
@@ -229,39 +198,27 @@ class ViewController: UIViewController {
         let outsideX = CGFloat(self.view.frame.size.width + IMAGE_HALF + OFFSET)
         let outsideY = CGFloat(imageOneCenter.y)
         
-        UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 3.0, options: UIViewAnimationOptions.curveEaseOut, animations: ({
-            
-            self.imageOne.center.x = outsideX
-            self.imageOne.center.y = outsideY
-            self.borderOne.center.x = outsideX
-            self.borderOne.center.y = CGFloat(outsideY - self.borderRelativeCenter.y)
-            self.labelOne.center.x = outsideX
-            self.labelOne.center.y = CGFloat(outsideY - self.labelRelativeCenter.y)
-            
-        }), completion: {(value: Bool) -> Void in
-            
-            self.updateOne()
-        })
+        slideOut(outsideX, outsideY)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        // configure imageOne
+        // configure images
         imageOneCenter = imageOne.center
         imageOne.layer.cornerRadius = CGFloat(CORNER_RADIUS)
         imageTwo.layer.cornerRadius = CGFloat(CORNER_RADIUS)
         imageTwo.center = imageOneCenter
         
-        // configure border
+        // configure borders
         borderOneCenter = borderOne.center
         borderOne.layer.cornerRadius = CGFloat(CORNER_RADIUS)
         borderRelativeCenter = CGPoint(x: 0, y: imageOneCenter.y - borderOneCenter.y)
         borderTwo.layer.cornerRadius = CGFloat(CORNER_RADIUS)
         borderTwo.center = borderOneCenter
         
-        // configure label
+        // configure labels
         labelOneCenter = labelOne.center
         labelRelativeCenter = CGPoint(x: 0, y: imageOneCenter.y - labelOneCenter.y)
         labelTwo.center = labelOneCenter
