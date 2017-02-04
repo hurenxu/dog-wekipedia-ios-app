@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0758A9171E450B5B00BE9145 /* Rubik-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0758A90D1E450B5B00BE9145 /* Rubik-Black.ttf */; };
+		0758A9181E450B5B00BE9145 /* Rubik-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0758A90E1E450B5B00BE9145 /* Rubik-BlackItalic.ttf */; };
+		0758A9191E450B5B00BE9145 /* Rubik-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0758A90F1E450B5B00BE9145 /* Rubik-Bold.ttf */; };
+		0758A91A1E450B5B00BE9145 /* Rubik-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0758A9101E450B5B00BE9145 /* Rubik-BoldItalic.ttf */; };
+		0758A91B1E450B5B00BE9145 /* Rubik-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0758A9111E450B5B00BE9145 /* Rubik-Italic.ttf */; };
+		0758A91C1E450B5B00BE9145 /* Rubik-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0758A9121E450B5B00BE9145 /* Rubik-Light.ttf */; };
+		0758A91D1E450B5B00BE9145 /* Rubik-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0758A9131E450B5B00BE9145 /* Rubik-LightItalic.ttf */; };
+		0758A91E1E450B5B00BE9145 /* Rubik-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0758A9141E450B5B00BE9145 /* Rubik-Medium.ttf */; };
+		0758A91F1E450B5B00BE9145 /* Rubik-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0758A9151E450B5B00BE9145 /* Rubik-MediumItalic.ttf */; };
+		0758A9201E450B5B00BE9145 /* Rubik-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0758A9161E450B5B00BE9145 /* Rubik-Regular.ttf */; };
 		076344861E415470001E20C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076344851E415470001E20C9 /* AppDelegate.swift */; };
 		076344881E415470001E20C9 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076344871E415470001E20C9 /* FirstViewController.swift */; };
 		0763448A1E415470001E20C9 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076344891E415470001E20C9 /* SecondViewController.swift */; };
@@ -45,6 +55,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0758A90D1E450B5B00BE9145 /* Rubik-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Black.ttf"; sourceTree = "<group>"; };
+		0758A90E1E450B5B00BE9145 /* Rubik-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-BlackItalic.ttf"; sourceTree = "<group>"; };
+		0758A90F1E450B5B00BE9145 /* Rubik-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Bold.ttf"; sourceTree = "<group>"; };
+		0758A9101E450B5B00BE9145 /* Rubik-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-BoldItalic.ttf"; sourceTree = "<group>"; };
+		0758A9111E450B5B00BE9145 /* Rubik-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Italic.ttf"; sourceTree = "<group>"; };
+		0758A9121E450B5B00BE9145 /* Rubik-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Light.ttf"; sourceTree = "<group>"; };
+		0758A9131E450B5B00BE9145 /* Rubik-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-LightItalic.ttf"; sourceTree = "<group>"; };
+		0758A9141E450B5B00BE9145 /* Rubik-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Medium.ttf"; sourceTree = "<group>"; };
+		0758A9151E450B5B00BE9145 /* Rubik-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-MediumItalic.ttf"; sourceTree = "<group>"; };
+		0758A9161E450B5B00BE9145 /* Rubik-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Regular.ttf"; sourceTree = "<group>"; };
 		076344821E415470001E20C9 /* Woof.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Woof.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		076344851E415470001E20C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		076344871E415470001E20C9 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -104,6 +124,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0758A9211E450B6700BE9145 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				0758A90D1E450B5B00BE9145 /* Rubik-Black.ttf */,
+				0758A90E1E450B5B00BE9145 /* Rubik-BlackItalic.ttf */,
+				0758A90F1E450B5B00BE9145 /* Rubik-Bold.ttf */,
+				0758A9101E450B5B00BE9145 /* Rubik-BoldItalic.ttf */,
+				0758A9111E450B5B00BE9145 /* Rubik-Italic.ttf */,
+				0758A9121E450B5B00BE9145 /* Rubik-Light.ttf */,
+				0758A9131E450B5B00BE9145 /* Rubik-LightItalic.ttf */,
+				0758A9141E450B5B00BE9145 /* Rubik-Medium.ttf */,
+				0758A9151E450B5B00BE9145 /* Rubik-MediumItalic.ttf */,
+				0758A9161E450B5B00BE9145 /* Rubik-Regular.ttf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
 		076344791E415470001E20C9 = {
 			isa = PBXGroup;
 			children = (
@@ -129,6 +166,7 @@
 		076344841E415470001E20C9 /* Woof */ = {
 			isa = PBXGroup;
 			children = (
+				0758A9211E450B6700BE9145 /* Fonts */,
 				076344851E415470001E20C9 /* AppDelegate.swift */,
 				076344BD1E416EA0001E20C9 /* LoginViewController.swift */,
 				076344871E415470001E20C9 /* FirstViewController.swift */,
@@ -301,8 +339,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				076344921E415470001E20C9 /* LaunchScreen.storyboard in Resources */,
+				0758A9201E450B5B00BE9145 /* Rubik-Regular.ttf in Resources */,
+				0758A91A1E450B5B00BE9145 /* Rubik-BoldItalic.ttf in Resources */,
 				076344B61E4154AE001E20C9 /* GoogleService-Info.plist in Resources */,
+				0758A91E1E450B5B00BE9145 /* Rubik-Medium.ttf in Resources */,
+				0758A91D1E450B5B00BE9145 /* Rubik-LightItalic.ttf in Resources */,
+				0758A9181E450B5B00BE9145 /* Rubik-BlackItalic.ttf in Resources */,
 				0763448F1E415470001E20C9 /* Assets.xcassets in Resources */,
+				0758A91B1E450B5B00BE9145 /* Rubik-Italic.ttf in Resources */,
+				0758A9191E450B5B00BE9145 /* Rubik-Bold.ttf in Resources */,
+				0758A91F1E450B5B00BE9145 /* Rubik-MediumItalic.ttf in Resources */,
+				0758A91C1E450B5B00BE9145 /* Rubik-Light.ttf in Resources */,
+				0758A9171E450B5B00BE9145 /* Rubik-Black.ttf in Resources */,
 				0763448D1E415470001E20C9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
