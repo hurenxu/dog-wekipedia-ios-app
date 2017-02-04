@@ -22,14 +22,32 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eC5-9v-5aY">
-                                <rect key="frame" x="154" y="547" width="66" height="48"/>
+                                <rect key="frame" x="149" y="513" width="76" height="63"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="60"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="70"/>
                                 <state key="normal" title="🐶">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
                                     <action selector="superLikePressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RP0-ae-ziS"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yz8-mv-YVX">
+                                <rect key="frame" x="270" y="518" width="65" height="53"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="60"/>
+                                <state key="normal" title="💕"/>
+                                <connections>
+                                    <action selector="likePressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jPs-Ph-vwG"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3gp-Fp-cKe">
+                                <rect key="frame" x="39" y="511" width="65" height="66"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="60"/>
+                                <state key="normal" title="❌"/>
+                                <connections>
+                                    <action selector="dislikePressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vsR-Ln-5tM"/>
                                 </connections>
                             </button>
                             <containerView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pDC-Qj-txk">
@@ -48,13 +66,43 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="arima and kaori 2" translatesAutoresizingMaskIntoConstraints="NO" id="kh3-9n-bbe">
+                                <rect key="frame" x="49" y="70" width="277" height="344"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Arima and Kaori" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j0h-rd-Zky">
+                                <rect key="frame" x="49" y="439" width="277" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z5L-b8-TFH">
+                                <rect key="frame" x="0.0" y="618" width="375" height="49"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <items>
+                                    <tabBarItem title="Back" id="WP2-46-WmT"/>
+                                    <tabBarItem title="Done" id="sVE-qm-qoM"/>
+                                </items>
+                            </tabBar>
+                            <containerView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="651-Yb-vDk">
+                                <rect key="frame" x="39" y="59" width="296" height="424"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" red="0.56170700240000004" green="0.86148883840000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="borderOne" destination="pDC-Qj-txk" id="rE1-Gt-l87"/>
+                        <outlet property="borderTwo" destination="j0h-rd-Zky" id="Orc-Cb-rsP"/>
                         <outlet property="imageOne" destination="cij-g7-EZ1" id="6U1-YT-3J8"/>
+                        <outlet property="imageTwo" destination="kh3-9n-bbe" id="Gjp-PE-IOx"/>
                         <outlet property="labelOne" destination="8Ry-s1-7rz" id="sN4-8B-aVA"/>
+                        <outlet property="labelTwo" destination="j0h-rd-Zky" id="x4H-ok-siR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

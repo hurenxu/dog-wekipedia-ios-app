@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     // everything about the image
     @IBOutlet weak var imageOne: UIImageView!
     var imageOneCenter = CGPoint(x: 0, y: 0)
+    @IBOutlet weak var imageTwo: UIImageView!
 
     // everything about the border
     @IBOutlet weak var borderOne: UIView!
@@ -23,6 +24,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var labelOne: UILabel!
     var labelOneCenter = CGPoint(x: 0, y: 0)
     var labelRelativeCenter = CGPoint(x: 0, y: 0)
+    @IBOutlet weak var labelTwo: UILabel!
     
     // touch locations
     var currentLocation = CGPoint(x: 0, y: 0)
@@ -133,6 +135,48 @@ class ViewController: UIViewController {
         self.imageOne.center = imageOneCenter
         self.borderOne.center = borderOneCenter
         self.labelOne.center = labelOneCenter
+    }
+    
+    // when pressed go left
+    @IBAction func dislikePressed(_ sender: Any) {
+        
+        let IMAGE_HALF : CGFloat = CGFloat(imageOne.frame.size.width / 2)
+        let OFFSET = CGFloat(20)
+        
+        let outsideX = CGFloat(0 - IMAGE_HALF - OFFSET)
+        let outsideY = CGFloat(imageOneCenter.y)
+        
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 3.0, options: UIViewAnimationOptions.curveEaseOut, animations: ({
+            
+            self.imageOne.center.x = outsideX
+            self.imageOne.center.y = outsideY
+            self.borderOne.center.x = outsideX
+            self.borderOne.center.y = CGFloat(outsideY - self.borderRelativeCenter.y)
+            self.labelOne.center.x = outsideX
+            self.labelOne.center.y = CGFloat(outsideY - self.labelRelativeCenter.y)
+            
+        }), completion: nil)
+    }
+    
+    // when pressed go right
+    @IBAction func likePressed(_ sender: Any) {
+        
+        let IMAGE_HALF : CGFloat = CGFloat(imageOne.frame.size.width / 2)
+        let OFFSET = CGFloat(20)
+        
+        let outsideX = CGFloat(self.view.frame.size.width + IMAGE_HALF + OFFSET)
+        let outsideY = CGFloat(imageOneCenter.y)
+        
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 3.0, options: UIViewAnimationOptions.curveEaseOut, animations: ({
+            
+            self.imageOne.center.x = outsideX
+            self.imageOne.center.y = outsideY
+            self.borderOne.center.x = outsideX
+            self.borderOne.center.y = CGFloat(outsideY - self.borderRelativeCenter.y)
+            self.labelOne.center.x = outsideX
+            self.labelOne.center.y = CGFloat(outsideY - self.labelRelativeCenter.y)
+            
+        }), completion: nil)
     }
     
     override func viewDidLoad() {
