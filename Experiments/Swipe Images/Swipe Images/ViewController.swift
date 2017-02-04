@@ -46,9 +46,14 @@ class ViewController: UIViewController {
         
         currentLocation = touch.location(in: self.view)
         
+        let slope = CGFloat((imageOne.center.y - centerLocation.y) / (imageOne.center.x - centerLocation.x))
+        
         // swipping left
         if (currentLocation.x < centerLocation.x) {
         
+            let outsideX = CGFloat(0 - IMAGE_HALF)
+            let outsideY = CGFloat(slope * (outsideX - centerLocation.x) + centerLocation.y)
+            
             // case to go back to center
             if  imageOne.center.x > centerLocation.x - MIN_X {
             
@@ -59,10 +64,10 @@ class ViewController: UIViewController {
             // case to slide to left
             else {
             
-                UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: UIViewAnimationOptions.curveEaseIn , animations: ({
+                UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 3.0, options: UIViewAnimationOptions.curveEaseOut , animations: ({
                     
-                    self.imageOne.center.x = 0 - IMAGE_HALF
-                    
+                    self.imageOne.center.x = outsideX
+                    self.imageOne.center.y = outsideY
                     
                 }), completion: nil)
             }
@@ -70,6 +75,9 @@ class ViewController: UIViewController {
         
         // swipping right
         else {
+            
+            let outsideX = CGFloat(self.view.frame.size.width + IMAGE_HALF)
+            let outsideY = CGFloat(slope * (outsideX - centerLocation.x) + centerLocation.y)
             
             // case to go back to center
             if  imageOne.center.x < centerLocation.x + MIN_X {
@@ -81,9 +89,10 @@ class ViewController: UIViewController {
             // case to slide to right
             else {
                 
-                UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: UIViewAnimationOptions.curveEaseIn, animations: ({
+                UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 3.0, options: UIViewAnimationOptions.curveEaseOut, animations: ({
                     
-                    self.imageOne.center.x = self.view.frame.size.width + IMAGE_HALF
+                    self.imageOne.center.x = outsideX
+                    self.imageOne.center.y = outsideY
                     
                 }), completion: nil)
             }
