@@ -126,6 +126,15 @@ class ViewController: UIViewController {
         }
     }
     
+    
+    // when super like button pressed, supposed to shoot up
+    @IBAction func superLikePressed(_ sender: Any) {
+        
+        self.imageOne.center = imageOneCenter
+        self.borderOne.center = borderOneCenter
+        self.labelOne.center = labelOneCenter
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
