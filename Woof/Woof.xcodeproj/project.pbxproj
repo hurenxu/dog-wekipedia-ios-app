@@ -32,6 +32,7 @@
 		076344BB1E415DC1001E20C9 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 076344B91E415DC1001E20C9 /* FBSDKLoginKit.framework */; };
 		076344BC1E415DC1001E20C9 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 076344B91E415DC1001E20C9 /* FBSDKLoginKit.framework */; };
 		076344BE1E416EA0001E20C9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076344BD1E416EA0001E20C9 /* LoginViewController.swift */; };
+		2F2E8EF71E496C0700F911ED /* SuggestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2E8EF61E496C0700F911ED /* SuggestionViewController.swift */; };
 		58C3A872E1D87A2AA2091BAF /* Pods_Woof.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B9FF199C9CAEB89DFB8BD0B /* Pods_Woof.framework */; };
 		B3DE3718303685A0F0AC28FE /* Pods_WoofUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA79A7154CB0E70AED07ACA /* Pods_WoofUITests.framework */; };
 		F701A652CB0884B0CD04CB0A /* Pods_WoofTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8C1D9890B526C0947E28C55 /* Pods_WoofTests.framework */; };
@@ -84,6 +85,7 @@
 		076344BD1E416EA0001E20C9 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		155EBE63D3C365708CD5B5D5 /* Pods-WoofUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoofUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WoofUITests/Pods-WoofUITests.release.xcconfig"; sourceTree = "<group>"; };
 		2B9FF199C9CAEB89DFB8BD0B /* Pods_Woof.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Woof.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2F2E8EF61E496C0700F911ED /* SuggestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestionViewController.swift; sourceTree = "<group>"; };
 		417FEE35B18CEC60476A1012 /* Pods-WoofTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoofTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WoofTests/Pods-WoofTests.release.xcconfig"; sourceTree = "<group>"; };
 		6E144974F62DFDBD7A02E026 /* Pods-Woof.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Woof.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Woof/Pods-Woof.debug.xcconfig"; sourceTree = "<group>"; };
 		7717C3F7724CB21AC5305E61 /* Pods-WoofTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoofTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WoofTests/Pods-WoofTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 				076344BD1E416EA0001E20C9 /* LoginViewController.swift */,
 				076344871E415470001E20C9 /* FirstViewController.swift */,
 				076344891E415470001E20C9 /* SecondViewController.swift */,
+				2F2E8EF61E496C0700F911ED /* SuggestionViewController.swift */,
 				0763448B1E415470001E20C9 /* Main.storyboard */,
 				0763448E1E415470001E20C9 /* Assets.xcassets */,
 				076344901E415470001E20C9 /* LaunchScreen.storyboard */,
@@ -520,6 +523,7 @@
 				0763448A1E415470001E20C9 /* SecondViewController.swift in Sources */,
 				076344861E415470001E20C9 /* AppDelegate.swift in Sources */,
 				076344881E415470001E20C9 /* FirstViewController.swift in Sources */,
+				2F2E8EF71E496C0700F911ED /* SuggestionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
