@@ -20,6 +20,7 @@ class IPetViewController: UIViewController {
 //        super.viewWillDisappear(animated)
 //        self.navigationController?.isNavigationBarHidden = false
 //    }
+    @IBOutlet weak var userImage: UIImageView!
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
