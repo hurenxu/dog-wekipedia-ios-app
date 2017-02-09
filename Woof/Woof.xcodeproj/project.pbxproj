@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03D6BFF21E4D329000CB683A /* Models in Resources */ = {isa = PBXBuildFile; fileRef = 03D6BFF11E4D329000CB683A /* Models */; };
 		0758A9171E450B5B00BE9145 /* Rubik-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0758A90D1E450B5B00BE9145 /* Rubik-Black.ttf */; };
 		0758A9181E450B5B00BE9145 /* Rubik-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0758A90E1E450B5B00BE9145 /* Rubik-BlackItalic.ttf */; };
 		0758A9191E450B5B00BE9145 /* Rubik-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0758A90F1E450B5B00BE9145 /* Rubik-Bold.ttf */; };
@@ -56,6 +57,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		03D6BFF11E4D329000CB683A /* Models */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Models; sourceTree = "<group>"; };
 		0758A90D1E450B5B00BE9145 /* Rubik-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Black.ttf"; sourceTree = "<group>"; };
 		0758A90E1E450B5B00BE9145 /* Rubik-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-BlackItalic.ttf"; sourceTree = "<group>"; };
 		0758A90F1E450B5B00BE9145 /* Rubik-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Bold.ttf"; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 		076344791E415470001E20C9 = {
 			isa = PBXGroup;
 			children = (
+				03D6BFF11E4D329000CB683A /* Models */,
 				076344841E415470001E20C9 /* Woof */,
 				0763449B1E415470001E20C9 /* WoofTests */,
 				076344A61E415470001E20C9 /* WoofUITests */,
@@ -341,6 +344,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03D6BFF21E4D329000CB683A /* Models in Resources */,
 				076344921E415470001E20C9 /* LaunchScreen.storyboard in Resources */,
 				0758A9201E450B5B00BE9145 /* Rubik-Regular.ttf in Resources */,
 				0758A91A1E450B5B00BE9145 /* Rubik-BoldItalic.ttf in Resources */,
