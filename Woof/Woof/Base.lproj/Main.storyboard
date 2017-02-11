@@ -96,9 +96,6 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Homepage" image="first" id="acW-dT-cKf"/>
-                    <connections>
-                        <outlet property="FirstviewTitle" destination="KQZ-1w-vlD" id="gKz-ss-tkx"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
@@ -107,7 +104,7 @@
         <!--Suggestion View Controller-->
         <scene sceneID="q4V-QD-RTO">
             <objects>
-                <viewController id="OMn-Mq-LD1" customClass="SuggestionViewController" sceneMemberID="viewController">
+                <viewController id="OMn-Mq-LD1" customClass="SuggestionViewController" customModule="Woof" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ynh-B4-aOn"/>
                         <viewControllerLayoutGuide type="bottom" id="hGc-qv-dQN"/>
@@ -119,7 +116,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Unsure which woof you want?Select tabs below to find out!" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="none" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mJm-L4-FDo">
                                 <rect key="frame" x="16" y="40" width="343" height="146"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -222,8 +219,8 @@
                         <color key="selectedImageTintColor" red="1" green="0.59528630971908569" blue="0.73463201522827148" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
-                        <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
+                        <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                         <segue destination="B4J-FZ-AOy" kind="relationship" relationship="viewControllers" id="4vz-xc-Q4x"/>
                     </connections>
                 </tabBarController>
