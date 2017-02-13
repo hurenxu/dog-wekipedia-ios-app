@@ -5,9 +5,9 @@ struct Dog{
 	let name: String
     let breed: Breed
 
-	/*init(name: String){
+	init(name: String){
 		self.name = name
-
-	}*/
+        breed = Breed(breedName: "")
+	}
 
 }

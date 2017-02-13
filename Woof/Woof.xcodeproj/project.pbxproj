@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		03D6BFF21E4D329000CB683A /* Models in Resources */ = {isa = PBXBuildFile; fileRef = 03D6BFF11E4D329000CB683A /* Models */; };
 		0758A9171E450B5B00BE9145 /* Rubik-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0758A90D1E450B5B00BE9145 /* Rubik-Black.ttf */; };
 		0758A9181E450B5B00BE9145 /* Rubik-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0758A90E1E450B5B00BE9145 /* Rubik-BlackItalic.ttf */; };
 		0758A9191E450B5B00BE9145 /* Rubik-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0758A90F1E450B5B00BE9145 /* Rubik-Bold.ttf */; };
@@ -18,6 +17,9 @@
 		0758A91E1E450B5B00BE9145 /* Rubik-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0758A9141E450B5B00BE9145 /* Rubik-Medium.ttf */; };
 		0758A91F1E450B5B00BE9145 /* Rubik-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0758A9151E450B5B00BE9145 /* Rubik-MediumItalic.ttf */; };
 		0758A9201E450B5B00BE9145 /* Rubik-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0758A9161E450B5B00BE9145 /* Rubik-Regular.ttf */; };
+		075FBD811E4D635D009ECE7C /* Breed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075FBD7E1E4D635D009ECE7C /* Breed.swift */; };
+		075FBD821E4D635D009ECE7C /* Dog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075FBD7F1E4D635D009ECE7C /* Dog.swift */; };
+		075FBD831E4D635D009ECE7C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075FBD801E4D635D009ECE7C /* User.swift */; };
 		076344861E415470001E20C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076344851E415470001E20C9 /* AppDelegate.swift */; };
 		076344881E415470001E20C9 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076344871E415470001E20C9 /* FirstViewController.swift */; };
 		0763448A1E415470001E20C9 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076344891E415470001E20C9 /* SecondViewController.swift */; };
@@ -57,7 +59,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		03D6BFF11E4D329000CB683A /* Models */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Models; sourceTree = "<group>"; };
 		0758A90D1E450B5B00BE9145 /* Rubik-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Black.ttf"; sourceTree = "<group>"; };
 		0758A90E1E450B5B00BE9145 /* Rubik-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-BlackItalic.ttf"; sourceTree = "<group>"; };
 		0758A90F1E450B5B00BE9145 /* Rubik-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Bold.ttf"; sourceTree = "<group>"; };
@@ -68,6 +69,9 @@
 		0758A9141E450B5B00BE9145 /* Rubik-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Medium.ttf"; sourceTree = "<group>"; };
 		0758A9151E450B5B00BE9145 /* Rubik-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-MediumItalic.ttf"; sourceTree = "<group>"; };
 		0758A9161E450B5B00BE9145 /* Rubik-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Regular.ttf"; sourceTree = "<group>"; };
+		075FBD7E1E4D635D009ECE7C /* Breed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Breed.swift; sourceTree = "<group>"; };
+		075FBD7F1E4D635D009ECE7C /* Dog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dog.swift; sourceTree = "<group>"; };
+		075FBD801E4D635D009ECE7C /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		076344821E415470001E20C9 /* Woof.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Woof.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		076344851E415470001E20C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		076344871E415470001E20C9 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -145,10 +149,19 @@
 			name = Fonts;
 			sourceTree = "<group>";
 		};
+		075FBD841E4D636E009ECE7C /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				075FBD7F1E4D635D009ECE7C /* Dog.swift */,
+				075FBD801E4D635D009ECE7C /* User.swift */,
+				075FBD7E1E4D635D009ECE7C /* Breed.swift */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
 		076344791E415470001E20C9 = {
 			isa = PBXGroup;
 			children = (
-				03D6BFF11E4D329000CB683A /* Models */,
 				076344841E415470001E20C9 /* Woof */,
 				0763449B1E415470001E20C9 /* WoofTests */,
 				076344A61E415470001E20C9 /* WoofUITests */,
@@ -173,12 +186,10 @@
 			children = (
 				0758A9211E450B6700BE9145 /* Fonts */,
 				076344851E415470001E20C9 /* AppDelegate.swift */,
-				076344BD1E416EA0001E20C9 /* LoginViewController.swift */,
-				076344871E415470001E20C9 /* FirstViewController.swift */,
-				076344891E415470001E20C9 /* SecondViewController.swift */,
-				2F2E8EF61E496C0700F911ED /* SuggestionViewController.swift */,
-				0763448B1E415470001E20C9 /* Main.storyboard */,
+				07DD8C861E51089D009A953A /* Controller */,
+				075FBD841E4D636E009ECE7C /* Classes */,
 				0763448E1E415470001E20C9 /* Assets.xcassets */,
+				0763448B1E415470001E20C9 /* Main.storyboard */,
 				076344901E415470001E20C9 /* LaunchScreen.storyboard */,
 				076344931E415470001E20C9 /* Info.plist */,
 				076344B51E4154AE001E20C9 /* GoogleService-Info.plist */,
@@ -202,6 +213,17 @@
 				076344A91E415470001E20C9 /* Info.plist */,
 			);
 			path = WoofUITests;
+			sourceTree = "<group>";
+		};
+		07DD8C861E51089D009A953A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				076344871E415470001E20C9 /* FirstViewController.swift */,
+				076344BD1E416EA0001E20C9 /* LoginViewController.swift */,
+				076344891E415470001E20C9 /* SecondViewController.swift */,
+				2F2E8EF61E496C0700F911ED /* SuggestionViewController.swift */,
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 		4764C244E1F550767016166C /* Pods */ = {
@@ -344,7 +366,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				03D6BFF21E4D329000CB683A /* Models in Resources */,
 				076344921E415470001E20C9 /* LaunchScreen.storyboard in Resources */,
 				0758A9201E450B5B00BE9145 /* Rubik-Regular.ttf in Resources */,
 				0758A91A1E450B5B00BE9145 /* Rubik-BoldItalic.ttf in Resources */,
@@ -523,8 +544,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				075FBD811E4D635D009ECE7C /* Breed.swift in Sources */,
+				075FBD821E4D635D009ECE7C /* Dog.swift in Sources */,
 				076344BE1E416EA0001E20C9 /* LoginViewController.swift in Sources */,
 				0763448A1E415470001E20C9 /* SecondViewController.swift in Sources */,
+				075FBD831E4D635D009ECE7C /* User.swift in Sources */,
 				076344861E415470001E20C9 /* AppDelegate.swift in Sources */,
 				076344881E415470001E20C9 /* FirstViewController.swift in Sources */,
 				2F2E8EF71E496C0700F911ED /* SuggestionViewController.swift in Sources */,
