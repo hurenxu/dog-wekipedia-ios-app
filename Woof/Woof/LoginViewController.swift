@@ -66,20 +66,27 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate{
                 
             })
             
+            if FIRAuth.auth()?.currentUser != nil {
+                let user = User(authData: (FIRAuth.auth()?.currentUser)!);
+            } else {
+                    // No user is signed in.
+                    // ...
+            }
+            
             self.performSegue(withIdentifier: "showHomePage", sender: self)
         }
         
     }
     
     @IBAction func googleLogin(sender: UIButton) {
-        
+        GIDSignIn.sharedInstance().signIn()
+    }
+    
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
         if error != nil {
             // TODO
             return
         }
-        
-        GIDSignIn.sharedInstance().signIn()
         // google_credential
         guard let authentication = user.authentication else { return }
         let credential = FIRGoogleAuthProvider.credential(withIDToken: authentication.idToken,
@@ -105,9 +112,9 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate{
             
         })
         self.performSegue(withIdentifier: "showHomePage", sender: self)
+
         // [END_EXCLUDE]
     }
 
-    }
 
 }
