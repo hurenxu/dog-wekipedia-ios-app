@@ -36,7 +36,7 @@ class ProfileViewController: UIViewController {
     func profileImg(name:String) -> UIImageView{
         let dogImg = UIImageView()
         
-        if(name == ""){
+        if(UIImage(named:name)?.size == nil){
             dogImg.image = UIImage(named:"Yorkshire")
         }else{
             dogImg.image = UIImage(named:name)
@@ -52,9 +52,7 @@ class ProfileViewController: UIViewController {
         dogImg.heightAnchor.constraint(equalToConstant: 120).isActive = true
         dogImg.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         
-        
         dogImg.topAnchor.constraint(equalTo:topLayoutGuide.bottomAnchor, constant: 10.0).isActive = true
-        
     }
     
     

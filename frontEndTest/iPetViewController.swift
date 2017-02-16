@@ -39,7 +39,7 @@ class iPetViewController: UIViewController {
     func profileImg(name:String) -> UIImageView{
         let Img = UIImageView()
         
-        if(name == ""){
+        if(UIImage(named:name)?.size == nil){
             Img.image = UIImage(named:"Yorkshire")
         }else{
             Img.image = UIImage(named:name)
