@@ -14,8 +14,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        view.backgroundColor = UIColor.black
-        self.title = "HomePage"
+        view.backgroundColor = UIColor.orange
+        self.title = "Home"
         print("item 1 loaded")
         
         let label = UILabel(frame: CGRect(x: 200, y: 200, width: 200, height: 200))
@@ -28,6 +28,7 @@ class ViewController: UIViewController {
         
         
     }
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         

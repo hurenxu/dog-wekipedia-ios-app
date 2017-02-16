@@ -24,7 +24,7 @@ class WoofipediaViewController: UITableViewController, UISearchResultsUpdating  
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        
+        self.title = "Woofy"
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -121,7 +121,7 @@ class WoofipediaViewController: UITableViewController, UISearchResultsUpdating  
         super.init(coder: aDecoder)
         
         // Initialize Tab Bar Item
-        tabBarItem = UITabBarItem(title: "Woofipedia", image: UIImage(named: "searchTab"), tag: 1)
+        tabBarItem = UITabBarItem(title: "Woofy", image: UIImage(named: "searchTab"), tag: 1)
     }
     
     
