@@ -10,6 +10,7 @@ import UIKit
 import FBSDKLoginKit
 import Firebase
 import GoogleSignIn
+import FirebaseAuth
 
 class LoginViewController: UIViewController, GIDSignInUIDelegate{
     
@@ -68,6 +69,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate{
             
             if FIRAuth.auth()?.currentUser != nil {
                 let user = User(authData: (FIRAuth.auth()?.currentUser)!);
+                
             } else {
                     // No user is signed in.
                     // ...
