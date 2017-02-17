@@ -14,7 +14,7 @@ class Dog{
     var image: String
     
     
-    init(name: String, breed: Breed, birthDate: Date, age: int, gender: String, description: String){
+    init(name: String, breed: Breed, birthDate: Date, age: Int, gender: String, description: String){
 		self.name = name
         self.breed = breed
         self.age = age
@@ -81,7 +81,7 @@ class Dog{
     
     func addDogProfileEntry() {
         let dao = DataAccessObject()
-        dao.addDog(self)
+        dao.addDog(dog: self)
     }
 
 }

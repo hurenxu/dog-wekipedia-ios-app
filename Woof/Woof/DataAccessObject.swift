@@ -28,6 +28,30 @@ class DataAccessObject {
         ref.child("User Profile").child("My Dog").setValue(["name": dog.name, "key": dog.key])
     }
     
+    func viewUser(user: User) {
+        
+    }
+    
+    func viewDog(dog: Dog) {
+        
+    }
+    
+    func updateUser(user: User) {
+        
+    }
+    
+    func updateDog(dog: Dog) {
+        
+    }
+    
+    func deleteUser(user: User) {
+        
+    }
+    
+    func deleteDog(dog: Dog) {
+        
+    }
+    
     func addLikedDog(name: String, key: String) {
         
         let ref = FIRDatabase.database().reference()
@@ -37,8 +61,9 @@ class DataAccessObject {
     
     /*the following method is for temporary explaination of retrieving data,
      may be moved to controller for implemenation*/
-    func viewDog(name: String, key: String) {
+    func inspectDog(dogs: [Dog]) {
         
+        let ref = FIRDatabase.database().reference()
         //Attach a listener to receive updates
         ref.observe(.value, with: { snapshot in
             var newDogs: [Dog] = []
@@ -47,17 +72,17 @@ class DataAccessObject {
                 newDogs.append(dog)
             }
             /* the following implementation may be applied to viewController */
-            self.dogs = newDogs // this updates the field 'dogs' under the user referenced
+            dogs = newDogs // this updates the field 'dogs' under the user referenced
             //self.view.reloadData()
         })
     
     }
     /* the following method is intended to be implemented in some tableViewController,
        which is to delete a dog in cell */
-    func tableView(_tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete{
-            let dogToBeDeleted = dog[indexPath.row]
-            dogToBeDeleted.ref?.removeValue()
-        }
-    }
+//    func tableView(_tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+//        if editingStyle == .delete{
+//            let dogToBeDeleted = dog[indexPath.row]
+//            dogToBeDeleted.ref?.removeValue()
+//        }
+//    }
 }
