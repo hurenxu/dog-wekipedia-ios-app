@@ -1,15 +1,20 @@
 import Foundation
 import Firebase
 
-struct User{
+class User{
     
-	let uid: String
-	let name: String
-	let email: String
+    // immutable uid
+	let userID: String
+    //var firstName: String
+    //var lastName: String
+    var name: String
+    var email: String
     var dogs: [Dog] = []
+    
+
 
 	init(authData:FIRUser) {
-		uid = authData.uid
+		userID = authData.uid
 		name = authData.displayName!
 		email = authData.email!
         
@@ -19,7 +24,12 @@ struct User{
 	}
 	
     func addUserEntry() {
-        DataAccessObject.addUser(self)
+        let dao: DataAccessObject
+        
+    }
+    
+    func concatenateName() {
+        
     }
     
     func userExist() -> Bool {

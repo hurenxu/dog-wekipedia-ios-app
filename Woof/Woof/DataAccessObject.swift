@@ -10,19 +10,21 @@ import Foundation
 import FirebaseDatabase
 
 class DataAccessObject {
+    
+    init(){}
 
-    func addUser(name: String, key: String) {
+    func addUser(user: User) {
     
         let ref = FIRDatabase.database().reference()
         
-        ref.child("User Profile").setValue(["name": name, "key": key])
+        ref.child("User Profile").setValue(["name": user.name, "key": user.userID])
     }
     
-    func addDog(name: String, key: String) {
+    func addDog(dog: Dog) {
         
         let ref = FIRDatabase.database().reference()
         
-        ref.child("User Profile").child("My Dog").setValue(["name": name, "key": key])
+        ref.child("User Profile").child("My Dog").setValue(["name": dog.name, "key": dog.key])
     }
     
     func addLikedDog(name: String, key: String) {
