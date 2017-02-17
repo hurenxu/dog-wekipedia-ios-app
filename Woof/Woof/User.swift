@@ -34,15 +34,68 @@ class User{
         dao.addUser(user: self)
     }
 
-    func addDogProfileEntry() {
-        let dao = DataAccessObject()
-        let dog = Dog(name: "aaa")
-        dao.addDog(dog: dog)
+    func addDog(dog: Dog) {
+        dogIDs.append(dog.getDogID())
+        dog.addDogProfileEntry()
+    }
+    
+    func addFavoriteDogBreed(breedname: String) {
+        self.favoriteDogBreeds.append(breedname)
+    }
+    
+    func addFavoriteCategoryFilter(filter: String) {
+        self.favoriteCategoryFilters.append(filter)
     }
     
     func userExist() -> Bool {
         return false
     }
     
+    func setName(name: String) {
+        self.name = name
+    }
     
+    func getName() -> String {
+        return self.name
+    }
+    
+    func setEmail(email: String) {
+        self.email = email
+    }
+    
+    func getEmail() -> String {
+        return self.email
+    }
+    
+    func setAge(age: Int) {
+        self.age = age
+    }
+    
+    func getAge() -> Int {
+        return self.age
+    }
+    
+    func setGender(gender: String) {
+        self.gender = gender
+    }
+    
+    func getGender() -> String {
+        return self.gender
+    }
+    
+    func setZipCode(code: Int) {
+        self.zipCode = code
+    }
+    
+    func getZipCode() -> Int {
+        return self.zipCode
+    }
+    
+    func setImage(imageURL: String) {
+        self.image = imageURL
+    }
+    
+    func getImage() -> String {
+        return self.image
+    }
 }
