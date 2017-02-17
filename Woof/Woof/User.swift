@@ -9,30 +9,40 @@ class User{
     //var lastName: String
     var name: String
     var email: String
-    var dogs: [Dog] = []
+    var age = 0
+    var gender = ""
+    var favoriteDogBreeds: [String] = []
+    var favoriteCategoryFilters: [String] = []
+    var zipCode = 0
+    var image = ""
+    var dogIDs: [Int] = []
     
-
 
 	init(authData:FIRUser) {
 		userID = authData.uid
 		name = authData.displayName!
 		email = authData.email!
+        gender = "F"
         
         if (!self.userExist()) {
-            self.addUserEntry()
+            self.addUserProfileEntry()
         }
 	}
 	
-    func addUserEntry() {
-        let dao: DataAccessObject
-        
+    func addUserProfileEntry() {
+        let dao = DataAccessObject()
+        dao.addUser(user: self)
     }
-    
-    func concatenateName() {
-        
+
+    func addDogProfileEntry() {
+        let dao = DataAccessObject()
+        let dog = Dog(name: "aaa")
+        dao.addDog(dog: dog)
     }
     
     func userExist() -> Bool {
         return false
     }
+    
+    
 }

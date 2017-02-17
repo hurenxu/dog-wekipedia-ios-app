@@ -7,7 +7,7 @@ class Dog{
 
 	init(name: String){
 		self.name = name
-        breed = Breed(breedName: "")
+        self.breed = Breed(breedName: "")
 	}
 
 }
