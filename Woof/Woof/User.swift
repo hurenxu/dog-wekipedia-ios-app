@@ -15,7 +15,7 @@ class User{
     var favoriteCategoryFilters: [String] = []
     var zipCode = 0
     var image = ""
-    var dogIDs: [Int] = []
+    var dogIDs: [String] = []
     
 
 	init(authData:FIRUser) {
