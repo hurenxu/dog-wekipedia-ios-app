@@ -21,7 +21,7 @@ class DataAccessObject {
         ref.child("User Profile").child(user.userID).setValue(["name": user.name, "key": user.userID])
     }
     
-    func addDog(dog: Dog, user: User) {
+    func addDog(dog: Dog) {
         
         let ref = FIRDatabase.database().reference()
         
@@ -29,7 +29,6 @@ class DataAccessObject {
                                                      "age": dog.age, "gender": dog.gender,
                                                      "birthDate": dog.birthDate,
                                                      "description": dog.description])
-        ref.child("User Profile").child(user.userID).setValue(["dogIDs": user.dogIDs.append(dog.dogID)])
     }
     
     func viewUser(user: User) -> Any{
@@ -61,6 +60,21 @@ class DataAccessObject {
     }
     
     func deleteDog(dog: Dog) {
+        let ref = FIRDatabase.database().reference()
+        
+        //var userDogs: [String] = []
+        
+        
+        for (index, element) in user.dogIDs.enumerated() {
+            if (element === dog.getDogID()) {
+                user.dogIDs.remove(at: index)
+            }
+        }
+        ref.child("Dog Profile").child(dog.dogID).removeValue(completionBlock:{(error, ref) in
+            if error != nil {
+                print("error \(error)")
+            }
+        })
         
     }
     

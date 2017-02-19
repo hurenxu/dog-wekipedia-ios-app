@@ -23,6 +23,7 @@ class Dog{
         self.description = description
         
 	}
+    
     func getBreed() -> Breed{
         return breed
     }
@@ -31,7 +32,7 @@ class Dog{
         return breed.getBreedName()
     }
     
-    func getDogID() -> Int {
+    func getDogID() -> String {
         return self.dogID
     }
     func getName() -> String{
