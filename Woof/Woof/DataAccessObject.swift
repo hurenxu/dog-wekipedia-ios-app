@@ -61,7 +61,7 @@ class DataAccessObject {
     
     /*the following method is for temporary explaination of retrieving data,
      may be moved to controller for implemenation*/
-    func inspectDog(dogs: [Dog]) {
+    func updateDogList(dogs: [Dog]) {
         
         let ref = FIRDatabase.database().reference()
         //Attach a listener to receive updates
