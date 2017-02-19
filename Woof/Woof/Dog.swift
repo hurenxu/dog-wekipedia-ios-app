@@ -2,7 +2,7 @@ import Foundation
 
 class Dog{
     
-    let dogID: Int
+    let dogID: String
 	var name: String
     let breed: Breed
     var age: Int

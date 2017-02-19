@@ -18,30 +18,42 @@ class DataAccessObject {
     
         let ref = FIRDatabase.database().reference()
         
-        ref.child("User Profile").setValue(["name": user.name, "key": user.userID])
+        ref.child("User Profile").child(user.userID).setValue(["name": user.name, "key": user.userID])
     }
     
-    func addDog(dog: Dog) {
+    func addDog(dog: Dog, user: User) {
         
         let ref = FIRDatabase.database().reference()
         
-        ref.child("User Profile").child("My Dog").setValue(["name": dog.name, "key": dog.key])
+        ref.child("Dog Profile").child(dog.dogID).setValue(["name": dog.name, "breed": dog.breed,
+                                                     "age": dog.age, "gender": dog.gender,
+                                                     "birthDate": dog.birthDate,
+                                                     "description": dog.description])
+        ref.child("User Profile").child(user.userID).setValue(["dogIDs": user.dogIDs.append(dog.dogID)])
     }
     
-    func viewUser(user: User) {
+    func viewUser(user: User) -> Any{
+        let ref = FIRDatabase.database().reference()
+        return ref.child("User Profile").child(user.userID)
         
     }
     
-    func viewDog(dog: Dog) {
+    func viewDog(dog: Dog) -> Any{
+        let ref = FIRDatabase.database().reference()
+        return ref.child("Dog Profile").child(dog.dogID)
         
     }
     
     func updateUser(user: User) {
-        
+        let ref = FIRDatabase.database().reference()
+        ref.child("User Profile").child(user.userID).setValue(["name": user.name, "email": user.email, "age": user.age, "gender": user.gender, "favoriteDogBreeds": user.favoriteDogBreeds, "favoriteCategoryFilters": user.favoriteCategoryFilters, "zipCode": user.zipCode, "image": user.image, "dogIDs": user.dogIDs])
+
     }
     
-    func updateDog(dog: Dog) {
-        
+    func updateDog(user: User, dog: Dog){
+        let ref = FIRDatabase.database().reference()
+        ref.child("User Profile").child(user.userID).child(dog.dogID).setValue(["name": dog.name, "age": dog.age, "vaccination": dog.vaccination, "color": dog.color, "description": dog.description, "image": dog.image])
+        ref.child("Dog Profile").child(dog.dogID).setValue(["name": dog.name, "age": dog.age, "vaccination": dog.vaccination, "color": dog.color, "description": dog.description, "image": dog.image])
     }
     
     func deleteUser(user: User) {
