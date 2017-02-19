@@ -84,5 +84,16 @@ class Dog{
         let dao = DataAccessObject()
         dao.addDog(dog: self)
     }
-
+    func updateDogProfile(){
+        let dao = DataAccessObject()
+        dao.updateDog(dog: self)
+    }
+    func deleteDogProfileEntry() {
+        let dao = DataAccessObject()
+        dao.deleteDog(dog: self)
+    }
+    func viewDog(dog: Dog) -> Any {
+        let dao = DataAccessObject()
+        return dao.viewDog(dog: self)
+    }
 }
