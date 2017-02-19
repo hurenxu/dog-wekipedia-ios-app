@@ -46,13 +46,6 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             print("Switch On")
             reminderStatus.text = "Reminder is on"
             
-            // notification's content
-            notificationContent.title = "Vaccination Date Reminder"
-            notificationContent.body = "Vaccination Date is in 30 seconds!"
-            notificationContent.badge = 1
-            notificationContent.sound = UNNotificationSound.default()
-            notificationContent.setValue(true, forKey: "shouldAlwaysAlertWhileAppIsForeground")
-            
             // obtain the date and time user chooses
             var adjustedDate = datePicker.date
             
@@ -78,6 +71,13 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             }
             
             print(adjustedDate)
+            
+            // notification's content
+            notificationContent.title = "Vaccination Date Reminder"
+            notificationContent.body = "Vaccination Date is in \(Int(value)) \(unit)!"
+            notificationContent.badge = 1
+            notificationContent.sound = UNNotificationSound.default()
+            notificationContent.setValue(true, forKey: "shouldAlwaysAlertWhileAppIsForeground")
             
             // set the notification time
             var notificationTime = DateComponents()
