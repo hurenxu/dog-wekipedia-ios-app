@@ -49,9 +49,9 @@ class DataAccessObject {
 
     }
     
-    func updateDog(user: User, dog: Dog){
+    func updateDog(dog: Dog){
         let ref = FIRDatabase.database().reference()
-        ref.child("User Profile").child(user.userID).child(dog.dogID).setValue(["name": dog.name, "age": dog.age, "vaccination": dog.vaccination, "color": dog.color, "description": dog.description, "image": dog.image])
+
         ref.child("Dog Profile").child(dog.dogID).setValue(["name": dog.name, "age": dog.age, "vaccination": dog.vaccination, "color": dog.color, "description": dog.description, "image": dog.image])
     }
     
