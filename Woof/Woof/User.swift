@@ -46,7 +46,28 @@ class User{
     func addFavoriteCategoryFilter(filter: String) {
         self.favoriteCategoryFilters.append(filter)
     }
+    func updateDog(dog: Dog) {
+        let dao = DataAccessObject()
+        dao.updateDog(dog: dog)
+    }
+    func deleteDog(dog: Dog) {
+        
+        for (index, element) in self.dogIDs.enumerated() {
+            if (element == dog.getDogID()) {
+                self.dogIDs.remove(at: index)
+            }
+        }
+        let dao = DataAccessObject()
+        dao.updateUser(user: self)
+        dog.deleteDogProfileEntry()
+        
+    }
+    func viewUser(user: User) -> Any {
+        let dao = DataAccessObject()
+        return dao.viewUser(user: self)
+    }
     
+
     func userExist() -> Bool {
         return false
     }

@@ -49,9 +49,9 @@ class DataAccessObject {
 
     }
     
-    func updateDog(user: User, dog: Dog){
+    func updateDog(dog: Dog){
         let ref = FIRDatabase.database().reference()
-        ref.child("User Profile").child(user.userID).child(dog.dogID).setValue(["name": dog.name, "age": dog.age, "vaccination": dog.vaccination, "color": dog.color, "description": dog.description, "image": dog.image])
+
         ref.child("Dog Profile").child(dog.dogID).setValue(["name": dog.name, "age": dog.age, "vaccination": dog.vaccination, "color": dog.color, "description": dog.description, "image": dog.image])
     }
     
@@ -59,17 +59,10 @@ class DataAccessObject {
         
     }
     
-    func deleteDog(dog: Dog, user: User) {
+    func deleteDog(dog: Dog) {
         let ref = FIRDatabase.database().reference()
         
-        //var userDogs: [String] = []
-        
-        
-        for (index, element) in user.dogIDs.enumerated() {
-            if (element == dog.getDogID()) {
-                user.dogIDs.remove(at: index)
-            }
-        }
+
         ref.child("Dog Profile").child(dog.dogID).removeValue(completionBlock:{(error, ref) in
             if error != nil {
                 print("error \(error)")
