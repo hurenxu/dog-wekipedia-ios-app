@@ -59,14 +59,14 @@ class DataAccessObject {
         
     }
     
-    func deleteDog(dog: Dog) {
+    func deleteDog(dog: Dog, user: User) {
         let ref = FIRDatabase.database().reference()
         
         //var userDogs: [String] = []
         
         
         for (index, element) in user.dogIDs.enumerated() {
-            if (element === dog.getDogID()) {
+            if (element == dog.getDogID()) {
                 user.dogIDs.remove(at: index)
             }
         }
@@ -94,11 +94,11 @@ class DataAccessObject {
         ref.observe(.value, with: { snapshot in
             var newDogs: [Dog] = []
             for item in snapshot.children {
-                let dog = Dog(snapshot: item as! FIRDataSnapshot)
-                newDogs.append(dog)
+                //let dog = Dog(snapshot: item as! FIRDataSnapshot)
+                //newDogs.append(dog)
             }
             /* the following implementation may be applied to viewController */
-            dogs = newDogs // this updates the field 'dogs' under the user referenced
+            //dogs = newDogs // this updates the field 'dogs' under the user referenced
             //self.view.reloadData()
         })
     

@@ -14,14 +14,17 @@ class Dog{
     var image: String
     
     
-    init(name: String, breed: Breed, birthDate: Date, age: Int, gender: String, description: String){
-		self.name = name
+    init(dogID: String, name: String, breed: Breed, birthDate: Date, age: Int, gender: String, vaccination: Date, color: String, description: String, image: String){
+		self.dogID = dogID
+        self.name = name
         self.breed = breed
         self.age = age
         self.gender = gender
         self.birthDate = birthDate
+        self.vaccination = vaccination
+        self.color = color
         self.description = description
-        
+        self.image = image
 	}
     
     func getBreed() -> Breed{
