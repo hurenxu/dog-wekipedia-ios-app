@@ -368,27 +368,6 @@
             </objects>
             <point key="canvasLocation" x="757.60000000000002" y="950.37481259370327"/>
         </scene>
-<<<<<<< HEAD
-        <!--Navigation Controller-->
-        <scene sceneID="OyJ-mn-Ejb">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MCH-Re-uns" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="qc6-sS-tIb">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="9iY-13-N5R" kind="relationship" relationship="rootViewController" id="QeQ-vv-tOg"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gG1-2T-In6" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2544.8000000000002" y="-555.47226386806597"/>
-        </scene>
-=======
->>>>>>> a941eade14fb5ee2ee06a0ed8d25e4aa5af0070b
         <!--Detail-->
         <scene sceneID="g95-yF-f7d">
             <objects>
@@ -446,24 +425,6 @@
                     <navigationItem key="navigationItem" title="Detail" id="axn-qQ-o1f">
                         <barButtonItem key="backBarButtonItem" title="Search" id="Ky8-vA-wyG"/>
                     </navigationItem>
-<<<<<<< HEAD
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="icS-H0-r7v" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3808.8000000000002" y="113.79310344827587"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="Tmc-f3-Z8e">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="V7E-XG-vce" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="WwS-Sn-9lz">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-=======
->>>>>>> a941eade14fb5ee2ee06a0ed8d25e4aa5af0070b
                     <connections>
                         <outlet property="mainImageView" destination="LTh-Kd-6O9" id="nXz-2v-Nwl"/>
                     </connections>
