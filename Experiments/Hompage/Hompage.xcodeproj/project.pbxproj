@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		9E8950BE1E4AE52C00A15868 /* FilterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E8950BD1E4AE52C00A15868 /* FilterTableViewController.swift */; };
 		9E8E043D1E4BA12600889F8B /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E8E043C1E4BA12600889F8B /* SearchTableViewController.swift */; };
+		9EA6662A1E5A602F00631E13 /* DogProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA666291E5A602F00631E13 /* DogProfile.swift */; };
 		9EBF4DEC1E4A54BD0068950A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBF4DEB1E4A54BD0068950A /* AppDelegate.swift */; };
 		9EBF4DEE1E4A54BD0068950A /* HomepageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBF4DED1E4A54BD0068950A /* HomepageViewController.swift */; };
 		9EBF4DF01E4A54BD0068950A /* WoofipediaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBF4DEF1E4A54BD0068950A /* WoofipediaViewController.swift */; };
@@ -35,6 +36,7 @@
 /* Begin PBXFileReference section */
 		9E8950BD1E4AE52C00A15868 /* FilterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterTableViewController.swift; sourceTree = "<group>"; };
 		9E8E043C1E4BA12600889F8B /* SearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
+		9EA666291E5A602F00631E13 /* DogProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DogProfile.swift; sourceTree = "<group>"; };
 		9EBF4DE81E4A54BD0068950A /* Hompage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hompage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EBF4DEB1E4A54BD0068950A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9EBF4DED1E4A54BD0068950A /* HomepageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomepageViewController.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				9EBF4E151E4A9EA40068950A /* Dog.swift */,
+				9EA666291E5A602F00631E13 /* DogProfile.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -236,6 +239,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9EA6662A1E5A602F00631E13 /* DogProfile.swift in Sources */,
 				9EBF4DF01E4A54BD0068950A /* WoofipediaViewController.swift in Sources */,
 				9E8E043D1E4BA12600889F8B /* SearchTableViewController.swift in Sources */,
 				9EBF4E161E4A9EA40068950A /* Dog.swift in Sources */,
