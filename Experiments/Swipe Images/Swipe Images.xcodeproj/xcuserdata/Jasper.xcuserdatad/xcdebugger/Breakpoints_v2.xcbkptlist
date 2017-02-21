@@ -10,13 +10,154 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Swipe Images/ViewController.swift"
-            timestampString = "507890920.238693"
+            timestampString = "509410771.740604"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "127"
-            endingLineNumber = "127"
+            startingLineNumber = "140"
+            endingLineNumber = "140"
             landmarkName = "touchesEnded(_:with:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Swipe Images/ViewController.swift"
+            timestampString = "509410771.740604"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "ViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Swipe_Images.ViewController.IMAGE_WIDTH.getter : CoreGraphics.CGFloat"
+                  moduleName = "Swipe Images"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Jasper/Desktop/Projects/CSE110_Woof/Experiments/Swipe%20Images/Swipe%20Images/ViewController.swift"
+                  timestampString = "509403948.566466"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "28">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Swipe_Images.ViewController.init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; Swipe_Images.ViewController"
+                  moduleName = "Swipe Images"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Jasper/Desktop/Projects/CSE110_Woof/Experiments/Swipe%20Images/Swipe%20Images/ViewController.swift"
+                  timestampString = "509403948.569501"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "164">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Swipe_Images.ViewController.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;Swipe_Images.ViewController&gt;"
+                  moduleName = "Swipe Images"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Jasper/Desktop/Projects/CSE110_Woof/Experiments/Swipe%20Images/Swipe%20Images/ViewController.swift"
+                  timestampString = "509403948.576198"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "120">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Swipe Images/ViewController.swift"
+            timestampString = "509410771.740604"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "ViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Swipe_Images.ViewController.borderTwo.getter : Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UIView&gt;"
+                  moduleName = "Swipe Images"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Jasper/Desktop/Projects/CSE110_Woof/Experiments/Swipe%20Images/Swipe%20Images/ViewController.swift"
+                  timestampString = "509410711.672698"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "28"
+                  endingLineNumber = "28"
+                  offsetFromSymbolStart = "48">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Swipe_Images.ViewController.borderTwo.setter : Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UIView&gt;"
+                  moduleName = "Swipe Images"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Jasper/Desktop/Projects/CSE110_Woof/Experiments/Swipe%20Images/Swipe%20Images/ViewController.swift"
+                  timestampString = "509410711.67639"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "28"
+                  endingLineNumber = "28"
+                  offsetFromSymbolStart = "76">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Swipe_Images.ViewController.init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; Swipe_Images.ViewController"
+                  moduleName = "Swipe Images"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Jasper/Desktop/Projects/CSE110_Woof/Experiments/Swipe%20Images/Swipe%20Images/ViewController.swift"
+                  timestampString = "509410711.681473"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "28"
+                  endingLineNumber = "28"
+                  offsetFromSymbolStart = "492">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Swipe_Images.ViewController.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;Swipe_Images.ViewController&gt;"
+                  moduleName = "Swipe Images"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Jasper/Desktop/Projects/CSE110_Woof/Experiments/Swipe%20Images/Swipe%20Images/ViewController.swift"
+                  timestampString = "509410711.68477"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "28"
+                  endingLineNumber = "28"
+                  offsetFromSymbolStart = "440">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

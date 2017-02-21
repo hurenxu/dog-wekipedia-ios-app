@@ -10,24 +10,37 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    // TODO: update sizes to be relative to screen's size
+    
     // all one's are dynamic, all two's are static
     
+    // the size of the phone
+    let SCREEN_SIZE: CGRect = UIScreen.main.bounds
+    
     // everything about the image
-    @IBOutlet weak var imageOne: UIImageView!
-    var imageOneCenter = CGPoint(x: 0, y: 0)
-    @IBOutlet weak var imageTwo: UIImageView!
+    let IMAGE_CENTER = CGPoint(x: 15, y: 20)
+    let IMAGE_WIDTH = CGFloat(340)
+    let IMAGE_HEIGHT = CGFloat(425)
+    var imageOne: UIImageView! = nil
+    var imageTwo: UIImageView! = nil
 
     // everything about the border
-    @IBOutlet weak var borderOne: UIView!
-    var borderOneCenter = CGPoint(x: 0, y: 0)
-    var borderRelativeCenter = CGPoint(x: 0, y: 0)
-    @IBOutlet weak var borderTwo: UIView!
+    let BORDER_CENTER = CGPoint(x: 15, y: 60)
+    let BORDER_WIDTH = CGFloat(340)
+    let BORDER_HEIGHT = CGFloat(465)
+    var borderRelativeCenter: CGPoint! = nil
+    var borderOne: UIView! = nil
+    var borderTwo: UIView! = nil
     
     // everything about the label
-    @IBOutlet weak var labelOne: UILabel!
-    var labelOneCenter = CGPoint(x: 0, y: 0)
+    let LABEL_CENTER = CGPoint(x: 15, y: 465)
+    let LABEL_WIDTH = CGFloat(340)
+    let LABEL_HEIGHT = CGFloat(40)
+    let FONT_SIZE = CGFloat(35)
+    let FONT = "Arial"
     var labelRelativeCenter = CGPoint(x: 0, y: 0)
-    @IBOutlet weak var labelTwo: UILabel!
+    var labelOne: UILabel = UILabel()
+    var labelTwo: UILabel = UILabel()
     
     // touch locations
     var currentLocation = CGPoint(x: 0, y: 0)
@@ -36,7 +49,7 @@ class ViewController: UIViewController {
     // radius size
     let CORNER_RADIUS = 10
     
-    func updateOne() {
+    func updateImages() {
         
         // update all one's
         if labelOne.text == "Dachshund" {
@@ -52,9 +65,9 @@ class ViewController: UIViewController {
         }
         
         // centered all one's
-        imageOne.center = imageOneCenter
-        borderOne.center = borderOneCenter
-        labelOne.center = labelOneCenter
+        imageOne.center = imageTwo.center
+        borderOne.center = borderTwo.center
+        labelOne.center = labelTwo.center
         
         // update all two's
         if labelOne.text == "Dachshund" {
@@ -83,20 +96,20 @@ class ViewController: UIViewController {
             
         }), completion: {(value: Bool) -> Void in
             
-            self.updateOne()
+            self.updateImages()
         })
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-        let touch : UITouch! = touches.first
+        let touch: UITouch! = touches.first
         
         previousLocation = touch.location(in: self.view)
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-        let touch : UITouch! = touches.first
+        let touch: UITouch! = touches.first
         
         currentLocation = touch.location(in: self.view)
         
@@ -119,20 +132,20 @@ class ViewController: UIViewController {
         let IMAGE_HALF : CGFloat = CGFloat(imageOne.frame.size.width / 2)
         let OFFSET = CGFloat(20)
         
-        let slope = CGFloat((imageOne.center.y - imageOneCenter.y) / (imageOne.center.x - imageOneCenter.x))
+        let slope = CGFloat((imageOne.center.y - imageTwo.center.y) / (imageOne.center.x - imageTwo.center.x))
         
         // swipping left
-        if (imageOne.center.x < imageOneCenter.x) {
+        if (imageOne.center.x < IMAGE_CENTER.x) {
         
             let outsideX = CGFloat(0 - IMAGE_HALF - OFFSET)
-            let outsideY = CGFloat(slope * (outsideX - imageOneCenter.x) + imageOneCenter.y)
+            let outsideY = CGFloat(slope * (outsideX - imageTwo.center.x) + imageTwo.center.y)
             
             // case to go back to center
-            if  imageOne.center.x > imageOneCenter.x - MIN_X {
+            if  imageOne.center.x > imageTwo.center.x - MIN_X {
             
-                imageOne.center = imageOneCenter
-                borderOne.center = borderOneCenter
-                labelOne.center = labelOneCenter
+                imageOne.center = imageTwo.center
+                borderOne.center = borderTwo.center
+                labelOne.center = labelTwo.center
             }
             
             // case to slide to left
@@ -146,14 +159,14 @@ class ViewController: UIViewController {
         else {
             
             let outsideX = CGFloat(self.view.frame.size.width + IMAGE_HALF + OFFSET)
-            let outsideY = CGFloat(slope * (outsideX - imageOneCenter.x) + imageOneCenter.y)
+            let outsideY = CGFloat(slope * (outsideX - imageTwo.center.x) + imageTwo.center.y)
             
             // case to go back to center
-            if  imageOne.center.x < imageOneCenter.x + MIN_X {
+            if  imageOne.center.x < imageTwo.center.x + MIN_X {
                 
-                imageOne.center = imageOneCenter
-                borderOne.center = borderOneCenter
-                labelOne.center = labelOneCenter
+                imageOne.center = imageTwo.center
+                borderOne.center = borderTwo.center
+                labelOne.center = labelTwo.center
             }
                 
             // case to slide to right
@@ -171,7 +184,7 @@ class ViewController: UIViewController {
         let IMAGE_HALF : CGFloat = CGFloat(imageOne.frame.size.width / 2)
         let OFFSET = CGFloat(100)
         
-        let outsideX = CGFloat(imageOneCenter.x)
+        let outsideX = CGFloat(imageTwo.center.x)
         let outsideY = CGFloat(0 - IMAGE_HALF - OFFSET)
         
         slideOut(outsideX, outsideY)
@@ -184,7 +197,7 @@ class ViewController: UIViewController {
         let OFFSET = CGFloat(20)
         
         let outsideX = CGFloat(0 - IMAGE_HALF - OFFSET)
-        let outsideY = CGFloat(imageOneCenter.y)
+        let outsideY = CGFloat(imageTwo.center.y)
         
         slideOut(outsideX, outsideY)
     }
@@ -196,7 +209,7 @@ class ViewController: UIViewController {
         let OFFSET = CGFloat(20)
         
         let outsideX = CGFloat(self.view.frame.size.width + IMAGE_HALF + OFFSET)
-        let outsideY = CGFloat(imageOneCenter.y)
+        let outsideY = CGFloat(imageTwo.center.y)
         
         slideOut(outsideX, outsideY)
     }
@@ -205,28 +218,61 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        // configure images
-        imageOneCenter = imageOne.center
-        imageOne.layer.cornerRadius = CGFloat(CORNER_RADIUS)
-        imageTwo.layer.cornerRadius = CGFloat(CORNER_RADIUS)
-        imageTwo.center = imageOneCenter
+        // Request 10 Breeds information
         
-        // configure borders
-        borderOneCenter = borderOne.center
-        borderOne.layer.cornerRadius = CGFloat(CORNER_RADIUS)
-        borderRelativeCenter = CGPoint(x: 0, y: imageOneCenter.y - borderOneCenter.y)
+        borderRelativeCenter = CGPoint(x: 0, y: IMAGE_CENTER.y - BORDER_CENTER.y)
+        labelRelativeCenter = CGPoint(x: 0, y: LABEL_CENTER.y - IMAGE_CENTER.y)
+        
+        // two static: border, image, and label
+        borderTwo = UIView(frame: CGRect(x: BORDER_CENTER.x, y: BORDER_CENTER.y, width: BORDER_WIDTH, height: BORDER_HEIGHT))
+        borderTwo.backgroundColor = UIColor.white
         borderTwo.layer.cornerRadius = CGFloat(CORNER_RADIUS)
-        borderTwo.center = borderOneCenter
+        self.view.addSubview(borderTwo)
         
-        // configure labels
-        labelOneCenter = labelOne.center
-        labelRelativeCenter = CGPoint(x: 0, y: imageOneCenter.y - labelOneCenter.y)
-        labelTwo.center = labelOneCenter
+        imageTwo = UIImageView(image: UIImage(named: "Chihuahua"))
+        imageTwo.frame = CGRect(x: IMAGE_CENTER.x, y: IMAGE_CENTER.y, width: IMAGE_WIDTH, height: IMAGE_HEIGHT)
+        imageTwo.roundCorners(corners: [.topLeft, .topRight], radius: CGFloat(CORNER_RADIUS))
+        self.view.addSubview(imageTwo)
+        
+        labelTwo.text = "Chihuahua"
+        labelTwo.frame = CGRect(x: LABEL_CENTER.x, y: LABEL_CENTER.y, width: LABEL_WIDTH, height: LABEL_HEIGHT)
+        labelTwo.font = UIFont(name: FONT, size: FONT_SIZE)
+        labelTwo.textAlignment = NSTextAlignment.center
+        self.view.addSubview(labelTwo)
+        
+        // one dynamic: border, image, and label
+        borderOne = UIView(frame: CGRect(x: BORDER_CENTER.x, y: BORDER_CENTER.y, width: BORDER_WIDTH, height: BORDER_HEIGHT))
+        borderOne.backgroundColor = UIColor.white
+        borderOne.layer.cornerRadius = CGFloat(CORNER_RADIUS)
+        self.view.addSubview(borderOne)
+        
+        imageOne = UIImageView(image: UIImage(named: "Dachshund"))
+        imageOne.frame = CGRect(x: IMAGE_CENTER.x, y: IMAGE_CENTER.y, width: IMAGE_WIDTH, height: IMAGE_HEIGHT)
+        imageOne.roundCorners(corners: [.topLeft, .topRight], radius: CGFloat(CORNER_RADIUS))
+        self.view.addSubview(imageOne)
+        
+        labelOne.text = "Dachshund"
+        labelOne.frame = CGRect(x: LABEL_CENTER.x, y: LABEL_CENTER.y, width: LABEL_WIDTH, height: LABEL_HEIGHT)
+        labelOne.font = UIFont(name: FONT, size: FONT_SIZE)
+        labelOne.textAlignment = NSTextAlignment.center
+        self.view.addSubview(labelOne)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+}
+
+// the extra function to round only specified corners
+extension UIView {
+    
+    func roundCorners(corners:UIRectCorner, radius: CGFloat) {
+
+        let path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+        let mask = CAShapeLayer()
+        mask.path = path.cgPath
+        self.layer.mask = mask
     }
 }
 
