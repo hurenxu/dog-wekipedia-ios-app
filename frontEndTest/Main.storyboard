@@ -114,10 +114,10 @@
             </objects>
             <point key="canvasLocation" x="982" y="-443"/>
         </scene>
-        <!--Item-->
+        <!--iPetViewController-->
         <scene sceneID="Ryo-Zq-bgM">
             <objects>
-                <viewController id="j7q-54-ecE" customClass="iPetViewController" customModule="frontEndTest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="iPet" title="iPetViewController" id="j7q-54-ecE" customClass="iPetViewController" customModule="frontEndTest" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4Mt-7D-AR7"/>
                         <viewControllerLayoutGuide type="bottom" id="Sfk-dz-ErC"/>
