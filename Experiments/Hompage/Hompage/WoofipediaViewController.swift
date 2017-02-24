@@ -17,13 +17,13 @@ class WoofipediaViewController: UIViewController, UITableViewDataSource, UITable
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.dogsArray += [Dog(name:"Yorkshire")]
-        self.dogsArray += [Dog(name:"Pug")]
-        self.dogsArray += [Dog(name:"Siberian Husky")]
-        self.dogsArray += [Dog(name:"Beagle")]
-        self.dogsArray += [Dog(name:"Bulldog")]
-        self.dogsArray += [Dog(name:"Poodle")]
-        self.dogsArray += [Dog(name:"Boxer")]
+        self.dogsArray += [Dog(name:"Yorkshire", size:"small", hair:"long hair")]
+        self.dogsArray += [Dog(name:"Pug", size:"small", hair:"short hair")]
+        self.dogsArray += [Dog(name:"Siberian Husky", size:"small", hair:"long hair")]
+        self.dogsArray += [Dog(name:"Beagle", size:"small", hair:"short hair")]
+        self.dogsArray += [Dog(name:"Bulldog", size:"small", hair:"short hair")]
+        self.dogsArray += [Dog(name:"Poodle", size:"large", hair:"long hair")]
+        self.dogsArray += [Dog(name:"Boxer", size:"small", hair:"short hair")]
         
         self.tableView.reloadData()
         

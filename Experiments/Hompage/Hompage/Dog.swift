@@ -9,5 +9,8 @@
 import Foundation
 
 struct Dog{
-    let name: String
+    var name: String //"Husky"
+    var size: String //"small"
+    var hair: String //"long hair"
+    //more tags 
 }
