@@ -24,7 +24,7 @@ class FilterTableViewController: UITableViewController, UISearchResultsUpdating 
         Dog(name:"Boxer", size:"small", hair:"short hair"),
         ]
     override func viewDidLoad() {
-        //super.viewDidLoad()
+        super.viewDidLoad()
         //add some parameters
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
@@ -32,6 +32,14 @@ class FilterTableViewController: UITableViewController, UISearchResultsUpdating 
         tableView.tableHeaderView = searchController.searchBar
         searchController.searchBar.scopeButtonTitles = ["small", "large", "long hair", "short hair"]
         searchController.searchBar.delegate = self
+        
+        
+        //copied
+        if let splitViewController = splitViewController {
+            let controllers = splitViewController.viewControllers
+            detailViewController = (controllers[controllers.count - 1] as! UINavigationController).topViewController as? DetailViewController
+        }
+
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -108,6 +116,32 @@ class FilterTableViewController: UITableViewController, UISearchResultsUpdating 
         return cell
     }
     
+    
+    //copied
+    override func viewWillAppear(_ animated: Bool) {
+        clearsSelectionOnViewWillAppear = splitViewController!.isCollapsed
+        super.viewWillAppear(animated)
+    }
+    var detailViewController: DetailViewController? = nil
+
+    // MARK: - Segues
+    //override
+    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showDetail" {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let newDog: Dog
+                if searchController.isActive && searchController.searchBar.text != "" {
+                    newDog = filteredDogs[indexPath.row]
+                }else{
+                    newDog = dogs[indexPath.row]
+                }
+                let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
+                controller.detailDog = newDog
+                controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
+                controller.navigationItem.leftItemsSupplementBackButton = true
+            }
+        }
+    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -161,10 +195,10 @@ class FilterTableViewController: UITableViewController, UISearchResultsUpdating 
         filterLongHairContentForSearchText(scope: searchBar.scopeButtonTitles![selectedScope])
     }
     
-    func updateSearchResults(for searchController: UISearchController){
+    func updateSearchResults(for searchTableViewController: UISearchController){
     //func updateSearchResultsForSearchController(searchController: UISearchController) {
         //filterSmallContentForSearchText(searchText: searchController.searchBar.text!)
-        let searchBar = searchController.searchBar
+        let searchBar = searchTableViewController.searchBar
         let scope = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
         filterSmallContentForSearchText(scope: scope)
         filterLargeContentForSearchText(scope: scope)
@@ -173,5 +207,4 @@ class FilterTableViewController: UITableViewController, UISearchResultsUpdating 
     }
 
 }
-
 
