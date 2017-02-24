@@ -31,7 +31,7 @@ class iPetViewController: UIViewController, UIImagePickerControllerDelegate,UINa
         let editProfButton:UIButton = UIButton(frame: CGRect(x: 100, y: 400, width: 100, height: 50))
         editProfButton.backgroundColor = .black
         editProfButton.setTitle("click here", for: .normal)
-        view.addSubview(editProfButton)
+        self.view.addSubview(editProfButton)
         EditProfileImageButtonConstraints(Button: editProfButton)
         
         
@@ -43,8 +43,15 @@ class iPetViewController: UIViewController, UIImagePickerControllerDelegate,UINa
         
         label.textColor = UIColor.black
         label.font = label.font.withSize(30)
-        view.addSubview(label)
+        self.view.addSubview(label)
         
+        
+        let testImg = UIImageView()
+        testImg.image = UIImage(named: "OrangeFilledDog")
+        let scrollView = UIScrollView(frame: CGRect(x: 0, y: 100, width: view.frame.width, height: view.frame.height/2 ))
+        scrollView.addSubview(testImg)
+        self.view.addSubview(scrollView)
+        scrollViewConstraints(Scroller: scrollView)
     }
     
 //    func profileImg(name:String) -> UIImageView{
@@ -94,6 +101,13 @@ class iPetViewController: UIViewController, UIImagePickerControllerDelegate,UINa
         
         /* action when user click on button --> call handleSelectProfileImageView function */
         Button.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectProfileImageView)))
+    }
+    
+    func scrollViewConstraints(Scroller: UIScrollView){
+        Scroller.topAnchor.constraint(equalTo: view.topAnchor, constant: view.frame.height/2).isActive = true
+        Scroller.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        Scroller.translatesAutoresizingMaskIntoConstraints = false
+        print("should have the scroll view controller ?")
     }
 //--------------------------------------------------------------------------------------------------------------------------
     
