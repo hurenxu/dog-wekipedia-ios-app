@@ -20,24 +20,10 @@ class iPetViewController: UIViewController, UIImagePickerControllerDelegate,UINa
         self.title = "iPet"
         print("iPet Page loaded")
         
-        
-//        if( changeProfile == 0 ){
-//            let userImg = profileImg(name: "BlackEmptyDog")
-//            userImg.setRounded()
-//            self.view.addSubview(userImg)
-//            ImageViewConstraints(Img: userImg)
-//        }else{
-//            let userImg = profileImgContainer
-//            userImg.setRounded()
-//            self.view.addSubview(userImg)
-//            ImageViewConstraints(Img: userImg)
-//            super.viewDidLoad()
-        //}
-        
-        
+
+        /* user profile image */
         let userImg = profileImgContainer
         userImg.setRounded()
-        
         self.view.addSubview(userImg)
         ImageViewConstraints(Img: userImg)
         
@@ -45,7 +31,7 @@ class iPetViewController: UIViewController, UIImagePickerControllerDelegate,UINa
         let editProfButton:UIButton = UIButton(frame: CGRect(x: 100, y: 400, width: 100, height: 50))
         editProfButton.backgroundColor = .black
         editProfButton.setTitle("click here", for: .normal)
-        view.addSubview(editProfButton)
+        self.view.addSubview(editProfButton)
         EditProfileImageButtonConstraints(Button: editProfButton)
         
         
@@ -57,37 +43,48 @@ class iPetViewController: UIViewController, UIImagePickerControllerDelegate,UINa
         
         label.textColor = UIColor.black
         label.font = label.font.withSize(30)
-        view.addSubview(label)
+        self.view.addSubview(label)
         
+        
+        let testImg = UIImageView()
+        testImg.image = UIImage(named: "OrangeFilledDog")
+        let scrollView = UIScrollView(frame: CGRect(x: 0, y: 100, width: view.frame.width, height: view.frame.height/2 ))
+        scrollView.addSubview(testImg)
+        self.view.addSubview(scrollView)
+        scrollViewConstraints(Scroller: scrollView)
     }
     
-    func profileImg(name:String) -> UIImageView{
-        let dogImg = UIImageView()
-        
-        if(UIImage(named:name)?.size == nil){
-            dogImg.image = UIImage(named:"Yorkshire")
-        }else{
-            dogImg.image = UIImage(named:name)
-        }
-        
-        dogImg.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
-        dogImg.translatesAutoresizingMaskIntoConstraints = false
-        //You need to call this property so the image is added to your view
-        return dogImg
-    }
+//    func profileImg(name:String) -> UIImageView{
+//        let dogImg = UIImageView()
+//        
+//        if(UIImage(named:name)?.size == nil){
+//            dogImg.image = UIImage(named:"Yorkshire")
+//        }else{
+//            dogImg.image = UIImage(named:name)
+//        }
+//        
+//        dogImg.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+//        dogImg.translatesAutoresizingMaskIntoConstraints = false
+//        //You need to call this property so the image is added to your view
+//        return dogImg
+//    }
 
     
-    
+//--------------------------------------------- profile image view -----------------------------------------------------
+    /* global variable: profileImgContainer --> default profile image */
     var profileImgContainer: UIImageView = {
         let ImgView = UIImageView()
         let Img = UIImage(named: "BlackEmptyDog")
-        
+        ImgView.image = Img
         ImgView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
         ImgView.translatesAutoresizingMaskIntoConstraints = false
         
         return ImgView
     }()
     
+    
+//----------------------------------------------- layout constraints -----------------------------------------------------
+    /* layout constriants for profile image */
     func ImageViewConstraints(Img: UIImageView) {
         Img.widthAnchor.constraint(equalToConstant: 100).isActive = true
         Img.heightAnchor.constraint(equalToConstant: 100).isActive = true
@@ -96,23 +93,28 @@ class iPetViewController: UIViewController, UIImagePickerControllerDelegate,UINa
     }
     
     
-    
-    // add constraint to button
-    // add a gesture recognizer to button
+    /* profile image changing button's constraint & add target */
     func EditProfileImageButtonConstraints(Button: UIButton){
         Button.topAnchor.constraint(equalTo: view.topAnchor, constant:180.0).isActive = true
         Button.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         Button.translatesAutoresizingMaskIntoConstraints = false
-        Button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
-        //Button.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectProfileImageView)))
+        
+        /* action when user click on button --> call handleSelectProfileImageView function */
+        Button.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectProfileImageView)))
     }
     
-    func buttonAction(sender: UIButton!){
-        sender.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectProfileImageView)))
-        //changeProfile = 1
+    func scrollViewConstraints(Scroller: UIScrollView){
+        Scroller.topAnchor.constraint(equalTo: view.topAnchor, constant: view.frame.height/2).isActive = true
+        Scroller.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        Scroller.translatesAutoresizingMaskIntoConstraints = false
+        print("should have the scroll view controller ?")
     }
+//--------------------------------------------------------------------------------------------------------------------------
     
     
+    
+//----------------------------------------------profile image picker ------------------------------------------------------
+    /* function: add an UIImagePickerController */
     func handleSelectProfileImageView(){
         let picker = UIImagePickerController()
         picker.delegate = self
@@ -120,17 +122,13 @@ class iPetViewController: UIViewController, UIImagePickerControllerDelegate,UINa
         present(picker, animated: true, completion: nil)
     }
     
-    
-    
+    /* imagePickerController & imagePickerControllerDidCancel handle the pop over and dismissal of profile changing */
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
         var chosenImageFromPicker: UIImage?
-        if let editedImage = info["UIImagePickerControllerOriginalImage"] as? UIImage{
+        if let editedImage = info["UIImagePickerControllerEditedImage"] as? UIImage{
             chosenImageFromPicker = editedImage
-        }else if let originalImg = info["UIImagePickerControllerOriginalImage"] as? UIImage{
-            chosenImageFromPicker = originalImg
         }
-        
         
         if let chosenImage = chosenImageFromPicker{
             profileImgContainer.image = chosenImage
@@ -141,8 +139,12 @@ class iPetViewController: UIViewController, UIImagePickerControllerDelegate,UINa
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
+//----------------------------------------------------------------------------------------------------------------------------
 
     
+    
+    
+    /* tab bar controller: 3rd position */
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         // Initialize Tab Bar Item
@@ -152,6 +154,7 @@ class iPetViewController: UIViewController, UIImagePickerControllerDelegate,UINa
     
 }
 
+/* present a circular profile image */
 extension UIImageView {
     
     func setRounded() {

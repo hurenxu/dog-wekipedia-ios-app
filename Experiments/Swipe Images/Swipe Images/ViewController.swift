@@ -46,6 +46,13 @@ class ViewController: UIViewController {
     var currentLocation = CGPoint(x: 0, y: 0)
     var previousLocation = CGPoint(x: 0, y: 0)
     
+    
+    let BREED_COUNT = 10
+    var tenBreeds = [Breed]()
+    
+    var current : Breed! = nil;
+    var next : Breed! = nil;
+    
     // radius size
     let CORNER_RADIUS = 10
     
@@ -219,6 +226,14 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         // Request 10 Breeds information
+        
+        // TODO CHECK THE METHOD CALL
+        var tempBreed : Breed! = nil
+        
+        for index 1...BREED_COUNT {
+            
+            tenBreeds.append(tempBreed.newBreed())
+        }
         
         borderRelativeCenter = CGPoint(x: 0, y: IMAGE_CENTER.y - BORDER_CENTER.y)
         labelRelativeCenter = CGPoint(x: 0, y: LABEL_CENTER.y - IMAGE_CENTER.y)
