@@ -8,10 +8,15 @@
 
 import UIKit
 
-class iPetViewController: UIViewController, UIImagePickerControllerDelegate,UINavigationControllerDelegate {
-
-    //var changeProfile:Int = 0
+class iPetViewController: UIViewController, UIImagePickerControllerDelegate,
+UINavigationControllerDelegate, UICollectionViewDelegateFlowLayout,
+UICollectionViewDelegate, UICollectionViewDataSource {
     
+
+    var ownedDog = ["Yorkshire", "Pug","Siberian Husky","Beagle","Bulldog","Poodle","Boxer","Chihuahua","Pit bull","Akita","Pomeranian"]
+    let cellID = "dogCell"
+    //var collectView = UICollectionView()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -19,13 +24,14 @@ class iPetViewController: UIViewController, UIImagePickerControllerDelegate,UINa
         //view.backgroundColor = UIColor.black
         self.title = "iPet"
         print("iPet Page loaded")
+        //self.view.backgroundColor = UIColor.lightGray
         
 
         /* user profile image */
         let userImg = profileImgContainer
         userImg.setRounded()
         self.view.addSubview(userImg)
-        ImageViewConstraints(Img: userImg)
+        ImageViewConstraints(Img: userImg) 
         
         
         let editProfButton:UIButton = UIButton(frame: CGRect(x: 100, y: 400, width: 100, height: 50))
@@ -46,13 +52,42 @@ class iPetViewController: UIViewController, UIImagePickerControllerDelegate,UINa
         self.view.addSubview(label)
         
         
-        let testImg = UIImageView()
-        testImg.image = UIImage(named: "OrangeFilledDog")
-        let scrollView = UIScrollView(frame: CGRect(x: 0, y: 100, width: view.frame.width, height: view.frame.height/2 ))
-        scrollView.addSubview(testImg)
-        self.view.addSubview(scrollView)
-        scrollViewConstraints(Scroller: scrollView)
+        //let collectView = UICollectionView()
+        let cLayout:UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        
+        let collectView = UICollectionView(frame: CGRect(x: 0, y:300, width:view.frame.width, height: view.frame.height/2), collectionViewLayout: cLayout)
+        
+        cLayout.sectionInset = UIEdgeInsets(top: 25, left:25, bottom:25, right:25)
+        cLayout.itemSize = CGSize(width: view.frame.width, height: view.frame.height/2)
+        
+
+        collectView.dataSource = self
+        collectView.delegate = self
+        collectView.register( UICollectionViewCell.self, forCellWithReuseIdentifier: cellID)
+        //collectView.showsVerticalScrollIndicator = true
+        collectView.backgroundColor = UIColor.black
+        
+        self.view.addSubview(collectView)
+        collectView.reloadData()
+        collectView.collectionViewLayout.invalidateLayout()
     }
+    
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear()
+//        self.collectionView.reloadData()
+//    }
+    
+    
+//        let testImg = UIImageView()
+//        testImg.image = UIImage(named: "OrangeFilledDog")
+//        let scrollView = UIScrollView(frame: CGRect(x: 0, y: 100, width: view.frame.width, height: view.frame.height/2 ))
+//        scrollView.backgroundColor = UIColor.black
+//        scrollView.addSubview(testImg)
+//        self.view.addSubview(scrollView)
+//        scrollViewConstraints(Scroller: scrollView)
+    
+
+
     
 //    func profileImg(name:String) -> UIImageView{
 //        let dogImg = UIImageView()
@@ -68,9 +103,51 @@ class iPetViewController: UIViewController, UIImagePickerControllerDelegate,UINa
 //        //You need to call this property so the image is added to your view
 //        return dogImg
 //    }
+ 
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        return CGSize(width:150, height:150)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
 
     
-//--------------------------------------------- profile image view -----------------------------------------------------
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        print(ownedDog.count)
+        return ownedDog.count
+    }
+
+    var i:Int = 0
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath)
+        
+        //collectionView.reloadData()
+        
+        cell.backgroundColor = UIColor.orange
+        //print("return cell ....\(i = i+1)")
+        let cLabel = UILabel(frame: CGRect(x: 5, y: 5, width: cell.frame.width, height: 50))
+        cLabel.textAlignment = .left
+        cLabel.text = ownedDog[indexPath.row]
+        cLabel.textColor = UIColor.black
+        cell.addSubview(cLabel)
+        
+        
+        return cell
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("Selected cell number ", indexPath.row)
+    }
+    
+
+
+    
+    
+//------------------------------------------ profile image view ---------------------------------------------
     /* global variable: profileImgContainer --> default profile image */
     var profileImgContainer: UIImageView = {
         let ImgView = UIImageView()
@@ -83,7 +160,7 @@ class iPetViewController: UIViewController, UIImagePickerControllerDelegate,UINa
     }()
     
     
-//----------------------------------------------- layout constraints -----------------------------------------------------
+//----------------------------------------- layout constraints ----------------------------------------------
     /* layout constriants for profile image */
     func ImageViewConstraints(Img: UIImageView) {
         Img.widthAnchor.constraint(equalToConstant: 100).isActive = true
@@ -103,17 +180,17 @@ class iPetViewController: UIViewController, UIImagePickerControllerDelegate,UINa
         Button.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectProfileImageView)))
     }
     
-    func scrollViewConstraints(Scroller: UIScrollView){
-        Scroller.topAnchor.constraint(equalTo: view.topAnchor, constant: view.frame.height/2).isActive = true
-        Scroller.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        Scroller.translatesAutoresizingMaskIntoConstraints = false
-        print("should have the scroll view controller ?")
-    }
-//--------------------------------------------------------------------------------------------------------------------------
+//    func scrollViewConstraints(Scroller: UIScrollView){
+//        Scroller.topAnchor.constraint(equalTo: view.topAnchor, constant: view.frame.height/2).isActive = true
+//        Scroller.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+//        Scroller.translatesAutoresizingMaskIntoConstraints = false
+//        print("should have the scroll view controller ?")
+//    }
+//-----------------------------------------------------------------------------------------------------------
     
     
     
-//----------------------------------------------profile image picker ------------------------------------------------------
+//------------------------------------------profile image picker --------------------------------------------
     /* function: add an UIImagePickerController */
     func handleSelectProfileImageView(){
         let picker = UIImagePickerController()
@@ -139,7 +216,7 @@ class iPetViewController: UIViewController, UIImagePickerControllerDelegate,UINa
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
-//----------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------
 
     
     
