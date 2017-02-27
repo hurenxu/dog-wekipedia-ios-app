@@ -68,7 +68,10 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate{
             })
             
             if FIRAuth.auth()?.currentUser != nil {
-                let user = User(authData: (FIRAuth.auth()?.currentUser)!);
+                let user = User(authData: (FIRAuth.auth()?.currentUser)!)
+                
+                //let tools = Functionalities()
+                //print(tools.getBreedList())
                 
                 
                 

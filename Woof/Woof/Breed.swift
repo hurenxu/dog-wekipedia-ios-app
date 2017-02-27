@@ -3,27 +3,50 @@ import Foundation
 class Breed{
 
 	let breedName: String
-    var personality: String
-    var origin: String
-    var group: String
-    var weight: String
-    var height: String
-    var head: String
-    var body: String
-    var ears: String
-    var hair: String
-    var tail: String
-    var shedding: String
-    var grooming: String
-    var trainability: String
-    var energyLevel: String
-    var barkingLevel: String
-    var lifeExpectancy: String
-    var description: String
-    var history: String
-    var breeders: String
-    var image: String
+    var personality: String?
+    var origin: String?
+    var group: String?
+    var weight: String?
+    var height: String?
+    var head: String?
+    var body: String?
+    var ears: String?
+    var hair: String?
+    var tail: String?
+    var shedding: String?
+    var grooming: String?
+    var trainability: String?
+    var energyLevel: String?
+    var barkingLevel: String?
+    var lifeExpectancy: String?
+    var description: String?
+    var history: String?
+    var breeders: String?
+    var image: String?
     
+    init(dictionary: NSDictionary) {
+        breedName = (dictionary["breedName"] as? String)!
+        personality = (dictionary["personality"]as? String) ?? ""
+        origin = (dictionary["origin"] as? String) ?? ""
+        group = (dictionary["group"] as? String) ?? ""
+        weight = (dictionary["weight"] as? String) ?? ""
+        height = (dictionary["height"] as? String) ?? ""
+        head = (dictionary["head"] as? String) ?? ""
+        body = (dictionary["body"] as? String) ?? ""
+        ears = (dictionary["ears"] as? String) ?? ""
+        hair = (dictionary["hair"] as? String) ?? ""
+        tail = (dictionary["tail"] as? String) ?? ""
+        shedding = (dictionary["shedding"] as? String) ?? ""
+        grooming = (dictionary["grooming"] as? String) ?? ""
+        trainability = (dictionary["trainability"] as? String) ?? ""
+        energyLevel = (dictionary["energyLevel"] as? String) ?? ""
+        barkingLevel = (dictionary["barkingLevel"] as? String) ?? ""
+        lifeExpectancy = (dictionary["lifeExpectancy"] as? String) ?? ""
+        description = (dictionary["description"] as? String) ?? ""
+        history = (dictionary["histrory"] as? String) ?? ""
+        breeders = (dictionary["breeders"] as? String) ?? ""
+        image = (dictionary["image"] as? String) ?? ""
+    }
 
     init(breedName: String, personality: String, origin: String,
          group: String, weight: String, height: String,
@@ -53,84 +76,87 @@ class Breed{
         self.history = history
         self.breeders = breeders
         self.image = image
-        
 	}
+    
     
     func getBreedName() -> String {
         return self.breedName
     }
     
     func getPersonality() -> String {
-        return self.personality
+        return self.personality!
     }
     
     func getOrigin() -> String {
-        return self.origin
+        return self.origin!
     }
     
     func getGroup() -> String {
-        return self.group
+        return self.group!
     }
     
     func getWeight() -> String {
-        return self.weight
+        return self.weight!
     }
     
     func getHead() -> String {
-        return self.head
+        return self.head!
     }
     
     func getBody() -> String {
-        return self.body
+        return self.body!
     }
     
     func getEars() -> String {
-        return self.ears
+        return self.ears!
     }
     
     func getTail() -> String {
-        return self.tail
+        return self.tail!
     }
     
     func getShedding() -> String {
-        return self.shedding
+        return self.shedding!
     }
     
     func getGrooming() -> String {
-        return self.grooming
+        return self.grooming!
     }
     
     func getTrainability() -> String {
-        return self.trainability
+        return self.trainability!
     }
     
     func getEnergyLevel() -> String {
-        return self.energyLevel
+        return self.energyLevel!
     }
     
     func getBarkingLevel() -> String {
-        return self.barkingLevel
+        return self.barkingLevel!
     }
     
     func getLifeExpectancy() -> String {
-        return self.lifeExpectancy
+        return self.lifeExpectancy!
     }
     
     func getDescription() -> String {
-        return self.description
+        return self.description!
     }
     
     func getHistory() -> String {
-        return self.history
+        return self.history!
     }
     
     func getBreeders() -> String {
-        return self.breeders
+        return self.breeders!
     }
     
     func getImage() -> String {
-        return self.image
+        return self.image!
     }
     
+    func setPersonality(personality: String) {
+        self.personality = personality
+    }
 	
 }

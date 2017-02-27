@@ -28,6 +28,7 @@ class User{
             self.addUserProfileEntry()
         }
 	}
+    
 	
     func addUserProfileEntry() {
         let dao = DataAccessObject()
@@ -58,8 +59,8 @@ class User{
             }
         }
         let dao = DataAccessObject()
-        dao.updateUser(user: self)
         dog.deleteDogProfileEntry()
+        dao.updateUser(user: self)
         
     }
     func viewUser(user: User) -> Any {
