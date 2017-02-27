@@ -10,18 +10,18 @@ import UIKit
 
 class SearchTableViewController: UITableViewController, UISearchResultsUpdating {
     
+    
     let dogs = ["Yorkshire", "Pug","Siberian Husky","Beagle","Bulldog","Poodle","Boxer","Chihuahua","Pit bull","Akita","Pomeranian"]
     var filteredDogs = [String]()
     var resultSearchController = UISearchController()
     
     override func viewDidLoad() {
-        super.viewDidLoad()
         self.resultSearchController = UISearchController(searchResultsController: nil)
         self.resultSearchController.searchResultsUpdater = self
         
         self.resultSearchController.dimsBackgroundDuringPresentation = false
         self.resultSearchController.searchBar.sizeToFit()
-    
+        //self
         self.tableView.tableHeaderView = self.resultSearchController.searchBar
         
         self.tableView.reloadData()
@@ -66,7 +66,18 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
             //cell!.textLabel?.text = self.dogs[indexPath.row]
             mainDogName.text = self.dogs[indexPath.row]
         }
-        // Configure the cell...
+        //alternate cell color
+        if(indexPath.row % 2==0){
+            //set cell background color to green
+            cell?.backgroundColor = UIColor.init(colorLiteralRed: 165/255, green: 195/255, blue: 187/255, alpha: 0.5)
+        }else{
+            //set cell background color to bage
+            cell?.backgroundColor = UIColor.init(colorLiteralRed: 248/255, green: 221/255, blue: 179/255, alpha: 0.5)
+        }
+        
+        //set image in the cell to be cicle
+        mainImageView.layer.cornerRadius = mainImageView.frame.width/2.0
+        mainImageView.clipsToBounds = true
 
         return cell!
     }

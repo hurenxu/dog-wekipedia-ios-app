@@ -8,10 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		63E14D0C1E60062F00EB2B90 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E14D0B1E60062F00EB2B90 /* DetailViewController.swift */; };
+		9E3057231E638A870006783E /* dogProfile.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E3057221E638A870006783E /* dogProfile.png */; };
+		9E3057251E638BEE0006783E /* bone-flat.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E3057241E638BEE0006783E /* bone-flat.png */; };
+		9E3057271E63CBBE0006783E /* logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9E3057261E63CBBE0006783E /* logo.jpg */; };
+		9E3057291E63CF3C0006783E /* Pulsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E3057281E63CF3C0006783E /* Pulsing.swift */; };
+		9E30572B1E63D1D20006783E /* loginLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E30572A1E63D1D20006783E /* loginLogo.png */; };
 		9E8950BE1E4AE52C00A15868 /* FilterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E8950BD1E4AE52C00A15868 /* FilterTableViewController.swift */; };
 		9E8E043D1E4BA12600889F8B /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E8E043C1E4BA12600889F8B /* SearchTableViewController.swift */; };
-		9E96F6951E637066009ECE73 /* dogProfile.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E96F6941E637066009ECE73 /* dogProfile.png */; };
-		9E96F6971E63706A009ECE73 /* corgi.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9E96F6961E63706A009ECE73 /* corgi.jpg */; };
 		9E96F6991E637CBA009ECE73 /* bacgroundHome.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E96F6981E637CBA009ECE73 /* bacgroundHome.png */; };
 		9E96F69B1E637F22009ECE73 /* backgroundHomeLarge.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9E96F69A1E637F22009ECE73 /* backgroundHomeLarge.jpg */; };
 		9E96F69D1E637F55009ECE73 /* backgroundHome.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9E96F69C1E637F55009ECE73 /* backgroundHome.jpg */; };
@@ -43,10 +46,13 @@
 
 /* Begin PBXFileReference section */
 		63E14D0B1E60062F00EB2B90 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		9E3057221E638A870006783E /* dogProfile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dogProfile.png; sourceTree = "<group>"; };
+		9E3057241E638BEE0006783E /* bone-flat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bone-flat.png"; sourceTree = "<group>"; };
+		9E3057261E63CBBE0006783E /* logo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = logo.jpg; sourceTree = "<group>"; };
+		9E3057281E63CF3C0006783E /* Pulsing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pulsing.swift; sourceTree = "<group>"; };
+		9E30572A1E63D1D20006783E /* loginLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loginLogo.png; sourceTree = "<group>"; };
 		9E8950BD1E4AE52C00A15868 /* FilterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterTableViewController.swift; sourceTree = "<group>"; };
 		9E8E043C1E4BA12600889F8B /* SearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
-		9E96F6941E637066009ECE73 /* dogProfile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = dogProfile.png; path = ../../../../dogProfile.png; sourceTree = "<group>"; };
-		9E96F6961E63706A009ECE73 /* corgi.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = corgi.jpg; path = ../../../../corgi.jpg; sourceTree = "<group>"; };
 		9E96F6981E637CBA009ECE73 /* bacgroundHome.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bacgroundHome.png; sourceTree = "<group>"; };
 		9E96F69A1E637F22009ECE73 /* backgroundHomeLarge.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = backgroundHomeLarge.jpg; sourceTree = "<group>"; };
 		9E96F69C1E637F55009ECE73 /* backgroundHome.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = backgroundHome.jpg; sourceTree = "<group>"; };
@@ -91,13 +97,15 @@
 		9E96F6911E6364ED009ECE73 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				9E96F6961E63706A009ECE73 /* corgi.jpg */,
 				9E96F69E1E6383E6009ECE73 /* homepageGradient.jpg */,
+				9E30572A1E63D1D20006783E /* loginLogo.png */,
+				9E3057241E638BEE0006783E /* bone-flat.png */,
 				9E96F6981E637CBA009ECE73 /* bacgroundHome.png */,
 				9E96F69C1E637F55009ECE73 /* backgroundHome.jpg */,
+				9E3057261E63CBBE0006783E /* logo.jpg */,
 				9E96F6A01E6387FE009ECE73 /* iconDogButton.png */,
 				9E96F69A1E637F22009ECE73 /* backgroundHomeLarge.jpg */,
-				9E96F6941E637066009ECE73 /* dogProfile.png */,
+				9E3057221E638A870006783E /* dogProfile.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -133,6 +141,7 @@
 				9EBF4DEF1E4A54BD0068950A /* WoofipediaViewController.swift */,
 				9E8E043C1E4BA12600889F8B /* SearchTableViewController.swift */,
 				9EBF4E0D1E4A637C0068950A /* SuggestionViewController.swift */,
+				9E3057281E63CF3C0006783E /* Pulsing.swift */,
 				9EBF4E0F1E4A646D0068950A /* IPetViewController.swift */,
 				9EBF4DF11E4A54BD0068950A /* Main.storyboard */,
 				9EBF4DF41E4A54BD0068950A /* Assets.xcassets */,
@@ -253,13 +262,15 @@
 			files = (
 				9E96F6991E637CBA009ECE73 /* bacgroundHome.png in Resources */,
 				9E96F69B1E637F22009ECE73 /* backgroundHomeLarge.jpg in Resources */,
+				9E3057271E63CBBE0006783E /* logo.jpg in Resources */,
+				9E3057251E638BEE0006783E /* bone-flat.png in Resources */,
 				9E96F69D1E637F55009ECE73 /* backgroundHome.jpg in Resources */,
-				9E96F6971E63706A009ECE73 /* corgi.jpg in Resources */,
+				9E3057231E638A870006783E /* dogProfile.png in Resources */,
+				9E30572B1E63D1D20006783E /* loginLogo.png in Resources */,
 				9EBF4DF81E4A54BD0068950A /* LaunchScreen.storyboard in Resources */,
 				9E96F6A11E6387FE009ECE73 /* iconDogButton.png in Resources */,
 				9EBF4DF51E4A54BD0068950A /* Assets.xcassets in Resources */,
 				9E96F69F1E6383E6009ECE73 /* homepageGradient.jpg in Resources */,
-				9E96F6951E637066009ECE73 /* dogProfile.png in Resources */,
 				9EBF4DF31E4A54BD0068950A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -288,6 +299,7 @@
 				9EBF4E0E1E4A637C0068950A /* SuggestionViewController.swift in Sources */,
 				9EBF4E101E4A646D0068950A /* IPetViewController.swift in Sources */,
 				9EBF4DEE1E4A54BD0068950A /* HomepageViewController.swift in Sources */,
+				9E3057291E63CF3C0006783E /* Pulsing.swift in Sources */,
 				9E8950BE1E4AE52C00A15868 /* FilterTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
