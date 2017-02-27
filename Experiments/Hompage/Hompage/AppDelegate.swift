@@ -19,8 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().barTintColor =
             UIColor(red: 111/255,green: 135/255,blue:143/255,alpha:1)
         
-        
-        UITabBar.appearance().tintColor = UIColor(red: 111/255,green: 135/255,blue:143/255,alpha:1)
+        //set navigation bar color
+        UITabBar.appearance().tintColor = UIColor(red: 253/255,green: 127/255,blue:124/255,alpha:1)
         return true
     }
 
