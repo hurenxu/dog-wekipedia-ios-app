@@ -12,13 +12,17 @@ import FirebaseDatabase
 
 class DataAccessObject {
     
+    var databaseHandle: FIRDatabaseHandle?
+    
     init(){}
+    
+    var currBreed: Breed?
 
     func addUser(user: User) {
     
         let ref = FIRDatabase.database().reference()
         
-        ref.child("User Profile").child(user.userID).setValue(["name": user.name, "key": user.userID])
+        ref.child("User Profile").child(user.userID).setValue(["name": user.name, "email": user.email, "age":user.age, "gender":user.gender, "favoriteDogBreeds":user.favoriteDogBreeds, "favoriteCategoryFilters":user.favoriteCategoryFilters, "zipCode":user.zipCode, "image":user.image, "dogIDs":user.dogIDs])
     }
     
     func addDog(dog: Dog) {
@@ -78,6 +82,38 @@ class DataAccessObject {
         ref.child("User Profile").child("My Liked Dog").setValue(["name": name, "key": key])
     }
     
+    
+//    func viewBreed(breed: Breed)-> Breed {
+//        let ref = FIRDatabase.database().reference()
+//        databaseHandle = ref.child("Breeds").child(breed.breedName).observe(.value, with: { (snapshot) in
+//
+//            let value = snapshot.value as? NSDictionary
+//            breed.setPersonality(personality: (value?["personality"] as? String)!)
+//            print(breed.getPersonality())
+//            
+//        }) { (error) in
+//            
+//            print(error.localizedDescription)
+//        }
+//        print(breed.getPersonality())
+//        return breed
+//
+//    }
+    
+    func viewBreed(breedName: String) -> Breed {
+        let ref = FIRDatabase.database().reference()
+        databaseHandle = ref.child("Breeds").child(breedName).observe(.value, with: { (snapshot) in
+            let breed = snapshot.value as? NSDictionary
+            
+            
+            let currBreed = Breed(dictionary: breed!)
+            print(currBreed)
+            
+        })
+        
+        return currBreed!
+    }
+
     /*the following method is for temporary explaination of retrieving data,
      may be moved to controller for implemenation*/
     func updateDogList(dogs: [Dog]) {
