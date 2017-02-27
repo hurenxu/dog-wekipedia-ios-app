@@ -543,7 +543,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             
             
             })
-        
+                
         // configure vaccination date title
         vTitle = UILabel(frame: CGRect(origin: ORIGIN, size: TITLE_SIZE))
         vTitle.text = "Vaccination Date"

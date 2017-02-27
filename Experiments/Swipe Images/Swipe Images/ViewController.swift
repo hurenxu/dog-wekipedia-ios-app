@@ -18,23 +18,23 @@ class ViewController: UIViewController {
     let SCREEN_SIZE: CGRect = UIScreen.main.bounds
     
     // everything about the image
-    let IMAGE_CENTER = CGPoint(x: 15, y: 20)
-    let IMAGE_WIDTH = CGFloat(340)
+    let IMAGE_CENTER = CGPoint(x: 15, y: 32)
+    let IMAGE_WIDTH = CGFloat(345)
     let IMAGE_HEIGHT = CGFloat(425)
     var imageOne: UIImageView! = nil
     var imageTwo: UIImageView! = nil
 
     // everything about the border
-    let BORDER_CENTER = CGPoint(x: 15, y: 60)
-    let BORDER_WIDTH = CGFloat(340)
+    let BORDER_CENTER = CGPoint(x: 15, y: 72)
+    let BORDER_WIDTH = CGFloat(345)
     let BORDER_HEIGHT = CGFloat(465)
     var borderRelativeCenter: CGPoint! = nil
     var borderOne: UIView! = nil
     var borderTwo: UIView! = nil
     
     // everything about the label
-    let LABEL_CENTER = CGPoint(x: 15, y: 465)
-    let LABEL_WIDTH = CGFloat(340)
+    let LABEL_CENTER = CGPoint(x: 15, y: 477)
+    let LABEL_WIDTH = CGFloat(345)
     let LABEL_HEIGHT = CGFloat(40)
     let FONT_SIZE = CGFloat(35)
     let FONT = "Arial"
@@ -46,13 +46,13 @@ class ViewController: UIViewController {
     var currentLocation = CGPoint(x: 0, y: 0)
     var previousLocation = CGPoint(x: 0, y: 0)
     
-    
+    /**
     let BREED_COUNT = 10
     var tenBreeds = [Breed]()
     
     var current : Breed! = nil;
     var next : Breed! = nil;
-    
+    */
     // radius size
     let CORNER_RADIUS = 10
     
@@ -228,12 +228,14 @@ class ViewController: UIViewController {
         // Request 10 Breeds information
         
         // TODO CHECK THE METHOD CALL
-        var tempBreed : Breed! = nil
+        //var tempBreed : Breed! = nil
         
-        for index 1...BREED_COUNT {
+        //for index 1...BREED_COUNT {
             
-            tenBreeds.append(tempBreed.newBreed())
-        }
+            //tenBreeds.append(tempBreed.newBreed())
+        //}
+        
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "backgroundHomeLarge.jpg")!)
         
         borderRelativeCenter = CGPoint(x: 0, y: IMAGE_CENTER.y - BORDER_CENTER.y)
         labelRelativeCenter = CGPoint(x: 0, y: LABEL_CENTER.y - IMAGE_CENTER.y)
