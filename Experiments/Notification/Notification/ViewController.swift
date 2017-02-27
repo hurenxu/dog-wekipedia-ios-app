@@ -31,20 +31,20 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     // offsets
     let TOP_OFFSET: Int = 70
-    let DATE_OFFSET: Int = 35
+    let DATE_OFFSET: Int = 40
     let PICKER_OFFSET: Int = 80
     let DURATION_LABEL_OFFSET: Int = 80
     let REMINDER_LABEL_OFFSET: Int = 35
     let DURATION_VALUE_OFFSET_X: Int = 40
     let DURATION_CHOICES_OFFSET: Int = 70
     let DURATION_VALUE_CHOICES_OFFSET: Int = 70
-    let B_OFFSET: Int = 45
+    let B_OFFSET: Int = 35
     
     // title specification
-    let TITLE_FONTSIZE: CGFloat = CGFloat(30)
-    let BODY_FONTSIZE: CGFloat = CGFloat(25)
+    let TITLE_FONTSIZE: CGFloat = CGFloat(25)
+    let BODY_FONTSIZE: CGFloat = CGFloat(20)
     let TEXT_FONTSIZE: CGFloat = CGFloat(15)
-    let FONT = "Arial"
+    let FONT = "Noteworthy"
     
     // vaccination/birthday date title
     let TITLE_SIZE: CGSize = CGSize(width: 230, height: 40)

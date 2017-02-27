@@ -37,7 +37,7 @@ class ViewController: UIViewController {
     let LABEL_WIDTH = CGFloat(345)
     let LABEL_HEIGHT = CGFloat(40)
     let FONT_SIZE = CGFloat(35)
-    let FONT = "Arial"
+    let FONT = "Noteworthy"
     var labelRelativeCenter = CGPoint(x: 0, y: 0)
     var labelOne: UILabel = UILabel()
     var labelTwo: UILabel = UILabel()
