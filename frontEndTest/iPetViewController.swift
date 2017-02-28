@@ -139,6 +139,25 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         
     }
     
+    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        print("didEndDisplayingCell")
+//        var i:Int = 0
+//        for( i < indexPath.row){
+//                cell.prepareForReuse()
+//            i+=1
+//        }
+//        
+//        
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, transitionLayoutForOldLayout fromLayout: UICollectionViewLayout, newLayout toLayout: UICollectionViewLayout) -> UICollectionViewTransitionLayout {
+        print("transitionLayoutForOldLayout")
+        let transitionLayout = UICollectionViewTransitionLayout(currentLayout: fromLayout, nextLayout: toLayout)
+        transitionLayout.transitionProgress = 1.5
+        return transitionLayout
+    }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("Selected cell number ", indexPath.row)
     }
