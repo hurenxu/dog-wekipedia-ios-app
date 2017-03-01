@@ -48,25 +48,29 @@ class OwnedDogDetailViewController: UIViewController {
         self.view.addSubview(dogImg)
         ImageViewConstraints(Img: dogImg)
         
-//        let navBar: UINavigationBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: 320, height: 44))
+        //let navBar: UINavigationBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: 320, height: 44))
 //        self.view.addSubview(navBar);
 //        let navItem = UINavigationItem(title: "SomeTitle");
 //
 //        navBar.setItems([navItem], animated: false);
         
-        let backbutton = UIButton(type: .custom)
-        backbutton.setImage(UIImage(named: "BackButton.png"), for: .normal) // Image can be downloaded from here below link
-        backbutton.setTitle("Back", for: .normal)
+//        let backbutton = UIButton(type: .custom)
+//        backbutton.setImage(UIImage(named: "Dog-50"), for: .normal) // Image can be downloaded from here below link
+//        backbutton.setTitle("Back", for: .normal)
+//        
+//        backbutton.setTitleColor(backbutton.tintColor, for: .normal) // You can change the TitleColor
+//        backbutton.addTarget(self, action: #selector(OwnedDogDetailViewController.backAction), for: .touchUpInside)
+//        
+//        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backbutton)
+//        self.view.addSubview(backbutton)
         
-        backbutton.setTitleColor(backbutton.tintColor, for: .normal) // You can change the TitleColor
-        backbutton.addTarget(self, action: #selector(OwnedDogDetailViewController.backAction), for: .touchUpInside)
-        
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backbutton)
+
     }
     
     func backAction() -> Void {
         print("bbutton back function")
-        self.navigationController?.popViewController(animated: true)
+        let _ = self.navigationController?.popViewController(animated: true)
+        //self.UINavigationBar?.popViewController(animated: true)
     }
     
     
