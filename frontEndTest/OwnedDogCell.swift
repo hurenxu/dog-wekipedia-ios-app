@@ -22,12 +22,15 @@ class OwnedDogCell: UICollectionViewCell {
         self.imageView?.clipsToBounds = true
         contentView.addSubview(imageView!)
         
+        imageView?.isUserInteractionEnabled = true
+        
         textLabel = UILabel(frame: CGRect(x: 0, y: (imageView?.frame.size.height)!, width: frame.size.width, height: frame.size.height/2))
         textLabel?.font = UIFont.systemFont(ofSize: UIFont.smallSystemFontSize)
         textLabel?.textAlignment = .center
         //textLabel?.text = "test"
         textLabel?.textColor = UIColor.black
         contentView.addSubview(textLabel!)
+        
     }
     
     required init?(coder aDecoder: NSCoder) {

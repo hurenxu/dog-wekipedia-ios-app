@@ -133,6 +133,24 @@
             </objects>
             <point key="canvasLocation" x="-657" y="-1108"/>
         </scene>
+        <!--Notification View Controller-->
+        <scene sceneID="Awl-xb-hBc">
+            <objects>
+                <viewController id="p5b-nL-fIo" customClass="NotificationViewController" customModule="frontEndTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xW7-Bj-YTZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="e0B-UT-odf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="G6q-og-fJY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zog-yw-tKp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="262" y="-1264"/>
+        </scene>
         <!--Item-->
         <scene sceneID="0HJ-XP-YCS">
             <objects>

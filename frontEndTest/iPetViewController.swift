@@ -41,6 +41,19 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         EditProfileImageButtonConstraints(Button: editProfButton)
         
         
+        let notificationButton:UIButton = UIButton(frame: CGRect(x:300, y: 30, width: 40, height:40))
+        notificationButton.backgroundColor = .black
+        notificationButton.setTitle("No!", for: .normal)
+        //NotifiCationButtonConstraints(Button: notificationButton)
+        
+       // notificationButton.addTarget(self, action: #selector(transition(Sender:notificationButton)), for: .touchUpInside)
+        notificationButton.addTarget(self, action: #selector(self.transition(_:)), for: .touchUpInside)
+        //notificationButton.addTarget(self, action: transition, forControlEvents: .touchUpInside)
+        //button = answerButton
+        self.view.addSubview(notificationButton)
+        
+        
+        
         
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 250))
         label.center = CGPoint(x: 180, y: 250)
@@ -73,6 +86,12 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         collectView.collectionViewLayout.invalidateLayout()
     }
     
+    func transition(_ Sender: UIButton!) {
+        let secondViewController:NotificationViewController = NotificationViewController()
+
+        self.present(secondViewController, animated: true, completion: nil)
+
+    }
 
     
  
@@ -100,22 +119,12 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         cell.textLabel?.text = ownedDog[indexPath.row]
         cell.imageView?.image = UIImage(named: "bone")
         
-        
-        
         return cell
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        print("didEndDisplayingCell")
-//        var i:Int = 0
-//        for( i < indexPath.row){
-//                cell.prepareForReuse()
-//            i+=1
-//        }
-//        
-//        
-        
+        //print("didEndDisplayingCell")
+
     }
     
     func collectionView(_ collectionView: UICollectionView, transitionLayoutForOldLayout fromLayout: UICollectionViewLayout, newLayout toLayout: UICollectionViewLayout) -> UICollectionViewTransitionLayout {
@@ -125,12 +134,18 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         return transitionLayout
     }
     
+    
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("Selected cell number ", indexPath.row)
+        
+        collectionView.deselectItem(at: indexPath, animated: true)
+        let secondViewController:OwnedDogDetailViewController = OwnedDogDetailViewController()
+        secondViewController.name = ownedDog[indexPath.row]
+        self.present(secondViewController, animated: true, completion: nil)
+        
     }
     
-
-
     
     
 //------------------------------------------ profile image view ---------------------------------------------
@@ -165,15 +180,7 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         /* action when user click on button --> call handleSelectProfileImageView function */
         Button.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectProfileImageView)))
     }
-    
-//    func scrollViewConstraints(Scroller: UIScrollView){
-//        Scroller.topAnchor.constraint(equalTo: view.topAnchor, constant: view.frame.height/2).isActive = true
-//        Scroller.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-//        Scroller.translatesAutoresizingMaskIntoConstraints = false
-//        print("should have the scroll view controller ?")
-//    }
-//-----------------------------------------------------------------------------------------------------------
-    
+        
     
     
 //------------------------------------------profile image picker --------------------------------------------
