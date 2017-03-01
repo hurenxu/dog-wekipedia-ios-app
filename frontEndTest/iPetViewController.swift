@@ -14,6 +14,17 @@ UICollectionViewDelegate, UICollectionViewDataSource {
     
 
     var ownedDog = ["Yorkshire", "Pug","Siberian Husky","Beagle","Bulldog","Poodle","Boxer","Chihuahua","Pit bull","Akita","Pomeranian"]
+    
+    var breed = ["breed1", "breed2","breed3","breed4","breed5","breed6","breed7","breed8","breed9","breed10"]
+    
+    var age = ["1","3", "5", "7","9","11","1","3","5","7", "9"]
+    
+    var gender = ["boy", "girl", "unknown"]
+    
+    var color = ["black", "white", "grey"]
+    
+    
+    
     let cellID = "dogCell"
     //var collectView = UICollectionView()
 
@@ -142,6 +153,8 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         collectionView.deselectItem(at: indexPath, animated: true)
         let secondViewController:OwnedDogDetailViewController = OwnedDogDetailViewController()
         secondViewController.name = ownedDog[indexPath.row]
+        secondViewController.gender = gender[indexPath.row % 3]
+        
         self.present(secondViewController, animated: true, completion: nil)
         
     }

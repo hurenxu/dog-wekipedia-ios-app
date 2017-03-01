@@ -31,6 +31,8 @@ class OwnedDogCell: UICollectionViewCell {
         textLabel?.textColor = UIColor.black
         contentView.addSubview(textLabel!)
         
+
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
