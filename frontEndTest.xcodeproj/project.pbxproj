@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2F3D98781E55AC3700DE56F8 /* iPetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3D98771E55AC3700DE56F8 /* iPetViewController.swift */; };
+		2F8580BE1E665A6800882583 /* OwnedDogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8580BD1E665A6800882583 /* OwnedDogCell.swift */; };
 		2F96F0A41E555D0100314F23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F96F0A31E555D0100314F23 /* AppDelegate.swift */; };
 		2F96F0A61E555D0100314F23 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F96F0A51E555D0100314F23 /* ViewController.swift */; };
 		2F96F0AB1E555D0100314F23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F96F0AA1E555D0100314F23 /* Assets.xcassets */; };
@@ -20,6 +21,7 @@
 
 /* Begin PBXFileReference section */
 		2F3D98771E55AC3700DE56F8 /* iPetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iPetViewController.swift; sourceTree = "<group>"; };
+		2F8580BD1E665A6800882583 /* OwnedDogCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OwnedDogCell.swift; sourceTree = "<group>"; };
 		2F96F0A01E555D0100314F23 /* frontEndTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = frontEndTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F96F0A31E555D0100314F23 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2F96F0A51E555D0100314F23 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 				2F96F0B91E555DFC00314F23 /* ProfileViewController.swift */,
 				2F96F0BB1E555E3E00314F23 /* Main.storyboard */,
 				2F3D98771E55AC3700DE56F8 /* iPetViewController.swift */,
+				2F8580BD1E665A6800882583 /* OwnedDogCell.swift */,
 				2F96F0AA1E555D0100314F23 /* Assets.xcassets */,
 				2F96F0AC1E555D0100314F23 /* LaunchScreen.storyboard */,
 				2F96F0AF1E555D0100314F23 /* Info.plist */,
@@ -154,6 +157,7 @@
 				2F96F0BA1E555DFC00314F23 /* ProfileViewController.swift in Sources */,
 				2F96F0A41E555D0100314F23 /* AppDelegate.swift in Sources */,
 				2F3D98781E55AC3700DE56F8 /* iPetViewController.swift in Sources */,
+				2F8580BE1E665A6800882583 /* OwnedDogCell.swift in Sources */,
 				2F96F0B81E555DC800314F23 /* WoofipediaViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

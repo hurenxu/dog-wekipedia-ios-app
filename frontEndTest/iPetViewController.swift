@@ -36,16 +36,17 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         
         let editProfButton:UIButton = UIButton(frame: CGRect(x: 100, y: 400, width: 100, height: 50))
         editProfButton.backgroundColor = .black
-        editProfButton.setTitle("click here", for: .normal)
+        editProfButton.setTitle("change image", for: .normal)
         self.view.addSubview(editProfButton)
         EditProfileImageButtonConstraints(Button: editProfButton)
         
         
         
-        let label = UILabel(frame: CGRect(x: 200, y: 200, width: 200, height: 250))
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 250))
         label.center = CGPoint(x: 180, y: 250)
+        label.text = "User Profile"
         label.textAlignment = .center
-        label.text = "Profile"
+        
         
         label.textColor = UIColor.black
         label.font = label.font.withSize(30)
@@ -63,7 +64,7 @@ UICollectionViewDelegate, UICollectionViewDataSource {
 
         collectView.dataSource = self
         collectView.delegate = self
-        collectView.register( UICollectionViewCell.self, forCellWithReuseIdentifier: cellID)
+        collectView.register( OwnedDogCell.self, forCellWithReuseIdentifier: cellID)
         //collectView.showsVerticalScrollIndicator = true
         collectView.backgroundColor = UIColor.black
         
@@ -72,37 +73,8 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         collectView.collectionViewLayout.invalidateLayout()
     }
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear()
-//        self.collectionView.reloadData()
-//    }
-    
-    
-//        let testImg = UIImageView()
-//        testImg.image = UIImage(named: "OrangeFilledDog")
-//        let scrollView = UIScrollView(frame: CGRect(x: 0, y: 100, width: view.frame.width, height: view.frame.height/2 ))
-//        scrollView.backgroundColor = UIColor.black
-//        scrollView.addSubview(testImg)
-//        self.view.addSubview(scrollView)
-//        scrollViewConstraints(Scroller: scrollView)
-    
-
 
     
-//    func profileImg(name:String) -> UIImageView{
-//        let dogImg = UIImageView()
-//        
-//        if(UIImage(named:name)?.size == nil){
-//            dogImg.image = UIImage(named:"Yorkshire")
-//        }else{
-//            dogImg.image = UIImage(named:name)
-//        }
-//        
-//        dogImg.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
-//        dogImg.translatesAutoresizingMaskIntoConstraints = false
-//        //You need to call this property so the image is added to your view
-//        return dogImg
-//    }
  
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
@@ -122,17 +94,12 @@ UICollectionViewDelegate, UICollectionViewDataSource {
 
     var i:Int = 0
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath)
+        //let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! OwnedDogCell
         
-        //collectionView.reloadData()
+        cell.textLabel?.text = ownedDog[indexPath.row]
+        cell.imageView?.image = UIImage(named: "bone")
         
-        cell.backgroundColor = UIColor.orange
-        //print("return cell ....\(i = i+1)")
-        let cLabel = UILabel(frame: CGRect(x: 5, y: 5, width: cell.frame.width, height: 50))
-        cLabel.textAlignment = .left
-        cLabel.text = ownedDog[indexPath.row]
-        cLabel.textColor = UIColor.black
-        cell.addSubview(cLabel)
         
         
         return cell
@@ -250,13 +217,5 @@ UICollectionViewDelegate, UICollectionViewDataSource {
     
 }
 
-/* present a circular profile image */
-extension UIImageView {
-    
-    func setRounded() {
-        let radius = self.frame.width / 2
-        self.layer.cornerRadius = radius
-        self.layer.masksToBounds = true
-    }
-}
+
 
