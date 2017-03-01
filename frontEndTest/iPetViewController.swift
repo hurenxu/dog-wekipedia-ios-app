@@ -119,15 +119,12 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         cell.textLabel?.text = ownedDog[indexPath.row]
         cell.imageView?.image = UIImage(named: "bone")
         
-        
         return cell
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        print("didEndDisplayingCell")
+        //print("didEndDisplayingCell")
 
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, transitionLayoutForOldLayout fromLayout: UICollectionViewLayout, newLayout toLayout: UICollectionViewLayout) -> UICollectionViewTransitionLayout {
@@ -137,12 +134,18 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         return transitionLayout
     }
     
+    
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("Selected cell number ", indexPath.row)
+        
+        collectionView.deselectItem(at: indexPath, animated: true)
+        let secondViewController:OwnedDogDetailViewController = OwnedDogDetailViewController()
+        secondViewController.name = ownedDog[indexPath.row]
+        self.present(secondViewController, animated: true, completion: nil)
+        
     }
     
-
-
     
     
 //------------------------------------------ profile image view ---------------------------------------------
