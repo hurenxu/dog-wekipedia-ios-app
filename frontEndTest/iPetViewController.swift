@@ -158,12 +158,7 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         secondViewController.name = ownedDog[indexPath.row]
         secondViewController.gender = gender[indexPath.row % 3]
         
-        
-//        if let resultController = storyboard!.instantiateViewController(withIdentifier: "OwnedDogDetailViewController") as? OwnedDogDetailViewController {
-//            let navController = UINavigationController(rootViewController: resultController) // Creating a navigation controller with resultController at the root of the navigation stack.
-//            self.present(navController, animated:true, completion: nil)
-//        }
-//        
+          
         self.present(secondViewController, animated: true, completion: nil)
         
     }

@@ -14,7 +14,7 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.white
+        self.view.backgroundColor = UIColor.orange
         
         print(name)
         // Do any additional setup after loading the view.
@@ -50,40 +50,40 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate  {
         
         self.title = "Title"
         
-       
-       
+//        let backButton = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.plain, target: self, action: #selector(OwnedDogDetailViewController.goBack))
+//        backButton.tintColor = UIColor.blue
+//        navigationItem.leftBarButtonItem = backButton
         
-        //let leftButton =  UIBarButtonItem(title: "Left Button", style: UIBarButtonItemStyle.Plain, target: self, action: nil)
-       // let rightButton = UIBarButtonItem(title: "Right Button", style: UIBarButtonItemStyle.Plain, target: self, action: nil)
+        //self.view.addSubview(backButton)
         
-       // navigationItem.leftBarButtonItem = leftButton
-       // navigationItem.rightBarButtonItem = rightButton
+        let navigationBar = UINavigationBar(frame: CGRect(x:0, y:0, width:self.view.frame.size.width, height:44)) // Offset by 20 pixels vertically to take the status bar into account
+        
+        let navigationItem = UINavigationItem()
+        navigationItem.title = "Title"
         
         
+        navigationBar.backgroundColor = UIColor.white
+        navigationBar.delegate = self;
         
-        
-        let backButton = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.plain, target: self, action: #selector(OwnedDogDetailViewController.goBack))
+        let backButton = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(goBack))
         backButton.tintColor = UIColor.blue
         navigationItem.leftBarButtonItem = backButton
-        //view.addSubview(backButton)
+        navigationBar.pushItem(navigationItem, animated: true)
         
-        
+        //navigationItem.items[navigationItem]
+        self.view.addSubview(navigationBar)
+
     }
     
     func goBack(){
         print("call goBack function")
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "iPetViewController") as! iPetViewController
-        self.present(vc, animated: true, completion: nil)
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let vc = storyboard.instantiateViewController(withIdentifier: "iPetViewController") as! iPetViewController
+//        self.present(vc, animated: true, completion: nil)
         dismiss(animated: true, completion: nil)
     }
     
-//    func backAction() -> Void {
-//        print("bbutton back function")
-//        let _ = self.navigationController?.popViewController(animated: true)
-//        //self.UINavigationBar?.popViewController(animated: true)
-//    }
-    
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
