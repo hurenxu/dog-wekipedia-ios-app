@@ -559,7 +559,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         vText.layer.cornerRadius = CGFloat(CORNER_RADIUS)
         vText.delegate = self
         vText.textAlignment = NSTextAlignment.center
-        vText.font = UIFont(name: "Arial", size: TEXT_FONTSIZE)
+        vText.font = UIFont(name: FONT, size: TEXT_FONTSIZE)
         self.view.addSubview(vText)
         
         // configure vaccination date picker
@@ -599,7 +599,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         vDurationUnit.layer.cornerRadius = CGFloat(CORNER_RADIUS)
         vDurationUnit.delegate = self
         vDurationUnit.textAlignment = NSTextAlignment.center
-        vDurationUnit.font = UIFont(name: "Arial", size: TEXT_FONTSIZE)
+        vDurationUnit.font = UIFont(name: FONT, size: TEXT_FONTSIZE)
         self.view.addSubview(vDurationUnit)
         
         // configure vaccination date duration value
@@ -610,7 +610,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         vDurationValue.layer.cornerRadius = CGFloat(CORNER_RADIUS)
         vDurationValue.delegate = self
         vDurationValue.textAlignment = NSTextAlignment.center
-        vDurationValue.font = UIFont(name: "Arial", size: TEXT_FONTSIZE)
+        vDurationValue.font = UIFont(name: FONT, size: TEXT_FONTSIZE)
         self.view.addSubview(vDurationValue)
         
         // configure vaccination date switch
@@ -659,7 +659,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         bText.layer.cornerRadius = CGFloat(CORNER_RADIUS)
         bText.delegate = self
         bText.textAlignment = NSTextAlignment.center
-        bText.font = UIFont(name: "Arial", size: TEXT_FONTSIZE)
+        bText.font = UIFont(name: FONT, size: TEXT_FONTSIZE)
         self.view.addSubview(bText)
         
         // configure birthday picker
@@ -698,7 +698,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         bDurationUnit.layer.cornerRadius = CGFloat(CORNER_RADIUS)
         bDurationUnit.delegate = self
         bDurationUnit.textAlignment = NSTextAlignment.center
-        bDurationUnit.font = UIFont(name: "Arial", size: TEXT_FONTSIZE)
+        bDurationUnit.font = UIFont(name: FONT, size: TEXT_FONTSIZE)
         self.view.addSubview(bDurationUnit)
         
         // configure birthday duration value
@@ -709,7 +709,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         bDurationValue.layer.cornerRadius = CGFloat(CORNER_RADIUS)
         bDurationValue.delegate = self
         bDurationValue.textAlignment = NSTextAlignment.center
-        bDurationValue.font = UIFont(name: "Arial", size: TEXT_FONTSIZE)
+        bDurationValue.font = UIFont(name: FONT, size: TEXT_FONTSIZE)
         self.view.addSubview(bDurationValue)
         
         // configure birthday switch
