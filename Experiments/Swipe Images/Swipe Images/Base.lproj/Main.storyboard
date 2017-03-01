@@ -21,25 +21,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eC5-9v-5aY">
-                                <rect key="frame" x="149" y="541" width="76" height="63"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="70"/>
-                                <state key="normal" title="🐶">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                </state>
-                                <connections>
-                                    <action selector="superLikePressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RP0-ae-ziS"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yz8-mv-YVX">
-                                <rect key="frame" x="247" y="550" width="79" height="54"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="arrow"/>
-                                <connections>
-                                    <action selector="likePressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jPs-Ph-vwG"/>
-                                </connections>
-                            </button>
                             <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z5L-b8-TFH">
                                 <rect key="frame" x="0.0" y="618" width="375" height="49"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -49,14 +30,6 @@
                                     <tabBarItem title="Done" id="sVE-qm-qoM"/>
                                 </items>
                             </tabBar>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3gp-Fp-cKe">
-                                <rect key="frame" x="49" y="541" width="72" height="66"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="simple-red-heart"/>
-                                <connections>
-                                    <action selector="dislikePressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vsR-Ln-5tM"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -68,8 +41,4 @@
             <point key="canvasLocation" x="132" y="136"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="arrow" width="600" height="246"/>
-        <image name="simple-red-heart" width="615" height="615"/>
-    </resources>
 </document>

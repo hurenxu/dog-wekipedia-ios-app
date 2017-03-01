@@ -12,39 +12,48 @@ class ViewController: UIViewController {
 
     // TODO: update sizes to be relative to screen's size
     
-    // all one's are dynamic, all two's are static
-    
     // the size of the phone
     let SCREEN_SIZE: CGRect = UIScreen.main.bounds
+    let ORIGIN: CGPoint = CGPoint(x: 0, y: 0)
+    
+    // offsets
+    let IMAGE_OFFSET: Int = 30
+    let BORDER_OFFSET: Int = 40
+    let LABEL_OFFSET: Int = 405
+    let MIDDLE_BUTTON_OFFSET: Int = 70
+    let SIDE_BUTTON_OFFSET: Int = 110
+    
+    // math constants
+    let HALF: Int = 2
     
     // everything about the image
-    let IMAGE_CENTER = CGPoint(x: 15, y: 32)
-    let IMAGE_WIDTH = CGFloat(345)
-    let IMAGE_HEIGHT = CGFloat(425)
-    var imageOne: UIImageView! = nil
-    var imageTwo: UIImageView! = nil
+    let IMAGE_SIZE: CGSize = CGSize(width: 345, height: 425)
+    var imageStatic: UIImageView! = nil
+    var imageDynamic: UIImageView! = nil
 
     // everything about the border
-    let BORDER_CENTER = CGPoint(x: 15, y: 72)
-    let BORDER_WIDTH = CGFloat(345)
-    let BORDER_HEIGHT = CGFloat(465)
+    let BORDER_SIZE: CGSize = CGSize(width: 345, height: 465)
+    var borderStatic: UIView! = nil
+    var borderDynamic: UIView! = nil
     var borderRelativeCenter: CGPoint! = nil
-    var borderOne: UIView! = nil
-    var borderTwo: UIView! = nil
     
     // everything about the label
-    let LABEL_CENTER = CGPoint(x: 15, y: 477)
-    let LABEL_WIDTH = CGFloat(345)
-    let LABEL_HEIGHT = CGFloat(40)
+    let LABEL_SIZE: CGSize = CGSize(width: 345, height: 40)
     let FONT_SIZE = CGFloat(35)
     let FONT = "Noteworthy"
-    var labelRelativeCenter = CGPoint(x: 0, y: 0)
-    var labelOne: UILabel = UILabel()
-    var labelTwo: UILabel = UILabel()
+    var labelStatic: UILabel = UILabel()
+    var labelDynamic: UILabel = UILabel()
+    var labelRelativeCenter: CGPoint! = nil
     
-    // touch locations
+    // touch locations for dragging
     var currentLocation = CGPoint(x: 0, y: 0)
     var previousLocation = CGPoint(x: 0, y: 0)
+    
+    // Buttons
+    let BUTTON_SIZE: CGSize = CGSize(width: 75, height: 70)
+    var middleButton: UIButton! = nil
+    var leftButton: UIButton! = nil
+    var rightButton: UIButton! = nil
     
     /**
     let BREED_COUNT = 10
@@ -53,40 +62,41 @@ class ViewController: UIViewController {
     var current : Breed! = nil;
     var next : Breed! = nil;
     */
+    
     // radius size
     let CORNER_RADIUS = 10
     
     func updateImages() {
         
-        // update all one's
-        if labelOne.text == "Dachshund" {
+        // update all dynamic
+        if labelDynamic.text == "Dachshund" {
             
-            imageOne.image = UIImage(named: "Chihuahua")
-            labelOne.text = "Chihuahua"
+            imageDynamic.image = UIImage(named: "Chihuahua")
+            labelDynamic.text = "Chihuahua"
         }
             
         else {
             
-            imageOne.image = UIImage(named: "Dachshund")
-            labelOne.text = "Dachshund"
+            imageDynamic.image = UIImage(named: "Dachshund")
+            labelDynamic.text = "Dachshund"
         }
         
-        // centered all one's
-        imageOne.center = imageTwo.center
-        borderOne.center = borderTwo.center
-        labelOne.center = labelTwo.center
+        // centered all dynamic
+        imageDynamic.center = imageStatic.center
+        borderDynamic.center = borderStatic.center
+        labelDynamic.center = labelStatic.center
         
         // update all two's
-        if labelOne.text == "Dachshund" {
+        if labelDynamic.text == "Dachshund" {
             
-            imageTwo.image = UIImage(named: "Chihuahua")
-            labelTwo.text = "Chihuahua"
+            imageStatic.image = UIImage(named: "Chihuahua")
+            labelStatic.text = "Chihuahua"
         }
             
         else {
             
-            imageTwo.image = UIImage(named: "Dachshund")
-            labelTwo.text = "Dachshund"
+            imageStatic.image = UIImage(named: "Dachshund")
+            labelStatic.text = "Dachshund"
         }
     }
     
@@ -94,12 +104,12 @@ class ViewController: UIViewController {
         
         UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 3.0, options: UIViewAnimationOptions.curveEaseIn , animations: ({
             
-            self.imageOne.center.x = outsideX
-            self.imageOne.center.y = outsideY
-            self.borderOne.center.x = outsideX
-            self.borderOne.center.y = CGFloat(outsideY - self.borderRelativeCenter.y)
-            self.labelOne.center.x = outsideX
-            self.labelOne.center.y = CGFloat(outsideY - self.labelRelativeCenter.y)
+            self.imageDynamic.center.x = outsideX
+            self.imageDynamic.center.y = outsideY
+            self.borderDynamic.center.x = outsideX
+            self.borderDynamic.center.y = CGFloat(outsideY - self.borderRelativeCenter.y)
+            self.labelDynamic.center.x = outsideX
+            self.labelDynamic.center.y = CGFloat(outsideY - self.labelRelativeCenter.y)
             
         }), completion: {(value: Bool) -> Void in
             
@@ -123,12 +133,12 @@ class ViewController: UIViewController {
         let distanceX = CGFloat(currentLocation.x - previousLocation.x)
         let distanceY = CGFloat(currentLocation.y - previousLocation.y)
      
-        imageOne.center.x += distanceX
-        imageOne.center.y += distanceY
-        borderOne.center.x += distanceX
-        borderOne.center.y += distanceY
-        labelOne.center.x += distanceX
-        labelOne.center.y += distanceY
+        imageDynamic.center.x += distanceX
+        imageDynamic.center.y += distanceY
+        borderDynamic.center.x += distanceX
+        borderDynamic.center.y += distanceY
+        labelDynamic.center.x += distanceX
+        labelDynamic.center.y += distanceY
         
         previousLocation = currentLocation
     }
@@ -136,23 +146,23 @@ class ViewController: UIViewController {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         let MIN_X : CGFloat = CGFloat(50)
-        let IMAGE_HALF : CGFloat = CGFloat(imageOne.frame.size.width / 2)
+        let IMAGE_HALF : CGFloat = CGFloat(imageDynamic.frame.size.width / 2)
         let OFFSET = CGFloat(20)
         
-        let slope = CGFloat((imageOne.center.y - imageTwo.center.y) / (imageOne.center.x - imageTwo.center.x))
+        let slope = CGFloat((imageDynamic.center.y - imageStatic.center.y) / (imageDynamic.center.x - imageStatic.center.x))
         
         // swipping left
-        if (imageOne.center.x < IMAGE_CENTER.x) {
+        if (imageDynamic.center.x < imageStatic.center.x) {
         
             let outsideX = CGFloat(0 - IMAGE_HALF - OFFSET)
-            let outsideY = CGFloat(slope * (outsideX - imageTwo.center.x) + imageTwo.center.y)
+            let outsideY = CGFloat(slope * (outsideX - imageStatic.center.x) + imageStatic.center.y)
             
             // case to go back to center
-            if  imageOne.center.x > imageTwo.center.x - MIN_X {
+            if  imageDynamic.center.x > imageStatic.center.x - MIN_X {
             
-                imageOne.center = imageTwo.center
-                borderOne.center = borderTwo.center
-                labelOne.center = labelTwo.center
+                imageDynamic.center = imageStatic.center
+                borderDynamic.center = borderStatic.center
+                labelDynamic.center = labelStatic.center
             }
             
             // case to slide to left
@@ -166,14 +176,14 @@ class ViewController: UIViewController {
         else {
             
             let outsideX = CGFloat(self.view.frame.size.width + IMAGE_HALF + OFFSET)
-            let outsideY = CGFloat(slope * (outsideX - imageTwo.center.x) + imageTwo.center.y)
+            let outsideY = CGFloat(slope * (outsideX - imageStatic.center.x) + imageStatic.center.y)
             
             // case to go back to center
-            if  imageOne.center.x < imageTwo.center.x + MIN_X {
+            if  imageDynamic.center.x < imageStatic.center.x + MIN_X {
                 
-                imageOne.center = imageTwo.center
-                borderOne.center = borderTwo.center
-                labelOne.center = labelTwo.center
+                imageDynamic.center = imageStatic.center
+                borderDynamic.center = borderStatic.center
+                labelDynamic.center = labelStatic.center
             }
                 
             // case to slide to right
@@ -185,38 +195,38 @@ class ViewController: UIViewController {
     }
     
     
-    // when super like button pressed, supposed to shoot up
-    @IBAction func superLikePressed(_ sender: Any) {
+    // when description button pressed, supposed to show description
+    @IBAction func descriptionPressed(sender: UIButton) {
         
-        let IMAGE_HALF : CGFloat = CGFloat(imageOne.frame.size.width / 2)
+        let IMAGE_HALF : CGFloat = CGFloat(imageDynamic.frame.size.width / 2)
         let OFFSET = CGFloat(100)
         
-        let outsideX = CGFloat(imageTwo.center.x)
+        let outsideX = CGFloat(imageStatic.center.x)
         let outsideY = CGFloat(0 - IMAGE_HALF - OFFSET)
         
         slideOut(outsideX, outsideY)
     }
     
-    // when pressed go left
-    @IBAction func dislikePressed(_ sender: Any) {
+    // when pressed go left or right
+    @IBAction func sidePressed(sender: UIButton) {
         
-        let IMAGE_HALF : CGFloat = CGFloat(imageOne.frame.size.width / 2)
+        let IMAGE_HALF : CGFloat = CGFloat(imageDynamic.frame.size.width / 2)
         let OFFSET = CGFloat(20)
         
-        let outsideX = CGFloat(0 - IMAGE_HALF - OFFSET)
-        let outsideY = CGFloat(imageTwo.center.y)
+        var outsideX: CGFloat! = nil
+        var outsideY: CGFloat! = nil
         
-        slideOut(outsideX, outsideY)
-    }
-    
-    // when pressed go right
-    @IBAction func likePressed(_ sender: Any) {
+        if sender == leftButton {
+            
+            outsideX = CGFloat(0 - IMAGE_HALF - OFFSET)
+            outsideY = CGFloat(imageStatic.center.y)
+        }
         
-        let IMAGE_HALF : CGFloat = CGFloat(imageOne.frame.size.width / 2)
-        let OFFSET = CGFloat(20)
-        
-        let outsideX = CGFloat(self.view.frame.size.width + IMAGE_HALF + OFFSET)
-        let outsideY = CGFloat(imageTwo.center.y)
+        else if sender == rightButton {
+            
+            outsideX = CGFloat(self.view.frame.size.width + IMAGE_HALF + OFFSET)
+            outsideY = CGFloat(imageStatic.center.y)
+        }
         
         slideOut(outsideX, outsideY)
     }
@@ -235,44 +245,70 @@ class ViewController: UIViewController {
             //tenBreeds.append(tempBreed.newBreed())
         //}
         
+        // colored background
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "backgroundHomeLarge.jpg")!)
         
+        // the center of all components
+        let IMAGE_CENTER = CGPoint(x: Int(SCREEN_SIZE.width) / HALF - Int(IMAGE_SIZE.width) / HALF, y: IMAGE_OFFSET)
+        let BORDER_CENTER = CGPoint(x: IMAGE_CENTER.x, y: IMAGE_CENTER.y + CGFloat(BORDER_OFFSET))
+        let LABEL_CENTER = CGPoint(x: IMAGE_CENTER.x, y: BORDER_CENTER.y + CGFloat(LABEL_OFFSET))
+        let MIDDLE_CENTER = CGPoint(x: Int(IMAGE_SIZE.width) / HALF + Int(IMAGE_CENTER.x) - Int(BUTTON_SIZE.width) / HALF, y: Int(LABEL_CENTER.y) + MIDDLE_BUTTON_OFFSET)
+        let LEFT_CENTER = CGPoint(x: Int(MIDDLE_CENTER.x) - SIDE_BUTTON_OFFSET, y: Int(MIDDLE_CENTER.y))
+        let RIGHT_CENTER = CGPoint(x: Int(MIDDLE_CENTER.x) + SIDE_BUTTON_OFFSET, y: Int(MIDDLE_CENTER.y))
+        
+        // realtive centers of border and label from image
         borderRelativeCenter = CGPoint(x: 0, y: IMAGE_CENTER.y - BORDER_CENTER.y)
         labelRelativeCenter = CGPoint(x: 0, y: LABEL_CENTER.y - IMAGE_CENTER.y)
         
-        // two static: border, image, and label
-        borderTwo = UIView(frame: CGRect(x: BORDER_CENTER.x, y: BORDER_CENTER.y, width: BORDER_WIDTH, height: BORDER_HEIGHT))
-        borderTwo.backgroundColor = UIColor.white
-        borderTwo.layer.cornerRadius = CGFloat(CORNER_RADIUS)
-        self.view.addSubview(borderTwo)
+        // static: border, image, and label
+        borderStatic = UIView(frame: CGRect(origin: BORDER_CENTER, size: BORDER_SIZE))
+        borderStatic.backgroundColor = UIColor.white
+        borderStatic.layer.cornerRadius = CGFloat(CORNER_RADIUS)
+        self.view.addSubview(borderStatic)
         
-        imageTwo = UIImageView(image: UIImage(named: "Chihuahua"))
-        imageTwo.frame = CGRect(x: IMAGE_CENTER.x, y: IMAGE_CENTER.y, width: IMAGE_WIDTH, height: IMAGE_HEIGHT)
-        imageTwo.roundCorners(corners: [.topLeft, .topRight], radius: CGFloat(CORNER_RADIUS))
-        self.view.addSubview(imageTwo)
+        imageStatic = UIImageView(image: UIImage(named: "Chihuahua"))
+        imageStatic.frame = CGRect(origin: IMAGE_CENTER, size: IMAGE_SIZE)
+        imageStatic.roundCorners(corners: [.topLeft, .topRight], radius: CGFloat(CORNER_RADIUS))
+        self.view.addSubview(imageStatic)
         
-        labelTwo.text = "Chihuahua"
-        labelTwo.frame = CGRect(x: LABEL_CENTER.x, y: LABEL_CENTER.y, width: LABEL_WIDTH, height: LABEL_HEIGHT)
-        labelTwo.font = UIFont(name: FONT, size: FONT_SIZE)
-        labelTwo.textAlignment = NSTextAlignment.center
-        self.view.addSubview(labelTwo)
+        labelStatic.text = "Chihuahua"
+        labelStatic.frame = CGRect(origin: LABEL_CENTER, size: LABEL_SIZE)
+        labelStatic.font = UIFont(name: FONT, size: FONT_SIZE)
+        labelStatic.textAlignment = NSTextAlignment.center
+        self.view.addSubview(labelStatic)
         
-        // one dynamic: border, image, and label
-        borderOne = UIView(frame: CGRect(x: BORDER_CENTER.x, y: BORDER_CENTER.y, width: BORDER_WIDTH, height: BORDER_HEIGHT))
-        borderOne.backgroundColor = UIColor.white
-        borderOne.layer.cornerRadius = CGFloat(CORNER_RADIUS)
-        self.view.addSubview(borderOne)
+        // dynamic: border, image, and label
+        borderDynamic = UIView(frame: CGRect(origin: BORDER_CENTER, size: BORDER_SIZE))
+        borderDynamic.backgroundColor = UIColor.white
+        borderDynamic.layer.cornerRadius = CGFloat(CORNER_RADIUS)
+        self.view.addSubview(borderDynamic)
         
-        imageOne = UIImageView(image: UIImage(named: "Dachshund"))
-        imageOne.frame = CGRect(x: IMAGE_CENTER.x, y: IMAGE_CENTER.y, width: IMAGE_WIDTH, height: IMAGE_HEIGHT)
-        imageOne.roundCorners(corners: [.topLeft, .topRight], radius: CGFloat(CORNER_RADIUS))
-        self.view.addSubview(imageOne)
+        imageDynamic = UIImageView(image: UIImage(named: "Dachshund"))
+        imageDynamic.frame = CGRect(origin: IMAGE_CENTER, size: IMAGE_SIZE)
+        imageDynamic.roundCorners(corners: [.topLeft, .topRight], radius: CGFloat(CORNER_RADIUS))
+        self.view.addSubview(imageDynamic)
         
-        labelOne.text = "Dachshund"
-        labelOne.frame = CGRect(x: LABEL_CENTER.x, y: LABEL_CENTER.y, width: LABEL_WIDTH, height: LABEL_HEIGHT)
-        labelOne.font = UIFont(name: FONT, size: FONT_SIZE)
-        labelOne.textAlignment = NSTextAlignment.center
-        self.view.addSubview(labelOne)
+        labelDynamic.text = "Dachshund"
+        labelDynamic.frame = CGRect(origin: LABEL_CENTER, size: LABEL_SIZE)
+        labelDynamic.font = UIFont(name: FONT, size: FONT_SIZE)
+        labelDynamic.textAlignment = NSTextAlignment.center
+        self.view.addSubview(labelDynamic)
+        
+        // set up the buttons
+        middleButton = UIButton(frame: CGRect(origin: MIDDLE_CENTER, size: BUTTON_SIZE))
+        middleButton.setBackgroundImage(UIImage(named: "Dog Emoji"), for: UIControlState.normal)
+        middleButton.addTarget(self, action: #selector(self.descriptionPressed(sender:)), for: UIControlEvents.touchDown)
+        self.view.addSubview(middleButton)
+        
+        leftButton = UIButton(frame: CGRect(origin: LEFT_CENTER, size: BUTTON_SIZE))
+        leftButton.setBackgroundImage(UIImage(named: "Red Heart"), for: UIControlState.normal)
+        leftButton.addTarget(self, action: #selector(self.sidePressed(sender:)), for: UIControlEvents.touchDown)
+        self.view.addSubview(leftButton)
+        
+        rightButton = UIButton(frame: CGRect(origin: RIGHT_CENTER, size: BUTTON_SIZE))
+        rightButton.setBackgroundImage(UIImage(named: "Arrow"), for: UIControlState.normal)
+        rightButton.addTarget(self, action: #selector(self.sidePressed(sender:)), for: UIControlEvents.touchDown)
+        self.view.addSubview(rightButton)
     }
 
     override func didReceiveMemoryWarning() {
