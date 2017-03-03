@@ -8,7 +8,7 @@
 
 import UIKit
 import UserNotifications
-class NotificationViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
+class NotificationViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate, UINavigationBarDelegate {
     
     // TODO: figure out how to reset view when entering from background when the day has expired
     // TODO: see viewDidLoad, check existing notification, don't reset (Alternately, use database?)
@@ -740,6 +740,31 @@ class NotificationViewController: UIViewController, UIPickerViewDelegate, UIPick
         self.view.addSubview(vDurationValueChoices)
         self.view.addSubview(bDurationChoices)
         self.view.addSubview(bDurationValueChoices)
+        let navigationBar = UINavigationBar(frame: CGRect(x:0, y:0, width:self.view.frame.size.width, height:44)) // Offset by 20 pixels vertically to take the status bar into account
+        
+        let navigationItem = UINavigationItem()
+        navigationItem.title = "Title"
+        
+        
+        navigationBar.backgroundColor = UIColor.white
+        navigationBar.delegate = self;
+        
+        let backButton = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(goBack))
+        backButton.tintColor = UIColor.blue
+        navigationItem.leftBarButtonItem = backButton
+        navigationBar.pushItem(navigationItem, animated: true)
+        
+        //navigationItem.items[navigationItem]
+        self.view.addSubview(navigationBar)
+        
+    }
+    
+    func goBack(){
+        print("call goBack function")
+        //        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        //        let vc = storyboard.instantiateViewController(withIdentifier: "iPetViewController") as! iPetViewController
+        //        self.present(vc, animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
     

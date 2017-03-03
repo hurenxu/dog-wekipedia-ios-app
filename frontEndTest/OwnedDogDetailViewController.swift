@@ -8,13 +8,13 @@
 
 import UIKit
 
-class OwnedDogDetailViewController: UIViewController {
+class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate  {
     var name = ""
     var gender = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.white
+        self.view.backgroundColor = UIColor.orange
         
         print(name)
         // Do any additional setup after loading the view.
@@ -48,27 +48,42 @@ class OwnedDogDetailViewController: UIViewController {
         self.view.addSubview(dogImg)
         ImageViewConstraints(Img: dogImg)
         
-//        let navBar: UINavigationBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: 320, height: 44))
-//        self.view.addSubview(navBar);
-//        let navItem = UINavigationItem(title: "SomeTitle");
-//
-//        navBar.setItems([navItem], animated: false);
+        self.title = "Title"
         
-        let backbutton = UIButton(type: .custom)
-        backbutton.setImage(UIImage(named: "BackButton.png"), for: .normal) // Image can be downloaded from here below link
-        backbutton.setTitle("Back", for: .normal)
+//        let backButton = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.plain, target: self, action: #selector(OwnedDogDetailViewController.goBack))
+//        backButton.tintColor = UIColor.blue
+//        navigationItem.leftBarButtonItem = backButton
         
-        backbutton.setTitleColor(backbutton.tintColor, for: .normal) // You can change the TitleColor
-        backbutton.addTarget(self, action: #selector(OwnedDogDetailViewController.backAction), for: .touchUpInside)
+        //self.view.addSubview(backButton)
         
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backbutton)
+        let navigationBar = UINavigationBar(frame: CGRect(x:0, y:0, width:self.view.frame.size.width, height:44)) // Offset by 20 pixels vertically to take the status bar into account
+        
+        let navigationItem = UINavigationItem()
+        navigationItem.title = "Title"
+        
+        
+        navigationBar.backgroundColor = UIColor.white
+        navigationBar.delegate = self;
+        
+        let backButton = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(goBack))
+        backButton.tintColor = UIColor.blue
+        navigationItem.leftBarButtonItem = backButton
+        navigationBar.pushItem(navigationItem, animated: true)
+        
+        //navigationItem.items[navigationItem]
+        self.view.addSubview(navigationBar)
+
     }
     
-    func backAction() -> Void {
-        print("bbutton back function")
-        self.navigationController?.popViewController(animated: true)
+    func goBack(){
+        print("call goBack function")
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let vc = storyboard.instantiateViewController(withIdentifier: "iPetViewController") as! iPetViewController
+//        self.present(vc, animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

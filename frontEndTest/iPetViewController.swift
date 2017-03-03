@@ -95,6 +95,9 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         self.view.addSubview(collectView)
         collectView.reloadData()
         collectView.collectionViewLayout.invalidateLayout()
+        
+        
+    
     }
     
     func transition(_ Sender: UIButton!) {
@@ -155,10 +158,12 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         secondViewController.name = ownedDog[indexPath.row]
         secondViewController.gender = gender[indexPath.row % 3]
         
+          
         self.present(secondViewController, animated: true, completion: nil)
         
     }
     
+       
     
     
 //------------------------------------------ profile image view ---------------------------------------------

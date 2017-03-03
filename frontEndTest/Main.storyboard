@@ -60,18 +60,18 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fxW-iy-wW8" id="ebN-je-9dk">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="XgR-FV-h0b">
-                                            <rect key="frame" x="15" y="4" width="34" height="21"/>
+                                            <rect key="frame" x="15" y="5" width="33.5" height="20.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eSk-9g-obq">
-                                            <rect key="frame" x="15" y="25" width="44" height="15"/>
+                                            <rect key="frame" x="15" y="25.5" width="44" height="14.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <nil key="textColor"/>
@@ -136,7 +136,7 @@
         <!--Owned Dog Detail View Controller-->
         <scene sceneID="L85-zP-0E6">
             <objects>
-                <viewController id="k63-Ti-NBa" customClass="OwnedDogDetailViewController" customModule="frontEndTest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OwnedDogDetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="k63-Ti-NBa" customClass="OwnedDogDetailViewController" customModule="frontEndTest" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="QAI-DK-Lgp"/>
                         <viewControllerLayoutGuide type="bottom" id="MmO-UY-dTQ"/>
@@ -146,10 +146,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="6g3-f9-Oam"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KAx-Vf-apo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-386" y="-1760"/>
+            <point key="canvasLocation" x="1152.8" y="-1190.5547226386807"/>
         </scene>
         <!--Notification View Controller-->
         <scene sceneID="Awl-xb-hBc">
@@ -167,7 +168,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zog-yw-tKp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="262" y="-1264"/>
+            <point key="canvasLocation" x="2140" y="-1264.3178410794603"/>
         </scene>
         <!--Item-->
         <scene sceneID="0HJ-XP-YCS">
