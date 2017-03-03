@@ -8,10 +8,14 @@
 
 import UIKit
 
-class SearchTableViewController: UITableViewController, UISearchResultsUpdating {
+class SearchTableViewController: UITableViewController{
     
     
-    let dogs = ["Yorkshire", "Pug","Siberian Husky","Beagle","Bulldog","Poodle","Boxer","Chihuahua","Pit bull","Akita","Pomeranian"]
+//    let dogs = ["Yorkshire", "Pug","Siberian Husky","Beagle","Bulldog","Poodle","Boxer","Chihuahua","Pit bull","Akita","Pomeranian"]
+    // MARK: - Properties
+    var detailViewController: DetailViewController? = nil
+    var breeds = [Breed]()
+    
     var filteredDogs = [String]()
     var resultSearchController = UISearchController()
     
