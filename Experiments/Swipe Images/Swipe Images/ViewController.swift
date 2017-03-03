@@ -61,6 +61,15 @@ class ViewController: UIViewController {
     var breedArray: [Breed] = [Breed]()
     var likeBreeds: [Int] = [Int]()
     var nextBreeds: [Int] = [Int]()
+    var arrayOfBreedName: [String] = [String]()
+    
+    // the dictionary and array of top three filters
+    var likeFilters: [String:Int] = [String:Int]()
+    var topFilters: [String] = [String]()
+    let MAX_FILTERS: Int = 3
+    
+    var allBreeds: [Breed] = [Breed]()
+    var user: User = nil
     
     // the current index
     var index: Int = 0
@@ -93,7 +102,7 @@ class ViewController: UIViewController {
             labelDynamic.isHidden = true
             borderDynamic.isHidden = true
             
-            storeTags()
+            storeFilters()
         }
         
         if index == breedArray.count {
@@ -183,7 +192,9 @@ class ViewController: UIViewController {
             // case to slide to left
             else {
             
+                // slide out then append the current index to likeBreeds
                 slideOut(outsideX, outsideY)
+                likeBreeds.append(index)
             }
         }
         
@@ -204,22 +215,11 @@ class ViewController: UIViewController {
             // case to slide to right
             else {
                 
+                // slide out then append the current index to nextBreeds
                 slideOut(outsideX, outsideY)
+                nextBreeds.append(index)
             }
         }
-    }
-    
-    
-    // when description button pressed, supposed to show description
-    @IBAction func descriptionPressed(sender: UIButton) {
-        
-        let IMAGE_HALF : CGFloat = CGFloat(imageDynamic.frame.size.width / 2)
-        let OFFSET = CGFloat(100)
-        
-        let outsideX = CGFloat(imageStatic.center.x)
-        let outsideY = CGFloat(0 - IMAGE_HALF - OFFSET)
-        
-        slideOut(outsideX, outsideY)
     }
     
     // when pressed go left or right
@@ -235,41 +235,109 @@ class ViewController: UIViewController {
             
             outsideX = CGFloat(0 - IMAGE_HALF - OFFSET)
             outsideY = CGFloat(imageStatic.center.y)
+            likeBreeds.append(index)
         }
         
         else if sender == rightButton {
             
             outsideX = CGFloat(self.view.frame.size.width + IMAGE_HALF + OFFSET)
             outsideY = CGFloat(imageStatic.center.y)
+            nextBreeds.append(index)
         }
         
         slideOut(outsideX, outsideY)
     }
     
     // find top three tags
-    func storeTags() {
+    func storeFilters() {
         
-        // fill out like tags
-        // find top three like tags
+        for breed in likeBreeds {
+            
+            // get the current breed
+            var myBreed: Breed = breed
+            
+            likeFilters[myBreed.getPersonality()] += 1
+            likeFilters[myBreed.getOrigin()] += 1
+            likeFilters[myBreed.getGroup()] += 1
+            likeFilters[myBreed.getHead()] += 1
+            likeFilters[myBreed.getBody()] += 1
+            likeFilters[myBreed.getEars()] += 1
+            // likeFilters[myBreed.getHair()] += 1
+            likeFilters[myBreed.getTail()] += 1
+            likeFilters[myBreed.getShedding()] += 1
+            likeFilters[myBreed.getGrooming()] += 1
+        }
         
-        // array for list of tags
-        // hashmap for tags count
+        // determine the top filters
+        for (myKey, myValue) in likeFilters {
+            
+            // topFilters doesn't have 3 elements yet
+            if topFilters.count != MAX_FILTERS {
+                
+                topFilters.append(myKey)
+            }
+            
+            else {
+                
+                // start smallest key at the first element
+                var indexOfSmallest: Int = 0
+                
+                // get the smallest key for replacement
+                for i in 1...topFilters.count - 1 {
+                    
+                    if likeFilters[topFilters[i]] < likeFilters[topFilters[indexOfSmallest]] {
+                        
+                        indexOfSmallest = i
+                    }
+                }
+                
+                // if the current value is greater than smallestKey's value, then replace it
+                if myValue > likeFilters[topFilters[indexOfSmallest]] {
+                    
+                    topFilters[indexOfSmallest] = myKey
+                }
+            }
+        }
     }
     
     // select Breed object that user hasn't liked yet
-    func populateBreedArray() {
+    func populateBreedArray() -> Int {
         
         // check the number of breeds, user has previously liked
-        
-        var i: Int = 0
-        
-        while i < BREED_COUNT {
+        if user.favoriteDogBreeds.count == allBreed.count {
             
-            // randomly access the array
-            // check if user likes it
-                // if user didn't, append it to breedArray
-                // increment i
-            i += 1
+            // error handling, use has liked all breeds
+            print("Error, all breeds have been liked")
+            
+            return -1
+        }
+        
+        else {
+        
+            var i: Int = 0
+            
+            // while breed count hasn't been reached (10) and if there is breed to choose, keep looking
+            while i < BREED_COUNT && user.favoriteDogBreeds.count + breedArray.count < allBreeds.count {
+                
+                // get a random index in the all breeds array
+                let randomIndex:UInt32 = arc4random_uniform(allBreeds.count)
+                
+                // get the string of the current breed
+                var currentBreedName: String = allBreeds[randomIndex].getBreedName()
+                
+                // if user didn't like this breed and it's not in the current list, add it
+                if !user.favoriteDogBreeds.contains(currentBreedName) && !arrayOfBreedName.contains(currentBreedName) {
+                
+                    // append the breed and its name
+                    breedArray.append(allBreed[randomIndex])
+                    arrayOfBreedName.append(currentBreedName)
+                    
+                    // increment i
+                    i += 1
+                }
+            }
+            
+            return 0
         }
     }
     
@@ -278,9 +346,14 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         // Request 10 Breeds information
-        // populateBreedArray()
+        /**
+        if populateBreedArray() == -1 {
         
-        let arrayOfBreedName: [String] = ["Chihuahua", "Dachshund", "Akita", "Alaskan Malamute", "American Eskimo Dog", "Beagle", "Biewer Terrier", "Border Collie", "Dalmatian", "Maltese"]
+            // there is error, print error message, then go back to homepage when OK has been clicked
+        }*/
+    
+        // delete these when functionalities have been connected
+        arrayOfBreedName = ["Chihuahua", "Dachshund", "Akita", "Alaskan Malamute", "American Eskimo Dog", "Beagle", "Biewer Terrier", "Border Collie", "Dalmatian", "Maltese"]
         
         for i in 0...arrayOfBreedName.count - 1 {
             
