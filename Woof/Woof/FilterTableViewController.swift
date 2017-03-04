@@ -8,203 +8,85 @@
 
 import UIKit
 
-class FilterTableViewController: UITableViewController{
+//Group :"Herding"; "Hound"; "Non-sporting"; "Sporting"; "Terrier"; "Toy"; "Working"
+//Body size :"Large" ; "Medium" ; "Small"
+//Hair length :"Long"; "Short"
+//Trainability: "Bright"; "Average"; "Fair"
+//Energy Level: "Active"; "Chill"
     
-    //stay in the same view
-    let searchController = UISearchController(searchResultsController: nil)
+//Noteworthy Light 17.0
     
-    //populate dog list with tags
-    
-    var dogs = [
-        Breed(breedName:"Yorkshire", personality:"psnlt", origin:"origin", group: "String?", weight: "String?",height: "String?", head: "String?",body: "String?", ears: "String?", hair:"long hair", tail: "String?",shedding: "String?", grooming: "String?", trainability: "String?",energyLevel: "String?", barkingLevel: "String?", lifeExpectancy: "String?",description: "String?", history: "String?", breeders: "String?", image: "String?")]
-//        Dog(name:"Yorkshire", size:"small", hair:"long hair"),
-//        Dog(name:"Pug", size:"small", hair:"short hair"),
-//        Dog(name:"Siberian Husky", size:"small", hair:"long hair"),
-//        Dog(name:"Beagle", size:"small", hair:"short hair"),
-//        Dog(name:"Poodle", size:"large", hair:"long hair"),
-//        Dog(name:"Boxer", size:"small", hair:"short hair"),
+
+class FilterTableViewController: UIViewController {
+    var hair=0; //default 0. short 1, long 2
+    var size=0; //default 0. small 1, medium 2, large 3
+    var group=0; //default 0. Herding 1; Hound 2; Non-sporting 3; Sporting 4; Terrier 5; Toy 6; Working 7
+    var train=0; //default 0. bright 1; aveg 2; fair 3
+    var energy=0; //default 0. active 1; chill 2
+        
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        //add some parameters
-//        searchController.searchResultsUpdater = self
-//        searchController.dimsBackgroundDuringPresentation = false
-//        definesPresentationContext = true
-//        tableView.tableHeaderView = searchController.searchBar
-//        searchController.searchBar.scopeButtonTitles = ["small", "large", "long hair", "short hair"]
-//        searchController.searchBar.delegate = self
-//        
         
-        //copied
-        if let splitViewController = splitViewController {
-            let controllers = splitViewController.viewControllers
-            var detailViewController = (controllers[controllers.count - 1] as! UINavigationController).topViewController as? DetailViewController
-        }
+        let long_hair = UIButton(frame:CGRect(x:10, y:10, width:50, height:25))
+        long_hair.backgroundColor = UIColor(red: 253/255,green: 127/255,blue:124/255,alpha:1)
+        long_hair.setTitle("Long Hair", for:.normal)
+        long_hair.titleLabel?.font = UIFont.init(name :"Noteworthy", size: 17.0)
+        long_hair.addTarget(self, action: #selector(LHAction), for: .touchUpInside)
+        
+        let short_hair = UIButton(frame:CGRect(x:10, y:45, width:50, height:25))
+        short_hair.backgroundColor = UIColor(red: 253/255,green: 127/255,blue:124/255,alpha:1)
+        short_hair.setTitle("Long Hair", for:.normal)
+        short_hair.titleLabel?.font = UIFont.init(name :"Noteworthy", size: 17.0)
+        short_hair.addTarget(self, action: #selector(SHAction), for: .touchUpInside)
+        
+        let small = UIButton(frame:CGRect(x:70, y:10, width:50, height:25))
+        small.backgroundColor = UIColor(red: 253/255,green: 127/255,blue:124/255,alpha:1)
+        small.setTitle("Long Hair", for:.normal)
+        small.titleLabel?.font = UIFont.init(name :"Noteworthy", size: 17.0)
+        small.addTarget(self, action: #selector(SAction), for: .touchUpInside)
 
+        let large = UIButton(frame:CGRect(x:70, y:45, width:50, height:25))
+        large.backgroundColor = UIColor(red: 253/255,green: 127/255,blue:124/255,alpha:1)
+        large.setTitle("Long Hair", for:.normal)
+        large.titleLabel?.font = UIFont.init(name :"Noteworthy", size: 17.0)
+        large.addTarget(self, action: #selector(LAction), for: .touchUpInside)
+        
+        let medium = UIButton(frame:CGRect(x:70, y:80, width:50, height:25))
+        medium.backgroundColor = UIColor(red: 253/255,green: 127/255,blue:124/255,alpha:1)
+        medium.setTitle("Long Hair", for:.normal)
+        medium.titleLabel?.font = UIFont.init(name :"Noteworthy", size: 17.0)
+        medium.addTarget(self, action: #selector(MAction), for: .touchUpInside)
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        self.view.addSubview (long_hair)
+        self.view.addSubview (short_hair)
+        self.view.addSubview (large)
+        self.view.addSubview (small)
+        self.view.addSubview (medium)
+        
+        
     }
-    
-    //var filteredDogs = [Breed]()
-    
-//    func filterSmallContentForSearchText(scope: String = "small"){
-//        filteredDogs = dogs.filter { Dog in
-//            let categoryMatch = (scope == "small") || (Dog.size == scope)
-//            return categoryMatch
-//        }
-//        tableView.reloadData()
-//    }
-//    func filterLargeContentForSearchText(scope: String = "large"){
-//        filteredDogs = dogs.filter { Dog in
-//            let categoryMatch = (scope == "large") || (Dog.size == scope)
-//            return categoryMatch
-//        }
-//        tableView.reloadData()
-//    }
-//    func filterLongHairContentForSearchText(scope: String = "long hair"){
-//        filteredDogs = dogs.filter { Dog in
-//            let categoryMatch = (scope == "long hair") || (Dog.size == scope)
-//            return categoryMatch
-//        }
-//        tableView.reloadData()
-//    }
-//    func filterShortHairContentForSearchText(scope: String = "short hair"){
-//        filteredDogs = dogs.filter { Dog in
-//            let categoryMatch = (scope == "short hair") || (Dog.size == scope)
-//            return categoryMatch
-//        }
-//        tableView.reloadData()
-//    }
-//
-//    override func didReceiveMemoryWarning() {
-//        super.didReceiveMemoryWarning()
-//        // Dispose of any resources that can be recreated.
-//    }
-//
-//    // MARK: - Table view data source
-//
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//        // #warning Incomplete implementation, return the number of sections
-//        return 1
-//    }
-//
-//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        // #warning Incomplete implementation, return the number of rows
-//        if self.searchController.isActive {
-//            return self.filteredDogs.count
-//        } else {
-//            return self.dogs.count
-//        }    }
-//
-//    
-//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for:indexPath)
-//        
-//        let newDog: Breed
-//        if searchController.isActive && searchController.searchBar.text != "" {
-//            newDog = filteredDogs[indexPath.row]
-//        }else{
-//            newDog = dogs[indexPath.row]
-//        }
-//        cell.detailTextLabel?.text = newDog.hair
-//        cell.detailTextLabel?.text = newDog.body
-//        
-//
-//        return cell
-//    }
-//    
-//    
-//    //copied
-//    override func viewWillAppear(_ animated: Bool) {
-//        clearsSelectionOnViewWillAppear = splitViewController!.isCollapsed
-//        super.viewWillAppear(animated)
-//    }
-//    var detailViewController: DetailViewController? = nil
-//
-//    // MARK: - Segues
-//    //override
-//    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        if segue.identifier == "showDetail" {
-//            if let indexPath = tableView.indexPathForSelectedRow {
-//                let newDog: Breed
-//                if searchController.isActive && searchController.searchBar.text != "" {
-//                    newDog = filteredDogs[indexPath.row]
-//                }else{
-//                    newDog = dogs[indexPath.row]
-//                }
-//                let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
-//                controller.detailDog = newDog
-//                controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
-//                controller.navigationItem.leftItemsSupplementBackButton = true
-//            }
-//        }
-//    }
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
+    @IBAction func SHAction(sender: UIButton!){
+        print("Short hair")
+        hair=1
 
     }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
+    @IBAction func LHAction(sender: UIButton!){
+        print("Long hair")
+        hair=2
     }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func SAction(sender: UIButton!){
+        print("Small")
+        size=1
     }
-    */
-    
-//    func searchBar(searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
-//        filterSmallContentForSearchText(scope: searchBar.scopeButtonTitles![selectedScope])
-//        filterLargeContentForSearchText(scope: searchBar.scopeButtonTitles![selectedScope])
-//        filterShortHairContentForSearchText(scope: searchBar.scopeButtonTitles![selectedScope])
-//        filterLongHairContentForSearchText(scope: searchBar.scopeButtonTitles![selectedScope])
-//    }
-//    
-//    func updateSearchResults(for searchTableViewController: UISearchController){
-//    //func updateSearchResultsForSearchController(searchController: UISearchController) {
-//        //filterSmallContentForSearchText(searchText: searchController.searchBar.text!)
-//        let searchBar = searchTableViewController.searchBar
-//        let scope = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
-//        filterSmallContentForSearchText(scope: scope)
-//        filterLargeContentForSearchText(scope: scope)
-//        filterShortHairContentForSearchText(scope: scope)
-//        filterLongHairContentForSearchText(scope: scope)
-//    }
+    @IBAction func MAction(sender: UIButton!){
+        print("Medium")
+        size=2
+    }
+    @IBAction func LAction(sender: UIButton!){
+        print("Large")
+        size=3
+    }
 
 }
-

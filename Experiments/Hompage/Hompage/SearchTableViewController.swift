@@ -22,7 +22,7 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating{
         
         super.viewDidLoad()
         //tableView.estimatedRowHeight = YourTableViewHeight
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = 100.0
         
         // Set up the search controller
         self.resultSearchController = UISearchController(searchResultsController: nil)
@@ -41,10 +41,10 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating{
             Breed(breedName: "Pug", personality: "Loving, Charming, Mischievous", origin: "", group: "Toy", weight: "", height: "", head: "", body: "", ears: "", hair: "", tail: "", shedding: "", grooming: "", trainability: "3/5", energyLevel: "Medium", barkingLevel: "", lifeExpectancy: "12-15 years", description: "The Pug is a sociable dog that is more apt to sit in a lap than to play. These dogs are remarkably affectionate and they get along well with other animals as well as children. They can, however, become jealous. These little dogs are fairly easy to train and offer a stable temperament that makes them excellent companion animals.", history: "", breeders: "Breeder #1", image: "http://www.dogs-and-dog-advice.com/image-files/pug.jpg")
             
         ]
-//        if let splitViewController = splitViewController {
-//            let controllers = splitViewController.viewControllers
-//            detailViewController = (controllers[controllers.count - 1] as! UINavigationController).topViewController as? DetailViewController
-//        }
+        if let splitViewController = splitViewController {
+            let controllers = splitViewController.viewControllers
+            detailViewController = (controllers[controllers.count - 1] as! UINavigationController).topViewController as? DetailViewController
+        }
 
     }
 
@@ -122,6 +122,9 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating{
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as UITableViewCell?
         let mainImageView = cell?.viewWithTag(1) as! UIImageView
         let mainDogName = cell?.viewWithTag(2) as! UILabel
+        //set image in the cell to be cicle
+        mainImageView.layer.cornerRadius = mainImageView.frame.width/2.0
+        mainImageView.clipsToBounds = true
         let breed: Breed
         if self.resultSearchController.isActive && self.resultSearchController.searchBar.text != "" {
             breed = filteredBreeds[indexPath.row]
@@ -133,24 +136,6 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating{
         // with back-end variable
         let urlString = breed.getImage();
         let url = URL(string: urlString)
-        
-//        //load image URL in the background or apply defult image if the image cannot be loaded
-//        URLSession.shared.dataTask(with: url!) { (data, response, error) in
-//            if error != nil {
-//                print("Failed fetching image:", urlString)
-//                mainImageView.image = #imageLiteral(resourceName: "dogProfile.png")
-//                return
-//            }
-//            
-//            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-//                print("Not a proper HTTPURLResponse or statusCode")
-//                return
-//            }
-//            
-//            DispatchQueue.main.async {
-//                mainImageView.image = UIImage(data: data!)
-//            }
-//            }.resume()
         
         DispatchQueue.global().async {
             let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
@@ -179,26 +164,31 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating{
         
         return cell!
     }
-//    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "yourSegue" {
-//            
-//            let detailViewController = segue.destination
-//                as! DogProfile
-//            
-//            let myIndexPath = self.tableView.indexPathForSelectedRow!
-//            let row = myIndexPath.row
-//            detailViewController.receivedData = dogs[myIndexPath.row]
-//            detailViewController.idx = row
-//        }
-//    }
-//    func updateSearchResults(for searchController: UISearchController) {
-//        self.filteredDogs.removeAll(keepingCapacity: false)
-//        let serachPredicate = NSPredicate(format: "SELF CONTAINS[c] %@",searchController.searchBar.text!)
-//        let array = (self.dogs as NSArray).filtered(using: serachPredicate)
-//        self.filteredDogs = array as! [String]
-//        self.tableView.reloadData()
-//    }
     
-
+    // MARK: - Segues
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    //override func prepare(sender: Any?) {
+        print("Prepare for DetailView Segue")
+        if segue.identifier == "showDetail" {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let breed: Breed
+                
+                if resultSearchController.isActive && resultSearchController.searchBar.text != "" {
+                    breed = filteredBreeds[indexPath.row]
+                } else {
+                    breed = breeds[indexPath.row]
+                }
+                print(breed.getBreedName())
+                let controller = segue.destination as! DetailViewController
+                controller.detailBreed = breed
+                self.present(controller,animated:true, completion:nil)
+//                let secondViewController:OwnedDogDetailViewController = OwnedDogDetailViewController()
+//                let controller:segue.destination as! DetailViewController
+//                let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
+//                controller.detailCandy = candy
+                print(breed.getBreedName()+" in prepare()")
+            }
+        }
+    }
+    
 }

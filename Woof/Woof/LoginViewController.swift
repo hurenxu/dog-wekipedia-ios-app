@@ -79,13 +79,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate{
                 let vaccinedate = NSDate.distantFuture
                 
                 
-                let myDogBreed = Breed(breedName: "Yorkshire", personality: "cute", origin: "England",
-                                       group: "Small", weight: "light", height: "short",
-                                       head: "small", body: "small", ears: "small",
-                                       hair: "blond", tail: "short", shedding: "no",
-                                       grooming: "no", trainability: "easy", energyLevel: "high",
-                                       barkingLevel: "low", lifeExpectancy: "long", description: "dorable",
-                                       history: "long", breeders: "none", image: "none")
+                let myDogBreed = Breed(breedName: "Yorkshire", image: "none", personality: "cute", origin:    "England", group: "Small", weight: "light", height: "short", head: "small", body: "small", ears: "small", hair: "blond", tail: "short", shedding: "no", grooming: "no", trainability: "easy", energyLevel: "high", barkingLevel: "low", lifeExpectancy: "long", description: "dorable", history: "long", breeders: "none")
                 let myDog = Dog(dogID: dogID, name: "cutie", breed: myDogBreed, birthDate: birthdate, age: age, gender: "female", vaccination: vaccinedate, color: "Brown", description: "Mine", image: "non")
                 user.addDog(dog: myDog)
                 
@@ -106,9 +100,10 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate{
     
     @IBAction func googleLogin(sender: UIButton) {
         GIDSignIn.sharedInstance().signIn()
+        print("googleLogin here")
     }
     
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         if error != nil {
             // TODO
             return
@@ -137,6 +132,8 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate{
             //}
             
         })
+        
+        print("google Login there")
         self.performSegue(withIdentifier: "showHomePage", sender: self)
 
         // [END_EXCLUDE]
