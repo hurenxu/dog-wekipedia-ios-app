@@ -365,7 +365,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ukb-3V-0FP" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Woofipedia" image="WoofipediaIcon" selectedImage="WoofipediaIcon" id="cPa-gy-q4n"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="FgG-aF-CJq">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="FgG-aF-CJq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -384,7 +384,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Vn1-eE-3tb" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Suggestion" image="SuggestionIcon" id="Qcz-Ki-ccI"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="szK-7W-ENY">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="szK-7W-ENY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -403,7 +403,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uTt-g1-nEQ" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="iPet" image="iPetIcon" id="KhS-bD-SjT"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="w8L-5L-583">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="w8L-5L-583">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

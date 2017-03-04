@@ -100,6 +100,8 @@
 		07AFF27A1E6A5E900089867C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075FBD801E4D635D009ECE7C /* User.swift */; };
 		07AFF27B1E6A5EA40089867C /* Dog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075FBD7F1E4D635D009ECE7C /* Dog.swift */; };
 		07AFF27C1E6A5EA50089867C /* Dog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075FBD7F1E4D635D009ECE7C /* Dog.swift */; };
+		07AFF27E1E6A64090089867C /* Functionalities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B4D74D1E56A21200DA6A2C /* Functionalities.swift */; };
+		07AFF27F1E6A640A0089867C /* Functionalities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B4D74D1E56A21200DA6A2C /* Functionalities.swift */; };
 		07B4D74C1E56A13200DA6A2C /* DataAccessObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B4D74B1E56A13200DA6A2C /* DataAccessObject.swift */; };
 		07B4D74E1E56A21200DA6A2C /* Functionalities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B4D74D1E56A21200DA6A2C /* Functionalities.swift */; };
 		2F2E8EF71E496C0700F911ED /* SuggestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2E8EF61E496C0700F911ED /* SuggestionViewController.swift */; };
@@ -277,15 +279,7 @@
 		076344841E415470001E20C9 /* Woof */ = {
 			isa = PBXGroup;
 			children = (
-				07AFF22B1E6A55D20089867C /* bacgroundHome.png */,
-				07AFF22C1E6A55D20089867C /* backgroundHome.jpg */,
-				07AFF22D1E6A55D20089867C /* backgroundHomeLarge.jpg */,
-				07AFF22E1E6A55D20089867C /* bone-flat.png */,
-				07AFF2311E6A55D20089867C /* dogProfile.png */,
-				07AFF2341E6A55D20089867C /* homepageGradient.jpg */,
-				07AFF2361E6A55D20089867C /* iconDogButton.png */,
-				07AFF2381E6A55D20089867C /* loginLogo.png */,
-				07AFF2391E6A55D20089867C /* logo.jpg */,
+				07AFF27D1E6A61590089867C /* Pics */,
 				0758A9211E450B6700BE9145 /* Fonts */,
 				076344851E415470001E20C9 /* AppDelegate.swift */,
 				07DD8C861E51089D009A953A /* Controller */,
@@ -316,6 +310,22 @@
 				076344A91E415470001E20C9 /* Info.plist */,
 			);
 			path = WoofUITests;
+			sourceTree = "<group>";
+		};
+		07AFF27D1E6A61590089867C /* Pics */ = {
+			isa = PBXGroup;
+			children = (
+				07AFF22B1E6A55D20089867C /* bacgroundHome.png */,
+				07AFF22C1E6A55D20089867C /* backgroundHome.jpg */,
+				07AFF22D1E6A55D20089867C /* backgroundHomeLarge.jpg */,
+				07AFF22E1E6A55D20089867C /* bone-flat.png */,
+				07AFF2311E6A55D20089867C /* dogProfile.png */,
+				07AFF2341E6A55D20089867C /* homepageGradient.jpg */,
+				07AFF2361E6A55D20089867C /* iconDogButton.png */,
+				07AFF2381E6A55D20089867C /* loginLogo.png */,
+				07AFF2391E6A55D20089867C /* logo.jpg */,
+			);
+			name = Pics;
 			sourceTree = "<group>";
 		};
 		07DD8C861E51089D009A953A /* Controller */ = {
@@ -718,6 +728,7 @@
 				07AFF2541E6A55D20089867C /* DogProfile.swift in Sources */,
 				07AFF2571E6A55D20089867C /* FilterTableViewController.swift in Sources */,
 				07AFF27B1E6A5EA40089867C /* Dog.swift in Sources */,
+				07AFF27E1E6A64090089867C /* Functionalities.swift in Sources */,
 				07AFF2751E6A55D20089867C /* WoofipediaViewController.swift in Sources */,
 				07AFF24E1E6A55D20089867C /* DogCell.swift in Sources */,
 				07AFF2721E6A55D20089867C /* SearchTableViewController.swift in Sources */,
@@ -739,6 +750,7 @@
 				07AFF2551E6A55D20089867C /* DogProfile.swift in Sources */,
 				07AFF2581E6A55D20089867C /* FilterTableViewController.swift in Sources */,
 				07AFF27C1E6A5EA50089867C /* Dog.swift in Sources */,
+				07AFF27F1E6A640A0089867C /* Functionalities.swift in Sources */,
 				07AFF2761E6A55D20089867C /* WoofipediaViewController.swift in Sources */,
 				07AFF24F1E6A55D20089867C /* DogCell.swift in Sources */,
 				07AFF2731E6A55D20089867C /* SearchTableViewController.swift in Sources */,

@@ -3,18 +3,18 @@ import Foundation
 class Dog{
     
     let dogID: String
-	var name: String
+	var name = ""
     let breed: Breed
-    var age: Int
-    let gender: String
+    var age = 0
+    var gender = ""
     let birthDate: Date
-    var vaccination: Date
-    var color: String
-    var description: String
-    var image: String
+    var vaccination = Date()
+    var color = ""
+    var description = ""
+    var image = ""
     
     
-    init(dogID: String, name: String, breed: Breed, birthDate: Date, age: Int, gender: String, vaccination: Date, color: String, description: String, image: String){
+    init(dogID: String, name: String, breed: Breed, birthDate: Date = Date(), age: Int = 0, gender: String = "", vaccination: Date = Date(), color: String = "", description: String = "", image: String){
 		self.dogID = dogID
         self.name = name
         self.breed = breed
