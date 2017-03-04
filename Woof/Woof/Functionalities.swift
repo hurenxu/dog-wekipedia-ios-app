@@ -20,7 +20,7 @@ class Functionalities {
     init(){}
     // return a whole dog breed list for woofipedia
     // call this method in viewdidload
-    func retrieveBreedList() {
+    func retrieveBreedList(controller: SearchTableViewController) {
         let ref = FIRDatabase.database().reference()
         databaseHandle = ref.child("Breeds").child("Yorkshire").observe(.value, with: { (snapshot) in
             let breed = snapshot.value as? NSDictionary
@@ -32,14 +32,17 @@ class Functionalities {
                 print(thisbreed)
                 self.breedList.append(thisbreed)
             //}
+            
+            controller.dogs.append(thisbreed)
+            controller.tableView.reloadData()
         })
 //        let dao = DataAccessObject()
 //        currBreed = dao.viewBreed(breedName: "Yorkshire")
 //        breedList.append(currBreed!)
     }
     
-    func getBreedList() -> [Breed] {
-        retrieveBreedList()
+    func getBreedList(controller: SearchTableViewController) -> [Breed] {
+        retrieveBreedList(controller: controller)
         print(breedList)
         return self.breedList
     }

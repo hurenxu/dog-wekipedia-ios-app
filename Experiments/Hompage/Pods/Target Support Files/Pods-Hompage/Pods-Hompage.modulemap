@@ -1,0 +1,6 @@
+framework module Pods_Hompage {
+  umbrella header "Pods-Hompage-umbrella.h"
+
+  export *
+  module * { export * }
+}

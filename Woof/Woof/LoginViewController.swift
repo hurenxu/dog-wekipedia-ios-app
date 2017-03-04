@@ -73,6 +73,25 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate{
                 //let tools = Functionalities()
                 //print(tools.getBreedList())
                 
+                let dogID = user.userID + String(user.dogIDs.count)
+                let age = 3
+                let birthdate = NSDate.distantPast
+                let vaccinedate = NSDate.distantFuture
+                
+                
+                let myDogBreed = Breed(breedName: "Yorkshire", personality: "cute", origin: "England",
+                                       group: "Small", weight: "light", height: "short",
+                                       head: "small", body: "small", ears: "small",
+                                       hair: "blond", tail: "short", shedding: "no",
+                                       grooming: "no", trainability: "easy", energyLevel: "high",
+                                       barkingLevel: "low", lifeExpectancy: "long", description: "dorable",
+                                       history: "long", breeders: "none", image: "none")
+                let myDog = Dog(dogID: dogID, name: "cutie", breed: myDogBreed, birthDate: birthdate, age: age, gender: "female", vaccination: vaccinedate, color: "Brown", description: "Mine", image: "non")
+                user.addDog(dog: myDog)
+                
+                let updateMyNewDog = Dog(dogID: dogID, name: "cutie", breed: myDogBreed, birthDate: birthdate, age: age, gender: "female", vaccination: vaccinedate, color: "Brown", description: "Mine", image: "this time I add in some description")
+                user.updateDog(dog: updateMyNewDog)
+                user.deleteDog(dog: updateMyNewDog)
                 
                 
             } else {
@@ -80,7 +99,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate{
                     // ...
             }
             
-            self.performSegue(withIdentifier: "showHomePage", sender: self)
+            self.performSegue(withIdentifier: "logined", sender: self)
         }
         
     }
