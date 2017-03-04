@@ -9,35 +9,35 @@
 import UIKit
 
 class DetailViewController: UIViewController {
-    
-    @IBOutlet weak var detailDescriptionLabel: UILabel!
-    @IBOutlet weak var dogImageView: UIImageView!
-    
-    var detailDog: Dog? {
-        didSet {
-            configureView()
-        }
-    }
-    
-    func configureView() {
-        if let detailDog = detailDog {
-            if let detailDescriptionLabel = detailDescriptionLabel, let dogImageView = dogImageView {
-                detailDescriptionLabel.text = detailDog.name
-                dogImageView.image = UIImage(named: detailDog.name)
-
-                
-            }
-        }
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        configureView()
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
+//    
+//    @IBOutlet weak var detailDescriptionLabel: UILabel!
+//    @IBOutlet weak var dogImageView: UIImageView!
+//    
+//    var detailDog: Dog? {
+//        didSet {
+//            configureView()
+//        }
+//    }
+//    
+//    func configureView() {
+//        if let detailDog = detailDog {
+//            if let detailDescriptionLabel = detailDescriptionLabel, let dogImageView = dogImageView {
+//                detailDescriptionLabel.text = detailDog.name
+//                dogImageView.image = UIImage(named: detailDog.name)
+//
+//                
+//            }
+//        }
+//    }
+//    
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//        configureView()
+//    }
+//    
+//    override func didReceiveMemoryWarning() {
+//        super.didReceiveMemoryWarning()
+//    }
     
 }
 
