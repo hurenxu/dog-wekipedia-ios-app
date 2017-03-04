@@ -8,68 +8,162 @@
 
 import UIKit
 
-class SearchTableViewController: UITableViewController{
+class SearchTableViewController: UITableViewController, UISearchResultsUpdating{
     
     
-//    let dogs = ["Yorkshire", "Pug","Siberian Husky","Beagle","Bulldog","Poodle","Boxer","Chihuahua","Pit bull","Akita","Pomeranian"]
     // MARK: - Properties
     var detailViewController: DetailViewController? = nil
     var breeds = [Breed]()
-    
-    var filteredDogs = [String]()
+    var filteredBreeds = [Breed]()
     var resultSearchController = UISearchController()
     
+    // MARK: - View Setup
     override func viewDidLoad() {
+        
+        super.viewDidLoad()
+        //tableView.estimatedRowHeight = YourTableViewHeight
+        tableView.rowHeight = UITableViewAutomaticDimension
+        
+        // Set up the search controller
         self.resultSearchController = UISearchController(searchResultsController: nil)
         self.resultSearchController.searchResultsUpdater = self
         
         self.resultSearchController.dimsBackgroundDuringPresentation = false
         self.resultSearchController.searchBar.sizeToFit()
-        //self
+        
         self.tableView.tableHeaderView = self.resultSearchController.searchBar
         
         self.tableView.reloadData()
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+        
+        // Setup the Breeds
+        breeds = [
+            Breed(breedName: "Yorkshire", personality: "Affectionate, Sprightly, Tomboyish", origin: "", group: "Toy", weight: "", height: "", head: "", body: "", ears: "", hair: "Long", tail: "", shedding: "", grooming:"" , trainability: "5/5", energyLevel: "High", barkingLevel: "", lifeExpectancy: "13-16 years", description: "Yorkies are easily adaptable to all surroundings, travel well and make suitable pets for many homes. Due to their small size, they require limited exercise, but need daily interaction with their people. Their long coat requires regular brushing.", history: "", breeders: "Breeder #1 Jenny, Breeder #2 Ben", image: "http://theyorkietimes.com/wp-content/uploads/2013/02/file7291304821519.jpg"),
+            Breed(breedName: "Pug", personality: "Loving, Charming, Mischievous", origin: "", group: "Toy", weight: "", height: "", head: "", body: "", ears: "", hair: "", tail: "", shedding: "", grooming: "", trainability: "3/5", energyLevel: "Medium", barkingLevel: "", lifeExpectancy: "12-15 years", description: "The Pug is a sociable dog that is more apt to sit in a lap than to play. These dogs are remarkably affectionate and they get along well with other animals as well as children. They can, however, become jealous. These little dogs are fairly easy to train and offer a stable temperament that makes them excellent companion animals.", history: "", breeders: "Breeder #1", image: "http://www.dogs-and-dog-advice.com/image-files/pug.jpg")
+            
+        ]
+//        if let splitViewController = splitViewController {
+//            let controllers = splitViewController.viewControllers
+//            detailViewController = (controllers[controllers.count - 1] as! UINavigationController).topViewController as? DetailViewController
+//        }
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
-    // MARK: - Table view data source
-
+    // MARK: - Table view
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        if self.resultSearchController.isActive {
-            return self.filteredDogs.count
+    func updateSearchResults(for searchController: UISearchController)
+    {
+        let searchText = searchController.searchBar.text
+        NSLog("searchText - \(searchText)")
+        self.filteredBreeds.removeAll(keepingCapacity: false)
+        filterContentForSearchText(searchText!)
+    }
+    /*
+     * This function filters the result using characters in dog name
+     */
+    func filterContentForSearchText(_ searchText: String, scope: String = "All") {
+        filteredBreeds = breeds.filter({( breed : Breed) -> Bool in
+            return breed.breedName.lowercased().contains(searchText.lowercased())
+        })
+        tableView.reloadData()
+    }
+    /*
+     * This function resizes the image 
+     */
+    func resizeImage(image: UIImage, targetSize: CGSize) -> UIImage {
+        let size = image.size
+        
+        let widthRatio  = targetSize.width  / image.size.width
+        let heightRatio = targetSize.height / image.size.height
+        
+        // Figure out what our orientation is, and use that to form the rectangle
+        var newSize: CGSize
+        if(widthRatio > heightRatio) {
+            newSize = CGSize(width: size.width * heightRatio, height: size.height * heightRatio)
         } else {
-            return self.dogs.count
+            newSize = CGSize(width: size.width * widthRatio,  height: size.height * widthRatio)
         }
+        
+        // This is the rect that we've calculated out and this is what is actually used below
+        let rect = CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height)
+        
+        // Actually do the resizing to the rect using the ImageContext stuff
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
+        image.draw(in: rect)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return newImage!
     }
 
+    /*
+     * This function count the number of item to be displayed for search result
+     */
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        if self.resultSearchController.isActive && self.resultSearchController.searchBar.text != "" {
+            return filteredBreeds.count
+        }
+        return breeds.count
+    }
 
+    /*
+     * This function apply array Breed data to be displayed in each table cell
+     */
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as UITableViewCell?
         let mainImageView = cell?.viewWithTag(1) as! UIImageView
         let mainDogName = cell?.viewWithTag(2) as! UILabel
-        mainImageView.image = #imageLiteral(resourceName: "DogImage")
-        if self.resultSearchController.isActive{
-            //cell!.textLabel?.text = self.filteredDogs[indexPath.row]
-            mainDogName.text = self.filteredDogs[indexPath.row]
+        let breed: Breed
+        if self.resultSearchController.isActive && self.resultSearchController.searchBar.text != "" {
+            breed = filteredBreeds[indexPath.row]
         } else {
-            //cell!.textLabel?.text = self.dogs[indexPath.row]
-            mainDogName.text = self.dogs[indexPath.row]
+            breed = breeds[indexPath.row]
         }
+        
+        // Link front-end elment Dogname label and ImageView PlaceHolder
+        // with back-end variable
+        let urlString = breed.getImage();
+        let url = URL(string: urlString)
+        
+//        //load image URL in the background or apply defult image if the image cannot be loaded
+//        URLSession.shared.dataTask(with: url!) { (data, response, error) in
+//            if error != nil {
+//                print("Failed fetching image:", urlString)
+//                mainImageView.image = #imageLiteral(resourceName: "dogProfile.png")
+//                return
+//            }
+//            
+//            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+//                print("Not a proper HTTPURLResponse or statusCode")
+//                return
+//            }
+//            
+//            DispatchQueue.main.async {
+//                mainImageView.image = UIImage(data: data!)
+//            }
+//            }.resume()
+        
+        DispatchQueue.global().async {
+            let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+            DispatchQueue.main.async {
+                print("Staring Loading Image")
+                mainImageView.image = self.resizeImage(image: UIImage(data: data!)!, targetSize: CGSize.init(width:70,height:70))
+                print("Finished Loading Image")
+            }
+        }
+
+        // Apply breed name to cell
+        mainDogName.text = breed.getBreedName()
+        
         //alternate cell color
         if(indexPath.row % 2==0){
             //set cell background color to green
@@ -82,7 +176,7 @@ class SearchTableViewController: UITableViewController{
         //set image in the cell to be cicle
         mainImageView.layer.cornerRadius = mainImageView.frame.width/2.0
         mainImageView.clipsToBounds = true
-
+        
         return cell!
     }
 //    
@@ -98,13 +192,13 @@ class SearchTableViewController: UITableViewController{
 //            detailViewController.idx = row
 //        }
 //    }
-    func updateSearchResults(for searchController: UISearchController) {
-        self.filteredDogs.removeAll(keepingCapacity: false)
-        let serachPredicate = NSPredicate(format: "SELF CONTAINS[c] %@",searchController.searchBar.text!)
-        let array = (self.dogs as NSArray).filtered(using: serachPredicate)
-        self.filteredDogs = array as! [String]
-        self.tableView.reloadData()
-    }
+//    func updateSearchResults(for searchController: UISearchController) {
+//        self.filteredDogs.removeAll(keepingCapacity: false)
+//        let serachPredicate = NSPredicate(format: "SELF CONTAINS[c] %@",searchController.searchBar.text!)
+//        let array = (self.dogs as NSArray).filtered(using: serachPredicate)
+//        self.filteredDogs = array as! [String]
+//        self.tableView.reloadData()
+//    }
     
 
 }
