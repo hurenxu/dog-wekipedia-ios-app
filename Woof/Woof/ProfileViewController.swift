@@ -1,25 +1,20 @@
 //
-//  HomepageControllerViewController.swift
+//  ProfileViewController.swift
 //  Hompage
 //
-//  Created by Joann Chen on 2/7/17.
+//  Created by Meiyi He on 2/14/17.
 //  Copyright © 2017 Joann Chen. All rights reserved.
 //
 
 import UIKit
 
-class SuggestionViewController: UIViewController {
+class ProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
-//    override func viewWillDisappear(animated: Bool)
-//    {
-//        super.viewWillDisappear(animated)
-//        self.navigationController?.isNavigationBarHidden = false
-//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

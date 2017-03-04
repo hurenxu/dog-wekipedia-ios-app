@@ -1,5 +1,5 @@
 //
-//  HomepageControllerViewController.swift
+//  IPetViewController.swift
 //  Hompage
 //
 //  Created by Joann Chen on 2/7/17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SuggestionViewController: UIViewController {
+class IPetViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +20,7 @@ class SuggestionViewController: UIViewController {
 //        super.viewWillDisappear(animated)
 //        self.navigationController?.isNavigationBarHidden = false
 //    }
+    @IBOutlet weak var userImage: UIImageView!
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

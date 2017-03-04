@@ -73,6 +73,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate{
                 //let tools = Functionalities()
                 //print(tools.getBreedList())
                 
+
                 
                 
             } else {
@@ -80,7 +81,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate{
                     // ...
             }
             
-            self.performSegue(withIdentifier: "showHomePage", sender: self)
+            self.performSegue(withIdentifier: "logined", sender: self)
         }
         
     }
