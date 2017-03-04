@@ -16,7 +16,7 @@ class FilterTableViewController: UITableViewController{
     //populate dog list with tags
     
     var dogs = [
-        Breed(breedName:"Yorkshire", personality:"psnlt", origin:"origin", group: "String?", weight: "String?",height: "String?", head: "String?",body: "String?", ears: "String?", hair:"long hair", tail: "String?",shedding: "String?", grooming: "String?", trainability: "String?",energyLevel: "String?", barkingLevel: "String?", lifeExpectancy: "String?",description: "String?", history: "String?", breeders: "String?", image: "String?")]
+        Breed(breedName:"Yorkshire", image: "String?", personality:"psnlt", origin:"origin", group: "String?", weight: "String?",height: "String?", head: "String?",body: "String?", ears: "String?", hair:"long hair", tail: "String?",shedding: "String?", grooming: "String?", trainability: "String?",energyLevel: "String?", barkingLevel: "String?", lifeExpectancy: "String?",description: "String?", history: "String?", breeders: "String?")]
 //        Dog(name:"Yorkshire", size:"small", hair:"long hair"),
 //        Dog(name:"Pug", size:"small", hair:"short hair"),
 //        Dog(name:"Siberian Husky", size:"small", hair:"long hair"),
@@ -48,100 +48,100 @@ class FilterTableViewController: UITableViewController{
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
-    //var filteredDogs = [Breed]()
+    var filteredDogs = [Breed]()
     
-//    func filterSmallContentForSearchText(scope: String = "small"){
-//        filteredDogs = dogs.filter { Dog in
-//            let categoryMatch = (scope == "small") || (Dog.size == scope)
-//            return categoryMatch
-//        }
-//        tableView.reloadData()
-//    }
-//    func filterLargeContentForSearchText(scope: String = "large"){
-//        filteredDogs = dogs.filter { Dog in
-//            let categoryMatch = (scope == "large") || (Dog.size == scope)
-//            return categoryMatch
-//        }
-//        tableView.reloadData()
-//    }
-//    func filterLongHairContentForSearchText(scope: String = "long hair"){
-//        filteredDogs = dogs.filter { Dog in
-//            let categoryMatch = (scope == "long hair") || (Dog.size == scope)
-//            return categoryMatch
-//        }
-//        tableView.reloadData()
-//    }
-//    func filterShortHairContentForSearchText(scope: String = "short hair"){
-//        filteredDogs = dogs.filter { Dog in
-//            let categoryMatch = (scope == "short hair") || (Dog.size == scope)
-//            return categoryMatch
-//        }
-//        tableView.reloadData()
-//    }
-//
-//    override func didReceiveMemoryWarning() {
-//        super.didReceiveMemoryWarning()
-//        // Dispose of any resources that can be recreated.
-//    }
-//
-//    // MARK: - Table view data source
-//
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//        // #warning Incomplete implementation, return the number of sections
-//        return 1
-//    }
-//
-//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        // #warning Incomplete implementation, return the number of rows
-//        if self.searchController.isActive {
-//            return self.filteredDogs.count
-//        } else {
-//            return self.dogs.count
-//        }    }
-//
-//    
-//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for:indexPath)
-//        
-//        let newDog: Breed
-//        if searchController.isActive && searchController.searchBar.text != "" {
-//            newDog = filteredDogs[indexPath.row]
-//        }else{
-//            newDog = dogs[indexPath.row]
-//        }
-//        cell.detailTextLabel?.text = newDog.hair
-//        cell.detailTextLabel?.text = newDog.body
-//        
-//
-//        return cell
-//    }
-//    
-//    
-//    //copied
-//    override func viewWillAppear(_ animated: Bool) {
-//        clearsSelectionOnViewWillAppear = splitViewController!.isCollapsed
-//        super.viewWillAppear(animated)
-//    }
-//    var detailViewController: DetailViewController? = nil
-//
-//    // MARK: - Segues
-//    //override
-//    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        if segue.identifier == "showDetail" {
-//            if let indexPath = tableView.indexPathForSelectedRow {
-//                let newDog: Breed
-//                if searchController.isActive && searchController.searchBar.text != "" {
-//                    newDog = filteredDogs[indexPath.row]
-//                }else{
-//                    newDog = dogs[indexPath.row]
-//                }
-//                let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
-//                controller.detailDog = newDog
-//                controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
-//                controller.navigationItem.leftItemsSupplementBackButton = true
-//            }
-//        }
-//    }
+    func filterSmallContentForSearchText(scope: String = "small"){
+        filteredDogs = dogs.filter { dog in
+            let categoryMatch = (scope == "small") || (dog.body == scope)
+            return categoryMatch
+        }
+        tableView.reloadData()
+    }
+    func filterLargeContentForSearchText(scope: String = "large"){
+        filteredDogs = dogs.filter { dog in
+            let categoryMatch = (scope == "large") || (dog.body == scope)
+            return categoryMatch
+        }
+        tableView.reloadData()
+    }
+    func filterLongHairContentForSearchText(scope: String = "long hair"){
+        filteredDogs = dogs.filter { dog in
+            let categoryMatch = (scope == "long hair") || (dog.body == scope)
+            return categoryMatch
+        }
+        tableView.reloadData()
+    }
+    func filterShortHairContentForSearchText(scope: String = "short hair"){
+        filteredDogs = dogs.filter { dog in
+            let categoryMatch = (scope == "short hair") || (dog.body == scope)
+            return categoryMatch
+        }
+        tableView.reloadData()
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
+    // MARK: - Table view data source
+
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 1
+    }
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        if self.searchController.isActive {
+            return self.filteredDogs.count
+        } else {
+            return self.dogs.count
+        }    }
+
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for:indexPath)
+        
+        let newDog: Breed
+        if searchController.isActive && searchController.searchBar.text != "" {
+            newDog = filteredDogs[indexPath.row]
+        }else{
+            newDog = dogs[indexPath.row]
+        }
+        cell.detailTextLabel?.text = newDog.hair
+        cell.detailTextLabel?.text = newDog.body
+        
+
+        return cell
+    }
+    
+    
+    //copied
+    override func viewWillAppear(_ animated: Bool) {
+        clearsSelectionOnViewWillAppear = splitViewController!.isCollapsed
+        super.viewWillAppear(animated)
+    }
+    var detailViewController: DetailViewController? = nil
+
+    // MARK: - Segues
+    //override
+    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showDetail" {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let newDog: Breed
+                if searchController.isActive && searchController.searchBar.text != "" {
+                    newDog = filteredDogs[indexPath.row]
+                }else{
+                    newDog = dogs[indexPath.row]
+                }
+                let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
+                controller.detailDog = newDog
+                controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
+                controller.navigationItem.leftItemsSupplementBackButton = true
+            }
+        }
+    }
 
     /*
     // Override to support conditional editing of the table view.

@@ -88,9 +88,10 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate{
     
     @IBAction func googleLogin(sender: UIButton) {
         GIDSignIn.sharedInstance().signIn()
+        print("googleLogin here")
     }
     
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         if error != nil {
             // TODO
             return
@@ -119,6 +120,8 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate{
             //}
             
         })
+        
+        print("google Login there")
         self.performSegue(withIdentifier: "showHomePage", sender: self)
 
         // [END_EXCLUDE]
