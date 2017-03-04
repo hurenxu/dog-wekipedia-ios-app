@@ -42,6 +42,14 @@
             </objects>
             <point key="canvasLocation" x="749.60000000000002" y="1184.257871064468"/>
         </scene>
+        <!--Major-->
+        <scene sceneID="xTZ-AO-bhS">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Major" id="Tsc-Il-dUU" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5lU-zd-W0c" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-247" y="-414"/>
+        </scene>
         <!--Homepage-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
@@ -200,7 +208,7 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <connections>
-                        <segue destination="49e-Tb-3d3" kind="show" identifier="showHomePage" id="kaa-mN-VGo"/>
+                        <segue destination="Tsc-Il-dUU" kind="show" identifier="logined" id="ldE-vu-suq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GhB-s4-0be" userLabel="First Responder" sceneMemberID="firstResponder"/>
