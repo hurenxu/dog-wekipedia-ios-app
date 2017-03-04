@@ -255,16 +255,16 @@ class SuggestionViewController: UIViewController {
         // TODO instantiate user then store like breeds
         
         // Sample filters
-        topFilters.append("First")
-        topFilters.append("Second")
-        topFilters.append("Third")
+        topFilters.append("Body: Small")
+        topFilters.append("Group: Hound")
+        topFilters.append("Personality: Super duper friendly")
         
-        likeFilters["First"] = 5
-        likeFilters["Second"] = 10
-        likeFilters["Third"] = 3
+        likeFilters["Body: Small"] = 5
+        likeFilters["Group: Hound"] = 10
+        likeFilters["Personality: Super duper friendly"] = 3
         
-        likeFilters["Fourth"] = 4
-        likeFilters["Fifth"] = 5
+        likeFilters["Tail: Super long"] = 4
+        likeFilters["Ears: Super pointy"] = 5
         
         // pass the data
         
@@ -286,16 +286,16 @@ class SuggestionViewController: UIViewController {
             // get the current breed
             let myBreed: Breed = breedArray[breedIndex]
             
-            likeFilters[myBreed.getPersonality()]! += 1
-            likeFilters[myBreed.getOrigin()]! += 1
-            likeFilters[myBreed.getGroup()]! += 1
-            likeFilters[myBreed.getHead()]! += 1
-            likeFilters[myBreed.getBody()]! += 1
-            likeFilters[myBreed.getEars()]! += 1
-            // likeFilters[myBreed.getHair()] += 1
-            likeFilters[myBreed.getTail()]! += 1
-            likeFilters[myBreed.getShedding()]! += 1
-            likeFilters[myBreed.getGrooming()]! += 1
+            likeFilters["Personality: \(myBreed.getPersonality())"]! += 1
+            likeFilters["Origin: \(myBreed.getOrigin())"]! += 1
+            likeFilters["Group: \(myBreed.getGroup())"]! += 1
+            likeFilters["Head: \(myBreed.getHead())"]! += 1
+            likeFilters["Body: \(myBreed.getBody())"]! += 1
+            likeFilters["Ears: \(myBreed.getEars())"]! += 1
+            // likeFilters["Hair: \(myBreed.getHair())"]! += 1
+            likeFilters["Tail \(myBreed.getTail())"]! += 1
+            likeFilters["Shedding \(myBreed.getShedding())"]! += 1
+            likeFilters["Grooming \(myBreed.getGrooming())"]! += 1
         }
         
         // determine the top filters
@@ -419,7 +419,6 @@ class SuggestionViewController: UIViewController {
         statsButton.setTitleColor(UIColor.black, for: UIControlState.normal)
         statsButton.titleLabel?.font = UIFont(name: FONT, size: FONT_SIZE)
         statsButton.addTarget(self, action: #selector(self.centerPressed(sender:)), for: UIControlEvents.touchDown)
-        self.view.addSubview(statsButton)
         
         // static: border, image, and label
         borderStatic = UIView(frame: CGRect(origin: BORDER_CENTER, size: BORDER_SIZE))
@@ -465,6 +464,8 @@ class SuggestionViewController: UIViewController {
         rightButton.setBackgroundImage(UIImage(named: "Arrow"), for: UIControlState.normal)
         rightButton.addTarget(self, action: #selector(self.sidePressed(sender:)), for: UIControlEvents.touchDown)
         self.view.addSubview(rightButton)
+        self.view.addSubview(statsButton)
+
 
     }
 

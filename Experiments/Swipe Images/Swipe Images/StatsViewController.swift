@@ -12,6 +12,8 @@ class StatsViewController: UIViewController {
 
     let SCREEN_SIZE: CGRect = UIScreen.main.bounds
     
+    var scrollView: UIScrollView! = nil
+    
     // math constants
     let HALF: Int = 2
     let CORNOR_RADIUS: Int = 10
@@ -21,12 +23,13 @@ class StatsViewController: UIViewController {
     
     // offsets
     let TOP_OFFSET = 50
-    let TOP_BAR_OFFSET = 120
-    let BAR_OFFSET = 100
-    let LABEL_OFFSET = 60
-    let TOP_FILTER_OFFSET = 30
-    let FILTER_OFFSET = 60
-    let SCROLL_OFFSET = 90
+    let TOP_BAR_OFFSET = 150
+    let BAR_OFFSET = 110
+    let LABEL_OFFSET = 70 // up from bar
+    let TITLE_FILTER_OFFSET = 120
+    let FILTER_OFFSET = 50
+    let TOP_BUTTON_OFFSET = 40
+    let SCROLL_OFFSET = 80
     
     // the bar stats
     let BAR_SIZE: CGSize = CGSize(width: 330, height: 2)
@@ -35,40 +38,98 @@ class StatsViewController: UIViewController {
     var thirdBar: UIProgressView! = nil
     
     // the bar labels
-    let LABEL_SIZE: CGSize = CGSize(width: 300, height: 30)
-    let TITLE_SIZE: CGSize = CGSize(width: 330, height: 40)
+    let LABEL_SIZE: CGSize = CGSize(width: 330, height: 43)
+    let TITLE_SIZE: CGSize = CGSize(width: 330, height: 70)
     let TITLE_FONT_SIZE: Int = 40
-    let LABEL_FONT_SIZE: Int = 30
+    let LABEL_FONT_SIZE: Int = 25
     let FONT = "Noteworthy"
     var firstLabel: UILabel! = nil
     var secondLabel: UILabel! = nil
     var thirdLabel: UILabel! = nil
     var titleLabel: UILabel! = nil
+    var filterTitleLabel: UILabel! = nil
+    let LABEL_COLOR: UIColor = UIColor(red: 253.0/255.0, green: 127.0/255.0, blue: 124.0/255.0, alpha: 0.9)
+    let TITLE_COLOR: UIColor = UIColor(red: 122.0/255.0, green: 215.0/255.0, blue: 253.0/255.0, alpha: 0.9)
     
-    let BUTTON_SIZE: CGSize = CGSize(width: 100, height: 40)
+    // the buttons
+    var currentButton: UIButton! = nil
+    var buttonOrigin: CGPoint! = nil
+    let BUTTON_SIZE: CGSize = CGSize(width: 270, height: 40)
+    let NEXT_BUTTON_SIZE: CGSize = CGSize(width: 150, height: 80)
+    let NEXT_BUTTON_FONT_SIZE: Int = 40
     let BUTTON_FONT_SIZE: Int = 20
+    var nextButton: UIButton! = nil
+    let BUTTON_COLOR: UIColor = UIColor(red: 111.0/255.0, green: 135.0/255.0, blue: 143.0/255.0, alpha: 0.9)
+    
+    // the user
+    // let user: USER! = nil
     
     // function to set up the common specs of bars
-    func setUpStatsBar(myBar: UIProgressView) {
+    func setUpStatsBar(myValue: Int, myBar: UIProgressView) {
         
+        myBar.progress = Float(Double(myValue) / 10.0)
         myBar.transform = myBar.transform.scaledBy(x: 1, y: 20)
         myBar.tintColor = UIColor.white
         myBar.trackTintColor = UIColor.white.withAlphaComponent(0.4)
+        scrollView.addSubview(myBar)
+    }
+    
+    // function to set up the common specs of labels
+    func setUpLabel(myText: String, myFont: String, myFontSize: Int, myAlignment: NSTextAlignment, myLabel: UILabel, myColor: UIColor) {
+    
+        myLabel.text = myText
+        myLabel.font = UIFont(name: myFont, size: CGFloat(myFontSize))
+        myLabel.textAlignment = myAlignment
+        myLabel.backgroundColor = myColor
+        myLabel.layer.cornerRadius = CGFloat(CORNOR_RADIUS)
+        myLabel.clipsToBounds = true
+        scrollView.addSubview(myLabel)
+    }
+    
+    // function to set up the common specs of buttons
+    func setUpButtons(myLabel: String, myFontSize: Int, myButton: UIButton) {
+        
+        myButton.setTitle(myLabel, for: UIControlState.normal)
+        myButton.setTitleColor(UIColor.black, for: UIControlState.normal)
+        myButton.titleLabel?.font = UIFont(name: FONT, size: CGFloat(myFontSize))
+        myButton.backgroundColor = BUTTON_COLOR
+        myButton.isUserInteractionEnabled = true
+        myButton.layer.cornerRadius = CGFloat(CORNOR_RADIUS)
+        scrollView.addSubview(myButton)
+    }
+    
+    // filters are added, implement to remove?
+    func filterPressed(sender: UIButton!) {
+        
+        let buttonLabel: String = sender.titleLabel!.text!
+        
+        print("store \(buttonLabel)")
+        
+        sender.isUserInteractionEnabled = false
+        sender.backgroundColor = UIColor.gray
+        
+        // user.addFavoriteFilter(\buttonLabel)
+    }
+    
+    func nextPressed(sender: UIButton!) {
+        
+        print("switch to result page")
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let scrollView: UIScrollView = UIScrollView(frame: self.view.bounds)
+        // initialize user here
+        // user = USER(  )
+        
+        // set up the scroll view
+        scrollView = UIScrollView(frame: self.view.bounds)
         scrollView.backgroundColor = UIColor(patternImage: UIImage(named: "backgroundHomeLarge.jpg")!)
         scrollView.isUserInteractionEnabled = true
         scrollView.isScrollEnabled = true
         self.view.addSubview(scrollView)
         
-        var tempInt: Int = 0
-        
-        // Do any additional setup after loading the view.
-        
+        // the origin of things
         let TITLE_ORIGIN = CGPoint(x: Int(SCREEN_SIZE.width) / HALF - Int(TITLE_SIZE.width) / HALF, y: TOP_OFFSET)
         let FIRST_BAR_ORIGIN = CGPoint(x: Int(SCREEN_SIZE.width) / HALF - Int(BAR_SIZE.width) / HALF, y: Int(TITLE_ORIGIN.y) + TOP_BAR_OFFSET)
         let FIRST_LABEL_ORIGIN = CGPoint(x: FIRST_BAR_ORIGIN.x, y: FIRST_BAR_ORIGIN.y - CGFloat(LABEL_OFFSET))
@@ -76,72 +137,61 @@ class StatsViewController: UIViewController {
         let SECOND_LABEL_ORIGIN = CGPoint(x: SECOND_BAR_ORIGIN.x, y: SECOND_BAR_ORIGIN.y - CGFloat(LABEL_OFFSET))
         let THIRD_BAR_ORIGIN = CGPoint(x: FIRST_BAR_ORIGIN.x, y: SECOND_BAR_ORIGIN.y + CGFloat(BAR_OFFSET))
         let THIRD_LABEL_ORIGIN = CGPoint(x: THIRD_BAR_ORIGIN.x, y: THIRD_BAR_ORIGIN.y - CGFloat(LABEL_OFFSET))
+        let FILTER_LABEL_ORIGIN = CGPoint(x: THIRD_LABEL_ORIGIN.x + BAR_SIZE.width / CGFloat(HALF) - TITLE_SIZE.width / CGFloat(HALF), y: THIRD_LABEL_ORIGIN.y + CGFloat(TITLE_FILTER_OFFSET))
         
+        // set up the title
         titleLabel = UILabel(frame: CGRect(origin: TITLE_ORIGIN, size: TITLE_SIZE))
-        titleLabel.text = "Filters Statistics"
+        setUpLabel(myText: "Most Popular Filters", myFont: FONT, myFontSize: TITLE_FONT_SIZE, myAlignment: NSTextAlignment.center, myLabel: titleLabel, myColor: TITLE_COLOR)
         
-        titleLabel.font = UIFont(name: FONT, size: CGFloat(TITLE_FONT_SIZE))
-        titleLabel.textAlignment = NSTextAlignment.center
-        scrollView.addSubview(titleLabel)
-        
+        // set up the first bar
         firstBar = UIProgressView(frame: CGRect(origin: FIRST_BAR_ORIGIN, size: BAR_SIZE))
-        tempInt = likeFilters[topFilters[0]]!
-        firstBar.progress = Float(Double(tempInt) / 10.0)
-        setUpStatsBar(myBar: firstBar)
-        scrollView.addSubview(firstBar)
+        setUpStatsBar(myValue: likeFilters[topFilters[0]]!, myBar: firstBar)
         
+        // set up the first label
         firstLabel = UILabel(frame: CGRect(origin: FIRST_LABEL_ORIGIN, size: LABEL_SIZE))
-        firstLabel.text = topFilters[0]
-        firstLabel.font = UIFont(name: FONT, size: CGFloat(LABEL_FONT_SIZE))
-        scrollView.addSubview(firstLabel)
+        setUpLabel(myText: topFilters[0], myFont: FONT, myFontSize: LABEL_FONT_SIZE, myAlignment: NSTextAlignment.center, myLabel: firstLabel, myColor: LABEL_COLOR)
 
+        // set up the second bar
         secondBar = UIProgressView(frame: CGRect(origin: SECOND_BAR_ORIGIN, size: BAR_SIZE))
-        tempInt = likeFilters[topFilters[1]]!
-        secondBar.progress = Float(Double(tempInt) / 10.0)
-        setUpStatsBar(myBar: secondBar)
-        scrollView.addSubview(secondBar)
+        setUpStatsBar(myValue: likeFilters[topFilters[1]]!, myBar: secondBar)
         
+        // set up the second label
         secondLabel = UILabel(frame: CGRect(origin: SECOND_LABEL_ORIGIN, size: LABEL_SIZE))
-        secondLabel.text = topFilters[1]
-        secondLabel.font = UIFont(name: FONT, size: CGFloat(LABEL_FONT_SIZE))
-        scrollView.addSubview(secondLabel)
+        setUpLabel(myText: topFilters[1], myFont: FONT, myFontSize: LABEL_FONT_SIZE, myAlignment: NSTextAlignment.center, myLabel: secondLabel, myColor: LABEL_COLOR)
         
+        // set up the third bar
         thirdBar = UIProgressView(frame: CGRect(origin: THIRD_BAR_ORIGIN, size: BAR_SIZE))
-        tempInt = likeFilters[topFilters[2]]!
-        thirdBar.progress = Float(Double(tempInt) / 10.0)
-        setUpStatsBar(myBar: thirdBar)
-        scrollView.addSubview(thirdBar)
+        setUpStatsBar(myValue: likeFilters[topFilters[2]]!, myBar: thirdBar)
         
+        // set up the third label
         thirdLabel = UILabel(frame: CGRect(origin: THIRD_LABEL_ORIGIN, size: LABEL_SIZE))
-        thirdLabel.text = topFilters[2]
-        thirdLabel.font = UIFont(name: FONT, size: CGFloat(LABEL_FONT_SIZE))
-        scrollView.addSubview(thirdLabel)
+        setUpLabel(myText: topFilters[2], myFont: FONT, myFontSize: LABEL_FONT_SIZE, myAlignment: NSTextAlignment.center, myLabel: thirdLabel, myColor: LABEL_COLOR)
         
-        var currentButton: UIButton! = nil
-        var buttonOrigin: CGPoint! = nil
+        // set up the filter title label
+        filterTitleLabel = UILabel(frame: CGRect(origin: FILTER_LABEL_ORIGIN, size: TITLE_SIZE))
+        setUpLabel(myText: "Click to Add Filters", myFont: FONT, myFontSize: TITLE_FONT_SIZE, myAlignment: NSTextAlignment.center, myLabel: filterTitleLabel, myColor: TITLE_COLOR)
         
-        currentButton = UIButton(frame: CGRect(origin: CGPoint(x: thirdBar.frame.origin.x, y: thirdBar.frame.origin.y + CGFloat(FILTER_OFFSET / HALF)), size: BUTTON_SIZE))
+        // dummy current button reference, set its position
+        currentButton = UIButton(frame: CGRect(origin: CGPoint(x: filterTitleLabel.center.x - BUTTON_SIZE.width / CGFloat(HALF), y: filterTitleLabel.frame.origin.y + CGFloat(TOP_BUTTON_OFFSET)), size: CGSize(width: 0, height: 0)))
         
+        // iterate through all filters to get all labels
         for keyAndValuePair in likeFilters {
             
-            if !topFilters.contains(keyAndValuePair.key) {
-                
-                print(keyAndValuePair.key)
-                
-                // add button
-                buttonOrigin = CGPoint(x: currentButton.frame.origin.x, y: currentButton.frame.origin.y + CGFloat(FILTER_OFFSET))
-                currentButton = UIButton(frame: CGRect(origin: buttonOrigin, size: BUTTON_SIZE))
-                currentButton.setTitle(keyAndValuePair.key, for: UIControlState.normal)
-                currentButton.setTitleColor(UIColor.black, for: UIControlState.normal)
-                currentButton.titleLabel?.font = UIFont(name: FONT, size: CGFloat(BUTTON_FONT_SIZE))
-                currentButton.backgroundColor = UIColor(red: 100.0/255.0, green: 120.0/255.0, blue: 150.0/255.0, alpha: 0.9)
-                currentButton.isUserInteractionEnabled = true
-                currentButton.layer.cornerRadius = CGFloat(CORNOR_RADIUS)
-                scrollView.addSubview(currentButton)
-            }
+            // add button
+            buttonOrigin = CGPoint(x: currentButton.frame.origin.x, y: currentButton.frame.origin.y + CGFloat(FILTER_OFFSET))
+            currentButton = UIButton(frame: CGRect(origin: buttonOrigin, size: BUTTON_SIZE))
+            setUpButtons(myLabel: keyAndValuePair.key, myFontSize: BUTTON_FONT_SIZE, myButton: currentButton)
+            currentButton.addTarget(self, action: #selector(self.filterPressed(sender:)), for: UIControlEvents.touchDown)
         }
         
-        scrollView.contentSize.height = currentButton.center.y + CGFloat(SCROLL_OFFSET)
+        // the next page button
+        let NEXT_ORIGIN: CGPoint = CGPoint(x: firstBar.frame.origin.x + BAR_SIZE.width - NEXT_BUTTON_SIZE.width, y: currentButton.center.y + CGFloat(FILTER_OFFSET))
+        nextButton = UIButton(frame: CGRect(origin: NEXT_ORIGIN, size: NEXT_BUTTON_SIZE))
+        setUpButtons(myLabel: "Next", myFontSize: NEXT_BUTTON_FONT_SIZE, myButton: nextButton)
+        nextButton.addTarget(self, action: #selector(self.nextPressed(sender:)), for: UIControlEvents.touchDown)
+        
+        // adjust the scroll view size
+        scrollView.contentSize.height = nextButton.center.y + CGFloat(SCROLL_OFFSET)
     }
 
     override func didReceiveMemoryWarning() {
