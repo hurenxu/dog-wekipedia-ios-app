@@ -86,13 +86,13 @@
 			children = (
 				A4FC1D3F1E44A7A80091B7D6 /* AppDelegate.swift */,
 				A4FC1D411E44A7A80091B7D6 /* SuggestionViewController.swift */,
+				A45B763C1E6A2BC500997D23 /* StatsViewController.swift */,
 				A4B489491E66A030000B551D /* Breed.swift */,
 				A4FC1D431E44A7A80091B7D6 /* Main.storyboard */,
 				A4FC1D461E44A7A80091B7D6 /* Assets.xcassets */,
 				A4FC1D481E44A7A80091B7D6 /* LaunchScreen.storyboard */,
 				A4FC1D4B1E44A7A80091B7D6 /* Info.plist */,
 				A4B489551E69CD83000B551D /* GoogleService-Info.plist */,
-				A45B763C1E6A2BC500997D23 /* StatsViewController.swift */,
 			);
 			path = "Swipe Images";
 			sourceTree = "<group>";
