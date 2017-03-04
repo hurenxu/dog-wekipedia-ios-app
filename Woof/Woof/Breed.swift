@@ -20,7 +20,7 @@ class Breed{
     var grooming = ""
     //Trainability: "Bright"; "Average"; "Fair"
     var trainability = ""
-    //"Active"; "Chill"
+    //"Energy level: "Active"; "Chill"
     var energyLevel = ""
     var barkingLevel = ""
     var lifeExpectancy = ""
