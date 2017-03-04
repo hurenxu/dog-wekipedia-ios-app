@@ -252,14 +252,28 @@ class SuggestionViewController: UIViewController {
         
         print("switch to stats page")
         
+        // TODO instantiate user then store like breeds
+        
+        // Sample filters
+        topFilters.append("First")
+        topFilters.append("Second")
+        topFilters.append("Third")
+        
+        likeFilters["First"] = 5
+        likeFilters["Second"] = 10
+        likeFilters["Third"] = 3
+        
+        likeFilters["Fourth"] = 4
+        likeFilters["Fifth"] = 5
+        
         // pass the data
         
        //  self.navigationController?.pushViewController(statsVC, animated: true)
         
         // switch page
         let statisticsViewController: StatsViewController = StatsViewController()
-        //statisticsViewController.topFilters = topFilters
-        //statisticsViewController.likeFilters = likeFilters
+        statisticsViewController.topFilters = topFilters
+        statisticsViewController.likeFilters = likeFilters
         navigationController?.pushViewController(statisticsViewController, animated: true)
         self.present(statisticsViewController, animated: true, completion: nil)
     }
@@ -405,6 +419,7 @@ class SuggestionViewController: UIViewController {
         statsButton.setTitleColor(UIColor.black, for: UIControlState.normal)
         statsButton.titleLabel?.font = UIFont(name: FONT, size: FONT_SIZE)
         statsButton.addTarget(self, action: #selector(self.centerPressed(sender:)), for: UIControlEvents.touchDown)
+        self.view.addSubview(statsButton)
         
         // static: border, image, and label
         borderStatic = UIView(frame: CGRect(origin: BORDER_CENTER, size: BORDER_SIZE))
@@ -450,7 +465,6 @@ class SuggestionViewController: UIViewController {
         rightButton.setBackgroundImage(UIImage(named: "Arrow"), for: UIControlState.normal)
         rightButton.addTarget(self, action: #selector(self.sidePressed(sender:)), for: UIControlEvents.touchDown)
         self.view.addSubview(rightButton)
-        self.view.addSubview(statsButton)
 
     }
 

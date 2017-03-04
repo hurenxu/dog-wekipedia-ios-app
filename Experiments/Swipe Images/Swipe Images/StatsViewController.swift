@@ -25,7 +25,8 @@ class StatsViewController: UIViewController {
     let BAR_OFFSET = 100
     let LABEL_OFFSET = 60
     let TOP_FILTER_OFFSET = 30
-    let FILTER_OFFSET = 50
+    let FILTER_OFFSET = 60
+    let SCROLL_OFFSET = 90
     
     // the bar stats
     let BAR_SIZE: CGSize = CGSize(width: 330, height: 2)
@@ -58,22 +59,15 @@ class StatsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Sample filters
-        topFilters.append("First")
-        topFilters.append("Second")
-        topFilters.append("Third")
+        let scrollView: UIScrollView = UIScrollView(frame: self.view.bounds)
+        scrollView.backgroundColor = UIColor(patternImage: UIImage(named: "backgroundHomeLarge.jpg")!)
+        scrollView.isUserInteractionEnabled = true
+        scrollView.isScrollEnabled = true
+        self.view.addSubview(scrollView)
         
-        likeFilters["First"] = 5
-        likeFilters["Second"] = 10
-        likeFilters["Third"] = 3
-        
-        likeFilters["Fourth"] = 4
-        likeFilters["Fifth"] = 5
-        
-        var tempInt: Int = likeFilters["First"]!
+        var tempInt: Int = 0
         
         // Do any additional setup after loading the view.
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "backgroundHomeLarge.jpg")!)
         
         let TITLE_ORIGIN = CGPoint(x: Int(SCREEN_SIZE.width) / HALF - Int(TITLE_SIZE.width) / HALF, y: TOP_OFFSET)
         let FIRST_BAR_ORIGIN = CGPoint(x: Int(SCREEN_SIZE.width) / HALF - Int(BAR_SIZE.width) / HALF, y: Int(TITLE_ORIGIN.y) + TOP_BAR_OFFSET)
@@ -88,39 +82,40 @@ class StatsViewController: UIViewController {
         
         titleLabel.font = UIFont(name: FONT, size: CGFloat(TITLE_FONT_SIZE))
         titleLabel.textAlignment = NSTextAlignment.center
-        self.view.addSubview(titleLabel)
+        scrollView.addSubview(titleLabel)
         
         firstBar = UIProgressView(frame: CGRect(origin: FIRST_BAR_ORIGIN, size: BAR_SIZE))
+        tempInt = likeFilters[topFilters[0]]!
         firstBar.progress = Float(Double(tempInt) / 10.0)
         setUpStatsBar(myBar: firstBar)
-        self.view.addSubview(firstBar)
+        scrollView.addSubview(firstBar)
         
         firstLabel = UILabel(frame: CGRect(origin: FIRST_LABEL_ORIGIN, size: LABEL_SIZE))
         firstLabel.text = topFilters[0]
         firstLabel.font = UIFont(name: FONT, size: CGFloat(LABEL_FONT_SIZE))
-        self.view.addSubview(firstLabel)
-        
+        scrollView.addSubview(firstLabel)
+
         secondBar = UIProgressView(frame: CGRect(origin: SECOND_BAR_ORIGIN, size: BAR_SIZE))
-        tempInt = likeFilters["Second"]!
+        tempInt = likeFilters[topFilters[1]]!
         secondBar.progress = Float(Double(tempInt) / 10.0)
         setUpStatsBar(myBar: secondBar)
-        self.view.addSubview(secondBar)
+        scrollView.addSubview(secondBar)
         
         secondLabel = UILabel(frame: CGRect(origin: SECOND_LABEL_ORIGIN, size: LABEL_SIZE))
         secondLabel.text = topFilters[1]
         secondLabel.font = UIFont(name: FONT, size: CGFloat(LABEL_FONT_SIZE))
-        self.view.addSubview(secondLabel)
+        scrollView.addSubview(secondLabel)
         
         thirdBar = UIProgressView(frame: CGRect(origin: THIRD_BAR_ORIGIN, size: BAR_SIZE))
-        tempInt = likeFilters["Third"]!
+        tempInt = likeFilters[topFilters[2]]!
         thirdBar.progress = Float(Double(tempInt) / 10.0)
         setUpStatsBar(myBar: thirdBar)
-        self.view.addSubview(thirdBar)
+        scrollView.addSubview(thirdBar)
         
         thirdLabel = UILabel(frame: CGRect(origin: THIRD_LABEL_ORIGIN, size: LABEL_SIZE))
         thirdLabel.text = topFilters[2]
         thirdLabel.font = UIFont(name: FONT, size: CGFloat(LABEL_FONT_SIZE))
-        self.view.addSubview(thirdLabel)
+        scrollView.addSubview(thirdLabel)
         
         var currentButton: UIButton! = nil
         var buttonOrigin: CGPoint! = nil
@@ -142,11 +137,11 @@ class StatsViewController: UIViewController {
                 currentButton.backgroundColor = UIColor(red: 100.0/255.0, green: 120.0/255.0, blue: 150.0/255.0, alpha: 0.9)
                 currentButton.isUserInteractionEnabled = true
                 currentButton.layer.cornerRadius = CGFloat(CORNOR_RADIUS)
-                self.view.addSubview(currentButton)
+                scrollView.addSubview(currentButton)
             }
         }
         
-        
+        scrollView.contentSize.height = currentButton.center.y + CGFloat(SCROLL_OFFSET)
     }
 
     override func didReceiveMemoryWarning() {
