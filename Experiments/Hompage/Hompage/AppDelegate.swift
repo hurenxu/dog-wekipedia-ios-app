@@ -15,14 +15,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        UINavigationBar.appearance().barTintColor =
-            UIColor(red: 111/255,green: 135/255,blue:143/255,alpha:1)
         
-        //set navigation bar color
-        UITabBar.appearance().tintColor = UIColor(red: 253/255,green: 127/255,blue:124/255,alpha:1)
         return true
     }
+
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -48,4 +44,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 }
-
+extension UIColor {
+    static func paleGreen() -> UIColor {
+        return UIColor(red: 165/255, green: 195/255, blue: 187/255, alpha: 0.5)
+    }
+    static func bage() -> UIColor {
+        return UIColor(red: 248/255, green: 221/255, blue: 179/255, alpha: 0.5)
+    }
+    
+}
