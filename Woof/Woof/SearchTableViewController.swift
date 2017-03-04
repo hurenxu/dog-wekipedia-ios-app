@@ -11,7 +11,7 @@ import UIKit
 class SearchTableViewController: UITableViewController, UISearchResultsUpdating {
     
     
-    let dogs = ["Yorkshire", "Pug","Siberian Husky","Beagle","Bulldog","Poodle","Boxer","Chihuahua","Pit bull","Akita","Pomeranian"]
+    var dogs = [Breed]()
     var filteredDogs = [String]()
     var resultSearchController = UISearchController()
     
@@ -23,6 +23,9 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
         self.resultSearchController.searchBar.sizeToFit()
         //self
         self.tableView.tableHeaderView = self.resultSearchController.searchBar
+        
+        let tools = Functionalities()
+        print(tools.getBreedList(controller:self))
         
         self.tableView.reloadData()
         // Uncomment the following line to preserve selection between presentations
@@ -58,13 +61,31 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as UITableViewCell?
         let mainImageView = cell?.viewWithTag(1) as! UIImageView
         let mainDogName = cell?.viewWithTag(2) as! UILabel
-        mainImageView.image = #imageLiteral(resourceName: "DogImage")
+        
+        let urlString = (self.dogs[indexPath.row]).getImage()
+        guard let url = URL(string: urlString) else { mainImageView.image = #imageLiteral(resourceName: "DogImage"); return cell! }
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+            if error != nil {
+                print("Failed fetching image:", error)
+                return
+            }
+            
+            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                print("Not a proper HTTPURLResponse or statusCode")
+                return
+            }
+            
+            DispatchQueue.main.async {
+                mainImageView.image = UIImage(data: data!)
+            }
+        }.resume()
+        
         if self.resultSearchController.isActive{
             //cell!.textLabel?.text = self.filteredDogs[indexPath.row]
             mainDogName.text = self.filteredDogs[indexPath.row]
         } else {
             //cell!.textLabel?.text = self.dogs[indexPath.row]
-            mainDogName.text = self.dogs[indexPath.row]
+            mainDogName.text = (self.dogs[indexPath.row]).getBreedName()
         }
         //alternate cell color
         if(indexPath.row % 2==0){

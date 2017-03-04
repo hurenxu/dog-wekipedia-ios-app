@@ -3,26 +3,26 @@ import Foundation
 class Breed{
 
 	let breedName: String
-    var personality: String?
-    var origin: String?
-    var group: String?
-    var weight: String?
-    var height: String?
-    var head: String?
-    var body: String?
-    var ears: String?
-    var hair: String?
-    var tail: String?
-    var shedding: String?
-    var grooming: String?
-    var trainability: String?
-    var energyLevel: String?
-    var barkingLevel: String?
-    var lifeExpectancy: String?
-    var description: String?
-    var history: String?
-    var breeders: String?
-    var image: String?
+    var personality = ""
+    var origin = ""
+    var group = ""
+    var weight = ""
+    var height = ""
+    var head = ""
+    var body = ""
+    var ears = ""
+    var hair = ""
+    var tail = ""
+    var shedding = ""
+    var grooming = ""
+    var trainability = ""
+    var energyLevel = ""
+    var barkingLevel = ""
+    var lifeExpectancy = ""
+    var description = ""
+    var history = ""
+    var breeders = ""
+    var image = ""
     
     init(dictionary: NSDictionary) {
         breedName = (dictionary["breedName"] as? String)!
@@ -48,13 +48,13 @@ class Breed{
         image = (dictionary["image"] as? String) ?? ""
     }
 
-    init(breedName: String, personality: String, origin: String,
-         group: String, weight: String, height: String,
-         head: String, body: String, ears: String,
-         hair: String, tail: String, shedding: String,
-         grooming: String, trainability: String, energyLevel: String,
-         barkingLevel: String, lifeExpectancy: String, description: String,
-         history: String, breeders: String, image: String){
+    init(breedName: String, image: String, personality: String = "", origin: String = "",
+         group: String = "", weight: String = "", height: String = "",
+         head: String = "", body: String = "", ears: String = "",
+         hair: String = "", tail: String = "", shedding: String = "",
+         grooming: String = "", trainability: String = "", energyLevel: String = "",
+         barkingLevel: String = "", lifeExpectancy: String = "", description: String = "",
+         history: String = "", breeders: String = ""){
 		self.breedName = breedName
         self.personality = personality
         self.origin = origin
@@ -84,79 +84,83 @@ class Breed{
     }
     
     func getPersonality() -> String {
-        return self.personality!
+        return self.personality
     }
     
     func getOrigin() -> String {
-        return self.origin!
+        return self.origin
     }
     
     func getGroup() -> String {
-        return self.group!
+        return self.group
     }
     
     func getWeight() -> String {
-        return self.weight!
+        return self.weight
     }
     
     func getHead() -> String {
-        return self.head!
+        return self.head
     }
     
     func getBody() -> String {
-        return self.body!
+        return self.body
     }
     
     func getEars() -> String {
-        return self.ears!
+        return self.ears
     }
     
     func getTail() -> String {
-        return self.tail!
+        return self.tail
     }
     
     func getShedding() -> String {
-        return self.shedding!
+        return self.shedding
     }
     
     func getGrooming() -> String {
-        return self.grooming!
+        return self.grooming
     }
     
     func getTrainability() -> String {
-        return self.trainability!
+        return self.trainability
     }
     
     func getEnergyLevel() -> String {
-        return self.energyLevel!
+        return self.energyLevel
     }
     
     func getBarkingLevel() -> String {
-        return self.barkingLevel!
+        return self.barkingLevel
     }
     
     func getLifeExpectancy() -> String {
-        return self.lifeExpectancy!
+        return self.lifeExpectancy
     }
     
     func getDescription() -> String {
-        return self.description!
+        return self.description
     }
     
     func getHistory() -> String {
-        return self.history!
+        return self.history
     }
     
     func getBreeders() -> String {
-        return self.breeders!
+        return self.breeders
     }
     
     func getImage() -> String {
-        return self.image!
+        return self.image
     }
     
     func setPersonality(personality: String) {
         self.personality = personality
+    }
+    
+    func setImage(imageurl: String) {
+        self.image = imageurl
     }
 	
 }
