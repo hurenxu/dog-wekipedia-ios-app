@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		905DD4CDB85734ED8D9CA9E5 /* Pods_Swipe_Images.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B692EA12355070D1C2EDF01A /* Pods_Swipe_Images.framework */; };
 		A45B763D1E6A2BC500997D23 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45B763C1E6A2BC500997D23 /* StatsViewController.swift */; };
+		A4A8A32C1E6B5C24000657E1 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A8A32B1E6B5C24000657E1 /* ResultViewController.swift */; };
 		A4B4894A1E66A030000B551D /* Breed.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B489491E66A030000B551D /* Breed.swift */; };
 		A4B489561E69CD83000B551D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A4B489551E69CD83000B551D /* GoogleService-Info.plist */; };
 		A4FC1D401E44A7A80091B7D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FC1D3F1E44A7A80091B7D6 /* AppDelegate.swift */; };
@@ -22,6 +23,7 @@
 		086BFFCA7352E16B950229F2 /* Pods-Swipe Images.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swipe Images.release.xcconfig"; path = "Pods/Target Support Files/Pods-Swipe Images/Pods-Swipe Images.release.xcconfig"; sourceTree = "<group>"; };
 		45D274742FBACDF3255246BF /* Pods-Swipe Images.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swipe Images.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Swipe Images/Pods-Swipe Images.debug.xcconfig"; sourceTree = "<group>"; };
 		A45B763C1E6A2BC500997D23 /* StatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
+		A4A8A32B1E6B5C24000657E1 /* ResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		A4B489491E66A030000B551D /* Breed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Breed.swift; sourceTree = "<group>"; };
 		A4B489551E69CD83000B551D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A4FC1D3C1E44A7A80091B7D6 /* Swipe Images.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Swipe Images.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -87,6 +89,7 @@
 				A4FC1D3F1E44A7A80091B7D6 /* AppDelegate.swift */,
 				A4FC1D411E44A7A80091B7D6 /* SuggestionViewController.swift */,
 				A45B763C1E6A2BC500997D23 /* StatsViewController.swift */,
+				A4A8A32B1E6B5C24000657E1 /* ResultViewController.swift */,
 				A4B489491E66A030000B551D /* Breed.swift */,
 				A4FC1D431E44A7A80091B7D6 /* Main.storyboard */,
 				A4FC1D461E44A7A80091B7D6 /* Assets.xcassets */,
@@ -222,6 +225,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4A8A32C1E6B5C24000657E1 /* ResultViewController.swift in Sources */,
 				A4B4894A1E66A030000B551D /* Breed.swift in Sources */,
 				A4FC1D421E44A7A80091B7D6 /* SuggestionViewController.swift in Sources */,
 				A45B763D1E6A2BC500997D23 /* StatsViewController.swift in Sources */,

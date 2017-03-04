@@ -12,11 +12,16 @@ class StatsViewController: UIViewController {
 
     let SCREEN_SIZE: CGRect = UIScreen.main.bounds
     
+    // for result page
+    var breedArray: [Breed] = [Breed]()
+    var likeBreeds: [Int] = [Int]()
+    var nextBreeds: [Int] = [Int]()
+    
     var scrollView: UIScrollView! = nil
     
     // math constants
     let HALF: Int = 2
-    let CORNOR_RADIUS: Int = 10
+    let CORNER_RADIUS: Int = 10
     
     var topFilters: [String] = [String]()
     var likeFilters = [String: Int]()
@@ -81,7 +86,7 @@ class StatsViewController: UIViewController {
         myLabel.font = UIFont(name: myFont, size: CGFloat(myFontSize))
         myLabel.textAlignment = myAlignment
         myLabel.backgroundColor = myColor
-        myLabel.layer.cornerRadius = CGFloat(CORNOR_RADIUS)
+        myLabel.layer.cornerRadius = CGFloat(CORNER_RADIUS)
         myLabel.clipsToBounds = true
         scrollView.addSubview(myLabel)
     }
@@ -94,7 +99,7 @@ class StatsViewController: UIViewController {
         myButton.titleLabel?.font = UIFont(name: FONT, size: CGFloat(myFontSize))
         myButton.backgroundColor = BUTTON_COLOR
         myButton.isUserInteractionEnabled = true
-        myButton.layer.cornerRadius = CGFloat(CORNOR_RADIUS)
+        myButton.layer.cornerRadius = CGFloat(CORNER_RADIUS)
         scrollView.addSubview(myButton)
     }
     
@@ -114,6 +119,15 @@ class StatsViewController: UIViewController {
     func nextPressed(sender: UIButton!) {
         
         print("switch to result page")
+        
+        // pass data to result page
+        let resultVC: ResultViewController = ResultViewController()
+        resultVC.breedArray = breedArray
+        resultVC.likeBreeds = likeBreeds
+        resultVC.nextBreeds = nextBreeds
+        
+        self.navigationController?.pushViewController(resultVC, animated: true)
+        self.present(resultVC, animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
@@ -125,8 +139,6 @@ class StatsViewController: UIViewController {
         // set up the scroll view
         scrollView = UIScrollView(frame: self.view.bounds)
         scrollView.backgroundColor = UIColor(patternImage: UIImage(named: "backgroundHomeLarge.jpg")!)
-        scrollView.isUserInteractionEnabled = true
-        scrollView.isScrollEnabled = true
         self.view.addSubview(scrollView)
         
         // the origin of things

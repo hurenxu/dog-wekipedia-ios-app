@@ -58,12 +58,14 @@ class SuggestionViewController: UIViewController {
     let BREED_COUNT: Int = 10
     var currentBreed: Breed! = nil
     var nextBreed: Breed! = nil
+    var arrayOfBreedName: [String] = [String]()
+    
+    // for result page
     var breedArray: [Breed] = [Breed]()
     var likeBreeds: [Int] = [Int]()
     var nextBreeds: [Int] = [Int]()
-    var arrayOfBreedName: [String] = [String]()
     
-    // the dictionary and array of top three filters
+    // the dictionary and array of top three filters, for stats page
     var likeFilters: [String: Int]! = [String:Int]()
     var topFilters: [String] = [String]()
     let MAX_FILTERS: Int = 3
@@ -266,16 +268,16 @@ class SuggestionViewController: UIViewController {
         likeFilters["Tail: Super long"] = 4
         likeFilters["Ears: Super pointy"] = 5
         
-        // pass the data
+        // pass data to stats page then switch to stats page
+        let statsVC: StatsViewController = StatsViewController()
+        statsVC.topFilters = topFilters
+        statsVC.likeFilters = likeFilters
+        statsVC.breedArray = breedArray
+        statsVC.likeBreeds = likeBreeds
+        statsVC.nextBreeds = nextBreeds
+        self.navigationController?.pushViewController(statsVC, animated: true)
+        self.present(statsVC, animated: true, completion: nil)
         
-       //  self.navigationController?.pushViewController(statsVC, animated: true)
-        
-        // switch page
-        let statisticsViewController: StatsViewController = StatsViewController()
-        statisticsViewController.topFilters = topFilters
-        statisticsViewController.likeFilters = likeFilters
-        navigationController?.pushViewController(statisticsViewController, animated: true)
-        self.present(statisticsViewController, animated: true, completion: nil)
     }
     
     // find top three tags
@@ -465,8 +467,6 @@ class SuggestionViewController: UIViewController {
         rightButton.addTarget(self, action: #selector(self.sidePressed(sender:)), for: UIControlEvents.touchDown)
         self.view.addSubview(rightButton)
         self.view.addSubview(statsButton)
-
-
     }
 
     override func didReceiveMemoryWarning() {
@@ -486,4 +486,3 @@ extension UIView {
         self.layer.mask = mask
     }
 }
-
