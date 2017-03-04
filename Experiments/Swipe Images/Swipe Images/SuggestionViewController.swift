@@ -12,7 +12,6 @@ class SuggestionViewController: UIViewController {
     
     // the size of the phone
     let SCREEN_SIZE: CGRect = UIScreen.main.bounds
-    let ORIGIN: CGPoint = CGPoint(x: 0, y: 0)
     
     // offsets
     let IMAGE_OFFSET: Int = 30
@@ -65,7 +64,7 @@ class SuggestionViewController: UIViewController {
     var arrayOfBreedName: [String] = [String]()
     
     // the dictionary and array of top three filters
-    var likeFilters = [String:Int]()
+    var likeFilters: [String: Int]! = [String:Int]()
     var topFilters: [String] = [String]()
     let MAX_FILTERS: Int = 3
     
@@ -259,8 +258,8 @@ class SuggestionViewController: UIViewController {
         
         // switch page
         let statisticsViewController: StatsViewController = StatsViewController()
-        statisticsViewController.sampleString = "Taylor Swift"
-        statisticsViewController.delegate = self
+        //statisticsViewController.topFilters = topFilters
+        //statisticsViewController.likeFilters = likeFilters
         navigationController?.pushViewController(statisticsViewController, animated: true)
         self.present(statisticsViewController, animated: true, completion: nil)
     }
@@ -400,13 +399,12 @@ class SuggestionViewController: UIViewController {
         labelRelativeCenter = CGPoint(x: 0, y: LABEL_CENTER.y - IMAGE_CENTER.y)
         
         statsButton = UIButton(frame: CGRect(origin: CENTER_BUTTON, size: CENTER_BUTTON_SIZE))
-        statsButton.backgroundColor = UIColor.green
+        statsButton.backgroundColor = UIColor(red: 100.0/255.0, green: 120.0/255.0, blue: 150.0/255.0, alpha: 0.9)
         statsButton.layer.cornerRadius = CGFloat(CORNER_RADIUS)
         statsButton.setTitle("View Statistics", for: UIControlState.normal)
         statsButton.setTitleColor(UIColor.black, for: UIControlState.normal)
         statsButton.titleLabel?.font = UIFont(name: FONT, size: FONT_SIZE)
         statsButton.addTarget(self, action: #selector(self.centerPressed(sender:)), for: UIControlEvents.touchDown)
-        self.view.addSubview(statsButton)
         
         // static: border, image, and label
         borderStatic = UIView(frame: CGRect(origin: BORDER_CENTER, size: BORDER_SIZE))
@@ -452,6 +450,8 @@ class SuggestionViewController: UIViewController {
         rightButton.setBackgroundImage(UIImage(named: "Arrow"), for: UIControlState.normal)
         rightButton.addTarget(self, action: #selector(self.sidePressed(sender:)), for: UIControlEvents.touchDown)
         self.view.addSubview(rightButton)
+        self.view.addSubview(statsButton)
+
     }
 
     override func didReceiveMemoryWarning() {
