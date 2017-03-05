@@ -80,6 +80,14 @@ class SuggestionViewController: UIViewController {
     // radius size
     let CORNER_RADIUS = 10
     
+    func appendIndex(myArray: inout [Int]) {
+        
+        if !myArray.contains(index - 1) {
+            
+            myArray.append(index - 1)
+        }
+    }
+    
     func updateImages() {
         
         if !done {
@@ -193,9 +201,9 @@ class SuggestionViewController: UIViewController {
             // case to slide to left
             else {
             
-                // slide out then append the current index to likeBreeds
+                // append the current index to like breed then slideout
+                appendIndex(myArray: &likeBreeds)
                 slideOut(outsideX, outsideY)
-                likeBreeds.append(index)
             }
         }
         
@@ -216,9 +224,9 @@ class SuggestionViewController: UIViewController {
             // case to slide to right
             else {
                 
-                // slide out then append the current index to nextBreeds
+                // append the current index to next breed then slideout
+                appendIndex(myArray: &nextBreeds)
                 slideOut(outsideX, outsideY)
-                nextBreeds.append(index)
             }
         }
     }
@@ -226,27 +234,30 @@ class SuggestionViewController: UIViewController {
     // when pressed go left or right
     @IBAction func sidePressed(sender: UIButton) {
         
-        let IMAGE_HALF : CGFloat = CGFloat(imageDynamic.frame.size.width / 2)
-        let OFFSET = CGFloat(20)
-        
-        var outsideX: CGFloat! = nil
-        var outsideY: CGFloat! = nil
-        
-        if sender == leftButton {
+        if index < BREED_COUNT {
             
-            outsideX = CGFloat(0 - IMAGE_HALF - OFFSET)
-            outsideY = CGFloat(imageStatic.center.y)
-            likeBreeds.append(index)
-        }
-        
-        else if sender == rightButton {
+            let IMAGE_HALF : CGFloat = CGFloat(imageDynamic.frame.size.width / 2)
+            let OFFSET = CGFloat(20)
             
-            outsideX = CGFloat(self.view.frame.size.width + IMAGE_HALF + OFFSET)
-            outsideY = CGFloat(imageStatic.center.y)
-            nextBreeds.append(index)
+            var outsideX: CGFloat! = nil
+            var outsideY: CGFloat! = nil
+            
+            if sender == leftButton {
+                
+                outsideX = CGFloat(0 - IMAGE_HALF - OFFSET)
+                outsideY = CGFloat(imageStatic.center.y)
+                appendIndex(myArray: &likeBreeds)
+            }
+            
+            else if sender == rightButton {
+                
+                outsideX = CGFloat(self.view.frame.size.width + IMAGE_HALF + OFFSET)
+                outsideY = CGFloat(imageStatic.center.y)
+                appendIndex(myArray: &nextBreeds)
+            }
+            
+            slideOut(outsideX, outsideY)
         }
-        
-        slideOut(outsideX, outsideY)
     }
     
     // when pressed go left or right
@@ -277,7 +288,6 @@ class SuggestionViewController: UIViewController {
         statsVC.nextBreeds = nextBreeds
         self.navigationController?.pushViewController(statsVC, animated: true)
         self.present(statsVC, animated: true, completion: nil)
-        
     }
     
     // find top three tags
@@ -421,6 +431,7 @@ class SuggestionViewController: UIViewController {
         statsButton.setTitleColor(UIColor.black, for: UIControlState.normal)
         statsButton.titleLabel?.font = UIFont(name: FONT, size: FONT_SIZE)
         statsButton.addTarget(self, action: #selector(self.centerPressed(sender:)), for: UIControlEvents.touchDown)
+        self.view.addSubview(statsButton)
         
         // static: border, image, and label
         borderStatic = UIView(frame: CGRect(origin: BORDER_CENTER, size: BORDER_SIZE))
@@ -466,7 +477,6 @@ class SuggestionViewController: UIViewController {
         rightButton.setBackgroundImage(UIImage(named: "Arrow"), for: UIControlState.normal)
         rightButton.addTarget(self, action: #selector(self.sidePressed(sender:)), for: UIControlEvents.touchDown)
         self.view.addSubview(rightButton)
-        self.view.addSubview(statsButton)
     }
 
     override func didReceiveMemoryWarning() {
