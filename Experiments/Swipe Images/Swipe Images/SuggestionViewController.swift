@@ -134,12 +134,16 @@ class SuggestionViewController: UIViewController {
         }
         
         self.ready = true
+        leftButton.isUserInteractionEnabled = true
+        rightButton.isUserInteractionEnabled = true
     }
     
     func slideOut(_ outsideX: CGFloat, _ outsideY: CGFloat) {
         
         self.ready = false
-
+        leftButton.isUserInteractionEnabled = false
+        rightButton.isUserInteractionEnabled = false
+        
         UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.5, options: UIViewAnimationOptions.curveEaseIn , animations: ({
             
             self.imageDynamic.center.x = outsideX
