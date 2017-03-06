@@ -76,13 +76,14 @@ class SuggestionViewController: UIViewController {
     var index: Int = 0
     
     var done: Bool = false
+    var ready: Bool = true
     
     // radius size
     let CORNER_RADIUS = 10
     
     func appendIndex(myArray: inout [Int]) {
         
-        if !myArray.contains(index - 1) {
+        if !likeBreeds.contains(index - 1) && !nextBreeds.contains(index - 1) {
             
             myArray.append(index - 1)
         }
@@ -131,11 +132,19 @@ class SuggestionViewController: UIViewController {
             imageStatic.image = UIImage(named: nextBreed.getImage())
             labelStatic.text = nextBreed.getBreedName()
         }
+        
+        self.ready = true
+        leftButton.isUserInteractionEnabled = true
+        rightButton.isUserInteractionEnabled = true
     }
     
     func slideOut(_ outsideX: CGFloat, _ outsideY: CGFloat) {
         
-        UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 3.0, options: UIViewAnimationOptions.curveEaseIn , animations: ({
+        self.ready = false
+        leftButton.isUserInteractionEnabled = false
+        rightButton.isUserInteractionEnabled = false
+        
+        UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.5, options: UIViewAnimationOptions.curveEaseIn , animations: ({
             
             self.imageDynamic.center.x = outsideX
             self.imageDynamic.center.y = outsideY
@@ -152,81 +161,90 @@ class SuggestionViewController: UIViewController {
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-        let touch: UITouch! = touches.first
-        
-        previousLocation = touch.location(in: self.view)
+        if self.ready{
+            
+            let touch: UITouch! = touches.first
+            
+            previousLocation = touch.location(in: self.view)
+        }
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-        let touch: UITouch! = touches.first
-        
-        currentLocation = touch.location(in: self.view)
-        
-        let distanceX = CGFloat(currentLocation.x - previousLocation.x)
-        let distanceY = CGFloat(currentLocation.y - previousLocation.y)
-     
-        imageDynamic.center.x += distanceX
-        imageDynamic.center.y += distanceY
-        borderDynamic.center.x += distanceX
-        borderDynamic.center.y += distanceY
-        labelDynamic.center.x += distanceX
-        labelDynamic.center.y += distanceY
-        
-        previousLocation = currentLocation
+        if self.ready {
+            
+            let touch: UITouch! = touches.first
+            
+            currentLocation = touch.location(in: self.view)
+            
+            let distanceX = CGFloat(currentLocation.x - previousLocation.x)
+            let distanceY = CGFloat(currentLocation.y - previousLocation.y)
+         
+            imageDynamic.center.x += distanceX
+            imageDynamic.center.y += distanceY
+            borderDynamic.center.x += distanceX
+            borderDynamic.center.y += distanceY
+            labelDynamic.center.x += distanceX
+            labelDynamic.center.y += distanceY
+            
+            previousLocation = currentLocation
+        }
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-        let MIN_X : CGFloat = CGFloat(50)
-        let IMAGE_HALF : CGFloat = CGFloat(imageDynamic.frame.size.width / 2)
-        let OFFSET = CGFloat(20)
-        
-        let slope = CGFloat((imageDynamic.center.y - imageStatic.center.y) / (imageDynamic.center.x - imageStatic.center.x))
-        
-        // swipping left
-        if (imageDynamic.center.x < imageStatic.center.x) {
-        
-            let outsideX = CGFloat(0 - IMAGE_HALF - OFFSET)
-            let outsideY = CGFloat(slope * (outsideX - imageStatic.center.x) + imageStatic.center.y)
+        if self.ready {
             
-            // case to go back to center
-            if  imageDynamic.center.x > imageStatic.center.x - MIN_X {
+            let MIN_X : CGFloat = CGFloat(50)
+            let IMAGE_HALF : CGFloat = CGFloat(imageDynamic.frame.size.width / 2)
+            let OFFSET = CGFloat(20)
             
-                imageDynamic.center = imageStatic.center
-                borderDynamic.center = borderStatic.center
-                labelDynamic.center = labelStatic.center
-            }
+            let slope = CGFloat((imageDynamic.center.y - imageStatic.center.y) / (imageDynamic.center.x - imageStatic.center.x))
             
-            // case to slide to left
-            else {
+            // swipping left
+            if (imageDynamic.center.x < imageStatic.center.x) {
             
-                // append the current index to like breed then slideout
-                appendIndex(myArray: &likeBreeds)
-                slideOut(outsideX, outsideY)
-            }
-        }
-        
-        // swipping right
-        else {
-            
-            let outsideX = CGFloat(self.view.frame.size.width + IMAGE_HALF + OFFSET)
-            let outsideY = CGFloat(slope * (outsideX - imageStatic.center.x) + imageStatic.center.y)
-            
-            // case to go back to center
-            if  imageDynamic.center.x < imageStatic.center.x + MIN_X {
+                let outsideX = CGFloat(0 - IMAGE_HALF - OFFSET)
+                let outsideY = CGFloat(slope * (outsideX - imageStatic.center.x) + imageStatic.center.y)
                 
-                imageDynamic.center = imageStatic.center
-                borderDynamic.center = borderStatic.center
-                labelDynamic.center = labelStatic.center
-            }
+                // case to go back to center
+                if  imageDynamic.center.x > imageStatic.center.x - MIN_X {
                 
-            // case to slide to right
+                    imageDynamic.center = imageStatic.center
+                    borderDynamic.center = borderStatic.center
+                    labelDynamic.center = labelStatic.center
+                }
+                
+                // case to slide to left
+                else {
+                
+                    // append the current index to like breed then slideout
+                    appendIndex(myArray: &likeBreeds)
+                    slideOut(outsideX, outsideY)
+                }
+            }
+            
+            // swipping right
             else {
                 
-                // append the current index to next breed then slideout
-                appendIndex(myArray: &nextBreeds)
-                slideOut(outsideX, outsideY)
+                let outsideX = CGFloat(self.view.frame.size.width + IMAGE_HALF + OFFSET)
+                let outsideY = CGFloat(slope * (outsideX - imageStatic.center.x) + imageStatic.center.y)
+                
+                // case to go back to center
+                if  imageDynamic.center.x < imageStatic.center.x + MIN_X {
+                    
+                    imageDynamic.center = imageStatic.center
+                    borderDynamic.center = borderStatic.center
+                    labelDynamic.center = labelStatic.center
+                }
+                    
+                // case to slide to right
+                else {
+                    
+                    // append the current index to next breed then slideout
+                    appendIndex(myArray: &nextBreeds)
+                    slideOut(outsideX, outsideY)
+                }
             }
         }
     }
@@ -234,7 +252,7 @@ class SuggestionViewController: UIViewController {
     // when pressed go left or right
     @IBAction func sidePressed(sender: UIButton) {
         
-        if index < BREED_COUNT {
+        if index <= breedArray.count && self.ready {
             
             let IMAGE_HALF : CGFloat = CGFloat(imageDynamic.frame.size.width / 2)
             let OFFSET = CGFloat(20)
@@ -431,52 +449,53 @@ class SuggestionViewController: UIViewController {
         statsButton.setTitleColor(UIColor.black, for: UIControlState.normal)
         statsButton.titleLabel?.font = UIFont(name: FONT, size: FONT_SIZE)
         statsButton.addTarget(self, action: #selector(self.centerPressed(sender:)), for: UIControlEvents.touchDown)
-        self.view.addSubview(statsButton)
         
         // static: border, image, and label
         borderStatic = UIView(frame: CGRect(origin: BORDER_CENTER, size: BORDER_SIZE))
         borderStatic.backgroundColor = UIColor.white
         borderStatic.layer.cornerRadius = CGFloat(CORNER_RADIUS)
-        self.view.addSubview(borderStatic)
         
         imageStatic = UIImageView(image: UIImage(named: nextBreed.getImage()))
         imageStatic.frame = CGRect(origin: IMAGE_CENTER, size: IMAGE_SIZE)
         imageStatic.roundCorners(corners: [.topLeft, .topRight], radius: CGFloat(CORNER_RADIUS))
-        self.view.addSubview(imageStatic)
         
         labelStatic.text = nextBreed.getBreedName()
         labelStatic.frame = CGRect(origin: LABEL_CENTER, size: LABEL_SIZE)
         labelStatic.font = UIFont(name: FONT, size: FONT_SIZE)
         labelStatic.textAlignment = NSTextAlignment.center
-        self.view.addSubview(labelStatic)
         
         // dynamic: border, image, and label
         borderDynamic = UIView(frame: CGRect(origin: BORDER_CENTER, size: BORDER_SIZE))
         borderDynamic.backgroundColor = UIColor.white
         borderDynamic.layer.cornerRadius = CGFloat(CORNER_RADIUS)
-        self.view.addSubview(borderDynamic)
         
         imageDynamic = UIImageView(image: UIImage(named: currentBreed.getImage()))
         imageDynamic.frame = CGRect(origin: IMAGE_CENTER, size: IMAGE_SIZE)
         imageDynamic.roundCorners(corners: [.topLeft, .topRight], radius: CGFloat(CORNER_RADIUS))
-        self.view.addSubview(imageDynamic)
         
         labelDynamic.text = currentBreed.getBreedName()
         labelDynamic.frame = CGRect(origin: LABEL_CENTER, size: LABEL_SIZE)
         labelDynamic.font = UIFont(name: FONT, size: FONT_SIZE)
         labelDynamic.textAlignment = NSTextAlignment.center
-        self.view.addSubview(labelDynamic)
         
         // buttons set up
         leftButton = UIButton(frame: CGRect(origin: LEFT_CENTER, size: BUTTON_SIZE))
         leftButton.setBackgroundImage(UIImage(named: "Red Heart"), for: UIControlState.normal)
         leftButton.addTarget(self, action: #selector(self.sidePressed(sender:)), for: UIControlEvents.touchDown)
-        self.view.addSubview(leftButton)
         
         rightButton = UIButton(frame: CGRect(origin: RIGHT_CENTER, size: BUTTON_SIZE))
         rightButton.setBackgroundImage(UIImage(named: "Arrow"), for: UIControlState.normal)
         rightButton.addTarget(self, action: #selector(self.sidePressed(sender:)), for: UIControlEvents.touchDown)
+        
+        self.view.addSubview(leftButton)
         self.view.addSubview(rightButton)
+        self.view.addSubview(statsButton)
+        self.view.addSubview(borderStatic)
+        self.view.addSubview(imageStatic)
+        self.view.addSubview(labelStatic)
+        self.view.addSubview(borderDynamic)
+        self.view.addSubview(imageDynamic)
+        self.view.addSubview(labelDynamic)
     }
 
     override func didReceiveMemoryWarning() {

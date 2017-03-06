@@ -104,7 +104,7 @@ class BreedTableViewCell: UITableViewCell {
                 contentView.addSubview(myScrollView)
                 
                 // set up the description label
-                let DESCRIPTION_SIZE: CGSize = CGSize(width: 140, height: 10)
+                let DESCRIPTION_SIZE: CGSize = CGSize(width: 150, height: 10)
                 let DESCRIPTION_ORIGIN: CGPoint = CGPoint(x: 10, y: 0)
                 myDescription = UILabel(frame: CGRect(origin: DESCRIPTION_ORIGIN, size: DESCRIPTION_SIZE))
                 setUpLabel(myString: descriptionString, myFont: FONT, mySize: DESCRIPTION_FONT_SIZE, myColor: UIColor.clear, myAlignment: NSTextAlignment.left, myCorner: 0, myLabel: myDescription)
