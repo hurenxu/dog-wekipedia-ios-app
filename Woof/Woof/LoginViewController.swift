@@ -18,6 +18,19 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate{
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        // let image = UIImage(named:"bacgroundHome.png")
+        let shade = UIImageView(frame:UIScreen.main.bounds)
+        shade.backgroundColor = UIColor.black
+        shade.alpha = 0.5
+        self.view.addSubview(shade)
+        self.view.sendSubview(toBack: shade)
+        
+        
+        let BackimageView = UIImageView(frame:UIScreen.main.bounds)
+        BackimageView.image = UIImage(named:"bacgroundHome.png")
+        self.view.addSubview(BackimageView)
+        self.view.sendSubview(toBack: BackimageView)
+
         GIDSignIn.sharedInstance().uiDelegate = self
         
     }
