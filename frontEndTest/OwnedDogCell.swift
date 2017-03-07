@@ -32,9 +32,6 @@ class OwnedDogCell: UICollectionViewCell {
         contentView.addSubview(textLabel!)
         
         
-
-
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
