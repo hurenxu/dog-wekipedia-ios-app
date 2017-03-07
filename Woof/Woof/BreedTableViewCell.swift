@@ -91,7 +91,7 @@ class BreedTableViewCell: UITableViewCell {
                 
                 myImage = UIImageView(frame: CGRect(origin: IMAGE_ORIGIN, size: IMAGE_SIZE))
                 myImage.image = UIImage(named: imageString)
-                myImage.setRounded()
+                myImage.setRound()
                 contentView.addSubview(myImage)
 
                 // set up the scroll view
@@ -132,7 +132,7 @@ class BreedTableViewCell: UITableViewCell {
 // round the image
 extension UIImageView {
     
-    func setRounded() {
+    func setRound() {
     
         let RADIUS = self.frame.width / 2
         self.layer.cornerRadius = RADIUS

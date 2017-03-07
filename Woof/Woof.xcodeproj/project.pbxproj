@@ -23,7 +23,6 @@
 		076344861E415470001E20C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076344851E415470001E20C9 /* AppDelegate.swift */; };
 		076344881E415470001E20C9 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076344871E415470001E20C9 /* FirstViewController.swift */; };
 		0763448D1E415470001E20C9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0763448B1E415470001E20C9 /* Main.storyboard */; };
-		0763448F1E415470001E20C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0763448E1E415470001E20C9 /* Assets.xcassets */; };
 		076344921E415470001E20C9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 076344901E415470001E20C9 /* LaunchScreen.storyboard */; };
 		0763449D1E415470001E20C9 /* WoofTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0763449C1E415470001E20C9 /* WoofTests.swift */; };
 		076344A81E415470001E20C9 /* WoofUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076344A71E415470001E20C9 /* WoofUITests.swift */; };
@@ -34,6 +33,10 @@
 		076344BB1E415DC1001E20C9 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 076344B91E415DC1001E20C9 /* FBSDKLoginKit.framework */; };
 		076344BC1E415DC1001E20C9 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 076344B91E415DC1001E20C9 /* FBSDKLoginKit.framework */; };
 		076344BE1E416EA0001E20C9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076344BD1E416EA0001E20C9 /* LoginViewController.swift */; };
+		076A4D861E6E52E800ABFC98 /* OwnedDogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076A4D841E6E52E800ABFC98 /* OwnedDogCell.swift */; };
+		076A4D871E6E52E800ABFC98 /* OwnedDogDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076A4D851E6E52E800ABFC98 /* OwnedDogDetailViewController.swift */; };
+		076A4D891E6E53C400ABFC98 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076A4D881E6E53C400ABFC98 /* NotificationViewController.swift */; };
+		076A4D8B1E6E6CF300ABFC98 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 076A4D8A1E6E6CF300ABFC98 /* Assets.xcassets */; };
 		07AFF2281E6A55020089867C /* Major.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07AFF2261E6A55020089867C /* Major.storyboard */; };
 		07AFF2291E6A55020089867C /* Major.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07AFF2261E6A55020089867C /* Major.storyboard */; };
 		07AFF22A1E6A55020089867C /* Major.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07AFF2261E6A55020089867C /* Major.storyboard */; };
@@ -148,7 +151,6 @@
 		076344851E415470001E20C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		076344871E415470001E20C9 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		0763448C1E415470001E20C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		0763448E1E415470001E20C9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		076344911E415470001E20C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		076344931E415470001E20C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		076344981E415470001E20C9 /* WoofTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WoofTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -160,6 +162,10 @@
 		076344B51E4154AE001E20C9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		076344B91E415DC1001E20C9 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		076344BD1E416EA0001E20C9 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		076A4D841E6E52E800ABFC98 /* OwnedDogCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OwnedDogCell.swift; sourceTree = "<group>"; };
+		076A4D851E6E52E800ABFC98 /* OwnedDogDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OwnedDogDetailViewController.swift; sourceTree = "<group>"; };
+		076A4D881E6E53C400ABFC98 /* NotificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
+		076A4D8A1E6E6CF300ABFC98 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		07AFF2271E6A55020089867C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Major.storyboard; sourceTree = "<group>"; };
 		07AFF22B1E6A55D20089867C /* bacgroundHome.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bacgroundHome.png; sourceTree = "<group>"; };
 		07AFF22C1E6A55D20089867C /* backgroundHome.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = backgroundHome.jpg; sourceTree = "<group>"; };
@@ -290,10 +296,10 @@
 				076344851E415470001E20C9 /* AppDelegate.swift */,
 				07DD8C861E51089D009A953A /* Controller */,
 				075FBD841E4D636E009ECE7C /* Classes */,
-				0763448E1E415470001E20C9 /* Assets.xcassets */,
 				0763448B1E415470001E20C9 /* Main.storyboard */,
 				07AFF2261E6A55020089867C /* Major.storyboard */,
 				076344901E415470001E20C9 /* LaunchScreen.storyboard */,
+				076A4D8A1E6E6CF300ABFC98 /* Assets.xcassets */,
 				076344931E415470001E20C9 /* Info.plist */,
 				076344B51E4154AE001E20C9 /* GoogleService-Info.plist */,
 			);
@@ -342,6 +348,9 @@
 				07AFF23C1E6A55D20089867C /* SearchTableViewController.swift */,
 				07AFF23A1E6A55D20089867C /* ProfileViewController.swift */,
 				07AFF2371E6A55D20089867C /* IPetViewController.swift */,
+				076A4D881E6E53C400ABFC98 /* NotificationViewController.swift */,
+				076A4D841E6E52E800ABFC98 /* OwnedDogCell.swift */,
+				076A4D851E6E52E800ABFC98 /* OwnedDogDetailViewController.swift */,
 				07AFF2351E6A55D20089867C /* HomepageViewController.swift */,
 				07AFF2331E6A55D20089867C /* FilterTableViewController.swift */,
 				076344871E415470001E20C9 /* FirstViewController.swift */,
@@ -508,7 +517,6 @@
 				0758A91D1E450B5B00BE9145 /* Rubik-LightItalic.ttf in Resources */,
 				0758A9181E450B5B00BE9145 /* Rubik-BlackItalic.ttf in Resources */,
 				07AFF2281E6A55020089867C /* Major.storyboard in Resources */,
-				0763448F1E415470001E20C9 /* Assets.xcassets in Resources */,
 				0758A91B1E450B5B00BE9145 /* Rubik-Italic.ttf in Resources */,
 				07AFF25F1E6A55D20089867C /* iconDogButton.png in Resources */,
 				07AFF2681E6A55D20089867C /* logo.jpg in Resources */,
@@ -518,6 +526,7 @@
 				0758A91C1E450B5B00BE9145 /* Rubik-Light.ttf in Resources */,
 				0758A9171E450B5B00BE9145 /* Rubik-Black.ttf in Resources */,
 				0763448D1E415470001E20C9 /* Main.storyboard in Resources */,
+				076A4D8B1E6E6CF300ABFC98 /* Assets.xcassets in Resources */,
 				07AFF2651E6A55D20089867C /* loginLogo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -704,6 +713,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4A8A3331E6E713F000657E1 /* BreedTableViewCell.swift in Sources */,
+				076A4D861E6E52E800ABFC98 /* OwnedDogCell.swift in Sources */,
 				07AFF24A1E6A55D20089867C /* DetailViewController.swift in Sources */,
 				075FBD811E4D635D009ECE7C /* Breed.swift in Sources */,
 				07AFF24D1E6A55D20089867C /* DogCell.swift in Sources */,
@@ -717,8 +727,11 @@
 				075FBD831E4D635D009ECE7C /* User.swift in Sources */,
 				07AFF2531E6A55D20089867C /* DogProfile.swift in Sources */,
 				07AFF26E1E6A55D20089867C /* Pulsing.swift in Sources */,
+				076A4D891E6E53C400ABFC98 /* NotificationViewController.swift in Sources */,
 				076344861E415470001E20C9 /* AppDelegate.swift in Sources */,
 				076344881E415470001E20C9 /* FirstViewController.swift in Sources */,
+				2F2E8EF71E496C0700F911ED /* SuggestionViewController.swift in Sources */,
+				076A4D871E6E52E800ABFC98 /* OwnedDogDetailViewController.swift in Sources */,
 				07AFF2561E6A55D20089867C /* FilterTableViewController.swift in Sources */,
 				A4A8A3341E6E713F000657E1 /* ResultViewController.swift in Sources */,
 				07B4D74C1E56A13200DA6A2C /* DataAccessObject.swift in Sources */,
