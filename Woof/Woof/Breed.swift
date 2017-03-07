@@ -123,7 +123,7 @@ class Breed{
     }
     
     func getHeight() -> String {
-        return self.head
+        return self.height
     }
 
     func getWeight() -> String {

@@ -91,5 +91,22 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+    <key>NSAppTransportSecurity</key>
+    <dict>
+        <key>NSAllowsArbitraryLoads</key>
+        <true/>
+        <key>NSExceptionDomains</key>
+        <dict>
+            <key>http://www.allsmalldogbreeds.com/breeds/american-cocker-spaniel.jpg</key>
+            <key>http://petguide.com.vsassets.com/wp-content/uploads/2013/02/australian-shepherd-11.jpg</key>
+            <key>http://pbs.twimg.com/media/CQKgT40WcAAxTgE.jpg:large</key>
+            <dict>
+                <key>NSIncludesSubdomains</key>
+                <true/>
+                <key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
+                <false/>
+            </dict>
+        </dict>
+    </dict>
 </dict>
 </plist>
