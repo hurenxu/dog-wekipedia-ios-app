@@ -122,9 +122,10 @@ class Breed{
         return self.personality
     }
     
+    /**
     func getHeight() -> String {
         return self.head
-    }
+    }*/
 
     func getWeight() -> String {
         return self.weight

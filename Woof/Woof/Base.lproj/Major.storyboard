@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -227,7 +227,7 @@
         <!--Suggestion-->
         <scene sceneID="Kw0-oV-wU2">
             <objects>
-                <viewController id="nW2-EI-7nf" customClass="SuggestionViewController" customModule="Woof" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SuggestionViewController" id="nW2-EI-7nf" customClass="SuggestionViewController" customModule="Woof" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="a4V-gK-VAq"/>
                         <viewControllerLayoutGuide type="bottom" id="TGB-xT-MRw"/>
@@ -386,7 +386,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ukb-3V-0FP" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Woofipedia" image="WoofipediaIcon" selectedImage="WoofipediaIcon" id="cPa-gy-q4n"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="FgG-aF-CJq">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="FgG-aF-CJq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -405,7 +405,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Vn1-eE-3tb" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Suggestion" image="SuggestionIcon" id="Qcz-Ki-ccI"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="szK-7W-ENY">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="szK-7W-ENY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -424,7 +424,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uTt-g1-nEQ" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="iPet" image="iPetIcon" id="KhS-bD-SjT"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="w8L-5L-583">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="w8L-5L-583">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
