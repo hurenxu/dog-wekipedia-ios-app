@@ -35,6 +35,10 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate{
         
     }
     
+    @IBAction func browse(_ sender: Any) {
+        self.performSegue(withIdentifier: "login", sender: self)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
