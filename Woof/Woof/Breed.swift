@@ -3,77 +3,95 @@ import Foundation
 class Breed{
 
 	let breedName: String
-    var personality: String?
-    var origin: String?
-    var group: String?
-    var weight: String?
-    var height: String?
-    var head: String?
-    var body: String?
-    var ears: String?
-    var hair: String?
-    var tail: String?
-    var shedding: String?
-    var grooming: String?
-    var trainability: String?
-    var energyLevel: String?
-    var barkingLevel: String?
-    var lifeExpectancy: String?
-    var description: String?
-    var history: String?
-    var breeders: String?
-    var image: String?
+    var popularity = ""
+    var origin = ""
+    //Group :"Herding"; "Hound";"Non Sporting"; "Sporting"; "Terrier"; "Toy"; "Working"
+    var group = ""
+    //Body size :"Large" ; "Medium" ; "Small"
+    var size = ""
+    var type = ""
+    var lifeExpectancy = ""
+    //Personality: "Alert"; "Confident"; "Courageous"; "Curious"; "Intelligent"; "Loyal"
+    //Personality(cont'd): "Obedient"; "Watchful";"Friendly";"Kind";"Reliable"; "Loving"; "Social"; "Sweet"; "Gentle"; "Independent"; "Lively"; "Affectionate";
+    //Personality(cont'd): "Playful"; "Atheletic"; "Gentle"; "Easygoing"; "Keen"; "Aggressive"; "Energetic"; "Active";
+    //Personality(cont'd): "Instinctual"; "Fearless"; "Protective"; "Good-natured"; "Trainable"; "Brave"; "Bright"; "Boisterous"; "Bold"; "Cooperative"; "Outgoing"; "Clever";
+    //Personality(cont'd): "Stubborn"; "Devoted";"Reserved"; "Spirited"; "Cheerful"
+    var personality = ""
+    var height = ""
+    var weight = ""
+    //Colors: "Black"; "White"; "Red"; "Tan"; "Silver";"Chocolate"; "Yellow"; "Seal"; "Buff"
+    //Colors(cont'd): "Golden"; "Brindle"; "Fawn"; "Beige"; "Blue";
+    //Colors(cont'd): "Apricot"; "Brown"; "Cream"; "Gray"; "Mahogany"; "Rust"; "Liver"; "Loan"
+    //Colors(cont'd): "Agouti"; "Sable"; "Mantle"; "Merle"; "Harlequin"; "Salt"; "Pepper"; "Blenheim"; "Ruby"; "Orange"
+    var colors = ""
+    var litterSize = ""
+    var price = ""
+    //Barking Level: "Frequent"; "Occasional"; "Rare";
+    var barkingLevel = ""
+    var childFriendly = ""
+    //Grooming: "High"; "Moderate"; "Low"
+    var grooming = ""
+    //Shedding: "Minimal"; "Moderate"; "Constant"; "Seasonal"
+    var shedding = ""
+    //Trainability: "Easy"; "Average"; "Moderately Easy"
+    var trainability = ""
+    
+    
+    var breeders = ""
+    var image = ""
     
     init(dictionary: NSDictionary) {
         breedName = (dictionary["breedName"] as? String)!
-        personality = (dictionary["personality"]as? String) ?? ""
+        popularity = (dictionary["popularity"]as? String) ?? ""
         origin = (dictionary["origin"] as? String) ?? ""
         group = (dictionary["group"] as? String) ?? ""
-        weight = (dictionary["weight"] as? String) ?? ""
-        height = (dictionary["height"] as? String) ?? ""
-        head = (dictionary["head"] as? String) ?? ""
-        body = (dictionary["body"] as? String) ?? ""
-        ears = (dictionary["ears"] as? String) ?? ""
-        hair = (dictionary["hair"] as? String) ?? ""
-        tail = (dictionary["tail"] as? String) ?? ""
-        shedding = (dictionary["shedding"] as? String) ?? ""
-        grooming = (dictionary["grooming"] as? String) ?? ""
-        trainability = (dictionary["trainability"] as? String) ?? ""
-        energyLevel = (dictionary["energyLevel"] as? String) ?? ""
-        barkingLevel = (dictionary["barkingLevel"] as? String) ?? ""
+        size = (dictionary["size"] as? String) ?? ""
+        type = (dictionary["type"] as? String) ?? ""
         lifeExpectancy = (dictionary["lifeExpectancy"] as? String) ?? ""
-        description = (dictionary["description"] as? String) ?? ""
-        history = (dictionary["histrory"] as? String) ?? ""
+        personality = (dictionary["personality"]as? String) ?? ""
+        height = (dictionary["height"] as? String) ?? ""
+        weight = (dictionary["weight"] as? String) ?? ""
+        colors = (dictionary["colors"] as? String) ?? ""
+        litterSize = (dictionary["litterSize"] as? String) ?? ""
+        price = (dictionary["price"] as? String) ?? ""
+        barkingLevel = (dictionary["barkingLevel"] as? String) ?? ""
+        childFriendly = (dictionary["childFriendly"] as? String) ?? ""
+        grooming = (dictionary["grooming"] as? String) ?? ""
+        shedding = (dictionary["shedding"] as? String) ?? ""
+        trainability = (dictionary["trainability"] as? String) ?? ""
+        
         breeders = (dictionary["breeders"] as? String) ?? ""
         image = (dictionary["image"] as? String) ?? ""
     }
 
-    init(breedName: String, personality: String, origin: String,
-         group: String, weight: String, height: String,
-         head: String, body: String, ears: String,
-         hair: String, tail: String, shedding: String,
-         grooming: String, trainability: String, energyLevel: String,
-         barkingLevel: String, lifeExpectancy: String, description: String,
-         history: String, breeders: String, image: String){
+    init(breedName: String, popularity: String, origin: String, group: String, size: String, type: String, lifeExpectancy: String, personality: String = "",
+         height: String = "", weight: String = "",
+         colors: String, litterSize: String, price: String, barkingLevel: String, childFriendly: String,
+         
+         grooming: String = "",shedding: String = "", trainability: String = "",
+         breeders: String, image: String){
 		self.breedName = breedName
-        self.personality = personality
+        self.popularity = popularity
         self.origin = origin
         self.group = group
-        self.weight = weight
-        self.height = height
-        self.head = head
-        self.body = body
-        self.ears = ears
-        self.hair = hair
-        self.tail = tail
-        self.shedding = shedding
-        self.grooming = grooming
-        self.trainability = trainability
-        self.energyLevel = energyLevel
-        self.barkingLevel = barkingLevel
+        self.size = size
+        self.type = type
         self.lifeExpectancy = lifeExpectancy
-        self.description = description
-        self.history = history
+        
+        self.personality = personality
+        self.height = height
+        self.weight = weight
+        self.colors = colors
+        self.litterSize = litterSize
+        self.price = price
+        self.barkingLevel = barkingLevel
+        self.childFriendly = childFriendly
+        self.grooming = grooming
+        self.shedding = shedding
+        
+        self.trainability = trainability
+        
+        
         self.breeders = breeders
         self.image = image
 	}
@@ -82,81 +100,73 @@ class Breed{
     func getBreedName() -> String {
         return self.breedName
     }
-    
-    func getPersonality() -> String {
-        return self.personality!
+    func getPopularity() -> String {
+        return self.popularity
     }
-    
     func getOrigin() -> String {
-        return self.origin!
+        return self.origin
     }
-    
     func getGroup() -> String {
-        return self.group!
+        return self.group
     }
-    
-    func getWeight() -> String {
-        return self.weight!
+    func getSize() -> String {
+        return self.size
     }
-    
-    func getHead() -> String {
-        return self.head!
+    func getType() -> String {
+        return self.type
     }
-    
-    func getBody() -> String {
-        return self.body!
-    }
-    
-    func getEars() -> String {
-        return self.ears!
-    }
-    
-    func getTail() -> String {
-        return self.tail!
-    }
-    
-    func getShedding() -> String {
-        return self.shedding!
-    }
-    
-    func getGrooming() -> String {
-        return self.grooming!
-    }
-    
-    func getTrainability() -> String {
-        return self.trainability!
-    }
-    
-    func getEnergyLevel() -> String {
-        return self.energyLevel!
-    }
-    
-    func getBarkingLevel() -> String {
-        return self.barkingLevel!
-    }
-    
     func getLifeExpectancy() -> String {
-        return self.lifeExpectancy!
+        return self.lifeExpectancy
+    }
+    func getPersonality() -> String {
+        return self.personality
     }
     
-    func getDescription() -> String {
-        return self.description!
+    func getHeight() -> String {
+        return self.head
+    }
+
+    func getWeight() -> String {
+        return self.weight
     }
     
-    func getHistory() -> String {
-        return self.history!
+    func getColors() -> String {
+        return self.colors
+    }
+    
+    func getLitterSize() -> String {
+        return self.litterSize
+    }
+    func getPrice() -> String {
+        return self.price
+    }
+    func getBarkingLevel() -> String {
+        return self.barkingLevel
+    }
+    func getGrooming() -> String {
+        return self.grooming
+    }
+    func getShedding() -> String {
+        return self.shedding
+    }
+    func getTrainability() -> String {
+        return self.trainability
     }
     
     func getBreeders() -> String {
-        return self.breeders!
+        return self.breeders
     }
     
     func getImage() -> String {
-        return self.image!
+        return self.image
     }
     
     func setPersonality(personality: String) {
         self.personality = personality
+    }
+    
+    func setImage(imageurl: String) {
+        self.image = imageurl
     }
 	
 }

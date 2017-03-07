@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		14026E495E9CDF996E26F9F8 /* Pods_Hompage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACA4C2A213890525399599B9 /* Pods_Hompage.framework */; };
 		63E14D0C1E60062F00EB2B90 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E14D0B1E60062F00EB2B90 /* DetailViewController.swift */; };
 		9E3057231E638A870006783E /* dogProfile.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E3057221E638A870006783E /* dogProfile.png */; };
 		9E3057251E638BEE0006783E /* bone-flat.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E3057241E638BEE0006783E /* bone-flat.png */; };
@@ -20,7 +21,6 @@
 		9E96F69D1E637F55009ECE73 /* backgroundHome.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9E96F69C1E637F55009ECE73 /* backgroundHome.jpg */; };
 		9E96F69F1E6383E6009ECE73 /* homepageGradient.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9E96F69E1E6383E6009ECE73 /* homepageGradient.jpg */; };
 		9E96F6A11E6387FE009ECE73 /* iconDogButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E96F6A01E6387FE009ECE73 /* iconDogButton.png */; };
-		9EA6662A1E5A602F00631E13 /* DogProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA666291E5A602F00631E13 /* DogProfile.swift */; };
 		9EBF4DEC1E4A54BD0068950A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBF4DEB1E4A54BD0068950A /* AppDelegate.swift */; };
 		9EBF4DEE1E4A54BD0068950A /* HomepageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBF4DED1E4A54BD0068950A /* HomepageViewController.swift */; };
 		9EBF4DF01E4A54BD0068950A /* WoofipediaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBF4DEF1E4A54BD0068950A /* WoofipediaViewController.swift */; };
@@ -30,8 +30,11 @@
 		9EBF4E031E4A54BD0068950A /* HompageUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBF4E021E4A54BD0068950A /* HompageUITests.swift */; };
 		9EBF4E0E1E4A637C0068950A /* SuggestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBF4E0D1E4A637C0068950A /* SuggestionViewController.swift */; };
 		9EBF4E101E4A646D0068950A /* IPetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBF4E0F1E4A646D0068950A /* IPetViewController.swift */; };
-		9EBF4E131E4A8A1F0068950A /* DogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBF4E121E4A8A1F0068950A /* DogCell.swift */; };
-		9EBF4E161E4A9EA40068950A /* Dog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBF4E151E4A9EA40068950A /* Dog.swift */; };
+		9ECB138A1E6A3D5900C250AE /* DogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ECB13891E6A3D5900C250AE /* DogCell.swift */; };
+		9EE23C881E6A30D90038DE69 /* Breed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE23C871E6A30D90038DE69 /* Breed.swift */; };
+		9EE23C8A1E6A35D00038DE69 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE23C891E6A35D00038DE69 /* LoginViewController.swift */; };
+		9EE23C8C1E6A36750038DE69 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9EE23C8B1E6A36750038DE69 /* GoogleService-Info.plist */; };
+		E0B5AA6B0F0534FB9F84608F /* Pods_HompageUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEC35B812A0CB339223ED068 /* Pods_HompageUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +48,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		341171150E5D511BC1C6EBB5 /* Pods-HompageUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HompageUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HompageUITests/Pods-HompageUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		4144097EBF53199735EA5CE8 /* Pods-HompageUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HompageUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HompageUITests/Pods-HompageUITests.release.xcconfig"; sourceTree = "<group>"; };
 		63E14D0B1E60062F00EB2B90 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		9E3057221E638A870006783E /* dogProfile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dogProfile.png; sourceTree = "<group>"; };
 		9E3057241E638BEE0006783E /* bone-flat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bone-flat.png"; sourceTree = "<group>"; };
@@ -58,7 +63,6 @@
 		9E96F69C1E637F55009ECE73 /* backgroundHome.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = backgroundHome.jpg; sourceTree = "<group>"; };
 		9E96F69E1E6383E6009ECE73 /* homepageGradient.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = homepageGradient.jpg; sourceTree = "<group>"; };
 		9E96F6A01E6387FE009ECE73 /* iconDogButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconDogButton.png; sourceTree = "<group>"; };
-		9EA666291E5A602F00631E13 /* DogProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DogProfile.swift; sourceTree = "<group>"; };
 		9EBF4DE81E4A54BD0068950A /* Hompage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hompage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EBF4DEB1E4A54BD0068950A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9EBF4DED1E4A54BD0068950A /* HomepageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomepageViewController.swift; sourceTree = "<group>"; };
@@ -72,8 +76,14 @@
 		9EBF4E041E4A54BD0068950A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9EBF4E0D1E4A637C0068950A /* SuggestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestionViewController.swift; sourceTree = "<group>"; };
 		9EBF4E0F1E4A646D0068950A /* IPetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPetViewController.swift; sourceTree = "<group>"; };
-		9EBF4E121E4A8A1F0068950A /* DogCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DogCell.swift; sourceTree = "<group>"; };
-		9EBF4E151E4A9EA40068950A /* Dog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dog.swift; sourceTree = "<group>"; };
+		9ECB13891E6A3D5900C250AE /* DogCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DogCell.swift; sourceTree = "<group>"; };
+		9EE23C871E6A30D90038DE69 /* Breed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Breed.swift; sourceTree = "<group>"; };
+		9EE23C891E6A35D00038DE69 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		9EE23C8B1E6A36750038DE69 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		ACA4C2A213890525399599B9 /* Pods_Hompage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hompage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B215682B915A9E23417262EA /* Pods-Hompage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hompage.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hompage/Pods-Hompage.debug.xcconfig"; sourceTree = "<group>"; };
+		CB986CEF532713A94E8836A9 /* Pods-Hompage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hompage.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hompage/Pods-Hompage.release.xcconfig"; sourceTree = "<group>"; };
+		EEC35B812A0CB339223ED068 /* Pods_HompageUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HompageUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14026E495E9CDF996E26F9F8 /* Pods_Hompage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,12 +99,33 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0B5AA6B0F0534FB9F84608F /* Pods_HompageUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		08186388BA19190FEA2F3985 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B215682B915A9E23417262EA /* Pods-Hompage.debug.xcconfig */,
+				CB986CEF532713A94E8836A9 /* Pods-Hompage.release.xcconfig */,
+				341171150E5D511BC1C6EBB5 /* Pods-HompageUITests.debug.xcconfig */,
+				4144097EBF53199735EA5CE8 /* Pods-HompageUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		6518D1BCDEEB52AFBA4247D4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ACA4C2A213890525399599B9 /* Pods_Hompage.framework */,
+				EEC35B812A0CB339223ED068 /* Pods_HompageUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		9E96F6911E6364ED009ECE73 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -116,6 +148,8 @@
 				9EBF4DEA1E4A54BD0068950A /* Hompage */,
 				9EBF4E011E4A54BD0068950A /* HompageUITests */,
 				9EBF4DE91E4A54BD0068950A /* Products */,
+				08186388BA19190FEA2F3985 /* Pods */,
+				6518D1BCDEEB52AFBA4247D4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -135,6 +169,8 @@
 				9EBF4E141E4A9E780068950A /* Models */,
 				9EBF4E111E4A89BF0068950A /* Views */,
 				9EBF4DEB1E4A54BD0068950A /* AppDelegate.swift */,
+				9ECB13891E6A3D5900C250AE /* DogCell.swift */,
+				9EE23C891E6A35D00038DE69 /* LoginViewController.swift */,
 				9E8950BD1E4AE52C00A15868 /* FilterTableViewController.swift */,
 				63E14D0B1E60062F00EB2B90 /* DetailViewController.swift */,
 				9EBF4DED1E4A54BD0068950A /* HomepageViewController.swift */,
@@ -146,6 +182,7 @@
 				9EBF4DF11E4A54BD0068950A /* Main.storyboard */,
 				9EBF4DF41E4A54BD0068950A /* Assets.xcassets */,
 				9EBF4DF61E4A54BD0068950A /* LaunchScreen.storyboard */,
+				9EE23C8B1E6A36750038DE69 /* GoogleService-Info.plist */,
 				9EBF4DF91E4A54BD0068950A /* Info.plist */,
 			);
 			path = Hompage;
@@ -163,7 +200,6 @@
 		9EBF4E111E4A89BF0068950A /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				9EBF4E121E4A8A1F0068950A /* DogCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -171,8 +207,7 @@
 		9EBF4E141E4A9E780068950A /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				9EBF4E151E4A9EA40068950A /* Dog.swift */,
-				9EA666291E5A602F00631E13 /* DogProfile.swift */,
+				9EE23C871E6A30D90038DE69 /* Breed.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -184,9 +219,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9EBF4E071E4A54BD0068950A /* Build configuration list for PBXNativeTarget "Hompage" */;
 			buildPhases = (
+				4AAAE7AEAD57C0D55C62A7A5 /* [CP] Check Pods Manifest.lock */,
 				9EBF4DE41E4A54BC0068950A /* Sources */,
 				9EBF4DE51E4A54BC0068950A /* Frameworks */,
 				9EBF4DE61E4A54BC0068950A /* Resources */,
+				0FC86C8D25C16DECF415D3C2 /* [CP] Embed Pods Frameworks */,
+				EEDF96B5148029CC4FED852E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -201,9 +239,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9EBF4E0A1E4A54BD0068950A /* Build configuration list for PBXNativeTarget "HompageUITests" */;
 			buildPhases = (
+				C6BF0CFCBC3B4F9499E5D916 /* [CP] Check Pods Manifest.lock */,
 				9EBF4DFA1E4A54BD0068950A /* Sources */,
 				9EBF4DFB1E4A54BD0068950A /* Frameworks */,
 				9EBF4DFC1E4A54BD0068950A /* Resources */,
+				52151DBE9A0E743B2891A629 /* [CP] Embed Pods Frameworks */,
+				D26DBDF05093E720B25CA0DF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -260,6 +301,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9EE23C8C1E6A36750038DE69 /* GoogleService-Info.plist in Resources */,
 				9E96F6991E637CBA009ECE73 /* bacgroundHome.png in Resources */,
 				9E96F69B1E637F22009ECE73 /* backgroundHomeLarge.jpg in Resources */,
 				9E3057271E63CBBE0006783E /* logo.jpg in Resources */,
@@ -284,23 +326,116 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0FC86C8D25C16DECF415D3C2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Hompage/Pods-Hompage-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4AAAE7AEAD57C0D55C62A7A5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		52151DBE9A0E743B2891A629 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HompageUITests/Pods-HompageUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C6BF0CFCBC3B4F9499E5D916 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D26DBDF05093E720B25CA0DF /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HompageUITests/Pods-HompageUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EEDF96B5148029CC4FED852E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Hompage/Pods-Hompage-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		9EBF4DE41E4A54BC0068950A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9ECB138A1E6A3D5900C250AE /* DogCell.swift in Sources */,
 				63E14D0C1E60062F00EB2B90 /* DetailViewController.swift in Sources */,
-				9EA6662A1E5A602F00631E13 /* DogProfile.swift in Sources */,
+				9EE23C8A1E6A35D00038DE69 /* LoginViewController.swift in Sources */,
 				9EBF4DF01E4A54BD0068950A /* WoofipediaViewController.swift in Sources */,
 				9E8E043D1E4BA12600889F8B /* SearchTableViewController.swift in Sources */,
-				9EBF4E161E4A9EA40068950A /* Dog.swift in Sources */,
 				9EBF4DEC1E4A54BD0068950A /* AppDelegate.swift in Sources */,
-				9EBF4E131E4A8A1F0068950A /* DogCell.swift in Sources */,
 				9EBF4E0E1E4A637C0068950A /* SuggestionViewController.swift in Sources */,
 				9EBF4E101E4A646D0068950A /* IPetViewController.swift in Sources */,
 				9EBF4DEE1E4A54BD0068950A /* HomepageViewController.swift in Sources */,
 				9E3057291E63CF3C0006783E /* Pulsing.swift in Sources */,
 				9E8950BE1E4AE52C00A15868 /* FilterTableViewController.swift in Sources */,
+				9EE23C881E6A30D90038DE69 /* Breed.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -428,18 +563,19 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
 		9EBF4E081E4A54BD0068950A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B215682B915A9E23417262EA /* Pods-Hompage.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Hompage/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.Hompage;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Woof.ios.Woof;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -447,11 +583,12 @@
 		};
 		9EBF4E091E4A54BD0068950A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CB986CEF532713A94E8836A9 /* Pods-Hompage.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Hompage/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.Hompage;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Woof.ios.Woof;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -459,6 +596,7 @@
 		};
 		9EBF4E0B1E4A54BD0068950A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 341171150E5D511BC1C6EBB5 /* Pods-HompageUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = HompageUITests/Info.plist;
@@ -472,6 +610,7 @@
 		};
 		9EBF4E0C1E4A54BD0068950A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4144097EBF53199735EA5CE8 /* Pods-HompageUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = HompageUITests/Info.plist;

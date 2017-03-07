@@ -29,9 +29,9 @@ class DataAccessObject {
         
         let ref = FIRDatabase.database().reference()
         
-        ref.child("Dog Profile").child(dog.dogID).setValue(["name": dog.name, "breed": dog.breed,
+        ref.child("Dog Profile").child(dog.dogID).setValue(["name": dog.name, "breed": dog.breed.breedName,
                                                      "age": dog.age, "gender": dog.gender,
-                                                     "birthDate": dog.birthDate,
+                                                     "birthDate": dog.birthDate.description,
                                                      "description": dog.description])
     }
     
@@ -56,7 +56,7 @@ class DataAccessObject {
     func updateDog(dog: Dog){
         let ref = FIRDatabase.database().reference()
 
-        ref.child("Dog Profile").child(dog.dogID).setValue(["name": dog.name, "age": dog.age, "vaccination": dog.vaccination, "color": dog.color, "description": dog.description, "image": dog.image])
+        ref.child("Dog Profile").child(dog.dogID).setValue(["name": dog.name, "age": dog.age, "vaccination": dog.vaccination.description, "color": dog.color, "description": dog.description, "image": dog.image])
     }
     
     func deleteUser(user: User) {

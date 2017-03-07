@@ -13,7 +13,7 @@ import FBSDKLoginKit
 import GoogleSignIn
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate{
+class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
 
     var window: UIWindow?
 
@@ -24,6 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
         FIRApp.configure()
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         GIDSignIn.sharedInstance().clientID = FIRApp.defaultApp()?.options.clientID
+        GIDSignIn.sharedInstance().delegate = self
         return true
     }
     
@@ -42,6 +43,49 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
         return GIDSignIn.sharedInstance().handle(url,
                                                     sourceApplication: sourceApplication,
                                                     annotation: annotation)
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        if error != nil {
+            // TODO
+            return
+        }
+        // google_credential
+        guard let authentication = user.authentication else { return }
+        let credential = FIRGoogleAuthProvider.credential(withIDToken: authentication.idToken,
+                                                          accessToken: authentication.accessToken)
+        
+        let rootViewController = self.window!.rootViewController
+        // [START_EXCLUDE]
+        // Perform login by calling Firebase APIs
+        FIRAuth.auth()?.signIn(with: credential, completion: { (user, error) in
+            if let error = error {
+                print("Login error: \(error.localizedDescription)")
+                let alertController = UIAlertController(title: "Login Error", message: error.localizedDescription, preferredStyle: .alert)
+                let okayAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                alertController.addAction(okayAction)
+                rootViewController?.present(alertController, animated: true, completion: nil)
+                
+                return
+            }
+            
+            // Present the main view
+            //if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "MainView") {
+            //    UIApplication.shared.keyWindow?.rootViewController = viewController
+            //    self.dismiss(animated: true, completion: nil)
+            //}
+            
+        })
+        
+        print("google Login there")
+        rootViewController?.performSegue(withIdentifier: "login", sender: self)
+        
+        // [END_EXCLUDE]
+    }
+
+    
+    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
+        print(123)
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
