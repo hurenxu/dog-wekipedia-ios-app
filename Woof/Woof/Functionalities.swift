@@ -22,19 +22,28 @@ class Functionalities {
     // call this method in viewdidload
     func retrieveBreedList(controller: SearchTableViewController) {
         let ref = FIRDatabase.database().reference()
-        databaseHandle = ref.child("Breeds").child("Yorkshire").observe(.value, with: { (snapshot) in
-            let breed = snapshot.value as? NSDictionary
+        databaseHandle = ref.child("Breeds").observe(.value, with: { (snapshot) in
             
-            print(breed)
+            let enumerator = snapshot.children
+            while let next = enumerator.nextObject() as? FIRDataSnapshot {
+                print("-")
+                
+                //print(next.key)
+                var breed = next.value as? NSDictionary
+                //var breed = snapshot.value as? NSDictionary
+            
+                //print(breed)
             
             //if let actualbreed = breed {
                 let thisbreed = Breed(dictionary: breed!)
-                print(thisbreed)
+                print(thisbreed.getBreedName())
                 self.breedList.append(thisbreed)
             //}
             
-            controller.dogs.append(thisbreed)
-            controller.tableView.reloadData()
+                controller.dogs.append(thisbreed)
+                controller.tableView.reloadData()
+            }
+            
         })
 //        let dao = DataAccessObject()
 //        currBreed = dao.viewBreed(breedName: "Yorkshire")
