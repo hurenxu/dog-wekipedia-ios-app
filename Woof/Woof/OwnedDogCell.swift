@@ -2,6 +2,9 @@
 //  OwnedDogCell.swift
 //  frontEndTest
 //
+//  OwnedDogCell.swift
+//  frontEndTest
+//
 //  Created by Meiyi He on 2/28/17.
 //  Copyright © 2017 Meiyi He. All rights reserved.
 //
@@ -31,9 +34,6 @@ class OwnedDogCell: UICollectionViewCell {
         textLabel?.textColor = UIColor.black
         contentView.addSubview(textLabel!)
         
-        
-
-
         
     }
     

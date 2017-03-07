@@ -9,10 +9,10 @@
 import UIKit
 
 class iPetViewController: UIViewController, UIImagePickerControllerDelegate,
-UINavigationControllerDelegate, UICollectionViewDelegateFlowLayout,
+    UINavigationControllerDelegate, UICollectionViewDelegateFlowLayout,
 UICollectionViewDelegate, UICollectionViewDataSource {
     
-
+    
     var ownedDog = ["Yorkshire", "Pug","Siberian Husky","Beagle","Bulldog","Poodle","Boxer","Chihuahua","Pit bull","Akita","Pomeranian"]
     
     var breed = ["breed1", "breed2","breed3","breed4","breed5","breed6","breed7","breed8","breed9","breed10"]
@@ -27,7 +27,7 @@ UICollectionViewDelegate, UICollectionViewDataSource {
     
     let cellID = "dogCell"
     //var collectView = UICollectionView()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -37,12 +37,12 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         print("iPet Page loaded")
         //self.view.backgroundColor = UIColor.lightGray
         
-
+        
         /* user profile image */
         let userImg = profileImgContainer
         userImg.setRounded()
         self.view.addSubview(userImg)
-        ImageViewConstraints(Img: userImg) 
+        ImageViewConstraints(Img: userImg)
         
         
         let editProfButton:UIButton = UIButton(frame: CGRect(x: 100, y: 400, width: 100, height: 50))
@@ -57,7 +57,7 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         notificationButton.setTitle("No!", for: .normal)
         //NotifiCationButtonConstraints(Button: notificationButton)
         
-       // notificationButton.addTarget(self, action: #selector(transition(Sender:notificationButton)), for: .touchUpInside)
+        // notificationButton.addTarget(self, action: #selector(transition(Sender:notificationButton)), for: .touchUpInside)
         notificationButton.addTarget(self, action: #selector(self.transition(_:)), for: .touchUpInside)
         //notificationButton.addTarget(self, action: transition, forControlEvents: .touchUpInside)
         //button = answerButton
@@ -85,7 +85,7 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         cLayout.sectionInset = UIEdgeInsets(top: 25, left:25, bottom:25, right:25)
         cLayout.itemSize = CGSize(width: view.frame.width, height: view.frame.height/2)
         
-
+        
         collectView.dataSource = self
         collectView.delegate = self
         collectView.register( OwnedDogCell.self, forCellWithReuseIdentifier: cellID)
@@ -97,18 +97,18 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         collectView.collectionViewLayout.invalidateLayout()
         
         
-    
+        
     }
     
     func transition(_ Sender: UIButton!) {
         let secondViewController:NotificationViewController = NotificationViewController()
-
+        
         self.present(secondViewController, animated: true, completion: nil)
-
+        
     }
-
     
- 
+    
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         return CGSize(width:150, height:150)
@@ -118,13 +118,13 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         return 0
     }
     
-
+    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         print(ownedDog.count)
         return ownedDog.count
     }
-
+    
     var i:Int = 0
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
         //let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath)
@@ -138,7 +138,7 @@ UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         //print("didEndDisplayingCell")
-
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, transitionLayoutForOldLayout fromLayout: UICollectionViewLayout, newLayout toLayout: UICollectionViewLayout) -> UICollectionViewTransitionLayout {
@@ -158,15 +158,15 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         secondViewController.name = ownedDog[indexPath.row]
         secondViewController.gender = gender[indexPath.row % 3]
         
-          
+        
         self.present(secondViewController, animated: true, completion: nil)
         
     }
     
-       
     
     
-//------------------------------------------ profile image view ---------------------------------------------
+    
+    //------------------------------------------ profile image view ---------------------------------------------
     /* global variable: profileImgContainer --> default profile image */
     var profileImgContainer: UIImageView = {
         let ImgView = UIImageView()
@@ -179,7 +179,7 @@ UICollectionViewDelegate, UICollectionViewDataSource {
     }()
     
     
-//----------------------------------------- layout constraints ----------------------------------------------
+    //----------------------------------------- layout constraints ----------------------------------------------
     /* layout constriants for profile image */
     func ImageViewConstraints(Img: UIImageView) {
         Img.widthAnchor.constraint(equalToConstant: 100).isActive = true
@@ -198,10 +198,10 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         /* action when user click on button --> call handleSelectProfileImageView function */
         Button.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectProfileImageView)))
     }
-        
     
     
-//------------------------------------------profile image picker --------------------------------------------
+    
+    //------------------------------------------profile image picker --------------------------------------------
     /* function: add an UIImagePickerController */
     func handleSelectProfileImageView(){
         let picker = UIImagePickerController()
@@ -223,12 +223,12 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         }
         self.dismiss(animated: true, completion: nil)
     }
-
+    
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
-//----------------------------------------------------------------------------------------------------------------
-
+    //----------------------------------------------------------------------------------------------------------------
+    
     
     
     
