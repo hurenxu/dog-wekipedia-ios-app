@@ -85,8 +85,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
             
         })
         
-        print("google Login there")
-        rootViewController?.performSegue(withIdentifier: "login", sender: self)
+        //print("google Login there")
+        //rootViewController?.performSegue(withIdentifier: "launchgooglelogin", sender: self)
         
         // [END_EXCLUDE]
     }

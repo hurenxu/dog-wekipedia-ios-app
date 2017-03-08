@@ -175,6 +175,9 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate{
             // No user is signed in.
             // ...
         }
+        
+        print("google Login there")
+        self.performSegue(withIdentifier: "login", sender: self)
 
     }
     
@@ -207,8 +210,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate{
             //}
             
         })
-        print("google Login there")
-        self.performSegue(withIdentifier: "login", sender: self)
+
         
         // [END_EXCLUDE]
     }
