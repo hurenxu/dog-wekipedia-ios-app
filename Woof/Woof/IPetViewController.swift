@@ -12,6 +12,7 @@ class iPetViewController: UIViewController, UIImagePickerControllerDelegate,
     UINavigationControllerDelegate, UICollectionViewDelegateFlowLayout,
 UICollectionViewDelegate, UICollectionViewDataSource {
     
+    
     //var ownedDog = []
     var ownedDog = ["Yorkshire", "Pug","Siberian Husky","Beagle","Bulldog","Poodle","Boxer","Chihuahua","Pit bull","Akita","Pomeranian"]
     
@@ -32,7 +33,6 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        //view.backgroundColor = UIColor.black
         self.title = "iPet"
         print("iPet Page loaded")
         //self.view.backgroundColor = UIColor.lightGray
@@ -131,6 +131,7 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         //let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath)
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! OwnedDogCell
         
+        
         cell.textLabel?.text = ownedDog[indexPath.row]
         cell.imageView?.image = UIImage(named: "bone")
         
@@ -158,7 +159,6 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         let secondViewController:OwnedDogDetailViewController = OwnedDogDetailViewController()
         secondViewController.name = ownedDog[indexPath.row]
         secondViewController.gender = gender[indexPath.row % 3]
-        
         
         self.present(secondViewController, animated: true, completion: nil)
         
