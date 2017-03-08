@@ -12,7 +12,7 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
     
     
     var dogs = [Breed]()
-    var filteredDogs = [String]()
+    var filteredDogs = [Breed]()
     var resultSearchController = UISearchController()
     
     override func viewDidLoad() {
@@ -28,65 +28,51 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
         print(tools.getBreedList(controller:self))
         
         self.tableView.reloadData()
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        if self.resultSearchController.isActive {
-            return self.filteredDogs.count
-        } else {
-            return self.dogs.count
-        }
-    }
-
-
+    
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as UITableViewCell?
         let mainImageView = cell?.viewWithTag(1) as! UIImageView
         let mainDogName = cell?.viewWithTag(2) as! UILabel
-        
-        let urlString = (self.dogs[indexPath.row]).getImage()
-        guard let url = URL(string: urlString) else { mainImageView.image = #imageLiteral(resourceName: "DogImage"); return cell! }
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
-            if error != nil {
-                print("Failed fetching image:", error)
-                return
-            }
-            
-            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                print("Not a proper HTTPURLResponse or statusCode")
-                return
-            }
-            
-            DispatchQueue.main.async {
-                mainImageView.image = UIImage(data: data!)
-            }
-        }.resume()
-        
-        if self.resultSearchController.isActive{
-            //cell!.textLabel?.text = self.filteredDogs[indexPath.row]
-            mainDogName.text = self.filteredDogs[indexPath.row]
+        let breed: Breed
+        if self.resultSearchController.isActive && self.resultSearchController.searchBar.text != "" {
+            breed = filteredDogs[indexPath.row]
         } else {
-            //cell!.textLabel?.text = self.dogs[indexPath.row]
-            mainDogName.text = (self.dogs[indexPath.row]).getBreedName()
+            breed = dogs[indexPath.row]
         }
+        let urlString = breed.getImage()
+        if let url = URL(string: urlString){
+            URLSession.shared.dataTask(with: url) { (data, response, error) in
+                if error != nil {
+                    print("Failed fetching image:", error)
+                    return
+                }
+                
+                guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                    print("Not a proper HTTPURLResponse or statusCode")
+                    return
+                }
+                
+                DispatchQueue.main.async {
+                    mainImageView.image = UIImage(data: data!)
+                }
+                }.resume()
+        }else { mainImageView.image = #imageLiteral(resourceName: "dogProfile.png")}
+        mainDogName.text = breed.getBreedName()
+        
         //alternate cell color
         if(indexPath.row % 2==0){
             //set cell background color to green
@@ -99,29 +85,63 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
         //set image in the cell to be cicle
         mainImageView.layer.cornerRadius = mainImageView.frame.width/2.0
         mainImageView.clipsToBounds = true
-
+        
         return cell!
     }
-//    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "yourSegue" {
-//            
-//            let detailViewController = segue.destination
-//                as! DogProfile
-//            
-//            let myIndexPath = self.tableView.indexPathForSelectedRow!
-//            let row = myIndexPath.row
-//            detailViewController.receivedData = dogs[myIndexPath.row]
-//            detailViewController.idx = row
-//        }
-//    }
-    func updateSearchResults(for searchController: UISearchController) {
-        self.filteredDogs.removeAll(keepingCapacity: false)
-        let serachPredicate = NSPredicate(format: "SELF CONTAINS[c] %@",searchController.searchBar.text!)
-        let array = (self.dogs as NSArray).filtered(using: serachPredicate)
-        self.filteredDogs = array as! [String]
-        self.tableView.reloadData()
+    
+    /* This function count the number of item to be displayed for search result
+     */
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        if self.resultSearchController.isActive && self.resultSearchController.searchBar.text != "" {
+            return filteredDogs.count
+        }
+        return dogs.count
     }
     
-
+    /* Filter search result*/
+    func updateSearchResults(for searchController: UISearchController)
+    {
+        
+        let searchText = searchController.searchBar.text
+        NSLog("searchText - \(searchText)")
+        self.filteredDogs.removeAll(keepingCapacity: false)
+        filterContentForSearchText(searchText!)
+    }
+    /*
+     * This function filters the result using characters in dog name
+     */
+    func filterContentForSearchText(_ searchText: String, scope: String = "All") {
+        filteredDogs = dogs.filter({( dog : Breed) -> Bool in
+            return dog.breedName.lowercased().contains(searchText.lowercased())
+        })
+        tableView.reloadData()
+    }
+    
+    
+    // MARK: - Segues
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //override func prepare(sender: Any?) {
+        print("Prepare for DetailView Segue")
+        if segue.identifier == "showDetail" {
+            
+            print("enter indexpath")
+            if let indexPath = tableView.indexPathForSelectedRow {
+                print(indexPath)
+                let breed: Breed
+                
+                if resultSearchController.isActive && resultSearchController.searchBar.text != "" {
+                    breed = filteredDogs[indexPath.row]
+                } else {
+                    breed = dogs[indexPath.row]
+                }
+                print(breed.getBreedName())
+                let controller = segue.destination as! DetailViewController
+                controller.detailDog = breed
+                self.present(controller,animated:true, completion:nil)
+                print(breed.getBreedName()+" in prepare()")
+            }
+        }
+    }
+    
 }
