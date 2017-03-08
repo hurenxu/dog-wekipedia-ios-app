@@ -9,13 +9,19 @@
 import Foundation
 import FirebaseDatabase
 
-class Functionalities {
+class Functionalities{
     
     var databaseHandle: FIRDatabaseHandle?
     
-    var breedList = [Breed]()
+    static var breedList = [Breed]()
     
     var currBreed: Breed?
+    
+    //doglist for user part
+    var dogIDList = [String]()
+    
+    static var myUser: User?
+    //dog list for user part over
     
     init(){}
     // return a whole dog breed list for woofipedia
@@ -31,29 +37,117 @@ class Functionalities {
                 //print(next.key)
                 var breed = next.value as? NSDictionary
                 //var breed = snapshot.value as? NSDictionary
-            
+                
                 //print(breed)
-            
-            //if let actualbreed = breed {
+                
+                //if let actualbreed = breed {
                 let thisbreed = Breed(dictionary: breed!)
                 print(thisbreed.getBreedName())
-                self.breedList.append(thisbreed)
-            //}
-            
+                Functionalities.breedList.append(thisbreed)
+                //}
+                
                 controller.dogs.append(thisbreed)
                 controller.tableView.reloadData()
             }
             
         })
-//        let dao = DataAccessObject()
-//        currBreed = dao.viewBreed(breedName: "Yorkshire")
-//        breedList.append(currBreed!)
+        //        let dao = DataAccessObject()
+        //        currBreed = dao.viewBreed(breedName: "Yorkshire")
+        //        breedList.append(currBreed!)
+    }
+    
+    func retrieveDogList(controller: iPetViewController) {
+        let ref = FIRDatabase.database().reference()
+        //Functionalities.myUser = controller.user
+        databaseHandle = ref.child("Dog Profile").observe(.value, with: {(snapshot) in
+            let dogs = snapshot.value as? NSDictionary
+            let keys = dogs?.allKeys as? [NSString]
+            
+            for key in keys! {
+                for id in (Functionalities.myUser?.dogIDs)! {
+                    if (id == key as String) {
+                        print("found")
+                        let dog = dogs?[key] as? NSDictionary
+                        let thisDog = Dog(dictionary: dog!)
+                        controller.ownedDog.append(thisDog.name)
+                        controller.dogList.append(thisDog)
+                        controller.age.append(thisDog.age)
+                        controller.breed.append(thisDog.breed.breedName)
+                        controller.gender.append(thisDog.gender)
+                        controller.color.append(thisDog.color)
+                        controller.collectView.reloadData()
+                    }
+                }
+            }
+            
+//            let enumerator = snapshot.children
+//            while let next = enumerator.nextObject() as? FIRDataSnapshot {
+//                var dog = next.value as? NSDictionary
+//                let currentDogID = dog?["dogID"] as? String
+//                for id in (Functionalities.myUser?.dogIDs)! {
+//                    var nowID = id
+//                    if (currentDogID == nowID) {
+//                        let thisDog = Dog(dictionary: dog!)
+//                        controller.ownedDog.append(thisDog.name)
+//                        controller.dogList.append(thisDog)
+//                        controller.age.append(thisDog.age)
+//                        controller.breed.append(thisDog.breed.breedName)
+//                        controller.gender.append(thisDog.gender)
+//                        controller.color.append(thisDog.color)
+//                        controller.collectView.reloadData()
+//                        print("REACH &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&")
+//                    }
+//                }
+            
+                
+                
+            //}
+            
+        })
+    }
+    
+    func retrieveProfileForDogList(controller: iPetViewController) {
+        let ref = FIRDatabase.database().reference()
+        let myUserID = Functionalities.myUser?.userID
+        databaseHandle = ref.child("User Profile").observe(.value, with: { (snapshot) in
+            let enumerator = snapshot.children
+            while let next = enumerator.nextObject() as? FIRDataSnapshot {
+                var currentUser = next.value as? NSDictionary
+                let currentUserID = currentUser?["userID"] as? String
+                if (currentUserID == myUserID) {
+                    let currentUserWanted = User(dictionary: currentUser!)
+                    
+                    //TODO: need to replace the following with correct dog object
+                    //controller.dogIDList = currentUserWanted.dogIDs
+                    //like this:
+                    Functionalities.myUser = currentUserWanted
+                    
+                    print("REACH THIS LINE ************************************************************************************************************************************************************************************************************")
+                    self.retrieveDogList(controller: controller)
+                }
+            }
+            
+        })
     }
     
     func getBreedList(controller: SearchTableViewController) -> [Breed] {
         retrieveBreedList(controller: controller)
-        print(breedList)
-        return self.breedList
+        print(Functionalities.breedList)
+        return Functionalities.breedList
     }
+    
+    func getUserProfileForDog(controller: iPetViewController){
+        retrieveProfileForDogList(controller: controller)
+    }
+    
+    func setUser(user: User) {
+        Functionalities.myUser = user
+    }
+    
+    func getUser() -> User {
+        return Functionalities.myUser!
+    }
+    
+    
 }
 

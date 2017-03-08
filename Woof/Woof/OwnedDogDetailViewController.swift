@@ -8,7 +8,8 @@
 
 import UIKit
 
-class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
+class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
+    
     var name = ""
     var gender = ""
     var vaccinationdate = ""
@@ -19,7 +20,10 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
     
     var ageData = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30"]
     var picker = UIPickerView()
-    var picker2 = UIDatePicker()
+    var picker2 = UIPickerView()
+    //var picker2 = UIDatePicker()
+    
+    
     
     //Declare the texctfield in this view
     var dogNametextField = UITextField(frame: CGRect(20.0, 230, 330.0, 40.0))
@@ -56,12 +60,11 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
     //Declare the age Label
     let ageLabel = UILabel(frame: CGRect(x: 20, y: 455, width: 330, height: 40))
     
-    
-    
+
     
     
     override func viewDidLoad() {
-        super.viewDidLoad()
+        //super.viewDidLoad()
         self.view.backgroundColor = UIColor(red: 165.0/255.0, green: 195.0/255.0, blue: 187.0/255.0, alpha: 1)
         
         
@@ -71,6 +74,10 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         picker.delegate = self
         picker.dataSource = self
         agetextField.inputView = picker
+        
+        
+        picker2.delegate = self
+        picker2.dataSource = self
         
         
         self.title = "My dog"
@@ -162,6 +169,8 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         
         
         
+        //picker2.inputAccessoryView = toolBar
+        
         
         //---------------------------------------------------------------------------------------------------------------------
         /* user profile image */
@@ -178,7 +187,7 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         
         //self.view.addSubview(backButton)
         
-        let navigationBar = UINavigationBar(frame: CGRect(x:0, y:0, width:self.view.frame.size.width, height:44)) // Offset by 20 pixels vertically to take the status bar into account
+        let navigationBar = UINavigationBar(frame: CGRect(x:0, y:0, width:self.view.frame.size.width, height:55)) // Offset by 20 pixels vertically to take the status bar into account
         
         let navigationItem = UINavigationItem()
         navigationItem.title = "My dog"
@@ -229,6 +238,8 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         self.view.addSubview(dogNametextField)
         dogNametextField.isHidden = true
         
+        self.dogNametextField.delegate = self;
+        
         //     var dogGendertextField = UITextField(frame: CGRect(20.0, 400.0, 330.0, 40.0))
         dogGendertextField.textAlignment = NSTextAlignment.center
         dogGendertextField.textColor = UIColor.blue
@@ -237,6 +248,8 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         dogGendertextField.autocapitalizationType = UITextAutocapitalizationType.words // If you need any capitalization
         self.view.addSubview(dogGendertextField)
         dogGendertextField.isHidden = true
+        
+        self.dogGendertextField.delegate = self;    // so it can hide after user press on enter
         
         //     var dogBirhDatetextField = UITextField(frame: CGRect(20.0, 450.0, 330.0, 40.0))
         dogBirhDatetextField.textAlignment = NSTextAlignment.center
@@ -247,12 +260,13 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         self.view.addSubview(dogBirhDatetextField)
         dogBirhDatetextField.isHidden = true
         
+        self.dogBirhDatetextField.delegate = self;
         
         //   var dogVaccinationDatetextField = UITextField(frame: CGRect(20.0, 500.0, 330.0, 40.0))
         dogVaccinationDatetextField.textAlignment = NSTextAlignment.center
         dogVaccinationDatetextField.textColor = UIColor.blue
         dogVaccinationDatetextField.borderStyle = UITextBorderStyle.roundedRect
-        dogVaccinationDatetextField.placeholder = "Vaccination Date"
+        dogVaccinationDatetextField.placeholder = "Vaccination Test Date"
         dogVaccinationDatetextField.autocapitalizationType = UITextAutocapitalizationType.words // If you need any capitalization
         self.view.addSubview(dogVaccinationDatetextField)
         dogVaccinationDatetextField.isHidden = true
@@ -261,7 +275,7 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         agetextField.textAlignment = NSTextAlignment.center
         agetextField.textColor = UIColor.blue
         agetextField.borderStyle = UITextBorderStyle.roundedRect
-        agetextField.placeholder = "Vaccination Date"
+        agetextField.placeholder = "Age"
         agetextField.autocapitalizationType = UITextAutocapitalizationType.words // If you need any capitalization
         self.view.addSubview(agetextField)
         agetextField.isHidden = true
@@ -269,28 +283,48 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         
         
         
-        picker2 = UIDatePicker(frame: CGRect( origin: CGPoint(x:0, y:0), size: CGSize(width:320, height:115) ))
-        picker2.center = CGPoint(x: 180, y: 500)
+        
+        //picker2 = UIDatePickerView()
+        //picker2 = UIDatePicker(frame: CGRect( origin: CGPoint(x:0, y:0), size: CGSize(width:320, height:115) ))
+        
+        picker2.center = CGPoint(x: 180, y: 560)
         picker2.backgroundColor = UIColor.white
-        let currentDate = Date.init()
-        picker2.minimumDate = Date(timeIntervalSince1970: currentDate.timeIntervalSince1970 - currentDate.timeIntervalSince1970.truncatingRemainder(dividingBy: 60))
+        //let currentDate = Date.init()
+        // picker2.minimumDate = Date(timeIntervalSince1970: currentDate.timeIntervalSince1970 - currentDate.timeIntervalSince1970.truncatingRemainder(dividingBy: 60))
         picker2.layer.masksToBounds = true
         picker2.layer.cornerRadius = CGFloat(20)
-        //picker2.addTarget(self, action: #selector(self.updateText(sender:)), for: UIControlEvents.valueChanged)
-        //self.textFieldEditing(sender: dogVaccinationDatetextField)
-        //picker2.isHidden = true
-        picker2.datePickerMode = UIDatePickerMode.date
-        self.view.addSubview(picker2)
         
+        self.textFieldEditing(sender: dogVaccinationDatetextField)
+        picker2.isHidden = true
+        
+        //picker2.datePickerMode = UIDatePickerMode.date
+        
+        self.view.addSubview(picker2)
         
     }
     
-//    @IBAction func textFieldEditing(sender: UITextField) {
-//        let datePickerView:UIDatePicker = UIDatePicker()
-//        datePickerView.datePickerMode = UIDatePickerMode.date
-//        sender.inputView = datePickerView
-//        datePickerView.addTarget(self, action: #selector(OwnedDogDetailViewController.datePickerValueChanged), for: UIControlEvents.valueChanged)
-//    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row:Int, inComponent component : Int)
+    {
+        agetextField.text = ageData[row]
+        self.view.endEditing(true)
+    }
+    
+    
+    func dismissPicker() {
+        
+        view.endEditing(true)
+        
+    }
+    
+    func textFieldEditing(sender: UITextField) {
+        let datePickerView:UIDatePicker = UIDatePicker()
+        datePickerView.datePickerMode = UIDatePickerMode.date
+        sender.inputView = datePickerView
+        datePickerView.addTarget(self, action: #selector(OwnedDogDetailViewController.datePickerValueChanged), for: UIControlEvents.valueChanged)
+    }
+    
+    
     
     func datePickerValueChanged(datePicker:UIDatePicker) {
         /**
@@ -299,13 +333,18 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
          dogVaccinationDatetextField.textColor = UIColor.black
          dogVaccinationDatetextField.text = formatter.string(from: picker2.date)
          */
+        datePicker.isHidden = false
         let dateFormatter: DateFormatter = DateFormatter()
+        
+        
         dateFormatter.dateStyle = DateFormatter.Style.short
-        dateFormatter.timeStyle = DateFormatter.Style.short
+        //dateFormatter.timeStyle = DateFormatter.Style.short
         
         let strDate = dateFormatter.string(from: datePicker.date)
         dogVaccinationDatetextField.text = strDate
         vaccinationDateLabel.text = strDate
+        
+        //datePicker.isHidden = true
         
     }
     
@@ -359,6 +398,11 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         
         
     }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
     //---------------------------function about picker-----------------------------------------------------------
     
     
@@ -373,17 +417,11 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         return ageData.count
     }
     
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row:Int, inComponent component : Int)
-    {
-        agetextField.text = ageData[row]
-    }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row:Int, forComponent component : Int)->String?
     {
         return ageData[row]
     }
-    
-    
     
     
     
@@ -430,15 +468,6 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
     
     
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
 }
 

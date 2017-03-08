@@ -4,40 +4,65 @@ import Firebase
 class User{
     
     // immutable uid
-	let userID: String
+    let userID: String
     //var firstName: String
     //var lastName: String
     var name: String
     var email: String
     var age = 0
-    var gender = ""
-    var favoriteDogBreeds: [String] = []
-    var favoriteCategoryFilters: [String] = []
-    var zipCode = 0
+    var gender: String
+    var favoriteDogBreeds: [String] = ["Yorkshire", "Chihuahua"]
+    var favoriteCategoryFilters: [String] = ["Black", "Small"]
+    var zipCode = ""
     var image = ""
     var dogIDs: [String] = []
     
-
-	init(authData:FIRUser) {
-		userID = authData.uid
-		name = authData.displayName!
-		email = authData.email!
+    
+    init(authData:FIRUser) {
+        userID = authData.uid
+        name = authData.displayName!
+        email = authData.email!
         gender = "F"
         
         if (!self.userExist()) {
             self.addUserProfileEntry()
         }
-	}
+    }
     
-	
+    init(dictionary: NSDictionary) {
+        
+        userID = (dictionary["userID"] as? String) ?? ""
+        name = (dictionary["name"] as? String)!
+        email = (dictionary["email"] as? String)!
+        age = (dictionary["age"] as? Int)!
+        gender = (dictionary["gender"] as? String)!
+        let favoriteDogBreedsDic = (dictionary["favoriteDogBreeds"] as? NSArray)!
+        let favoriteCategoryFiltersDic = (dictionary["favoriteCategoryFilters"] as? NSArray)!
+        zipCode = (dictionary["zipCode"] as? String)!
+        image = (dictionary["image"] as? String)!
+        dogIDs = (dictionary["dogIDs"] as? [String])!
+        
+        for breed in favoriteDogBreedsDic {
+            favoriteDogBreeds.append(breed as! String)
+        }
+        for breed in favoriteCategoryFiltersDic {
+            favoriteCategoryFilters.append(breed as! String)
+        }
+        
+    }
+    
+    
     func addUserProfileEntry() {
         let dao = DataAccessObject()
         dao.addUser(user: self)
     }
-
+    
     func addDog(dog: Dog) {
         dogIDs.append(dog.getDogID())
         dog.addDogProfileEntry()
+        
+        let dao = DataAccessObject()
+        dao.updateUser(user: self)
     }
     
     func addFavoriteDogBreed(breedname: String) {
@@ -68,9 +93,9 @@ class User{
         return dao.viewUser(user: self)
     }
     
-
+    
     func userExist() -> Bool {
-        return false
+        return true
     }
     
     func setName(name: String) {
@@ -105,11 +130,11 @@ class User{
         return self.gender
     }
     
-    func setZipCode(code: Int) {
+    func setZipCode(code: String) {
         self.zipCode = code
     }
     
-    func getZipCode() -> Int {
+    func getZipCode() -> String {
         return self.zipCode
     }
     

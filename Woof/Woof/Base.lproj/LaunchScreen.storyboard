@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+=======
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Jg2-Rx-6sq">
+>>>>>>> c45f0358f1240785aca3137d62718f10b5029bd1
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -65,6 +69,7 @@
             </objects>
             <point key="canvasLocation" x="-1368" y="49"/>
         </scene>
+<<<<<<< HEAD
         <!--View Controller-->
         <scene sceneID="EHf-IW-A2E">
             <objects>
@@ -89,6 +94,8 @@
             </objects>
             <point key="canvasLocation" x="680.79999999999995" y="431.33433283358323"/>
         </scene>
+=======
+>>>>>>> c45f0358f1240785aca3137d62718f10b5029bd1
     </scenes>
     <resources>
         <image name="eye" width="1784" height="1680"/>

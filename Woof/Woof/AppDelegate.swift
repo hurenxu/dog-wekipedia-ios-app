@@ -25,6 +25,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         GIDSignIn.sharedInstance().clientID = FIRApp.defaultApp()?.options.clientID
         GIDSignIn.sharedInstance().delegate = self
+        
+        //change nav bar appearance
+        var navigationBarAppearace = UINavigationBar.appearance()
+        navigationBarAppearace.tintColor = UIColor(netHex: 0xffffff)
+        navigationBarAppearace.barTintColor = UIColor(netHex: 0xffffff)
+        
+        // change navigation item title color
+        navigationBarAppearace.titleTextAttributes = [NSForegroundColorAttributeName : UIColor(netHex: 0xfd7f7c)]
         return true
     }
     
@@ -112,5 +120,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
     
     
 
+}
+/*
+ * Enable to set color in hex
+ */
+extension UIColor {
+    convenience init(red: Int, green: Int, blue: Int) {
+        assert(red >= 0 && red <= 255, "Invalid red component")
+        assert(green >= 0 && green <= 255, "Invalid green component")
+        assert(blue >= 0 && blue <= 255, "Invalid blue component")
+        
+        self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: 1.0)
+    }
+    
+    convenience init(netHex:Int) {
+        self.init(red:(netHex >> 16) & 0xff, green:(netHex >> 8) & 0xff, blue:netHex & 0xff)
+    }
 }
 

@@ -14,6 +14,7 @@ import FirebaseAuth
 
 class LoginViewController: UIViewController, GIDSignInUIDelegate{
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -30,7 +31,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate{
         BackimageView.image = UIImage(named:"bacgroundHome.png")
         self.view.addSubview(BackimageView)
         self.view.sendSubview(toBack: BackimageView)
-
+        
         GIDSignIn.sharedInstance().uiDelegate = self
         
     }
@@ -87,21 +88,33 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate{
             if FIRAuth.auth()?.currentUser != nil {
                 let user = User(authData: (FIRAuth.auth()?.currentUser)!)
                 
+                Functionalities.myUser = user
+                user.addUserProfileEntry()
+                //let controller:iPetViewController = (iPetViewController(coder: NSCoder))!
+                //controller.user = user
+                
+                
+                //test for IPetViewController
+                //let tools = Functionalities()
+                //tools.setUser(user:self.user!)
+                //test finish
+                
                 //let tools = Functionalities()
                 //print(tools.getBreedList())
                 
-                let dogID = user.userID + String(user.dogIDs.count)
-                let age = 3
+                let dogID = user.userID + user.dogIDs.count.description
+                let age = "3"
                 let birthdate = NSDate.distantPast
                 let vaccinedate = NSDate.distantFuture
                 
                 
                 //let myDogBreed = Breed(breedName: "Yorkshire", image: "none", personality: "cute", origin:    "England", group: "Small", weight: "light", height: "short", head: "small", body: "small", ears: "small", tail: "short", shedding: "no", grooming: "no", trainability: "easy", energyLevel: "high", barkingLevel: "low", lifeExpectancy: "long", description: "dorable", history: "long", breeders: "none")
                 
-                let myDogBreed = Breed(breedName: "Yorkshire", popularity: "Highest", origin: "England", group: "Small", size: "small", type: "type", lifeExpectancy: "20", colors: "white", litterSize: "20", price: "1000", barkingLevel: "okay", childFriendly: "yes", breeders: "none", image: "image")
+                let myDogBreed = Breed(breedName: "Yorkshire Terrier", popularity: "Highest", origin: "England", group: "Small", size: "small", type: "type", lifeExpectancy: "20", colors: "white", litterSize: "20", price: "1000", barkingLevel: "okay", childFriendly: "yes", breeders: "none", image: "image")
                 
                 let myDog = Dog(dogID: dogID, name: "cutie", breed: myDogBreed, birthDate: birthdate, age: age, gender: "female", vaccination: vaccinedate, color: "Brown", description: "Mine", image: "non")
-                //user.addDog(dog: myDog)
+                user.addDog(dog: myDog)
+                
                 
                 let updateMyNewDog = Dog(dogID: dogID, name: "cutie", breed: myDogBreed, birthDate: birthdate, age: age, gender: "female", vaccination: vaccinedate, color: "Brown", description: "Mine", image: "this time I add in some description")
                 //user.updateDog(dog: updateMyNewDog)
@@ -109,8 +122,8 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate{
                 
                 
             } else {
-                    // No user is signed in.
-                    // ...
+                // No user is signed in.
+                // ...
             }
             
             self.performSegue(withIdentifier: "login", sender: self)
@@ -121,6 +134,48 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate{
     @IBAction func googleLogin(sender: UIButton) {
         GIDSignIn.sharedInstance().signIn()
         print("googleLogin here")
+        if FIRAuth.auth()?.currentUser != nil {
+            let user = User(authData: (FIRAuth.auth()?.currentUser)!)
+            
+            Functionalities.myUser = user
+            print("****************************************************************************************")
+            user.addUserProfileEntry()
+            //let controller:iPetViewController = (iPetViewController(coder: NSCoder))!
+            //controller.user = user
+            
+            
+            //test for IPetViewController
+            //let tools = Functionalities()
+            //tools.setUser(user:self.user!)
+            //test finish
+            
+            //let tools = Functionalities()
+            //print(tools.getBreedList())
+            
+            let dogID = user.userID + user.dogIDs.count.description
+            let age = "3"
+            let birthdate = NSDate.distantPast
+            let vaccinedate = NSDate.distantFuture
+            
+            
+            //let myDogBreed = Breed(breedName: "Yorkshire", image: "none", personality: "cute", origin:    "England", group: "Small", weight: "light", height: "short", head: "small", body: "small", ears: "small", tail: "short", shedding: "no", grooming: "no", trainability: "easy", energyLevel: "high", barkingLevel: "low", lifeExpectancy: "long", description: "dorable", history: "long", breeders: "none")
+            
+            let myDogBreed = Breed(breedName: "Yorkshire Terrier", popularity: "Highest", origin: "England", group: "Small", size: "small", type: "type", lifeExpectancy: "20", colors: "white", litterSize: "20", price: "1000", barkingLevel: "okay", childFriendly: "yes", breeders: "none", image: "image")
+            
+            let myDog = Dog(dogID: dogID, name: "cutie", breed: myDogBreed, birthDate: birthdate, age: age, gender: "female", vaccination: vaccinedate, color: "Brown", description: "Mine", image: "non")
+            user.addDog(dog: myDog)
+            
+            
+            let updateMyNewDog = Dog(dogID: dogID, name: "cutie", breed: myDogBreed, birthDate: birthdate, age: age, gender: "female", vaccination: vaccinedate, color: "Brown", description: "Mine", image: "this time I add in some description")
+            //user.updateDog(dog: updateMyNewDog)
+            //user.deleteDog(dog: updateMyNewDog)
+            
+            
+        } else {
+            // No user is signed in.
+            // ...
+        }
+
     }
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
@@ -152,12 +207,11 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate{
             //}
             
         })
-        
         print("google Login there")
         self.performSegue(withIdentifier: "login", sender: self)
-
+        
         // [END_EXCLUDE]
     }
-
-
+    
+    
 }

@@ -13,16 +13,27 @@ class iPetViewController: UIViewController, UIImagePickerControllerDelegate,
 UICollectionViewDelegate, UICollectionViewDataSource {
     
     
-    var ownedDog = ["Yorkshire", "Pug","Siberian Husky","Beagle","Bulldog","Poodle","Boxer","Chihuahua","Pit bull","Akita","Pomeranian"]
+    var ownedDog = [String]()
     
-    var breed = ["breed1", "breed2","breed3","breed4","breed5","breed6","breed7","breed8","breed9","breed10"]
+    var breed = [String]()
     
-    var age = ["1","3", "5", "7","9","11","1","3","5","7", "9"]
+    var age = [String]()
     
-    var gender = ["boy", "girl", "unknown"]
+    var gender = [String]()
     
-    var color = ["black", "white", "grey"]
+    var color = [String]()
     
+    //test added
+    var dogList: [Dog] = []
+    
+    //var ownedDog: [Dog] = []
+    
+    var collectView: UICollectionView!
+    
+    var cLayout:UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+    //test added end
+    
+    var user:User?
     
     
     let cellID = "dogCell"
@@ -32,7 +43,8 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        //view.backgroundColor = UIColor.black
+        self.view.backgroundColor = UIColor(red: 165.0/255.0, green: 195.0/255.0, blue: 187.0/255.0, alpha: 1)
+
         self.title = "iPet"
         print("iPet Page loaded")
         //self.view.backgroundColor = UIColor.lightGray
@@ -46,22 +58,42 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         
         
         let editProfButton:UIButton = UIButton(frame: CGRect(x: 100, y: 400, width: 100, height: 50))
-        editProfButton.backgroundColor = .black
+        editProfButton.backgroundColor = UIColor(red: 100.0/255.0, green: 149.0/255.0, blue: 237.0/255.0, alpha: 1)
         editProfButton.setTitle("change image", for: .normal)
         self.view.addSubview(editProfButton)
         EditProfileImageButtonConstraints(Button: editProfButton)
+        editProfButton.layer.cornerRadius = 5
+        editProfButton.clipsToBounds = true
         
         
-        let notificationButton:UIButton = UIButton(frame: CGRect(x:300, y: 30, width: 40, height:40))
-        notificationButton.backgroundColor = .black
+        let notificationButton:UIButton = UIButton(frame: CGRect(x:300, y: 50, width: 40, height:40))
+
+        notificationButton.backgroundColor = UIColor(red: 100.0/255.0, green: 149.0/255.0, blue: 237.0/255.0, alpha: 1)
         notificationButton.setTitle("No!", for: .normal)
-        //NotifiCationButtonConstraints(Button: notificationButton)
-        
-        // notificationButton.addTarget(self, action: #selector(transition(Sender:notificationButton)), for: .touchUpInside)
         notificationButton.addTarget(self, action: #selector(self.transition(_:)), for: .touchUpInside)
-        //notificationButton.addTarget(self, action: transition, forControlEvents: .touchUpInside)
-        //button = answerButton
+
+    
+
         self.view.addSubview(notificationButton)
+        notificationButton.layer.cornerRadius = 5;
+        notificationButton.clipsToBounds = true
+
+        
+        //let controller:LoginViewController = LoginViewController()
+        
+        //self.user = controller.user
+        
+        //print(self.user?.name)
+        
+        //add data from firebase
+        
+        //test use and add a real user later
+        let tools = Functionalities()
+        let user = Functionalities.myUser
+        print("look here @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+        print(Functionalities.myUser?.dogIDs.count)
+        print(tools.retrieveDogList(controller:self))
+        //add finished
         
         
         
@@ -70,17 +102,18 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         label.center = CGPoint(x: 180, y: 250)
         label.text = "User Profile"
         label.textAlignment = .center
+        label.textColor = UIColor.white
         
         
-        label.textColor = UIColor.black
         label.font = label.font.withSize(30)
         self.view.addSubview(label)
         
         
         //let collectView = UICollectionView()
-        let cLayout:UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        //let cLayout:UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         
-        let collectView = UICollectionView(frame: CGRect(x: 0, y:300, width:view.frame.width, height: view.frame.height/2), collectionViewLayout: cLayout)
+        collectView = UICollectionView(frame: CGRect(x: 0, y:300, width:view.frame.width, height: view.frame.height/2), collectionViewLayout: cLayout)
+        
         
         cLayout.sectionInset = UIEdgeInsets(top: 25, left:25, bottom:25, right:25)
         cLayout.itemSize = CGSize(width: view.frame.width, height: view.frame.height/2)
@@ -90,13 +123,11 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         collectView.delegate = self
         collectView.register( OwnedDogCell.self, forCellWithReuseIdentifier: cellID)
         //collectView.showsVerticalScrollIndicator = true
-        collectView.backgroundColor = UIColor.black
+        collectView.backgroundColor = UIColor(red: 255.0/255.0, green: 228.0/255.0, blue: 196.0/255.0, alpha: 1)
         
         self.view.addSubview(collectView)
         collectView.reloadData()
         collectView.collectionViewLayout.invalidateLayout()
-        
-        
         
     }
     
