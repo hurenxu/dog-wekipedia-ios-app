@@ -33,6 +33,8 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        self.view.backgroundColor = UIColor(red: 165.0/255.0, green: 195.0/255.0, blue: 187.0/255.0, alpha: 1)
+        
         self.title = "iPet"
         print("iPet Page loaded")
         //self.view.backgroundColor = UIColor.lightGray
@@ -46,19 +48,22 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         
         
         let editProfButton:UIButton = UIButton(frame: CGRect(x: 100, y: 400, width: 100, height: 50))
-        editProfButton.backgroundColor = .black
+        editProfButton.backgroundColor = UIColor(red: 100.0/255.0, green: 149.0/255.0, blue: 237.0/255.0, alpha: 1)
         editProfButton.setTitle("change image", for: .normal)
         self.view.addSubview(editProfButton)
         EditProfileImageButtonConstraints(Button: editProfButton)
+        editProfButton.layer.cornerRadius = 5
+        editProfButton.clipsToBounds = true
         
         
-        let notificationButton:UIButton = UIButton(frame: CGRect(x:300, y: 60, width: 40, height:40))
-        notificationButton.backgroundColor = .black
+        let notificationButton:UIButton = UIButton(frame: CGRect(x:300, y: 30, width: 40, height:40))
+        notificationButton.backgroundColor = UIColor(red: 100.0/255.0, green: 149.0/255.0, blue: 237.0/255.0, alpha: 1)
         notificationButton.setTitle("No!", for: .normal)
-        
         notificationButton.addTarget(self, action: #selector(self.transition(_:)), for: .touchUpInside)
-        
         self.view.addSubview(notificationButton)
+        notificationButton.layer.cornerRadius = 5;
+        notificationButton.clipsToBounds = true
+
         
         
         
@@ -67,9 +72,9 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         label.center = CGPoint(x: 180, y: 250)
         label.text = "User Profile"
         label.textAlignment = .center
+        label.textColor = UIColor.white
         
         
-        label.textColor = UIColor.black
         label.font = label.font.withSize(30)
         self.view.addSubview(label)
         
@@ -87,7 +92,7 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         collectView.delegate = self
         collectView.register( OwnedDogCell.self, forCellWithReuseIdentifier: cellID)
         //collectView.showsVerticalScrollIndicator = true
-        collectView.backgroundColor = UIColor.black
+        collectView.backgroundColor = UIColor(red: 255.0/255.0, green: 228.0/255.0, blue: 196.0/255.0, alpha: 1)
         
         self.view.addSubview(collectView)
         collectView.reloadData()
@@ -95,10 +100,6 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         
         //let tools = Functionalities()
         //print(tools.getDogInfo(controller:self))
-        
-        
-        
-        
     }
     
     func transition(_ Sender: UIButton!) {

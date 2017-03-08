@@ -541,7 +541,7 @@ class NotificationViewController: UIViewController, UIPickerViewDelegate, UIPick
             
             
         })
-        self.view.backgroundColor = UIColor.orange
+        self.view.backgroundColor = UIColor(red: 165.0/255.0, green: 195.0/255.0, blue: 187.0/255.0, alpha: 1)
         // configure vaccination date title
         vTitle = UILabel(frame: CGRect(origin: ORIGIN, size: TITLE_SIZE))
         vTitle.text = "Vaccination Date"
