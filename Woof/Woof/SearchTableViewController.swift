@@ -47,12 +47,15 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as UITableViewCell?
         let mainImageView = cell?.viewWithTag(1) as! UIImageView
         let mainDogName = cell?.viewWithTag(2) as! UILabel
+        let mainDogGroup = cell?.viewWithTag(3) as! UILabel
         let breed: Breed
+        
         if self.resultSearchController.isActive && self.resultSearchController.searchBar.text != "" {
             breed = filteredDogs[indexPath.row]
         } else {
             breed = dogs[indexPath.row]
         }
+        //load URL image
         let urlString = breed.getImage()
         if let url = URL(string: urlString){
             URLSession.shared.dataTask(with: url) { (data, response, error) in
@@ -72,6 +75,7 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
                 }.resume()
         }else { mainImageView.image = #imageLiteral(resourceName: "dogProfile.png")}
         mainDogName.text = breed.getBreedName()
+        mainDogGroup.text = breed.getGroup()
         
         //alternate cell color
         if(indexPath.row % 2==0){
@@ -135,13 +139,9 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
                 } else {
                     breed = dogs[indexPath.row]
                 }
-                print(breed.getBreedName())
-                let controller = segue.destination as! DetailViewController
+                let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
                 controller.detailDog = breed
-                self.present(controller,animated:true, completion:nil)
-                print(breed.getBreedName()+" in prepare()")
             }
         }
     }
-    
 }
