@@ -29,10 +29,11 @@ class DataAccessObject {
         
         let ref = FIRDatabase.database().reference()
         
-        ref.child("Dog Profile").child(dog.dogID).setValue(["name": dog.name, "breed": dog.breed.breedName,
-                                                     "age": dog.age, "gender": dog.gender,
-                                                     "birthDate": dog.birthDate.description,
-                                                     "description": dog.description])
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYY-MM-DD HH:MM:SS"
+        
+        
+        ref.child("Dog Profile").child(dog.dogID).setValue(["name": dog.name, "breed": dog.breed.breedName, "age": dog.age, "gender": dog.gender, "birthDate": dateFormatter.string(from: dog.birthDate), "description": dog.description, "vaccination": dateFormatter.string(from:dog.vaccination), "color": dog.color, "image": dog.image])
     }
     
     func viewUser(user: User) -> Any{

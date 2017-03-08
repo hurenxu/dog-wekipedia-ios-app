@@ -3,9 +3,9 @@ import Foundation
 class Dog{
     
     let dogID: String
-	var name = ""
-    let breed: Breed
-    var age = 0
+    var name = ""
+    var breed: Breed!
+    var age = ""
     var gender = ""
     let birthDate: Date
     var vaccination = Date()
@@ -13,21 +13,9 @@ class Dog{
     var description = ""
     var image = ""
     
-    init(dictionary: NSDictionary){
-        dogID = (dictionary["dogID"] as? String)!
-        name = (dictionary["name"] as? String) ?? ""
-        breed = (dictionary["breed"] as? Breed)!
-        age = (dictionary["age"] as? Int) ?? 0
-        gender = (dictionary["gender"] as? String)!
-        birthDate = (dictionary["birthDate"] as? Date)!
-        vaccination = (dictionary["vaccination"] as? Date) ?? Date()
-        color = (dictionary["color"] as? String) ?? ""
-        description = (dictionary["description"] as? String) ?? ""
-        image = (dictionary["image"] as? String) ?? ""
-    }
     
-    init(dogID: String, name: String, breed: Breed, birthDate: Date = Date(), age: Int = 0, gender: String = "", vaccination: Date = Date(), color: String = "", description: String = "", image: String){
-		self.dogID = dogID
+    init(dogID: String, name: String, breed: Breed, birthDate: Date = Date(), age: String = "", gender: String = "", vaccination: Date = Date(), color: String = "", description: String = "", image: String){
+        self.dogID = dogID
         self.name = name
         self.breed = breed
         self.age = age
@@ -37,7 +25,33 @@ class Dog{
         self.color = color
         self.description = description
         self.image = image
-	}
+    }
+    
+    init(dictionary: NSDictionary) {
+        
+        dogID = (dictionary["dogID"] as? String) ?? ""
+        name = (dictionary["name"] as? String)!
+        let breedname = (dictionary["breed"] as? String)!
+        let birthDate = (dictionary["birthDate"] as? String)!
+        age = (dictionary["age"] as? String)!
+        gender = (dictionary["gender"] as? String)!
+        let vaccination = "4001-12-365 16:12:00" //(dictionary["vaccination"] as? String)!
+        color = (dictionary["color"] as? String)!
+        description = (dictionary["description"] as? String)!
+        image = (dictionary["image"] as? String)!
+        
+        for breed in Functionalities.breedList {
+            if (breed.getBreedName() == breedname) {
+                self.breed = breed
+            }
+        }
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYY-MM-DD HH:MM:SS"
+        self.birthDate = dateFormatter.date(from: birthDate)!
+        self.vaccination = dateFormatter.date(from: vaccination)!
+        
+    }
     
     func getBreed() -> Breed{
         return breed
@@ -53,7 +67,7 @@ class Dog{
     func getName() -> String{
         return name
     }
-    func getAge() -> Int{
+    func getAge() -> String{
         return age
     }
     func getGender() -> String{
@@ -75,7 +89,7 @@ class Dog{
         return image
     }
     
-    func setAge(age: Int){
+    func setAge(age: String){
         self.age = age
     }
     
@@ -90,7 +104,7 @@ class Dog{
     func setVaccinationDate( vacDate: Date) {
         self.vaccination = vacDate
     }
-
+    
     func setDescription( des: String) {
         self.description = des
     }
