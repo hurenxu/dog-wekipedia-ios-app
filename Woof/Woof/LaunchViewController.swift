@@ -34,7 +34,7 @@ class LaunchViewController: UIViewController {
         
         eyeImageView.startAnimating()
         
-        DispatchQueue.main.asyncAfter(deadline: .now() , execute: {
+        DispatchQueue.main.asyncAfter(deadline: .now()  , execute: {
             self.performSegue(withIdentifier: "showlogin", sender: self)
         })
 
