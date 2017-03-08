@@ -42,8 +42,40 @@
 		<key>NSExceptionDomains</key>
 		<dict>
 			<key>http://www.allsmalldogbreeds.com/breeds/american-cocker-spaniel.jpg</key>
-			<string>http://petguide.com.vsassets.com/wp-content/uploads/2013/02/australian-shepherd-11.jpg</string>
+			<key>http://petguide.com.vsassets.com/wp-content/uploads/2013/02/australian-shepherd-11.jpg</key>
 			<key>http://pbs.twimg.com/media/CQKgT40WcAAxTgE.jpg:large</key>
+            <key>http://www.dogbreedslist.info/uploads/allimg/dog-pictures/Labrador-Retriever-2.jpg</key>
+            <key>http://www.dogbreedslist.info/uploads/allimg/dog-pictures/German-Shepherd-Dog-2.jpg</key>
+            <key>http://www.dogbreedslist.info/uploads/allimg/dog-pictures/Golden-Retriever-2.jpg</key>
+            <key>http://www.dogbreedslist.info/uploads/allimg/dog-pictures/Bulldog-2.jpg</key>
+            <key>http://www.dogbreedslist.info/uploads/allimg/dog-pictures/Beagle-2.jpg</key>
+            <key>http://www.dogbreedslist.info/uploads/allimg/dog-pictures/French-Bulldog-2.jpg</key>
+            <key>http://www.dogbreedslist.info/uploads/allimg/dog-pictures/Yorkshire-Terrier-2.jpg</key>
+            <key>http://www.dogbreedslist.info/uploads/allimg/dog-pictures/Poodle-2.jpg</key>
+            <key>http://www.dogbreedslist.info/uploads/allimg/dog-pictures/Rottweiler-2.jpg</key>
+            <key>http://www.dogbreedslist.info/uploads/allimg/dog-pictures/Boxer-2.jpg</key>
+            
+            <key>http://www.dogbreedslist.info/uploads/allimg/dog-pictures/German-Shorthaired-Pointer-3.jpg</key>
+            <key>http://www.dogbreedslist.info/uploads/allimg/dog-pictures/Siberian-Husky-2.jpg</key>
+            <key>http://www.dogbreedslist.info/uploads/allimg/dog-pictures/Dachshund-2.jpg</key>
+            <key>http://www.dogbreedslist.info/uploads/allimg/dog-pictures/Doberman-Pinscher-2.jpg</key>
+            <key>http://www.dogbreedslist.info/uploads/allimg/dog-pictures/Great-Dane-2.jpg</key>
+            <key>http://www.dogbreedslist.info/uploads/allimg/dog-pictures/Miniature-Schnauzer-2.jpg</key>
+            <key>http://www.dogbreedslist.info/uploads/allimg/dog-pictures/Australian-Shepherd-2.jpg</key>
+            <key>http://www.dogbreedslist.info/uploads/allimg/dog-pictures/Cavalier-King-Charles-Spaniel-2.jpg</key>
+            <key>http://www.dogbreedslist.info/uploads/allimg/dog-pictures/Shih-Tzu-2.jpg</key>
+            <key>http://www.dogbreedslist.info/uploads/allimg/dog-pictures/Pembroke-Welsh-Corgi-2.jpg</key>
+            
+            <key>http://www.dogbreedslist.info/uploads/allimg/dog-pictures/Pomeranian-3.jpg</key>
+            <key>http://www.dogbreedslist.info/uploads/allimg/dog-pictures/Boston-Terrier-2.jpg</key>
+            <key>http://www.dogbreedslist.info/uploads/allimg/dog-pictures/Shetland-Sheepdog-2.jpg</key>
+            <key>http://www.dogbreedslist.info/uploads/allimg/dog-pictures/Havanese-2.jpg</key>
+            <key>http://www.dogbreedslist.info/uploads/allimg/dog-pictures/Mastiff-2.jpg</key>
+            <key>http://www.dogbreedslist.info/uploads/allimg/dog-pictures/Brittany-2.jpg</key>
+            <key>http://www.dogbreedslist.info/uploads/allimg/dog-pictures/English-Springer-Spaniel-2.jpg</key>
+            <key>http://www.dogbreedslist.info/uploads/allimg/dog-pictures/Chihuahua-2.jpg</key>
+            <key>http://www.dogbreedslist.info/uploads/allimg/dog-pictures/Bernese-Mountain-Dog-2.jpg</key>
+            <key>http://www.dogbreedslist.info/uploads/allimg/dog-pictures/Cocker-Spaniel-2.jpg</key>
 			<dict>
 				<key>NSIncludesSubdomains</key>
 				<true/>

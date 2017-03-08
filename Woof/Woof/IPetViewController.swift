@@ -12,7 +12,7 @@ class iPetViewController: UIViewController, UIImagePickerControllerDelegate,
     UINavigationControllerDelegate, UICollectionViewDelegateFlowLayout,
 UICollectionViewDelegate, UICollectionViewDataSource {
     
-    
+    //var ownedDog = []
     var ownedDog = ["Yorkshire", "Pug","Siberian Husky","Beagle","Bulldog","Poodle","Boxer","Chihuahua","Pit bull","Akita","Pomeranian"]
     
     var breed = ["breed1", "breed2","breed3","breed4","breed5","breed6","breed7","breed8","breed9","breed10"]
@@ -95,6 +95,10 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         self.view.addSubview(collectView)
         collectView.reloadData()
         collectView.collectionViewLayout.invalidateLayout()
+        
+        //let tools = Functionalities()
+        //print(tools.getDogInfo(controller:self))
+        
         
         
         
