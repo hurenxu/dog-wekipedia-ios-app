@@ -52,15 +52,12 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         EditProfileImageButtonConstraints(Button: editProfButton)
         
         
-        let notificationButton:UIButton = UIButton(frame: CGRect(x:300, y: 30, width: 40, height:40))
+        let notificationButton:UIButton = UIButton(frame: CGRect(x:300, y: 60, width: 40, height:40))
         notificationButton.backgroundColor = .black
         notificationButton.setTitle("No!", for: .normal)
-        //NotifiCationButtonConstraints(Button: notificationButton)
         
-        // notificationButton.addTarget(self, action: #selector(transition(Sender:notificationButton)), for: .touchUpInside)
         notificationButton.addTarget(self, action: #selector(self.transition(_:)), for: .touchUpInside)
-        //notificationButton.addTarget(self, action: transition, forControlEvents: .touchUpInside)
-        //button = answerButton
+        
         self.view.addSubview(notificationButton)
         
         
@@ -167,6 +164,9 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         
     }
     
+    //----------------------------------------------------------------------------------------------------------
+    // trying to get back data from detail view
+    var valueSentFromOwnedDogDetailView:String?
     
     
     
