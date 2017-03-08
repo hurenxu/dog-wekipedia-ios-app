@@ -9,6 +9,7 @@
 import UIKit
 
 class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
+    
     var name = ""
     var gender = ""
     var vaccinationdate = ""
@@ -59,19 +60,11 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
     //Declare the age Label
     let ageLabel = UILabel(frame: CGRect(x: 20, y: 455, width: 330, height: 40))
     
-    
-    
-    //------------------------------------------------------------------------------------------------------
-    // create a protocol to sent message back to previous view
-//    protocol MyProtocol{
-//        func setResultOfiPetView(name: String, gender: String)
-//    }
-    
-    
+
     
     
     override func viewDidLoad() {
-        super.viewDidLoad()
+        //super.viewDidLoad()
         self.view.backgroundColor = UIColor(red: 165.0/255.0, green: 195.0/255.0, blue: 187.0/255.0, alpha: 1)
         
         
