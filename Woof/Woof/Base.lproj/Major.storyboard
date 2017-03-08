@@ -227,7 +227,7 @@
         <!--Suggestion-->
         <scene sceneID="Kw0-oV-wU2">
             <objects>
-                <viewController id="nW2-EI-7nf" customClass="SuggestionViewController" customModule="Woof" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SuggestionViewController" id="nW2-EI-7nf" customClass="SuggestionViewController" customModule="Woof" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="a4V-gK-VAq"/>
                         <viewControllerLayoutGuide type="bottom" id="TGB-xT-MRw"/>

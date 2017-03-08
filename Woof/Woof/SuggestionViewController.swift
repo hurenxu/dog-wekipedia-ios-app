@@ -304,7 +304,9 @@ class SuggestionViewController: UIViewController {
         statsVC.breedArray = breedArray
         statsVC.likeBreeds = likeBreeds
         statsVC.nextBreeds = nextBreeds
-        self.navigationController?.pushViewController(statsVC, animated: true)
+
+
+        //self.navigationController?.pushViewController(statsVC, animated: true)
         self.present(statsVC, animated: true, completion: nil)
     }
     
@@ -319,11 +321,13 @@ class SuggestionViewController: UIViewController {
             likeFilters["Personality: \(myBreed.getPersonality())"]! += 1
             likeFilters["Origin: \(myBreed.getOrigin())"]! += 1
             likeFilters["Group: \(myBreed.getGroup())"]! += 1
-            likeFilters["Head: \(myBreed.getHeight())"]! += 1
-            likeFilters["Body: \(myBreed.getWeight())"]! += 1
-            likeFilters["Ears: \(myBreed.getSize())"]! += 1
+
+            //likeFilters["Head: \(myBreed.getHead())"]! += 1
+            //likeFilters["Body: \(myBreed.getBody())"]! += 1
+            //likeFilters["Ears: \(myBreed.getEars())"]! += 1
             // likeFilters["Hair: \(myBreed.getHair())"]! += 1
-            likeFilters["Tail \(myBreed.getType())"]! += 1
+            //likeFilters["Tail \(myBreed.getTail())"]! += 1
+
             likeFilters["Shedding \(myBreed.getShedding())"]! += 1
             likeFilters["Grooming \(myBreed.getGrooming())"]! += 1
         }
@@ -405,6 +409,7 @@ class SuggestionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         // Do any additional setup after loading the view, typically from a nib.
         
         // Request 10 Breeds information
@@ -419,7 +424,11 @@ class SuggestionViewController: UIViewController {
         
         for i in 0...arrayOfBreedName.count - 1 {
             
-            breedArray.append(Breed(breedName: arrayOfBreedName[i], popularity: "", origin: "", group: "", size: "", type: "", lifeExpectancy: "", personality: "",height: "", weight: "", colors: "", litterSize: "", price: "", barkingLevel: "", childFriendly: "", grooming: "",shedding: "", trainability: "", breeders: "", image: arrayOfBreedName[i]))
+
+
+            //breedArray.append(Breed(breedName: arrayOfBreedName[i], personality: "", origin: "", group: "", weight: "", height: "", head: "", body: "", ears: "", hair: "", tail: "", shedding: "", grooming: "", trainability: "", energyLevel: "", barkingLevel: "", lifeExpectancy: "", description: "", history: "", breeders: "", image: arrayOfBreedName[i]))
+            
+            breedArray.append(Breed(breedName: arrayOfBreedName[i], popularity: "Highest", origin: "England", group: "Small", size: "small", type: "type", lifeExpectancy: "20", colors: "white", litterSize: "20", price: "1000", barkingLevel: "okay", childFriendly: "yes", breeders: "none", image: arrayOfBreedName[i]))
         }
         
         currentBreed = breedArray[index]

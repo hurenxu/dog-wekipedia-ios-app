@@ -126,7 +126,8 @@ class StatsViewController: UIViewController {
         resultVC.likeBreeds = likeBreeds
         resultVC.nextBreeds = nextBreeds
         
-        self.navigationController?.pushViewController(resultVC, animated: true)
+
+        //self.navigationController?.pushViewController(resultVC, animated: true)
         self.present(resultVC, animated: true, completion: nil)
     }
     
@@ -203,7 +204,8 @@ class StatsViewController: UIViewController {
         nextButton.addTarget(self, action: #selector(self.nextPressed(sender:)), for: UIControlEvents.touchDown)
         
         // adjust the scroll view size
-        scrollView.contentSize.height = nextButton.center.y + CGFloat(SCROLL_OFFSET)
+
+        scrollView.contentSize.height = nextButton.center.y + CGFloat(SCROLL_OFFSET)        
     }
 
     override func didReceiveMemoryWarning() {

@@ -107,11 +107,11 @@
 		07AFF27F1E6A640A0089867C /* Functionalities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B4D74D1E56A21200DA6A2C /* Functionalities.swift */; };
 		07B4D74C1E56A13200DA6A2C /* DataAccessObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B4D74B1E56A13200DA6A2C /* DataAccessObject.swift */; };
 		07B4D74E1E56A21200DA6A2C /* Functionalities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B4D74D1E56A21200DA6A2C /* Functionalities.swift */; };
-		07F2DCBD1E6EBCDE0090F5C9 /* BreedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F2DCBA1E6EBCDE0090F5C9 /* BreedTableViewCell.swift */; };
-		07F2DCBE1E6EBCDE0090F5C9 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F2DCBB1E6EBCDE0090F5C9 /* ResultViewController.swift */; };
-		07F2DCBF1E6EBCDE0090F5C9 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F2DCBC1E6EBCDE0090F5C9 /* StatsViewController.swift */; };
-		2F2E8EF71E496C0700F911ED /* SuggestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2E8EF61E496C0700F911ED /* SuggestionViewController.swift */; };
 		58C3A872E1D87A2AA2091BAF /* Pods_Woof.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B9FF199C9CAEB89DFB8BD0B /* Pods_Woof.framework */; };
+		A4A8A3331E6E713F000657E1 /* BreedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A8A32F1E6E713F000657E1 /* BreedTableViewCell.swift */; };
+		A4A8A3341E6E713F000657E1 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A8A3301E6E713F000657E1 /* ResultViewController.swift */; };
+		A4A8A3351E6E713F000657E1 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A8A3311E6E713F000657E1 /* StatsViewController.swift */; };
+		A4A8A3361E6E713F000657E1 /* SuggestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A8A3321E6E713F000657E1 /* SuggestionViewController.swift */; };
 		B3DE3718303685A0F0AC28FE /* Pods_WoofUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA79A7154CB0E70AED07ACA /* Pods_WoofUITests.framework */; };
 		F701A652CB0884B0CD04CB0A /* Pods_WoofTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8C1D9890B526C0947E28C55 /* Pods_WoofTests.framework */; };
 /* End PBXBuildFile section */
@@ -193,11 +193,14 @@
 		07F2DCBC1E6EBCDE0090F5C9 /* StatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
 		155EBE63D3C365708CD5B5D5 /* Pods-WoofUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoofUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WoofUITests/Pods-WoofUITests.release.xcconfig"; sourceTree = "<group>"; };
 		2B9FF199C9CAEB89DFB8BD0B /* Pods_Woof.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Woof.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2F2E8EF61E496C0700F911ED /* SuggestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestionViewController.swift; sourceTree = "<group>"; };
 		417FEE35B18CEC60476A1012 /* Pods-WoofTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoofTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WoofTests/Pods-WoofTests.release.xcconfig"; sourceTree = "<group>"; };
 		6E144974F62DFDBD7A02E026 /* Pods-Woof.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Woof.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Woof/Pods-Woof.debug.xcconfig"; sourceTree = "<group>"; };
 		7717C3F7724CB21AC5305E61 /* Pods-WoofTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoofTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WoofTests/Pods-WoofTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9AA79A7154CB0E70AED07ACA /* Pods_WoofUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WoofUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4A8A32F1E6E713F000657E1 /* BreedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BreedTableViewCell.swift; sourceTree = "<group>"; };
+		A4A8A3301E6E713F000657E1 /* ResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		A4A8A3311E6E713F000657E1 /* StatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
+		A4A8A3321E6E713F000657E1 /* SuggestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestionViewController.swift; sourceTree = "<group>"; };
 		B68EEE3B2DF22BD21798D3A1 /* Pods-Woof.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Woof.release.xcconfig"; path = "Pods/Target Support Files/Pods-Woof/Pods-Woof.release.xcconfig"; sourceTree = "<group>"; };
 		D2D8ECD82229FD1CD3083EC0 /* Pods-WoofUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoofUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WoofUITests/Pods-WoofUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		D8C1D9890B526C0947E28C55 /* Pods_WoofTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WoofTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -355,10 +358,10 @@
 				07AFF2331E6A55D20089867C /* FilterTableViewController.swift */,
 				076344871E415470001E20C9 /* FirstViewController.swift */,
 				076344BD1E416EA0001E20C9 /* LoginViewController.swift */,
-				2F2E8EF61E496C0700F911ED /* SuggestionViewController.swift */,
-				07F2DCBA1E6EBCDE0090F5C9 /* BreedTableViewCell.swift */,
-				07F2DCBB1E6EBCDE0090F5C9 /* ResultViewController.swift */,
-				07F2DCBC1E6EBCDE0090F5C9 /* StatsViewController.swift */,
+				A4A8A32F1E6E713F000657E1 /* BreedTableViewCell.swift */,
+				A4A8A3301E6E713F000657E1 /* ResultViewController.swift */,
+				A4A8A3311E6E713F000657E1 /* StatsViewController.swift */,
+				A4A8A3321E6E713F000657E1 /* SuggestionViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -464,7 +467,7 @@
 				TargetAttributes = {
 					076344811E415470001E20C9 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 5CPEK2K37C;
+						DevelopmentTeam = 9EPWHD42X7;
 						ProvisioningStyle = Automatic;
 					};
 					076344971E415470001E20C9 = {
@@ -712,15 +715,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4A8A3331E6E713F000657E1 /* BreedTableViewCell.swift in Sources */,
 				076A4D861E6E52E800ABFC98 /* OwnedDogCell.swift in Sources */,
 				07AFF24A1E6A55D20089867C /* DetailViewController.swift in Sources */,
 				075FBD811E4D635D009ECE7C /* Breed.swift in Sources */,
 				07AFF24D1E6A55D20089867C /* DogCell.swift in Sources */,
+				A4A8A3351E6E713F000657E1 /* StatsViewController.swift in Sources */,
 				075FBD821E4D635D009ECE7C /* Dog.swift in Sources */,
 				07AFF2621E6A55D20089867C /* IPetViewController.swift in Sources */,
 				07AFF2711E6A55D20089867C /* SearchTableViewController.swift in Sources */,
 				076344BE1E416EA0001E20C9 /* LoginViewController.swift in Sources */,
 				07AFF26B1E6A55D20089867C /* ProfileViewController.swift in Sources */,
+				A4A8A3361E6E713F000657E1 /* SuggestionViewController.swift in Sources */,
 				075FBD831E4D635D009ECE7C /* User.swift in Sources */,
 				07AFF2531E6A55D20089867C /* DogProfile.swift in Sources */,
 				07F2DCBE1E6EBCDE0090F5C9 /* ResultViewController.swift in Sources */,
@@ -732,6 +738,7 @@
 				076A4D871E6E52E800ABFC98 /* OwnedDogDetailViewController.swift in Sources */,
 				07F2DCBF1E6EBCDE0090F5C9 /* StatsViewController.swift in Sources */,
 				07AFF2561E6A55D20089867C /* FilterTableViewController.swift in Sources */,
+				A4A8A3341E6E713F000657E1 /* ResultViewController.swift in Sources */,
 				07B4D74C1E56A13200DA6A2C /* DataAccessObject.swift in Sources */,
 				07B4D74E1E56A21200DA6A2C /* Functionalities.swift in Sources */,
 				07F2DCBD1E6EBCDE0090F5C9 /* BreedTableViewCell.swift in Sources */,
@@ -925,14 +932,14 @@
 			baseConfigurationReference = 6E144974F62DFDBD7A02E026 /* Pods-Woof.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 5CPEK2K37C;
+				DEVELOPMENT_TEAM = 9EPWHD42X7;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Woof/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = meiyi.Woof.ios.Woof;
+				PRODUCT_BUNDLE_IDENTIFIER = jasper.Woof.ios.Woof;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -943,14 +950,14 @@
 			baseConfigurationReference = B68EEE3B2DF22BD21798D3A1 /* Pods-Woof.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 5CPEK2K37C;
+				DEVELOPMENT_TEAM = 9EPWHD42X7;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Woof/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = meiyi.Woof.ios.Woof;
+				PRODUCT_BUNDLE_IDENTIFIER = jasper.Woof.ios.Woof;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

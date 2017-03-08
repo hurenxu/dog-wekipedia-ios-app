@@ -96,7 +96,10 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate{
                 let vaccinedate = NSDate.distantFuture
                 
                 
-                let myDogBreed = Breed(breedName: "Yorkshire", popularity: "popularity", origin: "England", group: "Small", size: "size", type: "type", lifeExpectancy: "long", personality: "cute",  height: "short", weight: "light", colors: "colors", litterSize: "litterSize", price: "price", barkingLevel: "low", childFriendly: "childFriendly", grooming: "no", shedding: "no", trainability: "easy", breeders: "none", image: "none")
+                //let myDogBreed = Breed(breedName: "Yorkshire", image: "none", personality: "cute", origin:    "England", group: "Small", weight: "light", height: "short", head: "small", body: "small", ears: "small", tail: "short", shedding: "no", grooming: "no", trainability: "easy", energyLevel: "high", barkingLevel: "low", lifeExpectancy: "long", description: "dorable", history: "long", breeders: "none")
+                
+                let myDogBreed = Breed(breedName: "Yorkshire", popularity: "Highest", origin: "England", group: "Small", size: "small", type: "type", lifeExpectancy: "20", colors: "white", litterSize: "20", price: "1000", barkingLevel: "okay", childFriendly: "yes", breeders: "none", image: "image")
+                
                 let myDog = Dog(dogID: dogID, name: "cutie", breed: myDogBreed, birthDate: birthdate, age: age, gender: "female", vaccination: vaccinedate, color: "Brown", description: "Mine", image: "non")
                 //user.addDog(dog: myDog)
                 
