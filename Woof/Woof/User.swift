@@ -70,6 +70,11 @@ class User{
     
 
     func userExist() -> Bool {
+        //rootRef = FirebaseDatabase.getInstance().getReference();
+        
+        //if (rootRef.childExists("name")) {
+            
+        //}
         return false
     }
     

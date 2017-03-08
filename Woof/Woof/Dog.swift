@@ -13,6 +13,18 @@ class Dog{
     var description = ""
     var image = ""
     
+    init(dictionary: NSDictionary){
+        dogID = (dictionary["dogID"] as? String)!
+        name = (dictionary["name"] as? String) ?? ""
+        breed = (dictionary["breed"] as? Breed)!
+        age = (dictionary["age"] as? Int) ?? 0
+        gender = (dictionary["gender"] as? String)!
+        birthDate = (dictionary["birthDate"] as? Date)!
+        vaccination = (dictionary["vaccination"] as? Date) ?? Date()
+        color = (dictionary["color"] as? String) ?? ""
+        description = (dictionary["description"] as? String) ?? ""
+        image = (dictionary["image"] as? String) ?? ""
+    }
     
     init(dogID: String, name: String, breed: Breed, birthDate: Date = Date(), age: Int = 0, gender: String = "", vaccination: Date = Date(), color: String = "", description: String = "", image: String){
 		self.dogID = dogID
