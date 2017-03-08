@@ -13,17 +13,27 @@ class iPetViewController: UIViewController, UIImagePickerControllerDelegate,
 UICollectionViewDelegate, UICollectionViewDataSource {
     
     
-    //var ownedDog = []
-    var ownedDog = ["Yorkshire", "Pug","Siberian Husky","Beagle","Bulldog","Poodle","Boxer","Chihuahua","Pit bull","Akita","Pomeranian"]
+    var ownedDog = [String]()
     
-    var breed = ["breed1", "breed2","breed3","breed4","breed5","breed6","breed7","breed8","breed9","breed10"]
+    var breed = [String]()
     
-    var age = ["1","3", "5", "7","9","11","1","3","5","7", "9"]
+    var age = [String]()
     
-    var gender = ["boy", "girl", "unknown"]
+    var gender = [String]()
     
-    var color = ["black", "white", "grey"]
+    var color = [String]()
     
+    //test added
+    var dogList: [Dog] = []
+    
+    //var ownedDog: [Dog] = []
+    
+    var collectView: UICollectionView!
+    
+    var cLayout:UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+    //test added end
+    
+    var user:User?
     
     
     let cellID = "dogCell"
@@ -34,7 +44,7 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         // Do any additional setup after loading the view, typically from a nib.
         
         self.view.backgroundColor = UIColor(red: 165.0/255.0, green: 195.0/255.0, blue: 187.0/255.0, alpha: 1)
-        
+
         self.title = "iPet"
         print("iPet Page loaded")
         //self.view.backgroundColor = UIColor.lightGray
@@ -56,14 +66,32 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         editProfButton.clipsToBounds = true
         
         
-        let notificationButton:UIButton = UIButton(frame: CGRect(x:300, y: 30, width: 40, height:40))
+        let notificationButton:UIButton = UIButton(frame: CGRect(x:300, y: 50, width: 40, height:40))
+
         notificationButton.backgroundColor = UIColor(red: 100.0/255.0, green: 149.0/255.0, blue: 237.0/255.0, alpha: 1)
         notificationButton.setTitle("No!", for: .normal)
         notificationButton.addTarget(self, action: #selector(self.transition(_:)), for: .touchUpInside)
+
+    
+
         self.view.addSubview(notificationButton)
         notificationButton.layer.cornerRadius = 5;
         notificationButton.clipsToBounds = true
 
+        
+        //let controller:LoginViewController = LoginViewController()
+        
+        //self.user = controller.user
+        
+        //print(self.user?.name)
+        
+        //add data from firebase
+        
+        //test use and add a real user later
+        let tools = Functionalities()
+        let user = Functionalities.myUser
+        print(tools.retrieveDogList(controller:self))
+        //add finished
         
         
         
@@ -80,9 +108,10 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         
         
         //let collectView = UICollectionView()
-        let cLayout:UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        //let cLayout:UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         
-        let collectView = UICollectionView(frame: CGRect(x: 0, y:300, width:view.frame.width, height: view.frame.height/2), collectionViewLayout: cLayout)
+        collectView = UICollectionView(frame: CGRect(x: 0, y:300, width:view.frame.width, height: view.frame.height/2), collectionViewLayout: cLayout)
+        
         
         cLayout.sectionInset = UIEdgeInsets(top: 25, left:25, bottom:25, right:25)
         cLayout.itemSize = CGSize(width: view.frame.width, height: view.frame.height/2)
@@ -98,8 +127,6 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         collectView.reloadData()
         collectView.collectionViewLayout.invalidateLayout()
         
-        //let tools = Functionalities()
-        //print(tools.getDogInfo(controller:self))
     }
     
     func transition(_ Sender: UIButton!) {
@@ -132,7 +159,6 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         //let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath)
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! OwnedDogCell
         
-        
         cell.textLabel?.text = ownedDog[indexPath.row]
         cell.imageView?.image = UIImage(named: "bone")
         
@@ -161,13 +187,11 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         secondViewController.name = ownedDog[indexPath.row]
         secondViewController.gender = gender[indexPath.row % 3]
         
+        
         self.present(secondViewController, animated: true, completion: nil)
         
     }
     
-    //----------------------------------------------------------------------------------------------------------
-    // trying to get back data from detail view
-    var valueSentFromOwnedDogDetailView:String?
     
     
     
