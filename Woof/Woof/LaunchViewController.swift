@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Dispatch
 import UIKit
 
 
@@ -27,20 +28,20 @@ class LaunchViewController: UIViewController {
         
         eyeImageView.animationImages = logoImage
         
-        eyeImageView.animationDuration = 4.0
+        eyeImageView.animationDuration = 2.0
         
         eyeImageView.animationRepeatCount = 2
         
         eyeImageView.startAnimating()
         
-        if (!eyeImageView.isAnimating) {
-            
+        DispatchQueue.main.asyncAfter(deadline: .now() , execute: {
             self.performSegue(withIdentifier: "showlogin", sender: self)
-        }
+        })
+
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
+    
+    
+
     
 }
