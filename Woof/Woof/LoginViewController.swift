@@ -89,6 +89,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate{
                 let user = User(authData: (FIRAuth.auth()?.currentUser)!)
                 
                 Functionalities.myUser = user
+                user.addUserProfileEntry()
                 //let controller:iPetViewController = (iPetViewController(coder: NSCoder))!
                 //controller.user = user
                 
@@ -133,6 +134,12 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate{
     @IBAction func googleLogin(sender: UIButton) {
         GIDSignIn.sharedInstance().signIn()
         print("googleLogin here")
+        if FIRAuth.auth()?.currentUser != nil {
+            let user = User(authData: (FIRAuth.auth()?.currentUser)!)
+            
+            Functionalities.myUser = user
+           // user.addUserProfileEntry()
+        }
     }
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {

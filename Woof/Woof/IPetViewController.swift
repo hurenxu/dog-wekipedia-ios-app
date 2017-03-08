@@ -88,7 +88,7 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         //add data from firebase
         
         //test use and add a real user later
-        let tools = Functionalities()
+       let tools = Functionalities()
         let user = Functionalities.myUser
         print(tools.retrieveDogList(controller:self))
         //add finished
