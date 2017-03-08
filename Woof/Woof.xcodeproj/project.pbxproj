@@ -188,9 +188,6 @@
 		07AFF23D1E6A55D20089867C /* WoofipediaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WoofipediaViewController.swift; sourceTree = "<group>"; };
 		07B4D74B1E56A13200DA6A2C /* DataAccessObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataAccessObject.swift; sourceTree = "<group>"; };
 		07B4D74D1E56A21200DA6A2C /* Functionalities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functionalities.swift; sourceTree = "<group>"; };
-		07F2DCBA1E6EBCDE0090F5C9 /* BreedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BreedTableViewCell.swift; sourceTree = "<group>"; };
-		07F2DCBB1E6EBCDE0090F5C9 /* ResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
-		07F2DCBC1E6EBCDE0090F5C9 /* StatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
 		155EBE63D3C365708CD5B5D5 /* Pods-WoofUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoofUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WoofUITests/Pods-WoofUITests.release.xcconfig"; sourceTree = "<group>"; };
 		2B9FF199C9CAEB89DFB8BD0B /* Pods_Woof.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Woof.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		417FEE35B18CEC60476A1012 /* Pods-WoofTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoofTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WoofTests/Pods-WoofTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -461,6 +458,9 @@
 		0763447A1E415470001E20C9 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					2,
+				);
 				LastSwiftUpdateCheck = 0820;
 				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = Woof;
@@ -729,19 +729,15 @@
 				A4A8A3361E6E713F000657E1 /* SuggestionViewController.swift in Sources */,
 				075FBD831E4D635D009ECE7C /* User.swift in Sources */,
 				07AFF2531E6A55D20089867C /* DogProfile.swift in Sources */,
-				07F2DCBE1E6EBCDE0090F5C9 /* ResultViewController.swift in Sources */,
 				07AFF26E1E6A55D20089867C /* Pulsing.swift in Sources */,
 				076A4D891E6E53C400ABFC98 /* NotificationViewController.swift in Sources */,
 				076344861E415470001E20C9 /* AppDelegate.swift in Sources */,
 				076344881E415470001E20C9 /* FirstViewController.swift in Sources */,
-				2F2E8EF71E496C0700F911ED /* SuggestionViewController.swift in Sources */,
 				076A4D871E6E52E800ABFC98 /* OwnedDogDetailViewController.swift in Sources */,
-				07F2DCBF1E6EBCDE0090F5C9 /* StatsViewController.swift in Sources */,
 				07AFF2561E6A55D20089867C /* FilterTableViewController.swift in Sources */,
 				A4A8A3341E6E713F000657E1 /* ResultViewController.swift in Sources */,
 				07B4D74C1E56A13200DA6A2C /* DataAccessObject.swift in Sources */,
 				07B4D74E1E56A21200DA6A2C /* Functionalities.swift in Sources */,
-				07F2DCBD1E6EBCDE0090F5C9 /* BreedTableViewCell.swift in Sources */,
 				07AFF25C1E6A55D20089867C /* HomepageViewController.swift in Sources */,
 				07AFF2741E6A55D20089867C /* WoofipediaViewController.swift in Sources */,
 			);

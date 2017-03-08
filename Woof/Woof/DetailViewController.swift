@@ -16,20 +16,20 @@ class DetailViewController: UIViewController, UINavigationBarDelegate{
     // MARK: - Setup data passing variable matches the SearchTableViewController.swift class's prepare function
     var detailDog: Breed? {
         didSet {
-            print((detailDog?.getBreedName())!+"DetailView Name Passed")
-//            configureView()
-            print("configureView end")
+            print("Call configure view in setting dog value")
+            configureView()
+            print("finished calling configure view")
         }
     }
     /*
      * This function configures view for the breed detail page
      */
     func configureView() {
-        print("Configure View")
-        print(detailDog?.getBreedName())
+        // Check if detailDog is valid
         if let detailDog = detailDog {
             if let detailImageView = detailImageView, let detailBreedName = detailBreedName
             {
+                // Assign breed name to the textLabel references in UI
                 detailBreedName.text = detailDog.getBreedName()
                 
                 //Get Breed Profile Image URL
@@ -47,13 +47,14 @@ class DetailViewController: UIViewController, UINavigationBarDelegate{
                         }
                         
                         DispatchQueue.main.async {
+                            //resize image to have circle border, assign loaded URL image to references in UI
                             detailImageView.image = UIImage(data: data!)
-                            //set image to circle
                             detailImageView.layer.cornerRadius = detailImageView.frame.size.width/2.0
                             detailImageView.clipsToBounds = true
                         }
                         }.resume()
                 }else {
+                    //resize image to have circle border, assign loaded URL image to references in UI
                     detailImageView.image = #imageLiteral(resourceName: "dogProfile.png")
                     detailImageView.layer.cornerRadius = detailImageView.frame.size.width/2.0
                     detailImageView.clipsToBounds = true}
@@ -63,59 +64,9 @@ class DetailViewController: UIViewController, UINavigationBarDelegate{
     }
     
     
-    /*
-     * This function resizes the image
-     */
-    func resizeImage(image: UIImage, targetSize: CGSize) -> UIImage {
-        let size = image.size
-        
-        let widthRatio  = targetSize.width  / image.size.width
-        let heightRatio = targetSize.height / image.size.height
-        
-        // Figure out what our orientation is, and use that to form the rectangle
-        var newSize: CGSize
-        if(widthRatio > heightRatio) {
-            newSize = CGSize(width: size.width * heightRatio, height: size.height * heightRatio)
-        } else {
-            newSize = CGSize(width: size.width * widthRatio,  height: size.height * widthRatio)
-        }
-        
-        // This is the rect that we've calculated out and this is what is actually used below
-        let rect = CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height)
-        
-        // Actually do the resizing to the rect using the ImageContext stuff
-        UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
-        image.draw(in: rect)
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        return newImage!
-    }
-    
-    /* function that directs back to the search page when the nav bar back button
-     * is clicked
-     */
-    func goBack(){
-        print("call goBack function")
-        dismiss(animated:true, completion:nil)
-    }
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         configureView()
-        let navigationBar = UINavigationBar(frame: CGRect(x:0, y:0,width:self.view.frame.size.width,height:55))
-        let navigationItem = UINavigationItem()
-        navigationItem.title = "Breed Detail"
-        navigationBar.delegate = self;
-        
-        let backButton = UIBarButtonItem(title:"Back", style:.plain, target:self,action: #selector(goBack))
-        backButton.tintColor = UIColor.white
-        navigationItem.leftBarButtonItem = backButton
-        navigationBar.pushItem(navigationItem,animated:true)
-        
-        self.view.addSubview(navigationBar)
     }
     
     override func didReceiveMemoryWarning() {
