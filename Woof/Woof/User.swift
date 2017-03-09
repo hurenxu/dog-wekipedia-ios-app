@@ -24,9 +24,10 @@ class User{
         email = authData.email!
         gender = "F"
         
-        if (!self.userExist()) {
-            self.addUserProfileEntry()
-        }
+//        if (!self.userExist()) {
+//            self.addUserProfileEntry()
+//        }
+        self.userExist()
     }
     
     init(dictionary: NSDictionary) {
@@ -95,7 +96,8 @@ class User{
     
     
     func userExist() -> Bool {
-        return true
+        let tools = Functionalities()
+        return tools.userExist(user:self)
     }
     
     func setName(name: String) {
