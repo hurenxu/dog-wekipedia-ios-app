@@ -42,7 +42,7 @@ class NotificationViewController: UIViewController, UIPickerViewDelegate, UIPick
     let TITLE_FONTSIZE: CGFloat = CGFloat(25)
     let BODY_FONTSIZE: CGFloat = CGFloat(20)
     let TEXT_FONTSIZE: CGFloat = CGFloat(15)
-    let FONT = "Noteworthy"
+    let FONT = "Rubik"
     
     // vaccination/birthday date title
     let TITLE_SIZE: CGSize = CGSize(width: 230, height: 40)
@@ -535,7 +535,7 @@ class NotificationViewController: UIViewController, UIPickerViewDelegate, UIPick
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
+        self.title = "Notification"
         // request for notification, TODO: handle error, not allowed
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: {allowed, error in
             
@@ -743,7 +743,7 @@ class NotificationViewController: UIViewController, UIPickerViewDelegate, UIPick
         let navigationBar = UINavigationBar(frame: CGRect(x:0, y:0, width:self.view.frame.size.width, height:44)) // Offset by 20 pixels vertically to take the status bar into account
         
         let navigationItem = UINavigationItem()
-        navigationItem.title = "Title"
+        navigationItem.title = "Notification"
         
         
         navigationBar.backgroundColor = UIColor.white
