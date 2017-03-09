@@ -17,11 +17,11 @@ class Functionalities{
     
     var currBreed: Breed?
     
-    //doglist for user part
     var dogIDList = [String]()
     
     static var myUser: User?
-    //dog list for user part over
+    
+    static var userExist: Bool?
     
     init(){}
     // return a whole dog breed list for woofipedia
@@ -106,6 +106,23 @@ class Functionalities{
         })
     }
     
+    func userExist(user:User) -> Bool {
+        let ref = FIRDatabase.database().reference()
+        ref.child("User Profile").observeSingleEvent(of: .value, with: { (snapshot) in
+            let users = snapshot.value as? NSDictionary
+            let keys = users?.allKeys as! [NSString]
+            for key in keys {
+                if (Functionalities.myUser?.userID == key as String) {
+                    Functionalities.userExist = true
+
+                }
+            }
+        })
+        
+        return false
+        
+    }
+    
     func retrieveProfileForDogList(controller: iPetViewController) {
         let ref = FIRDatabase.database().reference()
         let myUserID = Functionalities.myUser?.userID
@@ -134,10 +151,6 @@ class Functionalities{
         retrieveBreedList(controller: controller)
         print(Functionalities.breedList)
         return Functionalities.breedList
-    }
-    
-    func getUserProfileForDog(controller: iPetViewController){
-        retrieveProfileForDogList(controller: controller)
     }
     
     func setUser(user: User) {
