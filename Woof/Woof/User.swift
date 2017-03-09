@@ -95,7 +95,7 @@ class User{
     
     
     func userExist() -> Bool {
-        return true
+        return false
     }
     
     func setName(name: String) {
