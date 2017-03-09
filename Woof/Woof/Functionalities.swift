@@ -114,6 +114,8 @@ class Functionalities{
             for key in keys {
                 if (Functionalities.myUser?.userID == key as String) {
                     Functionalities.userExist = true
+                    print("((((((((((((((((((((((((((((((((((((((((((((")
+                    print(Functionalities.userExist)
 
                 }
             }
