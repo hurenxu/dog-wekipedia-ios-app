@@ -176,7 +176,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate{
             // ...
         }
         
-        print("google Login there")
+        //print("google Login there")
         self.performSegue(withIdentifier: "login", sender: self)
 
     }
