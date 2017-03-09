@@ -14,9 +14,9 @@ class SuggestionViewController: UIViewController {
     let SCREEN_SIZE: CGRect = UIScreen.main.bounds
     
     // offsets
-    let IMAGE_OFFSET: Int = 30
+    let IMAGE_OFFSET: Int = 70
     let BORDER_OFFSET: Int = 40
-    let LABEL_OFFSET: Int = 390
+    let LABEL_OFFSET: Int = 350
     let MIDDLE_BUTTON_OFFSET: Int = 85
     let SIDE_BUTTON_OFFSET: Int = 35
     
@@ -25,12 +25,12 @@ class SuggestionViewController: UIViewController {
     let DOUBLE: Int = 2
     
     // everything about the image
-    let IMAGE_SIZE: CGSize = CGSize(width: 345, height: 425)
+    let IMAGE_SIZE: CGSize = CGSize(width: 345, height: 385)
     var imageStatic: UIImageView! = nil
     var imageDynamic: UIImageView! = nil
 
     // everything about the border
-    let BORDER_SIZE: CGSize = CGSize(width: 345, height: 465)
+    let BORDER_SIZE: CGSize = CGSize(width: 345, height: 425)
     var borderStatic: UIView! = nil
     var borderDynamic: UIView! = nil
     var borderRelativeCenter: CGPoint! = nil
@@ -436,6 +436,7 @@ class SuggestionViewController: UIViewController {
         nextBreed = breedArray[index]
         
         // colored background
+        self.title = "Recommendation"
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "backgroundHomeLarge.jpg")!)
         
         // the center of all components
