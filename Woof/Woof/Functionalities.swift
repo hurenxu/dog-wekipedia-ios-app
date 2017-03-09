@@ -114,6 +114,8 @@ class Functionalities{
             for key in keys {
                 if (Functionalities.myUser?.userID == key as String) {
                     Functionalities.userExist = true
+                    print("((((((((((((((((((((((((((((((((((((((((((((")
+                    print(Functionalities.userExist)
 
                 }
             }
@@ -123,29 +125,29 @@ class Functionalities{
         
     }
     
-    func retrieveProfileForDogList(controller: iPetViewController) {
-        let ref = FIRDatabase.database().reference()
-        let myUserID = Functionalities.myUser?.userID
-        databaseHandle = ref.child("User Profile").observe(.value, with: { (snapshot) in
-            let enumerator = snapshot.children
-            while let next = enumerator.nextObject() as? FIRDataSnapshot {
-                var currentUser = next.value as? NSDictionary
-                let currentUserID = currentUser?["userID"] as? String
-                if (currentUserID == myUserID) {
-                    let currentUserWanted = User(dictionary: currentUser!)
-                    
-                    //TODO: need to replace the following with correct dog object
-                    //controller.dogIDList = currentUserWanted.dogIDs
-                    //like this:
-                    Functionalities.myUser = currentUserWanted
-                    
-                    print("REACH THIS LINE ************************************************************************************************************************************************************************************************************")
-                    self.retrieveDogList(controller: controller)
-                }
-            }
-            
-        })
-    }
+//    func retrieveProfileForDogList(controller: iPetViewController) {
+//        let ref = FIRDatabase.database().reference()
+//        let myUserID = Functionalities.myUser?.userID
+//        databaseHandle = ref.child("User Profile").observe(.value, with: { (snapshot) in
+//            let enumerator = snapshot.children
+//            while let next = enumerator.nextObject() as? FIRDataSnapshot {
+//                var currentUser = next.value as? NSDictionary
+//                let currentUserID = currentUser?["userID"] as? String
+//                if (currentUserID == myUserID) {
+//                    let currentUserWanted = User(dictionary: currentUser!)
+//                    
+//                    //TODO: need to replace the following with correct dog object
+//                    //controller.dogIDList = currentUserWanted.dogIDs
+//                    //like this:
+//                    Functionalities.myUser = currentUserWanted
+//                    
+//                    print("REACH THIS LINE ************************************************************************************************************************************************************************************************************")
+//                    self.retrieveDogList(controller: controller)
+//                }
+//            }
+//            
+//        })
+//    }
     
     func getBreedList(controller: SearchTableViewController) -> [Breed] {
         retrieveBreedList(controller: controller)

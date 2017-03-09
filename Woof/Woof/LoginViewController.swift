@@ -89,7 +89,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate{
                 let user = User(authData: (FIRAuth.auth()?.currentUser)!)
                 
                 Functionalities.myUser = user
-                user.addUserProfileEntry()
+                //user.addUserProfileEntry()
                 //let controller:iPetViewController = (iPetViewController(coder: NSCoder))!
                 //controller.user = user
                 
@@ -139,7 +139,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate{
             
             Functionalities.myUser = user
             print("****************************************************************************************")
-            user.addUserProfileEntry()
+            //user.addUserProfileEntry()
             //let controller:iPetViewController = (iPetViewController(coder: NSCoder))!
             //controller.user = user
             
@@ -176,7 +176,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate{
             // ...
         }
         
-        print("google Login there")
+        //print("google Login there")
         self.performSegue(withIdentifier: "login", sender: self)
 
     }

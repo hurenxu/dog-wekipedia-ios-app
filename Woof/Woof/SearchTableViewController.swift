@@ -71,6 +71,7 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
                 
                 DispatchQueue.main.async {
                     mainImageView.image = UIImage(data: data!)
+                    //mainImageView.image.frame = CGRectMake(0,0,50,50)
                 }
                 }.resume()
         }else { mainImageView.image = #imageLiteral(resourceName: "dogProfile.png")}
@@ -86,12 +87,16 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
             cell?.backgroundColor = UIColor.init(colorLiteralRed: 255/255, green: 255/255, blue: 255/255, alpha: 0.5)
         }
         
+        
+        
         //set image in the cell to be cicle
+
 //        mainImageView.layer.cornerRadius = mainImageView.frame.height/2.0
 //        mainImageView.clipsToBounds = true
         let radius = mainImageView.frame.width / 2
         mainImageView.layer.cornerRadius = radius
         mainImageView.layer.masksToBounds = true
+
         
         return cell!
     }

@@ -112,6 +112,7 @@
 		8D7B14F31E71243A00100358 /* backgroundView.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D7B14F21E71243A00100358 /* backgroundView.png */; };
 		9EEAB7A61E710EC700E30178 /* discoverTab.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EEAB7A51E710EC700E30178 /* discoverTab.png */; };
 		9EEAB7A81E710ECE00E30178 /* iPetTab.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EEAB7A71E710ECE00E30178 /* iPetTab.png */; };
+		9EEAB7AE1E7113DC00E30178 /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EEAB7AD1E7113DC00E30178 /* star.png */; };
 		A4A8A3331E6E713F000657E1 /* BreedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A8A32F1E6E713F000657E1 /* BreedTableViewCell.swift */; };
 		A4A8A3341E6E713F000657E1 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A8A3301E6E713F000657E1 /* ResultViewController.swift */; };
 		A4A8A3351E6E713F000657E1 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A8A3311E6E713F000657E1 /* StatsViewController.swift */; };
@@ -202,6 +203,7 @@
 		9AA79A7154CB0E70AED07ACA /* Pods_WoofUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WoofUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EEAB7A51E710EC700E30178 /* discoverTab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = discoverTab.png; sourceTree = "<group>"; };
 		9EEAB7A71E710ECE00E30178 /* iPetTab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iPetTab.png; sourceTree = "<group>"; };
+		9EEAB7AD1E7113DC00E30178 /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star.png; sourceTree = "<group>"; };
 		A4A8A32F1E6E713F000657E1 /* BreedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BreedTableViewCell.swift; sourceTree = "<group>"; };
 		A4A8A3301E6E713F000657E1 /* ResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		A4A8A3311E6E713F000657E1 /* StatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
@@ -339,6 +341,7 @@
 				07AFF22B1E6A55D20089867C /* bacgroundHome.png */,
 				07AFF22C1E6A55D20089867C /* backgroundHome.jpg */,
 				07AFF22D1E6A55D20089867C /* backgroundHomeLarge.jpg */,
+				9EEAB7AD1E7113DC00E30178 /* star.png */,
 				9EEAB7A71E710ECE00E30178 /* iPetTab.png */,
 				07AFF22E1E6A55D20089867C /* bone-flat.png */,
 				9EEAB7A51E710EC700E30178 /* discoverTab.png */,
@@ -521,6 +524,7 @@
 			files = (
 				076344921E415470001E20C9 /* LaunchScreen.storyboard in Resources */,
 				0758A9201E450B5B00BE9145 /* Rubik-Regular.ttf in Resources */,
+				9EEAB7AE1E7113DC00E30178 /* star.png in Resources */,
 				07AFF2411E6A55D20089867C /* backgroundHome.jpg in Resources */,
 				07AFF23E1E6A55D20089867C /* bacgroundHome.png in Resources */,
 				0758A91A1E450B5B00BE9145 /* Rubik-BoldItalic.ttf in Resources */,
