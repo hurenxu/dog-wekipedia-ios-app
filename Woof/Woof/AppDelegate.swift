@@ -27,12 +27,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
         GIDSignIn.sharedInstance().delegate = self
         
         //change nav bar appearance
-        var navigationBarAppearace = UINavigationBar.appearance()
-        navigationBarAppearace.tintColor = UIColor(netHex: 0xffffff)
-        navigationBarAppearace.barTintColor = UIColor(netHex: 0xffffff)
+        var navigationBarAppearance = UINavigationBar.appearance()
+        navigationBarAppearance.tintColor = UIColor(netHex: 0xa5c3bb)
+        navigationBarAppearance.barTintColor = UIColor(netHex: 0xa5c3bb)
+        var searchBarAppearance = UISearchBar.appearance()
+        searchBarAppearance.barTintColor = UIColor(netHex: 0xa5c3bb)
+        searchBarAppearance.tintColor = UIColor.black
         
         // change navigation item title color
-        navigationBarAppearace.titleTextAttributes = [NSForegroundColorAttributeName : UIColor(netHex: 0xfd7f7c)]
+        navigationBarAppearance.titleTextAttributes = [NSForegroundColorAttributeName : UIColor(netHex: 0x000000)]
+        navigationBarAppearance.titleTextAttributes = [NSFontAttributeName: UIFont(name: "Hiragino Kaku Gothic ProN", size: 19)!]
         return true
     }
     

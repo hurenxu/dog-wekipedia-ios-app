@@ -14,9 +14,9 @@ class SuggestionViewController: UIViewController {
     let SCREEN_SIZE: CGRect = UIScreen.main.bounds
     
     // offsets
-    let IMAGE_OFFSET: Int = 30
+    let IMAGE_OFFSET: Int = 70
     let BORDER_OFFSET: Int = 40
-    let LABEL_OFFSET: Int = 390
+    let LABEL_OFFSET: Int = 350
     let MIDDLE_BUTTON_OFFSET: Int = 85
     let SIDE_BUTTON_OFFSET: Int = 35
     
@@ -25,12 +25,12 @@ class SuggestionViewController: UIViewController {
     let DOUBLE: Int = 2
     
     // everything about the image
-    let IMAGE_SIZE: CGSize = CGSize(width: 345, height: 425)
+    let IMAGE_SIZE: CGSize = CGSize(width: 345, height: 385)
     var imageStatic: UIImageView! = nil
     var imageDynamic: UIImageView! = nil
 
     // everything about the border
-    let BORDER_SIZE: CGSize = CGSize(width: 345, height: 465)
+    let BORDER_SIZE: CGSize = CGSize(width: 345, height: 425)
     var borderStatic: UIView! = nil
     var borderDynamic: UIView! = nil
     var borderRelativeCenter: CGPoint! = nil
@@ -48,7 +48,7 @@ class SuggestionViewController: UIViewController {
     var previousLocation = CGPoint(x: 0, y: 0)
     
     // Buttons
-    let BUTTON_SIZE: CGSize = CGSize(width: 75, height: 70)
+    let BUTTON_SIZE: CGSize = CGSize(width: 65, height: 60)
     let CENTER_BUTTON_SIZE: CGSize = CGSize(width: 225, height: 100)
     var leftButton: UIButton! = nil
     var rightButton: UIButton! = nil
@@ -62,6 +62,7 @@ class SuggestionViewController: UIViewController {
     
     // for result page
     var breedArray: [Breed] = [Breed]()
+    var localUIImage: [UIImage] = [UIImage]()
     var likeBreeds: [Int] = [Int]()
     var nextBreeds: [Int] = [Int]()
     
@@ -94,10 +95,12 @@ class SuggestionViewController: UIViewController {
         if !done {
             
             currentBreed = breedArray[index]
+            imageDynamic.image = localUIImage[index]
             index += 1
             
             // update dynamic
-            imageDynamic.image = UIImage(named: currentBreed.getImage())
+            //imageDynamic.image = UIImage(named: currentBreed.getImage())
+            
             labelDynamic.text = currentBreed.getBreedName()
             
             // centered all dynamic
@@ -128,8 +131,9 @@ class SuggestionViewController: UIViewController {
             
             nextBreed = breedArray[index]
             
+            imageStatic.image = localUIImage[index]
             // update static if possible
-            imageStatic.image = UIImage(named: nextBreed.getImage())
+            //imageStatic.image = UIImage(named: nextBreed.getImage())
             labelStatic.text = nextBreed.getBreedName()
         }
         
@@ -421,7 +425,48 @@ class SuggestionViewController: UIViewController {
             
         // delete these when functionalities have been connected
         arrayOfBreedName = ["Chihuahua", "Dachshund", "Akita", "Alaskan Malamute", "American Eskimo Dog", "Beagle", "Biewer Terrier", "Border Collie", "Dalmatian", "Maltese"]
+        var breedlist: [Breed] = Functionalities.breedList
+        var i:Int = 0
+        while i < BREED_COUNT {
+            
+            // get a random index in the all breeds array
+            let randomIndex:UInt32 = arc4random_uniform(UInt32(breedlist.count))
+            
+            // get the string of the current breed
+            let currentBreedName: String = breedlist[Int(randomIndex)].getBreedName()
+            
+            // if user didn't like this breed and it's not in the current list, add it
+            // if !user.favoriteDogBreeds.contains(currentBreedName) && !arrayOfBreedName.contains(currentBreedName) {
+            if !arrayOfBreedName.contains(currentBreedName) {
+                
+                // append the breed and its name
+                breedArray.append(breedlist[Int(randomIndex)])
+                arrayOfBreedName.append(currentBreedName)
+                
+                // increment i
+                i += 1
+            }
+        }
         
+        var j: Int = 0
+        while j < BREED_COUNT {
+            let ur = breedArray[j].getImage()
+            print(j)
+            print(ur)
+            
+            if let url = NSURL(string: ur) {
+                if let data = NSData(contentsOf: url as URL) {
+                    print("UIIMAGE ADDED!!!!")
+                    self.localUIImage.append(UIImage(data: data as Data)!)
+                }
+            }
+            print(localUIImage)
+            j += 1
+        }
+
+        
+        
+        /*
         for i in 0...arrayOfBreedName.count - 1 {
             
 
@@ -429,13 +474,15 @@ class SuggestionViewController: UIViewController {
             //breedArray.append(Breed(breedName: arrayOfBreedName[i], personality: "", origin: "", group: "", weight: "", height: "", head: "", body: "", ears: "", hair: "", tail: "", shedding: "", grooming: "", trainability: "", energyLevel: "", barkingLevel: "", lifeExpectancy: "", description: "", history: "", breeders: "", image: arrayOfBreedName[i]))
             
             breedArray.append(Breed(breedName: arrayOfBreedName[i], popularity: "Highest", origin: "England", group: "Small", size: "small", type: "type", lifeExpectancy: "20", colors: "white", litterSize: "20", price: "1000", barkingLevel: "okay", childFriendly: "yes", breeders: "none", image: arrayOfBreedName[i]))
-        }
+        }*/
         
         currentBreed = breedArray[index]
+        
         index += 1
         nextBreed = breedArray[index]
         
         // colored background
+        self.title = "Recommendation"
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "backgroundHomeLarge.jpg")!)
         
         // the center of all components
@@ -464,7 +511,9 @@ class SuggestionViewController: UIViewController {
         borderStatic.backgroundColor = UIColor.white
         borderStatic.layer.cornerRadius = CGFloat(CORNER_RADIUS)
         
-        imageStatic = UIImageView(image: UIImage(named: nextBreed.getImage()))
+        imageStatic = UIImageView(image: localUIImage[index])
+        //imageStatic = UIImageView(image: UIImage(named: nextBreed.getImage()))
+        
         imageStatic.frame = CGRect(origin: IMAGE_CENTER, size: IMAGE_SIZE)
         imageStatic.roundCorners(corners: [.topLeft, .topRight], radius: CGFloat(CORNER_RADIUS))
         
@@ -478,7 +527,9 @@ class SuggestionViewController: UIViewController {
         borderDynamic.backgroundColor = UIColor.white
         borderDynamic.layer.cornerRadius = CGFloat(CORNER_RADIUS)
         
-        imageDynamic = UIImageView(image: UIImage(named: currentBreed.getImage()))
+        imageDynamic = UIImageView(image: localUIImage[index-1])
+        //imageDynamic = UIImageView(image: UIImage(named: currentBreed.getImage()))
+        
         imageDynamic.frame = CGRect(origin: IMAGE_CENTER, size: IMAGE_SIZE)
         imageDynamic.roundCorners(corners: [.topLeft, .topRight], radius: CGFloat(CORNER_RADIUS))
         

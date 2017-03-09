@@ -28,7 +28,7 @@ class OwnedDogCell: UICollectionViewCell {
         imageView?.isUserInteractionEnabled = true
         
         textLabel = UILabel(frame: CGRect(x: 0, y: (imageView?.frame.size.height)! - 16, width: frame.size.width, height: frame.size.height/2))
-        textLabel?.font = UIFont(name: "Noteworthy", size: 14)
+        textLabel?.font = UIFont(name: "Rubik", size: 14)
         textLabel?.textAlignment = .center
         //textLabel?.text = "test"
         textLabel?.textColor = UIColor.black

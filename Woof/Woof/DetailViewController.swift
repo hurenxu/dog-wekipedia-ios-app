@@ -7,13 +7,26 @@
 //
 import UIKit
 
+
+
 class DetailViewController: UIViewController, UINavigationBarDelegate{
     
     // MARK: - Outlet from UI
     @IBOutlet weak var detailBreedName: UILabel!
     @IBOutlet weak var detailImageView: UIImageView!
+
+    @IBOutlet weak var likeButton: UIButton!
+    @IBAction func buttonTapped(_ sender: Any) {
+        if likeButton.backgroundColor == UIColor.black {
+            likeButton.backgroundColor = UIColor.red
+        }
+        else if likeButton.backgroundColor == UIColor.red {
+            likeButton.backgroundColor = UIColor.black
+        }
+    }
     
     // MARK: - Setup data passing variable matches the SearchTableViewController.swift class's prepare function
+    
     var detailDog: Breed? {
         didSet {
             print("Call configure view in setting dog value")
@@ -67,11 +80,13 @@ class DetailViewController: UIViewController, UINavigationBarDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
+        likeButton.backgroundColor = UIColor.black
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+
     
 }
 

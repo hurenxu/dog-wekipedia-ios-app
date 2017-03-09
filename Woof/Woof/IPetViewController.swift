@@ -43,9 +43,15 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        let backgroundImageView = UIImageView()
+        
+        
+        
+        
+        
         self.view.backgroundColor = UIColor(red: 165.0/255.0, green: 195.0/255.0, blue: 187.0/255.0, alpha: 1)
 
-        self.title = "iPet"
+        self.title = "User Profile"
         print("iPet Page loaded")
         //self.view.backgroundColor = UIColor.lightGray
         
@@ -57,19 +63,22 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         ImageViewConstraints(Img: userImg)
         
         
-        let editProfButton:UIButton = UIButton(frame: CGRect(x: 100, y: 400, width: 100, height: 50))
-        editProfButton.backgroundColor = UIColor(red: 100.0/255.0, green: 149.0/255.0, blue: 237.0/255.0, alpha: 1)
-        editProfButton.setTitle("change image", for: .normal)
+        let editProfButton:UIButton = UIButton(frame: CGRect(x: 100, y: 800, width: 100, height: 50))
+        editProfButton.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.8)
+        editProfButton.setTitle("Edit Image", for: .normal)
         self.view.addSubview(editProfButton)
         EditProfileImageButtonConstraints(Button: editProfButton)
+        editProfButton.setTitleColor(.black, for: .normal)
+        //editProfButton.setTitleColor(clock:UIColor.black?, for: .normal)
         editProfButton.layer.cornerRadius = 5
         editProfButton.clipsToBounds = true
         
         
-        let notificationButton:UIButton = UIButton(frame: CGRect(x:300, y: 50, width: 40, height:40))
+        let notificationButton:UIButton = UIButton(frame: CGRect(x:300, y: 70, width: 40, height:40))
 
-        notificationButton.backgroundColor = UIColor(red: 100.0/255.0, green: 149.0/255.0, blue: 237.0/255.0, alpha: 1)
+        notificationButton.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.8)
         notificationButton.setTitle("No!", for: .normal)
+        notificationButton.setTitleColor(.black, for: .normal)
         notificationButton.addTarget(self, action: #selector(self.transition(_:)), for: .touchUpInside)
 
     
@@ -98,15 +107,15 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         
         
         
-        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 250))
-        label.center = CGPoint(x: 180, y: 250)
-        label.text = "User Profile"
-        label.textAlignment = .center
-        label.textColor = UIColor.white
+   //     let label = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 250))
+    //    label.center = CGPoint(x: 180, y: 270)
+   //     label.text = "User Profile"
+   //     label.textAlignment = .center
+    //    label.textColor = UIColor.white
         
         
-        label.font = label.font.withSize(30)
-        self.view.addSubview(label)
+   //     label.font = label.font.withSize(30)
+   //     self.view.addSubview(label)
         
         
         //let collectView = UICollectionView()
@@ -222,9 +231,10 @@ UICollectionViewDelegate, UICollectionViewDataSource {
     
     /* profile image changing button's constraint & add target */
     func EditProfileImageButtonConstraints(Button: UIButton){
-        Button.topAnchor.constraint(equalTo: view.topAnchor, constant:180.0).isActive = true
+        Button.topAnchor.constraint(equalTo: view.topAnchor, constant:218.0).isActive = true
         Button.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         Button.translatesAutoresizingMaskIntoConstraints = false
+        
         
         /* action when user click on button --> call handleSelectProfileImageView function */
         Button.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectProfileImageView)))
@@ -267,7 +277,7 @@ UICollectionViewDelegate, UICollectionViewDataSource {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         // Initialize Tab Bar Item
-        tabBarItem = UITabBarItem(title: "iPet", image: UIImage(named: "iPet"), tag: 1)
+        tabBarItem = UITabBarItem(title: "ipet", image: UIImage(named: "ipet"), tag: 1)
         tabBarItem.badgeValue = "3"
     }
     
