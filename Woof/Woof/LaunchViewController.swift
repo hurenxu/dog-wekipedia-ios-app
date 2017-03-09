@@ -22,19 +22,19 @@ class LaunchViewController: UIViewController {
 
         
         let logoImage: [UIImage] = [
-            UIImage(named: "eye.jpg")!,
-            UIImage(named: "launch.png")!
+            UIImage(named: "noeye.jpg")!,
+            UIImage(named: "eye.jpg")!
         ]
         
         eyeImageView.animationImages = logoImage
         
-        eyeImageView.animationDuration = 2.0
+        eyeImageView.animationDuration = 1.0
         
         eyeImageView.animationRepeatCount = 2
         
         eyeImageView.startAnimating()
         
-        DispatchQueue.main.asyncAfter(deadline: .now()  , execute: {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2 , execute: {
             self.performSegue(withIdentifier: "showlogin", sender: self)
         })
 
