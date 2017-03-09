@@ -36,6 +36,13 @@ UICollectionViewDelegate, UICollectionViewDataSource {
     var user:User?
     
     
+    
+     let editProfButton:UIButton = UIButton(frame: CGRect(x: 155, y: 220, width: 60, height: 20))
+     let notificationButton:UIButton = UIButton(frame: CGRect(x:330, y: 70, width: 40, height:40))
+     let addDogProfileButton:UIButton = UIButton(frame: CGRect(x:330, y: 250, width: 40, height:40))
+    
+    
+    
     let cellID = "dogCell"
     //var collectView = UICollectionView()
     
@@ -43,13 +50,28 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        let backgroundImageView = UIImageView()
+        
+        // let image = UIImage(named:"bacgroundHome.png")
+        let shade = UIImageView(frame:UIScreen.main.bounds)
+        shade.backgroundColor = UIColor.black
+        shade.alpha = 0.5
+        self.view.addSubview(shade)
+        self.view.sendSubview(toBack: shade)
+        
+        let imageName = "backgroundView.png"
+        let image = UIImage(named: imageName)
+        let imageView = UIImageView(image: image!)
+        imageView.frame = CGRect(x: 0, y: 65, width: 375, height: 240)
+        view.addSubview(imageView)
+
+        
+        
+        self.view.addSubview(imageView)
+        self.view.sendSubview(toBack: imageView)
         
         
         
-        
-        
-        self.view.backgroundColor = UIColor(red: 165.0/255.0, green: 195.0/255.0, blue: 187.0/255.0, alpha: 1)
+        self.view.backgroundColor = .white
 
         self.title = "User Profile"
         print("iPet Page loaded")
@@ -63,29 +85,41 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         ImageViewConstraints(Img: userImg)
         
         
-        let editProfButton:UIButton = UIButton(frame: CGRect(x: 100, y: 800, width: 100, height: 50))
+       
         editProfButton.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.8)
-        editProfButton.setTitle("Edit Image", for: .normal)
+        editProfButton.setTitle("Edit", for: .normal)
         self.view.addSubview(editProfButton)
-        EditProfileImageButtonConstraints(Button: editProfButton)
+  //      EditProfileImageButtonConstraints(Button: editProfButton)
         editProfButton.setTitleColor(.black, for: .normal)
         //editProfButton.setTitleColor(clock:UIColor.black?, for: .normal)
         editProfButton.layer.cornerRadius = 5
         editProfButton.clipsToBounds = true
+        /* action when user click on button --> call handleSelectProfileImageView function */
+        editProfButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectProfileImageView)))
         
         
-        let notificationButton:UIButton = UIButton(frame: CGRect(x:300, y: 70, width: 40, height:40))
+        
+       
 
         notificationButton.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.8)
         notificationButton.setTitle("No!", for: .normal)
         notificationButton.setTitleColor(.black, for: .normal)
+        notificationButton.layer.cornerRadius = 20
+        notificationButton.clipsToBounds = true
         notificationButton.addTarget(self, action: #selector(self.transition(_:)), for: .touchUpInside)
+        self.view.addSubview(notificationButton)
+        
+        
+        
+        addDogProfileButton.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.8)
+        addDogProfileButton.setTitle("Add", for: .normal)
+        addDogProfileButton.setTitleColor(.black, for: .normal)
+        addDogProfileButton.layer.cornerRadius = 20
+        addDogProfileButton.clipsToBounds = true
+        addDogProfileButton.addTarget(self, action: #selector(addDogProfileButtonClick), for: .touchUpInside)
+        self.view.addSubview(addDogProfileButton)
 
     
-
-        self.view.addSubview(notificationButton)
-        notificationButton.layer.cornerRadius = 5;
-        notificationButton.clipsToBounds = true
 
         
         //let controller:LoginViewController = LoginViewController()
@@ -231,11 +265,10 @@ UICollectionViewDelegate, UICollectionViewDataSource {
     
     /* profile image changing button's constraint & add target */
     func EditProfileImageButtonConstraints(Button: UIButton){
-        Button.topAnchor.constraint(equalTo: view.topAnchor, constant:218.0).isActive = true
+        Button.topAnchor.constraint(equalTo: view.topAnchor, constant:223.0).isActive = true
         Button.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         Button.translatesAutoresizingMaskIntoConstraints = false
-        
-        
+
         /* action when user click on button --> call handleSelectProfileImageView function */
         Button.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectProfileImageView)))
     }
@@ -269,6 +302,12 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         dismiss(animated: true, completion: nil)
     }
     //----------------------------------------------------------------------------------------------------------------
+    
+    func addDogProfileButtonClick(sender: UIButton)
+    {
+        
+    }
+    
     
     
     

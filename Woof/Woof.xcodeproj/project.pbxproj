@@ -109,6 +109,7 @@
 		07B4D74C1E56A13200DA6A2C /* DataAccessObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B4D74B1E56A13200DA6A2C /* DataAccessObject.swift */; };
 		07B4D74E1E56A21200DA6A2C /* Functionalities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B4D74D1E56A21200DA6A2C /* Functionalities.swift */; };
 		58C3A872E1D87A2AA2091BAF /* Pods_Woof.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B9FF199C9CAEB89DFB8BD0B /* Pods_Woof.framework */; };
+		8D7B14F31E71243A00100358 /* backgroundView.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D7B14F21E71243A00100358 /* backgroundView.png */; };
 		9EEAB7A61E710EC700E30178 /* discoverTab.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EEAB7A51E710EC700E30178 /* discoverTab.png */; };
 		9EEAB7A81E710ECE00E30178 /* iPetTab.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EEAB7A71E710ECE00E30178 /* iPetTab.png */; };
 		A4A8A3331E6E713F000657E1 /* BreedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A8A32F1E6E713F000657E1 /* BreedTableViewCell.swift */; };
@@ -197,6 +198,7 @@
 		417FEE35B18CEC60476A1012 /* Pods-WoofTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoofTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WoofTests/Pods-WoofTests.release.xcconfig"; sourceTree = "<group>"; };
 		6E144974F62DFDBD7A02E026 /* Pods-Woof.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Woof.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Woof/Pods-Woof.debug.xcconfig"; sourceTree = "<group>"; };
 		7717C3F7724CB21AC5305E61 /* Pods-WoofTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoofTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WoofTests/Pods-WoofTests.debug.xcconfig"; sourceTree = "<group>"; };
+		8D7B14F21E71243A00100358 /* backgroundView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = backgroundView.png; path = ../../../../backgroundView.png; sourceTree = "<group>"; };
 		9AA79A7154CB0E70AED07ACA /* Pods_WoofUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WoofUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EEAB7A51E710EC700E30178 /* discoverTab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = discoverTab.png; sourceTree = "<group>"; };
 		9EEAB7A71E710ECE00E30178 /* iPetTab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iPetTab.png; sourceTree = "<group>"; };
@@ -305,6 +307,7 @@
 				0763448B1E415470001E20C9 /* Main.storyboard */,
 				07AFF2261E6A55020089867C /* Major.storyboard */,
 				076344901E415470001E20C9 /* LaunchScreen.storyboard */,
+				8D7B14F21E71243A00100358 /* backgroundView.png */,
 				076A4D8A1E6E6CF300ABFC98 /* Assets.xcassets */,
 				076344931E415470001E20C9 /* Info.plist */,
 				076344B51E4154AE001E20C9 /* GoogleService-Info.plist */,
@@ -536,6 +539,7 @@
 				0758A9191E450B5B00BE9145 /* Rubik-Bold.ttf in Resources */,
 				07AFF2471E6A55D20089867C /* bone-flat.png in Resources */,
 				0758A91F1E450B5B00BE9145 /* Rubik-MediumItalic.ttf in Resources */,
+				8D7B14F31E71243A00100358 /* backgroundView.png in Resources */,
 				0758A91C1E450B5B00BE9145 /* Rubik-Light.ttf in Resources */,
 				0758A9171E450B5B00BE9145 /* Rubik-Black.ttf in Resources */,
 				0763448D1E415470001E20C9 /* Main.storyboard in Resources */,
