@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MGSwipeTableCell
 
 class SearchTableViewController: UITableViewController, UISearchResultsUpdating {
     
@@ -44,12 +45,27 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as UITableViewCell?
-        let mainImageView = cell?.viewWithTag(1) as! UIImageView
-        let mainDogName = cell?.viewWithTag(2) as! UILabel
-        let mainDogGroup = cell?.viewWithTag(3) as! UILabel
+        let reuseIdentifier = "cell"
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! MGSwipeTableCell
+        
+        let mainImageView = cell.viewWithTag(1) as! UIImageView
+        let mainDogName = cell.viewWithTag(2) as! UILabel
+        let mainDogGroup = cell.viewWithTag(3) as! UILabel
+        let mainDogLike = cell.viewWithTag(4) as! UIImageView
         let breed: Breed
         
+        cell.rightButtons = [MGSwipeButton(title: "Like", icon: UIImage(named:"like.png"), backgroundColor: .white){
+            (sender: MGSwipeTableCell!) -> Bool in
+            print("Convenience callback for Like Swipe")
+            return true
+            }]
+        cell.leftSwipeSettings.transition = .rotate3D
+        cell.leftButtons = [MGSwipeButton(title: "Unlike", icon: UIImage(named:"unlike.png"), backgroundColor: .white){
+            (sender: MGSwipeTableCell!) -> Bool in
+            print("Convenience callback for UnLike Swipe")
+            return true
+            }]
+        cell.leftSwipeSettings.transition = .rotate3D
         if self.resultSearchController.isActive && self.resultSearchController.searchBar.text != "" {
             breed = filteredDogs[indexPath.row]
         } else {
@@ -81,10 +97,10 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
         //alternate cell color
         if(indexPath.row % 2==0){
             //set cell background color to light gray
-            cell?.backgroundColor = UIColor.init(colorLiteralRed: 241/255, green: 241/255, blue: 241/255, alpha: 0.5)
+            cell.backgroundColor = UIColor.init(colorLiteralRed: 241/255, green: 241/255, blue: 241/255, alpha: 0.5)
         }else{
             //set cell background color to white
-            cell?.backgroundColor = UIColor.init(colorLiteralRed: 255/255, green: 255/255, blue: 255/255, alpha: 0.5)
+            cell.backgroundColor = UIColor.init(colorLiteralRed: 255/255, green: 255/255, blue: 255/255, alpha: 0.5)
         }
         
         
@@ -98,7 +114,7 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
         mainImageView.layer.masksToBounds = true
 
         
-        return cell!
+        return cell
     }
     
     /* This function count the number of item to be displayed for search result

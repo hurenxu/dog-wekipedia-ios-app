@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>DOFavoriteButton.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>FBSDKCoreKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -54,6 +59,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>MGSwipeTableCell.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Woof.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -73,6 +83,11 @@
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>107A9565F9DF88517DFD3E28C05B2B96</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1CD80321715FDB12A3A31B7BCB09EA28</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -102,11 +117,6 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6AD26004E739D734FFEC3EA5D1CF2D9B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>7335E9C9689F3B8A16F063A884748533</key>
 		<dict>
 			<key>primary</key>
@@ -123,6 +133,16 @@
 			<true/>
 		</dict>
 		<key>B79321871C38C9ACE8FB40DF94DF54A0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C147FB851C4B97A7B663598589B9ABA5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DBF2BF00A4A7D1724118B7C4E6AC1E5E</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -93,7 +93,7 @@
                             </connections>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="101" id="4h3-QR-Lbh" customClass="DogCell" customModule="Woof" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="101" id="4h3-QR-Lbh" customClass="MGSwipeTableCell">
                                 <rect key="frame" x="0.0" y="72" width="375" height="101"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4h3-QR-Lbh" id="PHB-Fw-bzD">
@@ -109,7 +109,7 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="UserUnLike" translatesAutoresizingMaskIntoConstraints="NO" id="2qh-Fk-uBq">
+                                        <imageView userInteractionEnabled="NO" tag="4" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="UserUnLike" translatesAutoresizingMaskIntoConstraints="NO" id="2qh-Fk-uBq">
                                             <rect key="frame" x="83" y="55" width="15" height="15"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Small, Family-friendly" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xww-p7-eaK">
@@ -134,10 +134,6 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="dogFilterLabel" destination="xww-p7-eaK" id="JLE-g7-UHE"/>
-                                    <outlet property="nameLabel" destination="kRs-cl-iDv" id="iQf-is-4ST"/>
-                                    <outlet property="thumbImageView" destination="7Dw-su-0tz" id="k6d-yD-o0t"/>
-                                    <outlet property="userLikeImageView" destination="2qh-Fk-uBq" id="s9s-68-2EI"/>
                                     <segue destination="V84-9r-r8h" kind="showDetail" identifier="showDetail" action="showViewController:sender:" id="RYZ-GH-XyC"/>
                                 </connections>
                             </tableViewCell>
@@ -316,32 +312,6 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GtG-vB-4uk">
-                                <rect key="frame" x="112" y="363" width="139" height="140"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Like" backgroundImage="star.png"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="image" keyPath="image" value="star.png"/>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="imageColorOn">
-                                        <color key="value" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="imageColorOff">
-                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="circleColor">
-                                        <color key="value" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
-                                        <color key="value" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="duration">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="buttonTapped:" destination="Iry-G2-eFg" eventType="touchUpInside" id="5yV-rU-oey"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -357,7 +327,6 @@
                     <connections>
                         <outlet property="detailBreedName" destination="1m1-fO-6MV" id="Yex-Rg-c8s"/>
                         <outlet property="detailImageView" destination="bP1-1I-mEF" id="fv3-Nh-cvZ"/>
-                        <outlet property="likeButton" destination="GtG-vB-4uk" id="7rR-Fa-jZo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mGC-lS-OR0" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -450,7 +419,6 @@
         <image name="dogProfile.png" width="512" height="512"/>
         <image name="iPetTab.png" width="32" height="32"/>
         <image name="loginLogo.png" width="256" height="256"/>
-        <image name="star.png" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="3t4-cp-DnM"/>

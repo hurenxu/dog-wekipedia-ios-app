@@ -21,6 +21,12 @@ target 'Woof' do
   # Pods for Google
   pod 'GoogleSignIn'
 
+  # Pods for button animation
+  pod 'DOFavoriteButton'
+
+  # Pods for swipetablecell
+  pod 'MGSwipeTableCell'
+
 
   target 'WoofTests' do
     inherit! :search_paths

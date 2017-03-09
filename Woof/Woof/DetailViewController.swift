@@ -6,24 +6,15 @@
 //  Copyright © 2017 Joann Chen. All rights reserved.
 //
 import UIKit
-
-
+import DOFavoriteButton
 
 class DetailViewController: UIViewController, UINavigationBarDelegate{
     
     // MARK: - Outlet from UI
     @IBOutlet weak var detailBreedName: UILabel!
     @IBOutlet weak var detailImageView: UIImageView!
-
-    @IBOutlet weak var likeButton: UIButton!
-    @IBAction func buttonTapped(_ sender: Any) {
-        if likeButton.backgroundColor == UIColor.black {
-            likeButton.backgroundColor = UIColor.red
-        }
-        else if likeButton.backgroundColor == UIColor.red {
-            likeButton.backgroundColor = UIColor.black
-        }
-    }
+    @IBOutlet weak var button: DOFavoriteButton!
+    
     
     // MARK: - Setup data passing variable matches the SearchTableViewController.swift class's prepare function
     
@@ -75,12 +66,35 @@ class DetailViewController: UIViewController, UINavigationBarDelegate{
             }
         }
     }
+    func tappedButton(sender: DOFavoriteButton) {
+        if sender.isSelected {
+            // deselect
+            sender.deselect()
+        } else {
+            // select with animation
+            sender.select()
+        }
+    }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let width = (self.view.frame.width - 100)
+        var x = width / 2
+        let y = self.view.frame.height / 2
+        
+        // heart button
+        let button = DOFavoriteButton(frame: CGRect(x: x, y: y, width: 100, height: 100), image: UIImage(named: "like"))
+        button.imageColorOn = UIColor(red: 254/255, green: 110/255, blue: 111/255, alpha: 1.0)
+        button.circleColor = UIColor(red: 254/255, green: 110/255, blue: 111/255, alpha: 1.0)
+        button.lineColor = UIColor(red: 226/255, green: 96/255, blue: 96/255, alpha: 1.0)
+        button.addTarget(self, action: #selector(self.tappedButton), for: .touchUpInside)
+        self.view.addSubview(button)
+        x += width
+        
         configureView()
-        likeButton.backgroundColor = UIColor.black
+        
     }
     
     override func didReceiveMemoryWarning() {
