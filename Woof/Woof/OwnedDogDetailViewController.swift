@@ -91,7 +91,7 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         nameLabel.text = "Name: " + name
         nameLabel.textColor = UIColor.white
         nameLabel.font = nameLabel.font.withSize(30)
-        nameLabel.font = UIFont(name: "Noteworthy", size: 25)
+        nameLabel.font = UIFont(name: "Rubik", size: 25)
         nameLabel.backgroundColor = UIColor(red: 100/255, green: 120/255, blue: 150/255, alpha: 0.65)
         nameLabel.layer.cornerRadius = 5
         nameLabel.clipsToBounds = true
@@ -105,7 +105,7 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         genderLabel.text = "Gender: " + gender
         genderLabel.textColor = UIColor.white
         genderLabel.font = genderLabel.font.withSize(30)
-        genderLabel.font = UIFont(name: "Noteworthy", size: 25)
+        genderLabel.font = UIFont(name: "Rubik", size: 25)
         genderLabel.backgroundColor = UIColor(red: 100/255, green: 120/255, blue: 150/255, alpha: 0.65)
         genderLabel.layer.cornerRadius = 5
         genderLabel.clipsToBounds = true
@@ -118,7 +118,7 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         birthDateLabel.text = "Birth Date: " + gender
         birthDateLabel.textColor = UIColor.white
         birthDateLabel.font = birthDateLabel.font.withSize(30)
-        birthDateLabel.font = UIFont(name: "Noteworthy", size: 25)
+        birthDateLabel.font = UIFont(name: "Rubik", size: 25)
         birthDateLabel.backgroundColor = UIColor(red: 100/255, green: 120/255, blue: 150/255, alpha: 0.65)
         birthDateLabel.layer.cornerRadius = 5
         birthDateLabel.clipsToBounds = true
@@ -133,7 +133,7 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         vaccinationDateLabel.text = "Vaccination Date: " + gender
         vaccinationDateLabel.textColor = UIColor.white
         vaccinationDateLabel.font = vaccinationDateLabel.font.withSize(30)
-        vaccinationDateLabel.font = UIFont(name: "Noteworthy", size: 25)
+        vaccinationDateLabel.font = UIFont(name: "Rubik", size: 25)
         vaccinationDateLabel.backgroundColor = UIColor(red: 100/255, green: 120/255, blue: 150/255, alpha: 0.65)
         vaccinationDateLabel.layer.cornerRadius = 5
         vaccinationDateLabel.clipsToBounds = true
@@ -145,7 +145,7 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         breedLabel.text = "Breed: " + breed
         breedLabel.textColor = UIColor.white
         breedLabel.font = breedLabel.font.withSize(30)
-        breedLabel.font = UIFont(name: "Noteworthy", size: 25)
+        breedLabel.font = UIFont(name: "Rubik", size: 25)
         breedLabel.backgroundColor = UIColor(red: 100/255, green: 120/255, blue: 150/255, alpha: 0.65)
         breedLabel.layer.cornerRadius = 5
         breedLabel.clipsToBounds = true
@@ -157,7 +157,7 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         ageLabel.text = "Age: " + breed
         ageLabel.textColor = UIColor.white
         ageLabel.font = ageLabel.font.withSize(30)
-        ageLabel.font = UIFont(name: "Noteworthy", size: 25)
+        ageLabel.font = UIFont(name: "Rubik", size: 25)
         ageLabel.backgroundColor = UIColor(red: 100/255, green: 120/255, blue: 150/255, alpha: 0.65)
         ageLabel.layer.cornerRadius = 5
         ageLabel.clipsToBounds = true
@@ -329,7 +329,7 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
     func datePickerValueChanged(datePicker:UIDatePicker) {
         /**
          let formatter: DateFormatter = DateFormatter()
-         dogVaccinationDatetextField.font = UIFont(name: "Noteworthy", size: 20)
+         dogVaccinationDatetextField.font = UIFont(name: "Rubik", size: 20)
          dogVaccinationDatetextField.textColor = UIColor.black
          dogVaccinationDatetextField.text = formatter.string(from: picker2.date)
          */

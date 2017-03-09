@@ -48,7 +48,7 @@ class SuggestionViewController: UIViewController {
     var previousLocation = CGPoint(x: 0, y: 0)
     
     // Buttons
-    let BUTTON_SIZE: CGSize = CGSize(width: 75, height: 70)
+    let BUTTON_SIZE: CGSize = CGSize(width: 65, height: 60)
     let CENTER_BUTTON_SIZE: CGSize = CGSize(width: 225, height: 100)
     var leftButton: UIButton! = nil
     var rightButton: UIButton! = nil
