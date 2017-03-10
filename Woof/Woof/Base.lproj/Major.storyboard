@@ -97,7 +97,7 @@
                                 <rect key="frame" x="0.0" y="72" width="375" height="101"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4h3-QR-Lbh" id="PHB-Fw-bzD">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="100.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DogImage" translatesAutoresizingMaskIntoConstraints="NO" id="7Dw-su-0tz">
@@ -447,7 +447,7 @@
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mek-wi-cfX" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <customObject id="KTH-vM-83b" customClass="RAMBounceAnimation" customModule="RAMAnimatedTabBarController"/>
+                <customObject id="KTH-vM-83b" customClass="RAMFlipRightTransitionItemAnimations" customModule="RAMAnimatedTabBarController"/>
             </objects>
             <point key="canvasLocation" x="757.60000000000002" y="950.37481259370327"/>
         </scene>

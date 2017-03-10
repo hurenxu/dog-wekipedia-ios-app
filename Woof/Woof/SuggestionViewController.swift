@@ -482,8 +482,9 @@ class SuggestionViewController: UIViewController {
         nextBreed = breedArray[index]
         
         // colored background
+        
+        self.title = ""
         self.tabBarItem.title=""
-        self.title = "Discover"
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "backgroundHomeLarge.jpg")!)
         
         // the center of all components

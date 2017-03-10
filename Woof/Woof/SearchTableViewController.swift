@@ -112,10 +112,19 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
         let radius = mainImageView.frame.width / 2
         mainImageView.layer.cornerRadius = radius
         mainImageView.layer.masksToBounds = true
-
+        let rotationTransform = CATransform3DTranslate(CATransform3DIdentity, -500, 10, 0)
+        cell.layer.transform = rotationTransform
+        
+        UIView.animate(withDuration: 1.0, animations: { () -> Void in
+            
+            cell.layer.transform = CATransform3DIdentity
+            
+        })
         
         return cell
     }
+
+    
     
     /* This function count the number of item to be displayed for search result
      */
