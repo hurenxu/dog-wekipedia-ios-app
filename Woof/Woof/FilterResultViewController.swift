@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FilterResultViewController: UIViewController {
+class FilterResultViewController: UIViewController, UINavigationBarDelegate {
 
     //tags
     var Lexi = ""
@@ -24,6 +24,31 @@ class FilterResultViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
+        
+        //self.title = "Filter Result"
+        
+        //self.view.addSubview(backButton)
+        
+        let navigationBar = UINavigationBar(frame: CGRect(x:0, y:0, width:self.view.frame.size.width, height:58)) // Offset by 20 pixels vertically to take the status bar into account
+        
+        let navigationItem = UINavigationItem()
+        navigationItem.title = "Filter Result"
+        
+        
+        
+        navigationBar.backgroundColor = UIColor.white
+        navigationBar.delegate = self;
+        
+        let backButton = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(goBack))
+        backButton.tintColor = UIColor.black
+        navigationItem.leftBarButtonItem = backButton
+        navigationBar.pushItem(navigationItem, animated: true)
+        
+        //navigationItem.items[navigationItem]
+        self.view.addSubview(navigationBar)
+
+        
+        
         let button = UIButton()
         button.frame = (frame: CGRect(x: self.view.frame.size.width - 60, y: 20, width: 100, height: 50))
         button.backgroundColor = UIColor.red
@@ -41,6 +66,11 @@ class FilterResultViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    func goBack(){
+        print("call goBack function")
+        dismiss(animated: true, completion: nil)
+    }
+
     
 
     /*
