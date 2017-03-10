@@ -33,8 +33,8 @@ class WoofipediaViewController: UIViewController, UITableViewDataSource, UITable
         //let navigationItem = UINavigationItem()
         //navigationItem.title = "Woofipedia"
         
-        
-        
+        print("!!!!!!!!!!!!!!!!@@@@@@@@@@@@@@@@@@@@@@@@!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!@@@@@@@@@@@@@@@@@@@!!!!!!!!!!!!!!!!!!!")
+        print(self.navigationItem.title)
         //navigationBar.backgroundColor = UIColor.white
         //navigationBar.delegate = self;
         

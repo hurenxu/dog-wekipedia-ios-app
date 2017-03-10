@@ -28,7 +28,22 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
         let tools = Functionalities()
         print(tools.getBreedList(controller:self))
         
+        self.navigationItem.title = "Lexi&JasperTesting"
+        
+        
+        
+        
+        let filterButton = UIBarButtonItem(title: "Filter", style: .plain, target: self, action: #selector(toFilter))
+        filterButton.tintColor = UIColor.black
+        self.navigationItem.leftBarButtonItem = filterButton
+        
+        
         self.tableView.reloadData()
+    }
+    
+    func toFilter(){
+        let secondViewController:FilterTableViewController = FilterTableViewController()
+        self.present(secondViewController, animated:true, completion:nil)
     }
     
     override func didReceiveMemoryWarning() {
