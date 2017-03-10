@@ -750,7 +750,7 @@ class NotificationViewController: UIViewController, UIPickerViewDelegate, UIPick
         navigationBar.delegate = self;
         
         let backButton = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(goBack))
-        backButton.tintColor = UIColor.blue
+        backButton.tintColor = UIColor.black
         navigationItem.leftBarButtonItem = backButton
         navigationBar.pushItem(navigationItem, animated: true)
         

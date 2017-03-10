@@ -311,7 +311,9 @@ UICollectionViewDelegate, UICollectionViewDataSource {
     
     func addDogProfileButtonClick(sender: UIButton)
     {
+        let secondViewController:AddDogViewController = AddDogViewController()
         
+        self.present(secondViewController, animated: true, completion: nil)
     }
     
     
