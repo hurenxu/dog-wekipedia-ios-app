@@ -11,6 +11,7 @@ import UIKit
 class FilterResultViewController: UIViewController {
 
     //tags
+    var Lexi = ""
     var hair:Int? //default 0. short 1, long 2
     var size:Int? //default 0. small 1, medium 2, large 3
     var group:Int? //default 0. Herding 1; Hound 2; Non-sporting 3; Sporting 4; Terrier 5; Toy 6; Working 7
@@ -22,11 +23,14 @@ class FilterResultViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor.white
         let button = UIButton()
         button.frame = (frame: CGRect(x: self.view.frame.size.width - 60, y: 20, width: 100, height: 50))
         button.backgroundColor = UIColor.red
         button.setTitle("Name your Button ", for: .normal)
         //button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+        
+        print(Lexi)
         self.view.addSubview(button)
         print("hair is\(hair)")
 

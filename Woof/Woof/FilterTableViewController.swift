@@ -464,6 +464,10 @@ class FilterTableViewController: UIViewController{
     
     func showResult(_ Sender: UIButton!){
         let secondViewController:FilterResultViewController = FilterResultViewController()
+        
+        let LexiTesting = "lexi"
+        secondViewController.Lexi = LexiTesting
+        secondViewController.size = size
         self.present(secondViewController, animated: true, completion: nil)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
