@@ -11,7 +11,7 @@ class User{
     var email: String
     var age = 0
     var gender: String
-    var favoriteDogBreeds: [String] = ["Yorkshire", "Chihuahua"]
+    var favoriteDogBreeds: [String] = ["Yorkshire", "Chihuahua","Australian Shepherd","Pembroke Welsh Corgi"]
     var favoriteCategoryFilters: [String] = ["Black", "Small"]
     var zipCode = ""
     var image = ""
