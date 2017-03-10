@@ -208,7 +208,7 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         //The edit Button
         //    let editProfButton:UIButton = UIButton(frame: CGRect(x: 250, y: 200, width: 50, height: 25))
         editProfButton.backgroundColor = .black
-        editProfButton.setTitle("Edit", for: .normal)
+        editProfButton.setTitle("Lexi", for: .normal)
         self.view.addSubview(editProfButton)
         //   EditProfileImageButtonConstraints(Button: editProfButton)
         editProfButton.addTarget(self, action: #selector(editProfButtonClick), for: UIControlEvents.touchUpInside)

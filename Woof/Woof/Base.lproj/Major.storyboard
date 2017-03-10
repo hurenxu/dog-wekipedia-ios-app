@@ -259,6 +259,9 @@
                         <barButtonItem key="backBarButtonItem" title="Home" id="Iyk-AI-1sz"/>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <segue destination="Obj-6K-1mn" kind="showDetail" identifier="backtologin" id="eq6-GP-72C"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PbC-FO-5hM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -311,6 +314,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mGC-lS-OR0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3228" y="-526"/>
+        </scene>
+        <!--Main-->
+        <scene sceneID="EZH-1w-dcu">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="Main" storyboardName="Main" id="Obj-6K-1mn" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="scO-gs-mUG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2742" y="1013"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="pjl-fk-oAS">
@@ -441,5 +452,9 @@
         <image name="loginLogo.png" width="256" height="256"/>
         <image name="unlike" width="100" height="100"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="PjU-R4-8VG"/>
+    </inferredMetricsTieBreakers>
+
     <color key="tintColor" red="1" green="0.97739707450220481" blue="0.98941910780827447" alpha="1" colorSpace="calibratedRGB"/>
 </document>
