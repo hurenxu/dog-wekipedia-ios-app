@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WoofipediaViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UISearchDisplayDelegate{
+class WoofipediaViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UISearchDisplayDelegate, UINavigationBarDelegate{
     
     // Mark: Variables
     @IBOutlet var tableView: UITableView!
@@ -28,6 +28,32 @@ class WoofipediaViewController: UIViewController, UITableViewDataSource, UITable
 
         self.tableView.reloadData()
         
+        //let navigationBar = UINavigationBar(frame: CGRect(x:0, y:0, width:self.view.frame.size.width, height:58)) // Offset by 20 pixels vertically to take the status bar into account
+        
+        //let navigationItem = UINavigationItem()
+        //navigationItem.title = "Woofipedia"
+        
+        
+        
+        //navigationBar.backgroundColor = UIColor.white
+        //navigationBar.delegate = self;
+        
+        let backButton = UIBarButtonItem(title: "Filter", style: .plain, target: self, action: #selector(goBack))
+        backButton.tintColor = UIColor.black
+        //self.navigationItem.leftBarButtonItem = backButton
+        self.navigationItem.setLeftBarButton(backButton, animated: true)
+        
+        //self.navigationItem.setLeftBarButtonItem(UIBarButtonItem(customView: backButton), animated: true);
+        //navigationBar.pushItem(navigationItem, animated: true)
+        
+        //navigationItem.items[navigationItem]
+        //self.view.addSubview(navigationBar)
+
+        
+    }
+    
+    func goBack(){
+        print("-----------------------------------------------------------!!!!!!!!!!!!!!")
     }
 //        tableView.delegate = self
 //        tableView.dataSource = self
