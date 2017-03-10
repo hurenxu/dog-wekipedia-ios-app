@@ -21,7 +21,7 @@ class Functionalities{
     
     static var myUser: User?
     
-    static var userExist: Bool?
+    static var userExist = false
     
     init(){}
     // return a whole dog breed list for woofipedia
@@ -116,13 +116,24 @@ class Functionalities{
                     Functionalities.userExist = true
                     print("((((((((((((((((((((((((((((((((((((((((((((")
                     print(Functionalities.userExist)
-
+                    self.retrieveUserProfile(user: Functionalities.myUser!)
                 }
             }
         })
         
         return false
         
+    }
+    
+    func retrieveUserProfile(user:User) -> User {
+        let ref = FIRDatabase.database().reference()
+        ref.child("User Profile").child(user.userID).observeSingleEvent(of: .value, with: { (snapshot) in
+            let profile = snapshot.value as? NSDictionary
+            let thisuser = User(dictionary: profile!)
+            Functionalities.myUser = thisuser
+        })
+        
+        return Functionalities.myUser!
     }
     
 //    func retrieveProfileForDogList(controller: iPetViewController) {
