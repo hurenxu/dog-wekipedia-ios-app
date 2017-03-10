@@ -45,13 +45,40 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
                 return
             }
             
+            print("FIREBASE CURRENT USER ??????")
+            if FIRAuth.auth()?.currentUser != nil {
+                print("FIREBASE CURRENT USER NOT NIL@@@@@@@@")
+                let user = User(authData: (FIRAuth.auth()?.currentUser)!)
+                
+                Functionalities.myUser = user
+                Functionalities.userExist = true
+                
+                let dogID = user.userID + user.dogIDs.count.description
+                let age = "3"
+                let birthdate = NSDate.distantPast
+                let vaccinedate = NSDate.distantFuture
+                
+                
+                //let myDogBreed = Breed(breedName: "Yorkshire", image: "none", personality: "cute", origin:    "England", group: "Small", weight: "light", height: "short", head: "small", body: "small", ears: "small", tail: "short", shedding: "no", grooming: "no", trainability: "easy", energyLevel: "high", barkingLevel: "low", lifeExpectancy: "long", description: "dorable", history: "long", breeders: "none")
+                
+                let myDogBreed = Breed(breedName: "Yorkshire Terrier", popularity: "Highest", origin: "England", group: "Small", size: "small", type: "type", lifeExpectancy: "20", colors: "white", litterSize: "20", price: "1000", barkingLevel: "okay", childFriendly: "yes", breeders: "none", image: "image")
+                
+                let myDog = Dog(dogID: dogID, name: "cutie", breed: myDogBreed, birthDate: birthdate, age: age, gender: "female", vaccination: vaccinedate, color: "Brown", description: "Mine", image: "non")
+                user.addDog(dog: myDog)
+                
+                
+                let updateMyNewDog = Dog(dogID: dogID, name: "cutie", breed: myDogBreed, birthDate: birthdate, age: age, gender: "female", vaccination: vaccinedate, color: "Brown", description: "Mine", image: "this time I add in some description")
+                
+            }
+            self.performSegue(withIdentifier: "login", sender: self)
+            
             // Present the main view
             //if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "MainView") {
             //    UIApplication.shared.keyWindow?.rootViewController = viewController
             //    self.dismiss(animated: true, completion: nil)
             //}
             
-        })
+        })/*
         print("FIREBASE CURRENT USER ??????")
         if FIRAuth.auth()?.currentUser != nil {
             print("FIREBASE CURRENT USER NOT NIL@@@@@@@@")
@@ -76,7 +103,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
             
             let updateMyNewDog = Dog(dogID: dogID, name: "cutie", breed: myDogBreed, birthDate: birthdate, age: age, gender: "female", vaccination: vaccinedate, color: "Brown", description: "Mine", image: "this time I add in some description")
             
-        }
+        }*/
         
         
         
@@ -295,6 +322,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
         print(credential)
         // [START_EXCLUDE]
         // Perform login by calling Firebase APIs
+        /*
         FIRAuth.auth()?.signIn(with: credential, completion: { (user, error) in
             
             if let error = error {
@@ -355,7 +383,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
             //}
             self.performSegue(withIdentifier: "login", sender: self)
             
-        })
+        })*/
         print("googleLogin here")
         /*
         if FIRAuth.auth()?.currentUser != nil {
