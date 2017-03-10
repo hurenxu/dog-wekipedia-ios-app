@@ -112,13 +112,22 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
         let radius = mainImageView.frame.width / 2
         mainImageView.layer.cornerRadius = radius
         mainImageView.layer.masksToBounds = true
-        let rotationTransform = CATransform3DTranslate(CATransform3DIdentity, -500, 10, 0)
-        cell.layer.transform = rotationTransform
-        
-        UIView.animate(withDuration: 1.0, animations: { () -> Void in
-            
-            cell.layer.transform = CATransform3DIdentity
-            
+//        let rotationTransform = CATransform3DTranslate(CATransform3DIdentity, -500, 10, 0)
+//        cell.layer.transform = rotationTransform
+//        
+//        UIView.animate(withDuration: 1.0, animations: { () -> Void in
+//            
+//            cell.layer.transform = CATransform3DIdentity
+//            
+//        })
+        //cell animation
+        cell.layer.transform = CATransform3DMakeScale(0.1,0.1,1)
+        UIView.animate(withDuration: 0.3, animations: {
+            cell.layer.transform = CATransform3DMakeScale(1.05,1.05,1)
+        },completion: { finished in
+            UIView.animate(withDuration: 0.1, animations: {
+                cell.layer.transform = CATransform3DMakeScale(1,1,1)
+            })
         })
         
         return cell
