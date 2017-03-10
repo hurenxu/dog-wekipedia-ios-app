@@ -70,6 +70,7 @@ PODS:
   - GTMSessionFetcher/Full (1.1.8):
     - GTMSessionFetcher/Core (= 1.1.8)
   - MGSwipeTableCell (1.5.6)
+  - RAMAnimatedTabBarController (2.0.13)
 
 DEPENDENCIES:
   - Bolts
@@ -84,6 +85,7 @@ DEPENDENCIES:
   - Firebase/Database
   - GoogleSignIn
   - MGSwipeTableCell
+  - RAMAnimatedTabBarController (~> 2.0.13)
 
 SPEC CHECKSUMS:
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
@@ -105,7 +107,8 @@ SPEC CHECKSUMS:
   GTMOAuth2: 7fc9c10f5c745f4d9850419ea88889fe3baa6b7d
   GTMSessionFetcher: 6f8d8b28b7e345549ac471071608170b31cb4977
   MGSwipeTableCell: 616700eb0ffd1c611ba909066cb7fd739790a0a7
+  RAMAnimatedTabBarController: 2510f3b66954c3f77ea1042a35d34df8f5f3b604
 
-PODFILE CHECKSUM: eefd863fb55231a375cec724a05d8b8ef86c9632
+PODFILE CHECKSUM: 48c7b1296cc30e9a496cbfaaa89cee12bcfe87d9
 
 COCOAPODS: 1.2.0

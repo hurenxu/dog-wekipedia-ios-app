@@ -27,6 +27,9 @@ target 'Woof' do
   # Pods for swipetablecell
   pod 'MGSwipeTableCell'
 
+  # Pods for Tab Bar Animation
+  pod 'RAMAnimatedTabBarController', "~> 2.0.13"
+
 
   target 'WoofTests' do
     inherit! :search_paths

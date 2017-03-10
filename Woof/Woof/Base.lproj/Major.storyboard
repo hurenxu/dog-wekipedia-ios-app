@@ -199,15 +199,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <toolbarItems/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sza-Zy-MRW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2994" y="-1254"/>
+            <point key="canvasLocation" x="2992.8000000000002" y="-1254.4227886056972"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Animated Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController modalTransitionStyle="crossDissolve" id="49e-Tb-3d3" sceneMemberID="viewController">
+                <tabBarController modalTransitionStyle="crossDissolve" id="49e-Tb-3d3" customClass="RAMAnimatedTabBarController" customModule="RAMAnimatedTabBarController" sceneMemberID="viewController">
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics" barStyle="black"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
@@ -233,7 +234,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="0.0" y="0.0"/>
+            <point key="canvasLocation" x="-95" y="0.0"/>
         </scene>
         <!--Discover-->
         <scene sceneID="Kw0-oV-wU2">
@@ -249,7 +250,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Discover" id="sIf-pr-ISY">
-                        <barButtonItem key="backBarButtonItem" title="Home" id="J5W-RE-sDj"/>
+                        <barButtonItem key="backBarButtonItem" title="Back" id="J5W-RE-sDj"/>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GNl-0b-14G" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -333,11 +334,30 @@
             </objects>
             <point key="canvasLocation" x="4820" y="-573.46326836581716"/>
         </scene>
-        <!--Woofipedia-->
+        <!--Navigation Controller-->
         <scene sceneID="pjl-fk-oAS">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ukb-3V-0FP" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Woofipedia" image="WoofipediaIcon" selectedImage="WoofipediaIcon" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="" image="WoofipediaIcon" selectedImage="WoofipediaIcon" id="cPa-gy-q4n" customClass="RAMAnimatedTabBarItem" customModule="RAMAnimatedTabBarController">
+                        <inset key="imageInsets" minX="0.0" minY="6" maxX="0.0" maxY="-6"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="iconColor">
+                                <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="keyPath">
+                                <color key="value" red="0.58431372549019611" green="0.71764705882352942" blue="0.67843137254901964" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="yOffSet">
+                                <real key="value" value="-5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                        <connections>
+                            <outlet property="animation" destination="lYQ-q5-DdC" id="kg0-C6-7s0"/>
+                        </connections>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="FgG-aF-CJq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -349,14 +369,34 @@
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H4P-wv-ebX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="lYQ-q5-DdC" customClass="RAMBounceAnimation" customModule="RAMAnimatedTabBarController"/>
             </objects>
             <point key="canvasLocation" x="757.60000000000002" y="-555.47226386806597"/>
         </scene>
-        <!--Suggestion Tab-->
+        <!--Discover Tab-->
         <scene sceneID="K2y-Kd-DHm">
             <objects>
-                <navigationController title="Discover" automaticallyAdjustsScrollViewInsets="NO" id="Vn1-eE-3tb" userLabel="Suggestion Tab" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Discover" image="discoverTab.png" selectedImage="discoverTab.png" id="Qcz-Ki-ccI"/>
+                <navigationController title="Discover" automaticallyAdjustsScrollViewInsets="NO" id="Vn1-eE-3tb" userLabel="Discover Tab" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="discoverTab.png" selectedImage="discoverTab.png" id="Qcz-Ki-ccI" customClass="RAMAnimatedTabBarItem" customModule="RAMAnimatedTabBarController">
+                        <inset key="imageInsets" minX="0.0" minY="6" maxX="0.0" maxY="-6"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="iconColor">
+                                <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="keyPath">
+                                <color key="value" red="0.58431372549019611" green="0.71764705882352942" blue="0.67843137254901964" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="yOffSet">
+                                <real key="value" value="-5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                        <connections>
+                            <outlet property="animation" destination="F3d-m3-z4H" id="0ky-xF-UmW"/>
+                        </connections>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="szK-7W-ENY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -368,14 +408,34 @@
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AA3-CO-kUQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="F3d-m3-z4H" customClass="RAMBounceAnimation" customModule="RAMAnimatedTabBarController"/>
             </objects>
             <point key="canvasLocation" x="757.60000000000002" y="204.64767616191907"/>
         </scene>
-        <!--iPet-->
+        <!--Navigation Controller-->
         <scene sceneID="JQg-gD-EZR">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uTt-g1-nEQ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="iPet" image="iPetTab.png" selectedImage="iPetTab.png" id="KhS-bD-SjT"/>
+                    <tabBarItem key="tabBarItem" title="" image="iPetTab.png" selectedImage="iPetTab.png" id="KhS-bD-SjT" customClass="RAMAnimatedTabBarItem" customModule="RAMAnimatedTabBarController">
+                        <inset key="imageInsets" minX="0.0" minY="6" maxX="0.0" maxY="-6"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="iconColor">
+                                <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" red="0.58431372549019611" green="0.71764705882352942" blue="0.67843137254901964" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="yOffSet">
+                                <real key="value" value="-5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                        <connections>
+                            <outlet property="animation" destination="KTH-vM-83b" id="SDD-4Q-J3I"/>
+                        </connections>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="w8L-5L-583">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -387,6 +447,7 @@
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mek-wi-cfX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="KTH-vM-83b" customClass="RAMBounceAnimation" customModule="RAMAnimatedTabBarController"/>
             </objects>
             <point key="canvasLocation" x="757.60000000000002" y="950.37481259370327"/>
         </scene>
