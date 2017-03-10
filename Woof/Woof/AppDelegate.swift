@@ -21,10 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        FIRApp.configure()
-        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
-        GIDSignIn.sharedInstance().clientID = FIRApp.defaultApp()?.options.clientID
-        GIDSignIn.sharedInstance().delegate = self
+
         
         //change nav bar appearance
         var navigationBarAppearance = UINavigationBar.appearance()
@@ -37,18 +34,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
         // change navigation item title color
         navigationBarAppearance.titleTextAttributes = [NSForegroundColorAttributeName : UIColor(netHex: 0x000000)]
         navigationBarAppearance.titleTextAttributes = [NSFontAttributeName: UIFont(name: "Hiragino Kaku Gothic ProN", size: 19)!]
-        return true
+        
+        FIRApp.configure()
+        let facebook = FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        GIDSignIn.sharedInstance().clientID = FIRApp.defaultApp()?.options.clientID
+        GIDSignIn.sharedInstance().delegate = self
+        return facebook
     }
     
-    @available(iOS 9.0, *)
+
     func application(_ app: UIApplication, open url: URL, options:[UIApplicationOpenURLOptionsKey: Any] = [:]) -> Bool {
-        if GIDSignIn.sharedInstance().handle(url,
+        let googleDidHandle = GIDSignIn.sharedInstance().handle(url,
                                              sourceApplication:options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
-                                             annotation: [:]){
-            return true;
-        }
-        let handled = FBSDKApplicationDelegate.sharedInstance().application(app, open: url, options: options)
-        return handled
+                                             annotation: [:])
+
+        let facebookDidHandle = FBSDKApplicationDelegate.sharedInstance().application(app, open: url, options: options)
+        return googleDidHandle || facebookDidHandle
     }
     
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
@@ -56,6 +57,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
                                                     sourceApplication: sourceApplication,
                                                     annotation: annotation)
     }
+    
+//    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+//        // Override point for customization after application launch.
+//        
+//        var configureError: NSError?
+//        GGLContext.sharedInstance().configureWithError(&configureError)
+//        assert(configureError == nil, "Error configuring Google services: \(configureError)")
+//        
+//        GIDSignIn.sharedInstance().delegate = self
+//        
+//        return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+//        
+//    }
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         if error != nil {
