@@ -47,9 +47,28 @@ UICollectionViewDelegate, UICollectionViewDataSource {
     //var collectView = UICollectionView()
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        if (Functionalities.myUser == nil) {
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let initViewController: UIViewController = storyBoard.instantiateViewController(withIdentifier: "Login") as! LoginViewController
+            appDelegate.window?.rootViewController? = initViewController
+            
+            
+            let MyrootViewController = appDelegate.window!.rootViewController
+            //self.performSegue(withIdentifier: "backtologin", sender: self)
+            
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0 , execute: {
+//                self.performSegue(withIdentifier: "backtologin", sender: self)
+//            })
+            
+            
+
+        }
+        else {
         
         // let image = UIImage(named:"bacgroundHome.png")
         let shade = UIImageView(frame:UIScreen.main.bounds)
@@ -134,6 +153,8 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         let tools = Functionalities()
         let user = Functionalities.myUser
         
+        
+        
         if (!Functionalities.userExist!) {
             user?.addUserProfileEntry()
             print("new user profile added @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
@@ -177,6 +198,7 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         self.view.addSubview(collectView)
         collectView.reloadData()
         collectView.collectionViewLayout.invalidateLayout()
+        }
         
     }
     
