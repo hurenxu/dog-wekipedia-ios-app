@@ -98,7 +98,7 @@
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4h3-QR-Lbh" id="PHB-Fw-bzD">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
-                                    <autoresizingMask key="autoresizingMask"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DogImage" translatesAutoresizingMaskIntoConstraints="NO" id="7Dw-su-0tz">
                                             <rect key="frame" x="10" y="15" width="65" height="65"/>
@@ -109,27 +109,31 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" tag="4" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="UserUnLike" translatesAutoresizingMaskIntoConstraints="NO" id="2qh-Fk-uBq">
-                                            <rect key="frame" x="83" y="55" width="15" height="15"/>
-                                        </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Small, Family-friendly" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xww-p7-eaK">
-                                            <rect key="frame" x="83" y="74" width="164" height="26"/>
+                                            <rect key="frame" x="83" y="83" width="164" height="26"/>
                                             <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="10"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" tag="4" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="unlike" translatesAutoresizingMaskIntoConstraints="NO" id="lFJ-Wf-4mp">
+                                            <rect key="frame" x="83" y="55" width="25" height="25"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="25" id="p0N-bJ-YFf"/>
+                                                <constraint firstAttribute="width" constant="25" id="sN7-nf-jEM"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="7Dw-su-0tz" firstAttribute="top" secondItem="PHB-Fw-bzD" secondAttribute="topMargin" constant="7" id="37u-4P-Noa"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="7Dw-su-0tz" secondAttribute="bottom" constant="12" id="5hP-4R-tEY"/>
-                                        <constraint firstItem="xww-p7-eaK" firstAttribute="top" secondItem="2qh-Fk-uBq" secondAttribute="bottom" constant="4" id="Akw-2X-wGg"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="7Dw-su-0tz" secondAttribute="trailing" constant="292" id="H5Y-9L-2Ry"/>
                                         <constraint firstItem="kRs-cl-iDv" firstAttribute="leading" secondItem="7Dw-su-0tz" secondAttribute="trailing" constant="8" id="KZs-gt-77Y"/>
+                                        <constraint firstItem="lFJ-Wf-4mp" firstAttribute="top" secondItem="kRs-cl-iDv" secondAttribute="bottom" constant="6" id="TpG-mC-yif"/>
                                         <constraint firstItem="7Dw-su-0tz" firstAttribute="leading" secondItem="PHB-Fw-bzD" secondAttribute="leadingMargin" constant="2" id="aPo-PS-q5m"/>
-                                        <constraint firstItem="2qh-Fk-uBq" firstAttribute="leading" secondItem="7Dw-su-0tz" secondAttribute="trailing" constant="8" id="adO-i9-zBc"/>
-                                        <constraint firstItem="2qh-Fk-uBq" firstAttribute="top" secondItem="kRs-cl-iDv" secondAttribute="bottom" constant="6" id="daV-zc-bO4"/>
                                         <constraint firstAttribute="topMargin" secondItem="kRs-cl-iDv" secondAttribute="top" id="eh0-mo-UcA"/>
+                                        <constraint firstItem="lFJ-Wf-4mp" firstAttribute="leading" secondItem="7Dw-su-0tz" secondAttribute="trailing" constant="8" id="lzc-GD-2Yu"/>
                                         <constraint firstItem="7Dw-su-0tz" firstAttribute="width" secondItem="PHB-Fw-bzD" secondAttribute="height" multiplier="13:20" id="maK-i8-aAJ"/>
+                                        <constraint firstItem="xww-p7-eaK" firstAttribute="top" secondItem="lFJ-Wf-4mp" secondAttribute="bottom" constant="3" id="sNx-ex-5dH"/>
                                         <constraint firstItem="xww-p7-eaK" firstAttribute="leading" secondItem="7Dw-su-0tz" secondAttribute="trailing" constant="8" id="wXD-Ga-Xb2"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -255,6 +259,9 @@
                         <barButtonItem key="backBarButtonItem" title="Home" id="Iyk-AI-1sz"/>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <segue destination="Obj-6K-1mn" kind="showDetail" identifier="backtologin" id="eq6-GP-72C"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PbC-FO-5hM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -307,6 +314,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mGC-lS-OR0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3228" y="-526"/>
+        </scene>
+        <!--Main-->
+        <scene sceneID="EZH-1w-dcu">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="Main" storyboardName="Main" id="Obj-6K-1mn" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="scO-gs-mUG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2742" y="1013"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="pjl-fk-oAS">
@@ -428,7 +443,6 @@
     </scenes>
     <resources>
         <image name="DogImage" width="309" height="356"/>
-        <image name="UserUnLike" width="32" height="32"/>
         <image name="WoofipediaIcon" width="29" height="29"/>
         <image name="backgroundHome.jpg" width="1667" height="1528"/>
         <image name="backgroundHomeLarge.jpg" width="388" height="690"/>
@@ -436,6 +450,11 @@
         <image name="dogProfile.png" width="512" height="512"/>
         <image name="iPetTab.png" width="32" height="32"/>
         <image name="loginLogo.png" width="256" height="256"/>
+        <image name="unlike" width="100" height="100"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="PjU-R4-8VG"/>
+    </inferredMetricsTieBreakers>
+
     <color key="tintColor" red="1" green="0.97739707450220481" blue="0.98941910780827447" alpha="1" colorSpace="calibratedRGB"/>
 </document>

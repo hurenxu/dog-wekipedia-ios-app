@@ -9,12 +9,13 @@
 import UIKit
 import MGSwipeTableCell
 
+
 class SearchTableViewController: UITableViewController, UISearchResultsUpdating {
     
-    var user = Functionalities.myUser
     var dogs = [Breed]()
     var filteredDogs = [Breed]()
     var resultSearchController = UISearchController()
+
     
     override func viewDidLoad() {
         self.resultSearchController = UISearchController(searchResultsController: nil)
@@ -27,6 +28,7 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
         
         let tools = Functionalities()
         print(tools.getBreedList(controller:self))
+
         
         self.navigationItem.title = "Lexi&JasperTesting"
         
@@ -69,13 +71,15 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
         let mainDogLike = cell.viewWithTag(4) as! UIImageView
         let breed: Breed
         
-        cell.rightButtons = [MGSwipeButton(title: "Like", icon: UIImage(named:"like.png"), backgroundColor: .white){
+
+        
+        cell.rightButtons = [MGSwipeButton(title: "", icon: UIImage(named:"like.png"), backgroundColor: .clear){
             (sender: MGSwipeTableCell!) -> Bool in
             print("Convenience callback for Like Swipe")
             return true
             }]
         cell.leftSwipeSettings.transition = .rotate3D
-        cell.leftButtons = [MGSwipeButton(title: "Unlike", icon: UIImage(named:"unlike.png"), backgroundColor: .white){
+        cell.leftButtons = [MGSwipeButton(title: "", icon: UIImage(named:"unlike.png"), backgroundColor: .clear){
             (sender: MGSwipeTableCell!) -> Bool in
             print("Convenience callback for UnLike Swipe")
             return true
@@ -110,8 +114,26 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
         mainDogGroup.text = breed.getGroup()
         
         //set like heart status
-        if (user?.breedIsLiked(breedname: breed.getBreedName()))! {
-            mainDogLike.image = #imageLiteral(resourceName: "like")
+        if Functionalities.myUser != nil{
+            if (Functionalities.myUser?.breedIsLiked(breedname: breed.getBreedName()))! {
+                print(breed.getBreedName()+" breed is liked")
+                mainDogLike.autoresizingMask = [.flexibleWidth, .flexibleHeight, .flexibleBottomMargin, .flexibleRightMargin, .flexibleLeftMargin, .flexibleTopMargin]
+                mainDogLike.contentMode = .scaleAspectFit
+                mainDogLike.clipsToBounds = true
+                mainDogLike.image = #imageLiteral(resourceName: "like")
+                
+                
+            } else {
+                print(breed.getBreedName()+" breed is not liked")
+                //                mainDogLike.contentMode = UIViewContentMode.scaleAspectFit
+                mainDogLike.autoresizingMask = [.flexibleWidth, .flexibleHeight, .flexibleBottomMargin, .flexibleRightMargin, .flexibleLeftMargin, .flexibleTopMargin]
+                mainDogLike.contentMode = .scaleAspectFit
+                mainDogLike.clipsToBounds = true
+                mainDogLike.image = #imageLiteral(resourceName: "unlike.png")
+
+                
+            }
+            
         }
         
         //alternate cell color
@@ -173,6 +195,7 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
         })
         tableView.reloadData()
     }
+
     
     
     // MARK: - Segues
