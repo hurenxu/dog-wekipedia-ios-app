@@ -452,6 +452,7 @@ class FilterTableViewController: UIViewController{
         
         scrollView.addSubview(save)
         
+        save.addTarget(self, action: #selector(self.showResult(_:)), for: .touchUpInside)
         
         //save.addTarget(self, action: #selector(self.prepare(_ sender:)), for: UIControlEvents.touchDown)
         
@@ -461,19 +462,14 @@ class FilterTableViewController: UIViewController{
         
     }
     
-    //    func transition(sender: UIButton!) {
-    //        let secondViewController:FilterResult = FilterResult()
-    //        secondViewController.hair = hair
-    //        secondViewController.size = size
-    //        secondViewController.groom = groom
-    //        secondViewController.train = train
-    //        secondViewController.bark = bark
-    //        secondViewController.group = group
-    //        secondViewController.shed = shed
-    //
-    //        self.navigationController.pushViewController(secondViewController, animated: true)
-    //
-    //    }
+    func showResult(_ Sender: UIButton!){
+        let secondViewController:FilterResultViewController = FilterResultViewController()
+        
+        let LexiTesting = "lexi"
+        secondViewController.Lexi = LexiTesting
+        secondViewController.size = size
+        self.present(secondViewController, animated: true, completion: nil)
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //override func prepare(sender: Any?) {
         print("Prepare for Filter Result Segue")

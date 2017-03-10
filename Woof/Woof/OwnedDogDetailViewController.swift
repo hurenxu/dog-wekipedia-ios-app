@@ -181,13 +181,9 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         
         self.title = "My dog"
         
-        //        let backButton = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.plain, target: self, action: #selector(OwnedDogDetailViewController.goBack))
-        //        backButton.tintColor = UIColor.blue
-        //        navigationItem.leftBarButtonItem = backButton
-        
         //self.view.addSubview(backButton)
         
-        let navigationBar = UINavigationBar(frame: CGRect(x:0, y:0, width:self.view.frame.size.width, height:55)) // Offset by 20 pixels vertically to take the status bar into account
+        let navigationBar = UINavigationBar(frame: CGRect(x:0, y:0, width:self.view.frame.size.width, height:58)) // Offset by 20 pixels vertically to take the status bar into account
         
         let navigationItem = UINavigationItem()
         navigationItem.title = "My dog"
@@ -198,7 +194,7 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         navigationBar.delegate = self;
         
         let backButton = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(goBack))
-        backButton.tintColor = UIColor.blue
+        backButton.tintColor = UIColor.black
         navigationItem.leftBarButtonItem = backButton
         navigationBar.pushItem(navigationItem, animated: true)
         
