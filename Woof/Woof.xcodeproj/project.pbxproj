@@ -108,6 +108,7 @@
 		07AFF27F1E6A640A0089867C /* Functionalities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B4D74D1E56A21200DA6A2C /* Functionalities.swift */; };
 		07B4D74C1E56A13200DA6A2C /* DataAccessObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B4D74B1E56A13200DA6A2C /* DataAccessObject.swift */; };
 		07B4D74E1E56A21200DA6A2C /* Functionalities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B4D74D1E56A21200DA6A2C /* Functionalities.swift */; };
+		2F1D1E8F1E726833001DDFBD /* FilterResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1D1E8E1E726833001DDFBD /* FilterResultViewController.swift */; };
 		58C3A872E1D87A2AA2091BAF /* Pods_Woof.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B9FF199C9CAEB89DFB8BD0B /* Pods_Woof.framework */; };
 		9E7828841E713FB000EF3B9C /* unlike.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E7828831E713FB000EF3B9C /* unlike.png */; };
 		9E7828861E713FB000EF3B9C /* like.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E7828851E713FB000EF3B9C /* like.png */; };
@@ -197,6 +198,7 @@
 		07B4D74D1E56A21200DA6A2C /* Functionalities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functionalities.swift; sourceTree = "<group>"; };
 		155EBE63D3C365708CD5B5D5 /* Pods-WoofUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoofUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WoofUITests/Pods-WoofUITests.release.xcconfig"; sourceTree = "<group>"; };
 		2B9FF199C9CAEB89DFB8BD0B /* Pods_Woof.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Woof.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2F1D1E8E1E726833001DDFBD /* FilterResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterResultViewController.swift; sourceTree = "<group>"; };
 		417FEE35B18CEC60476A1012 /* Pods-WoofTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoofTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WoofTests/Pods-WoofTests.release.xcconfig"; sourceTree = "<group>"; };
 		6E144974F62DFDBD7A02E026 /* Pods-Woof.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Woof.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Woof/Pods-Woof.debug.xcconfig"; sourceTree = "<group>"; };
 		7717C3F7724CB21AC5305E61 /* Pods-WoofTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoofTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WoofTests/Pods-WoofTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -377,6 +379,7 @@
 				A4A8A3311E6E713F000657E1 /* StatsViewController.swift */,
 				A4A8A3321E6E713F000657E1 /* SuggestionViewController.swift */,
 				0314E5241E6FC43A00E73DF9 /* LaunchViewController.swift */,
+				2F1D1E8E1E726833001DDFBD /* FilterResultViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -744,6 +747,7 @@
 				075FBD811E4D635D009ECE7C /* Breed.swift in Sources */,
 				07AFF24D1E6A55D20089867C /* DogCell.swift in Sources */,
 				A4A8A3351E6E713F000657E1 /* StatsViewController.swift in Sources */,
+				2F1D1E8F1E726833001DDFBD /* FilterResultViewController.swift in Sources */,
 				075FBD821E4D635D009ECE7C /* Dog.swift in Sources */,
 				07AFF2621E6A55D20089867C /* IPetViewController.swift in Sources */,
 				07AFF2711E6A55D20089867C /* SearchTableViewController.swift in Sources */,

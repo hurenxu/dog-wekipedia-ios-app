@@ -65,13 +65,24 @@ class User{
         let dao = DataAccessObject()
         dao.updateUser(user: self)
     }
+    func breedIsLiked(breedname: String) -> Bool {
+        return self.favoriteDogBreeds.contains(breedname)
+    }
     
     func addFavoriteDogBreed(breedname: String) {
         self.favoriteDogBreeds.append(breedname)
     }
+    func removeFavoriteDogBreed(breedname: String) {
+        self.favoriteDogBreeds = self.favoriteDogBreeds.filter{$0 != breedname}
+    }
+    
     
     func addFavoriteCategoryFilter(filter: String) {
         self.favoriteCategoryFilters.append(filter)
+    }
+    
+    func removeFavoriteCategoryFilter(filter: String) {
+        self.favoriteCategoryFilters = self.favoriteCategoryFilters.filter{$0 != filter}
     }
     func updateDog(dog: Dog) {
         let dao = DataAccessObject()
