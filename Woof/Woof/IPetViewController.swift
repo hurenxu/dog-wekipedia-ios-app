@@ -58,7 +58,7 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         self.view.addSubview(shade)
         self.view.sendSubview(toBack: shade)
         
-        let imageName = "backgroundHome.png"
+        let imageName = "backgroundHome.jpg"
         let image = UIImage(named: imageName)
         let imageView = UIImageView(image: image!)
         imageView.frame = CGRect(x: 0, y: 65, width: 375, height: 240)
