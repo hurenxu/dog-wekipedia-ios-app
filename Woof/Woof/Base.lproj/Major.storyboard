@@ -97,7 +97,7 @@
                                 <rect key="frame" x="0.0" y="72" width="375" height="101"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4h3-QR-Lbh" id="PHB-Fw-bzD">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="100.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DogImage" translatesAutoresizingMaskIntoConstraints="NO" id="7Dw-su-0tz">
@@ -134,7 +134,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="V84-9r-r8h" kind="showDetail" identifier="showDetail" action="showViewController:sender:" id="RYZ-GH-XyC"/>
+                                    <segue destination="Iry-G2-eFg" kind="show" identifier="showDetail" id="Ngo-1w-MZM"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -160,9 +160,6 @@
                                         </fragment>
                                     </attributedString>
                                 </state>
-                                <connections>
-                                    <segue destination="PVU-gl-3TV" kind="show" id="BKg-WJ-iOU"/>
-                                </connections>
                             </button>
                             <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
@@ -318,12 +315,6 @@
                     </view>
                     <navigationItem key="navigationItem" title="Detail" id="KXj-uX-9bW">
                         <barButtonItem key="backBarButtonItem" title="Back" id="kTw-Fb-reF"/>
-                        <barButtonItem key="leftBarButtonItem" title="Back" style="plain" id="oh6-qp-u9C">
-                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <segue destination="49e-Tb-3d3" kind="show" action="showDetailViewController:sender:" id="3t4-cp-DnM"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="detailBreedName" destination="1m1-fO-6MV" id="Yex-Rg-c8s"/>
@@ -332,7 +323,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mGC-lS-OR0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4820" y="-573.46326836581716"/>
+            <point key="canvasLocation" x="3228" y="-526"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="pjl-fk-oAS">
@@ -451,24 +442,6 @@
             </objects>
             <point key="canvasLocation" x="757.60000000000002" y="950.37481259370327"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="au0-gy-CAc">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="V84-9r-r8h" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="os0-Jo-CL0">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="Iry-G2-eFg" kind="relationship" relationship="rootViewController" id="Zld-aX-HHB"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4SE-NJ-KPJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3880.8000000000002" y="-573.46326836581716"/>
-        </scene>
     </scenes>
     <resources>
         <image name="DogImage" width="309" height="356"/>
@@ -481,8 +454,5 @@
         <image name="iPetTab.png" width="32" height="32"/>
         <image name="loginLogo.png" width="256" height="256"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="3t4-cp-DnM"/>
-    </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="0.97739707450220481" blue="0.98941910780827447" alpha="1" colorSpace="calibratedRGB"/>
 </document>
