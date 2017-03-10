@@ -131,6 +131,7 @@ class Functionalities{
             let profile = snapshot.value as? NSDictionary
             let thisuser = User(dictionary: profile!)
             Functionalities.myUser = thisuser
+            Functionalities.myUser?.userID = user.userID
         })
         
         return Functionalities.myUser!

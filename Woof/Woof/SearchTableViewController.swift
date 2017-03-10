@@ -39,8 +39,17 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
         filterButton.tintColor = UIColor.black
         self.navigationItem.leftBarButtonItem = filterButton
         
-        
         self.tableView.reloadData()
+        super.viewDidLoad()
+        var refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: Selector("refreshTable"), for: UIControlEvents.valueChanged)
+        self.refreshControl = refreshControl
+        
+    }
+    
+    func refreshTable() {
+        tableView.reloadData()
+        refreshControl?.endRefreshing()
     }
     
     func toFilter(){

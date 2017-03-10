@@ -4,7 +4,7 @@ import Firebase
 class User{
     
     // immutable uid
-    let userID: String
+    var userID: String
     //var firstName: String
     //var lastName: String
     var name: String
@@ -83,6 +83,10 @@ class User{
     
     func removeFavoriteCategoryFilter(filter: String) {
         self.favoriteCategoryFilters = self.favoriteCategoryFilters.filter{$0 != filter}
+    }
+    func updateUser() {
+        let dao = DataAccessObject()
+        dao.updateUser(user: self)
     }
     func updateDog(dog: Dog) {
         let dao = DataAccessObject()
