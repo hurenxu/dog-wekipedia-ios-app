@@ -34,6 +34,16 @@
 				<string>com.googleusercontent.apps.548363881497-qa97b6un6ec22m064qdbnkg9vaq5qp3t</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>meiyi.Woof.ios.Woof</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>meiyi.Woof.ios.Woof</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>

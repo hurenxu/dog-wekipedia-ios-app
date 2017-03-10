@@ -109,6 +109,11 @@
 		07B4D74C1E56A13200DA6A2C /* DataAccessObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B4D74B1E56A13200DA6A2C /* DataAccessObject.swift */; };
 		07B4D74E1E56A21200DA6A2C /* Functionalities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B4D74D1E56A21200DA6A2C /* Functionalities.swift */; };
 		58C3A872E1D87A2AA2091BAF /* Pods_Woof.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B9FF199C9CAEB89DFB8BD0B /* Pods_Woof.framework */; };
+		73C8B1631E72FA6000185C8B /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73C8B1621E72FA6000185C8B /* StoreKit.framework */; };
+		73C8B1651E72FA6A00185C8B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73C8B1641E72FA6A00185C8B /* SystemConfiguration.framework */; };
+		73C8B1671E72FA7300185C8B /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73C8B1661E72FA7300185C8B /* AddressBook.framework */; };
+		73C8B16B1E73014800185C8B /* GoogleSignIn.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 73C8B1691E73014800185C8B /* GoogleSignIn.bundle */; };
+		73C8B16C1E73014800185C8B /* GoogleSignIn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73C8B16A1E73014800185C8B /* GoogleSignIn.framework */; };
 		9E7828841E713FB000EF3B9C /* unlike.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E7828831E713FB000EF3B9C /* unlike.png */; };
 		9E7828861E713FB000EF3B9C /* like.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E7828851E713FB000EF3B9C /* like.png */; };
 		9EEAB7A61E710EC700E30178 /* discoverTab.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EEAB7A51E710EC700E30178 /* discoverTab.png */; };
@@ -199,6 +204,12 @@
 		2B9FF199C9CAEB89DFB8BD0B /* Pods_Woof.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Woof.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		417FEE35B18CEC60476A1012 /* Pods-WoofTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoofTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WoofTests/Pods-WoofTests.release.xcconfig"; sourceTree = "<group>"; };
 		6E144974F62DFDBD7A02E026 /* Pods-Woof.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Woof.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Woof/Pods-Woof.debug.xcconfig"; sourceTree = "<group>"; };
+		73C8B1621E72FA6000185C8B /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		73C8B1641E72FA6A00185C8B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		73C8B1661E72FA7300185C8B /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		73C8B1681E72FAF700185C8B /* Woof-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Woof-Bridging-Header.h"; sourceTree = "<group>"; };
+		73C8B1691E73014800185C8B /* GoogleSignIn.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleSignIn.bundle; path = ../../../Downloads/google_signin_sdk_2_1_0/GoogleSignIn.bundle; sourceTree = "<group>"; };
+		73C8B16A1E73014800185C8B /* GoogleSignIn.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleSignIn.framework; path = ../../../Downloads/google_signin_sdk_2_1_0/GoogleSignIn.framework; sourceTree = "<group>"; };
 		7717C3F7724CB21AC5305E61 /* Pods-WoofTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoofTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WoofTests/Pods-WoofTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9AA79A7154CB0E70AED07ACA /* Pods_WoofUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WoofUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E7828831E713FB000EF3B9C /* unlike.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unlike.png; sourceTree = "<group>"; };
@@ -220,6 +231,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73C8B16B1E73014800185C8B /* GoogleSignIn.bundle in Frameworks */,
+				73C8B16C1E73014800185C8B /* GoogleSignIn.framework in Frameworks */,
+				73C8B1671E72FA7300185C8B /* AddressBook.framework in Frameworks */,
+				73C8B1651E72FA6A00185C8B /* SystemConfiguration.framework in Frameworks */,
+				73C8B1631E72FA6000185C8B /* StoreKit.framework in Frameworks */,
 				076344BA1E415DC1001E20C9 /* FBSDKLoginKit.framework in Frameworks */,
 				58C3A872E1D87A2AA2091BAF /* Pods_Woof.framework in Frameworks */,
 			);
@@ -281,6 +297,7 @@
 		076344791E415470001E20C9 = {
 			isa = PBXGroup;
 			children = (
+				73C8B1681E72FAF700185C8B /* Woof-Bridging-Header.h */,
 				076344841E415470001E20C9 /* Woof */,
 				0763449B1E415470001E20C9 /* WoofTests */,
 				076344A61E415470001E20C9 /* WoofUITests */,
@@ -397,6 +414,11 @@
 		5E0C5CD82285AEFBF1A756DA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				73C8B1691E73014800185C8B /* GoogleSignIn.bundle */,
+				73C8B16A1E73014800185C8B /* GoogleSignIn.framework */,
+				73C8B1661E72FA7300185C8B /* AddressBook.framework */,
+				73C8B1641E72FA6A00185C8B /* SystemConfiguration.framework */,
+				73C8B1621E72FA6000185C8B /* StoreKit.framework */,
 				076344B91E415DC1001E20C9 /* FBSDKLoginKit.framework */,
 				2B9FF199C9CAEB89DFB8BD0B /* Pods_Woof.framework */,
 				D8C1D9890B526C0947E28C55 /* Pods_WoofTests.framework */,
@@ -965,6 +987,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = meiyi.Woof.ios.Woof;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Woof-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -985,6 +1008,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = meiyi.Woof.ios.Woof;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Woof-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

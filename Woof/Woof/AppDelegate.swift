@@ -13,16 +13,17 @@ import FBSDKLoginKit
 import GoogleSignIn
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
+class AppDelegate: UIResponder, UIApplicationDelegate , GIDSignInDelegate{
 
     var window: UIWindow?
 
-
+    var gidauth: GIDAuthentication!
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
         FIRApp.configure()
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        
         GIDSignIn.sharedInstance().clientID = FIRApp.defaultApp()?.options.clientID
         GIDSignIn.sharedInstance().delegate = self
         
@@ -39,6 +40,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
         navigationBarAppearance.titleTextAttributes = [NSFontAttributeName: UIFont(name: "Hiragino Kaku Gothic ProN", size: 19)!]
         return true
     }
+    /*
+    func application(application: UIApplication, openURL url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        
+        
+        
+        
+        let googleDidHandle = GIDSignIn.sharedInstance().handle(url as URL!,
+                                                                sourceApplication: sourceApplication,
+                                                                annotation: annotation)
+        
+        let facebookDidHandle = FBSDKApplicationDelegate.sharedInstance().application(
+            application,
+            open: url as URL!,
+            sourceApplication: sourceApplication,
+            annotation: annotation)
+        
+        print("googleDidHandle!!!!!!!!!!!!!!!!",googleDidHandle)
+        
+        return googleDidHandle || facebookDidHandle
+    }*/
     
     @available(iOS 9.0, *)
     func application(_ app: UIApplication, open url: URL, options:[UIApplicationOpenURLOptionsKey: Any] = [:]) -> Bool {
@@ -60,10 +81,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         if error != nil {
             // TODO
+            print("GIDSIGNIN!!!!! ERROR")
             return
         }
+        
+        
+        
+        
         // google_credential
         guard let authentication = user.authentication else { return }
+        print("NO ERROR!!!!!!")
+        gidauth = authentication
+        print(gidauth)
         let credential = FIRGoogleAuthProvider.credential(withIDToken: authentication.idToken,
                                                           accessToken: authentication.accessToken)
         
@@ -89,12 +118,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
             
         })
         
-        print("google Login there")
-        //rootViewController?.performSegue(withIdentifier: "launchgooglelogin", sender: self)
+        if FIRAuth.auth()?.currentUser != nil {
+            let user = User(authData: (FIRAuth.auth()?.currentUser)!)
+            
+            Functionalities.myUser = user
+            
+        }
         
+        print("google Login there")/*
+        let myStBd = UIStoryboard(name: "Main",bundle:nil)
+        logCon.performSegue(withIdentifier: "login", sender: self)*/
+        
+        
+        // Access the storyboard and fetch an instance of the view controller
+        let storyboard = UIStoryboard(name: "Main", bundle: nil);
+        
+        let viewController: LoginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController;
+        //viewController.performSegue(withIdentifier: "login", sender: viewController)
+        // Then push that view controller onto the navigation stack
+        
+        //rootViewController?.navigationController?.pushViewController(viewController, animated: true);
+        //rootViewController?.navigationController?.performSegue(withIdentifier: <#T##String#>, sender: <#T##Any?#>)
+        rootViewController?.navigationController?.performSegue(withIdentifier: "login", sender: viewController)
+        print("HOPE PERFORM SEGUE HERE")
+        //rootViewController?.childViewControllers.performSegue(withIdentifier: login, sender: LoginViewController)
         // [END_EXCLUDE]
     }
-
     
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
         print(123)

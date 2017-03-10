@@ -31,7 +31,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "43"
             endingLineNumber = "43"
-            landmarkName = "getBreedList()"
+            landmarkName = "retrieveBreedList(controller:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -47,7 +47,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "62"
             endingLineNumber = "62"
-            landmarkName = "deleteDog(dog:)"
+            landmarkName = "addDog(dog:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -70,17 +70,17 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Woof/DataAccessObject.swift"
-            timestampString = "510038394.771379"
+            filePath = "Woof/LoginViewController.swift"
+            timestampString = "510866188.291941"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
-            landmarkName = "addDog(dog:)"
-            landmarkType = "7">
+            startingLineNumber = "484"
+            endingLineNumber = "484"
+            landmarkName = "LoginViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -89,46 +89,12 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Woof/Breed.swift"
-            timestampString = "510522549.948178"
+            filePath = "Woof/AppDelegate.swift"
+            timestampString = "510852357.342336"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
-            landmarkName = "init(breedName:popularity:origin:group:size:type:lifeExpectancy:personality:height:weight:colors:litterSize:price:barkingLevel:childFriendly:grooming:shedding:trainability:breeders:image:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Woof.Breed.(init (breedName : Swift.String, popularity : Swift.String, origin : Swift.String, group : Swift.String, size : Swift.String, type : Swift.String, lifeExpectancy : Swift.String, personality : Swift.String, height : Swift.String, weight : Swift.String, colors : Swift.String, litterSize : Swift.String, price : Swift.String, barkingLevel : Swift.String, childFriendly : Swift.String, grooming : Swift.String, shedding : Swift.String, trainability : Swift.String, breeders : Swift.String, image : Swift.String) -&gt; Woof.Breed).(default argument 8)"
-                  moduleName = "Woof"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Siya/Documents/CSE110_Woof/Woof/Woof/Breed.swift"
-                  timestampString = "510710715.778214"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "68"
-                  endingLineNumber = "68"
-                  offsetFromSymbolStart = "4">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Woof.Breed.(init (breedName : Swift.String, popularity : Swift.String, origin : Swift.String, group : Swift.String, size : Swift.String, type : Swift.String, lifeExpectancy : Swift.String, personality : Swift.String, height : Swift.String, weight : Swift.String, colors : Swift.String, litterSize : Swift.String, price : Swift.String, barkingLevel : Swift.String, childFriendly : Swift.String, grooming : Swift.String, shedding : Swift.String, trainability : Swift.String, breeders : Swift.String, image : Swift.String) -&gt; Woof.Breed).(default argument 9)"
-                  moduleName = "Woof"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Siya/Documents/CSE110_Woof/Woof/Woof/Breed.swift"
-                  timestampString = "510710715.780311"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "68"
-                  endingLineNumber = "68"
-                  offsetFromSymbolStart = "4">
-               </Location>
-            </Locations>
+            startingLineNumber = "226"
+            endingLineNumber = "226">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
