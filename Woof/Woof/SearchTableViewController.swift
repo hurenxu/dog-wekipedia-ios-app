@@ -11,7 +11,7 @@ import MGSwipeTableCell
 
 class SearchTableViewController: UITableViewController, UISearchResultsUpdating {
     
-    
+    var user = Functionalities.myUser
     var dogs = [Breed]()
     var filteredDogs = [Breed]()
     var resultSearchController = UISearchController()
@@ -94,6 +94,11 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
         mainDogName.text = breed.getBreedName()
         mainDogGroup.text = breed.getGroup()
         
+        //set like heart status
+        if (user?.breedIsLiked(breedname: breed.getBreedName()))! {
+            mainDogLike.image = #imageLiteral(resourceName: "like")
+        }
+        
         //alternate cell color
         if(indexPath.row % 2==0){
             //set cell background color to light gray
@@ -106,20 +111,10 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
         
         
         //set image in the cell to be cicle
-
-//        mainImageView.layer.cornerRadius = mainImageView.frame.height/2.0
-//        mainImageView.clipsToBounds = true
         let radius = mainImageView.frame.width / 2
         mainImageView.layer.cornerRadius = radius
         mainImageView.layer.masksToBounds = true
-//        let rotationTransform = CATransform3DTranslate(CATransform3DIdentity, -500, 10, 0)
-//        cell.layer.transform = rotationTransform
-//        
-//        UIView.animate(withDuration: 1.0, animations: { () -> Void in
-//            
-//            cell.layer.transform = CATransform3DIdentity
-//            
-//        })
+
         //cell animation
         cell.layer.transform = CATransform3DMakeScale(0.1,0.1,1)
         UIView.animate(withDuration: 0.3, animations: {
@@ -130,6 +125,7 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
             })
         })
         
+        
         return cell
     }
 
@@ -138,7 +134,6 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
     /* This function count the number of item to be displayed for search result
      */
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         if self.resultSearchController.isActive && self.resultSearchController.searchBar.text != "" {
             return filteredDogs.count
         }
@@ -181,7 +176,8 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
                 } else {
                     breed = dogs[indexPath.row]
                 }
-                let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
+//                let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
+                let controller = segue.destination as! DetailViewController
                 controller.detailDog = breed
             }
         }
