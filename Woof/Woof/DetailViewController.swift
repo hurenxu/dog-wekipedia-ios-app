@@ -70,9 +70,20 @@ class DetailViewController: UIViewController, UINavigationBarDelegate{
         if sender.isSelected {
             // deselect
             sender.deselect()
+            if Functionalities.myUser != nil{
+                Functionalities.myUser?.removeFavoriteDogBreed(breedname:(detailDog?.getBreedName())!)
+                Functionalities.myUser?.updateUser()
+                print("Successfully removed breed from user favorite")
+                //print()
+            }
         } else {
             // select with animation
             sender.select()
+            if Functionalities.myUser != nil{
+                Functionalities.myUser?.addFavoriteDogBreed(breedname:(detailDog?.getBreedName())!)
+                Functionalities.myUser?.updateUser()
+                print("Successfully added breed to user favorite")
+            }
         }
     }
     
@@ -85,11 +96,19 @@ class DetailViewController: UIViewController, UINavigationBarDelegate{
         let y = self.view.frame.height / 2
         
         // heart button
+        
         let button = DOFavoriteButton(frame: CGRect(x: x, y: y, width: 100, height: 100), image: UIImage(named: "like"))
         button.imageColorOn = UIColor(red: 254/255, green: 110/255, blue: 111/255, alpha: 1.0)
         button.circleColor = UIColor(red: 254/255, green: 110/255, blue: 111/255, alpha: 1.0)
         button.lineColor = UIColor(red: 226/255, green: 96/255, blue: 96/255, alpha: 1.0)
         button.addTarget(self, action: #selector(self.tappedButton), for: .touchUpInside)
+        if Functionalities.myUser != nil{
+            if (Functionalities.myUser?.breedIsLiked(breedname:(detailDog?.getBreedName())!))! {
+                button.isSelected = true
+            } else {
+                button.isSelected = false
+            }
+        }
         self.view.addSubview(button)
         x += width
         

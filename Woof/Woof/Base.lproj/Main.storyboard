@@ -57,7 +57,7 @@
         <!--Login-->
         <scene sceneID="PKu-vI-Rsi">
             <objects>
-                <viewController storyboardIdentifier="LoginViewController" id="i07-nw-m55" userLabel="Login" customClass="LoginViewController" customModule="Woof" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Login" id="i07-nw-m55" userLabel="Login" customClass="LoginViewController" customModule="Woof" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="iw5-pY-WF6"/>
                         <viewControllerLayoutGuide type="bottom" id="Op7-Vv-99O"/>

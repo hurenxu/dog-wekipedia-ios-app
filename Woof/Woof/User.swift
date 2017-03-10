@@ -4,14 +4,14 @@ import Firebase
 class User{
     
     // immutable uid
-    let userID: String
+    var userID: String
     //var firstName: String
     //var lastName: String
     var name: String
     var email: String
     var age = 0
     var gender: String
-    var favoriteDogBreeds: [String] = ["Yorkshire", "Chihuahua"]
+    var favoriteDogBreeds: [String] = ["Yorkshire", "Chihuahua","Australian Shepherd","Pembroke Welsh Corgi"]
     var favoriteCategoryFilters: [String] = ["Black", "Small"]
     var zipCode = ""
     var image = ""
@@ -65,13 +65,28 @@ class User{
         let dao = DataAccessObject()
         dao.updateUser(user: self)
     }
+    func breedIsLiked(breedname: String) -> Bool {
+        return self.favoriteDogBreeds.contains(breedname)
+    }
     
     func addFavoriteDogBreed(breedname: String) {
         self.favoriteDogBreeds.append(breedname)
     }
+    func removeFavoriteDogBreed(breedname: String) {
+        self.favoriteDogBreeds = self.favoriteDogBreeds.filter{$0 != breedname}
+    }
+    
     
     func addFavoriteCategoryFilter(filter: String) {
         self.favoriteCategoryFilters.append(filter)
+    }
+    
+    func removeFavoriteCategoryFilter(filter: String) {
+        self.favoriteCategoryFilters = self.favoriteCategoryFilters.filter{$0 != filter}
+    }
+    func updateUser() {
+        let dao = DataAccessObject()
+        dao.updateUser(user: self)
     }
     func updateDog(dog: Dog) {
         let dao = DataAccessObject()

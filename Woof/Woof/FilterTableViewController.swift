@@ -17,15 +17,15 @@ import UIKit
 //Noteworthy Light 17.0
 
 
-class FilterTableViewController: UIViewController, UIScrollViewDelegate{
-    var hair=0; //default 0. short 1, long 2
-    var size=0; //default 0. small 1, medium 2, large 3
-    var group=0; //default 0. Herding 1; Hound 2; Non-sporting 3; Sporting 4; Terrier 5; Toy 6; Working 7
-    var train=0; //default 0. easy 1; aveg 2; moderately easy 3
-    var bark=0; //default 0. frequent 1; occasional 2; rare 3
+class FilterTableViewController: UIViewController, UINavigationBarDelegate{
+    var hair=0 //default 0. short 1, long 2
+    var size=0 //default 0. small 1, medium 2, large 3
+    var group=0 //default 0. Herding 1; Hound 2; Non-sporting 3; Sporting 4; Terrier 5; Toy 6; Working 7
+    var train=0 //default 0. easy 1; aveg 2; moderately easy 3
+    var bark=0 //default 0. frequent 1; occasional 2; rare 3
     
-    var groom = 0; //default 0; "High" 1; "Moderate" 2; "Low" 3
-    var shed = 0; //default 0; minimal 1; moderate 2; constant 3; seasonal 4
+    var groom = 0 //default 0; "High" 1; "Moderate" 2; "Low" 3
+    var shed = 0 //default 0; minimal 1; moderate 2; constant 3; seasonal 4
     
     let CORNER_RADIUS: Int = 10
     var scrollView: UIScrollView! = nil
@@ -33,6 +33,7 @@ class FilterTableViewController: UIViewController, UIScrollViewDelegate{
     
     //buttons:
     var button: UIButton! = nil
+    var save: UIButton! = nil
     var hair_buttons = [ "Short hair", "Long hair"]
     var body_buttons = ["Small", "Medium", "Large"]
     var group_buttons = ["Herding", "Hound", "Non-sporting", "Sporting", "Terrier", "Toy", "Working"]
@@ -47,7 +48,7 @@ class FilterTableViewController: UIViewController, UIScrollViewDelegate{
     //"Apricot" 15; "Brown" 16; "Cream" 17; "Gray" 18; "Mahogany" 19; "Rust" 20; "Liver" 21; "Loan" 22
     //"Agouti" 23; "Sable" 24; "Mantle" 25; "Merle" 26; "Harlequin" 27; "Salt" 28; "Pepper" 29; "Blenheim" 30; "Ruby" 31; "Orange" 32
     
-    var containerView = UIView()
+    //var containerView = UIView()
     
     //offsets
     var line_offset = 80
@@ -59,13 +60,16 @@ class FilterTableViewController: UIViewController, UIScrollViewDelegate{
     //size
     let screen_size: CGRect = UIScreen.main.bounds
     
-    let font = "Noteworthy"
+    let font = "Rubik"
     //origins
-    let top_origin = CGPoint(x: 20, y: 80)
+    let top_origin = CGPoint(x: 20, y: 50)
+    let next_origin = CGPoint(x: 250, y: 30)
     
     let button_size: CGSize = CGSize(width: 80, height: 30)
+    let save_button_size: CGSize = CGSize(width: 100, height: 40)
     
     let button_font_size: Int = 15
+    let save_button_font_size: Int = 18
     
     
     let pale_green: UIColor = UIColor(red: 165/255, green: 195/255, blue: 187/255, alpha: 0.5)
@@ -76,6 +80,177 @@ class FilterTableViewController: UIViewController, UIScrollViewDelegate{
     
     @IBOutlet weak var background: UIScrollView!
     @IBOutlet weak var foreground: UIScrollView!
+    
+    
+    
+    // filters are added, implement to remove?
+    func filterPressed(sender: UIButton!) {
+        
+        let buttonLabel: String = sender.titleLabel!.text!
+        
+        print("store \(buttonLabel)")
+        
+        sender.isUserInteractionEnabled = false
+        sender.backgroundColor = pink
+        switch (sender.titleLabel!.text){
+        case "Long hair"?:
+            if hair != 0 {
+                hair = 100
+            }
+            hair = 2;
+            print ("hair is \(hair)")
+            break;
+        case "Short hair"?:
+            hair = 1;
+            if hair != 0 {
+                hair = 100
+            }
+            print ("hair is \(hair)")
+            break;
+        case "Small"?:
+            size = 1;
+            if size != 0 {
+                size = 100
+            }
+            break;
+        case "Large"?:
+            size = 3;
+            if size != 0 {
+                size = 100
+            }
+            break;
+        case "Medium"?:
+            size = 2;
+            if size != 0 {
+                size = 100
+            }
+            break;
+        case "Herding"?:
+            group = 1;
+            if group != 0 {
+                group = 100
+            }
+            break;
+        case "Hound"?:
+            group = 2;
+            if group != 0 {
+                group = 100
+            }
+            break;
+        case "Non_sporting"?:
+            group = 3;
+            if group != 0 {
+                group = 100
+            }
+            break;
+        case "Sporting"?:
+            group = 4;
+            if group != 0 {
+                group = 100
+            }
+            break;
+        case "Terrier"?:
+            group = 5;
+            if group != 0 {
+                group = 100
+            }
+            break;
+        case "Toy"?:
+            group = 6;
+            if group != 0 {
+                group = 100
+            }
+            break;
+        case "Working"?:
+            group = 7;
+            if group != 0 {
+                group = 100
+            }
+            break;
+        case "Easy"?:
+            train = 1;
+            if train != 0 {
+                train = 100
+            }
+            break;
+        case "Average"?:
+            train=2;
+            if train != 0 {
+                train = 100
+            }
+            break;
+        case "Fair"?:
+            train=3;
+            if train != 0 {
+                train = 100
+            }
+            break;
+        case "Frequent"?:
+            bark=1;
+            if bark != 0 {
+                bark = 100
+            }
+            break;
+        case "Occasional"?:
+            bark=2;
+            if bark != 0 {
+                bark = 100
+            }
+            break;
+        case "Rare"?:
+            bark=3;
+            if bark != 0 {
+                bark = 100
+            }
+            break;
+        case "High"?:
+            groom=1;
+            if groom != 0 {
+                groom = 100
+            }
+            break;
+        case "Occasional"?:
+            groom=2;
+            if groom != 0 {
+                groom = 100
+            }
+            break;
+        case "Low"?:
+            groom=3;
+            if groom != 0 {
+                groom = 100
+            }
+            break;
+        case "Minimal"?:
+            shed=1;
+            if shed != 0 {
+                shed = 100
+            }
+            break;
+        case "Moderate"?:
+            shed=2;
+            if shed != 0 {
+                shed = 100
+            }
+            break;
+        case "Constant"?:
+            shed=3;
+            if shed != 0 {
+                shed = 100
+            }
+            break;
+        case "Seasonal"?:
+            shed=4;
+            if shed != 0 {
+                shed = 100
+            }
+            break;
+        default:
+            break;
+            
+        }
+        
+    }
     
     // function to set up the common specs of buttons
     func setUpButtons(myLabel: String, myFontSize: Int, myButton: UIButton) {
@@ -91,104 +266,25 @@ class FilterTableViewController: UIViewController, UIScrollViewDelegate{
         
     }
     
-    // filters are added, implement to remove?
-    func filterPressed(sender: UIButton!) {
-        
-        let buttonLabel: String = sender.titleLabel!.text!
-        
-        print("store \(buttonLabel)")
-        
-        sender.isUserInteractionEnabled = false
-        sender.backgroundColor = pink
-        switch (sender.titleLabel!.text){
-        case "Long hair"?:
-            hair = 2;
-            print ("hair is \(hair)")
-            break;
-        case "Short hair"?:
-            hair = 1;
-            break;
-        case "Small"?:
-            size = 1;
-            break;
-        case "Large"?:
-            size = 3;
-            break;
-        case "Medium"?:
-            size = 2;
-            break;
-        case "Herding"?:
-            group = 1;
-            break;
-        case "Hound"?:
-            group = 2;
-            break;
-        case "Non_sporting"?:
-            group = 3;
-            break;
-        case "Sporting"?:
-            group = 4;
-            break;
-        case "Terrier"?:
-            group = 5;
-            break;
-        case "Toy"?:
-            group = 6;
-            break;
-        case "Working"?:
-            group = 7;
-            break;
-        case "Easy"?:
-            train = 1;
-            break;
-        case "Average"?:
-            train=2;
-            break;
-        case "Fair"?:
-            train=3;
-            break;
-        case "Frequent"?:
-            bark=1;
-            break;
-        case "Occasional"?:
-            bark=2;
-            break;
-        case "Rare"?:
-            bark=3;
-            break;
-        case "High"?:
-            groom=1;
-            break;
-        case "Occasional"?:
-            groom=2;
-            break;
-        case "Low"?:
-            groom=3;
-            break;
-        case "Minimal"?:
-            shed=1;
-            break;
-        case "Moderate"?:
-            shed=2;
-            break;
-        case "Constant"?:
-            shed=3;
-            break;
-        case "Seasonal"?:
-            shed=4;
-            break;
-        default:
-            break;
-            
-        }
-        
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.black]
+        
+        
+        let navigationBar = UINavigationBar(frame: CGRect(x:0, y:0, width:self.view.frame.size.width, height:58)) // Offset by 20 pixels vertically to take the status bar into account
+        
+        let navigationItem = UINavigationItem()
+        navigationItem.title = "Filter"
+        
+        
+        
+        navigationBar.backgroundColor = UIColor.white
+        navigationBar.delegate = self;
+        self.view.addSubview(navigationBar)
+        
+        
+        //self.title = "Filter"
         //scrolling
-        scrollView = UIScrollView(frame: self.view.bounds)
+        scrollView = UIScrollView(frame: CGRect(x:0, y:58, width:self.view.frame.size.width, height:self.view.frame.size.height-CGFloat(58)))
         scrollView.backgroundColor = UIColor(patternImage: UIImage(named: "backgroundHomeLarge.jpg")!)
         
         //start adding buttons
@@ -357,27 +453,66 @@ class FilterTableViewController: UIViewController, UIScrollViewDelegate{
             button.addTarget(self, action: #selector(self.filterPressed(sender:)), for: UIControlEvents.touchDown)
         }
         
-        //        scrollView.contentSize.height = button.center.y + CGFloat(SCROLL_OFFSET)
+        buttonOrigin = CGPoint(x: next_origin.x, y: next_origin.y)
+        save = UIButton(frame: CGRect(origin: buttonOrigin, size: save_button_size))
+        //setup save button
+        save.setTitle("DONE", for: UIControlState.normal)
+        save.setTitleColor(UIColor.black, for: UIControlState.normal)
+        save.titleLabel?.font = UIFont(name: "Rubik_Medium", size: CGFloat(save_button_font_size))
+        save.backgroundColor = pink
+        save.isUserInteractionEnabled = true
+        save.layer.cornerRadius = CGFloat(CORNER_RADIUS)
+        
+        scrollView.addSubview(save)
+        
+        save.addTarget(self, action: #selector(self.showResult(_:)), for: .touchUpInside)
+        
+        //save.addTarget(self, action: #selector(self.prepare(_ sender:)), for: UIControlEvents.touchDown)
+        
+        
         self.view.addSubview(scrollView)
-        //        foreground.delegate = self
+        scrollView.contentSize.height = button.center.y + CGFloat(SCROLL_OFFSET)
+        
+        
+        let backButton = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(goBack))
+        backButton.tintColor = UIColor.black
+        navigationItem.leftBarButtonItem = backButton
+        navigationBar.pushItem(navigationItem, animated: true)
+        
+        
         
     }
     
-    //    func scrollViewDidScroll(scrollView: UIScrollView) {
+    func showResult(_ Sender: UIButton!){
+        let secondViewController:FilterResultViewController = FilterResultViewController()
+        
+        let LexiTesting = "lexi"
+        secondViewController.Lexi = LexiTesting
+        secondViewController.size = size
+        self.present(secondViewController, animated: true, completion: nil)
+    }
+    //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    //        //override func prepare(sender: Any?) {
+    //        print("Prepare for Filter Result Segue")
+    //        if segue.identifier == "switch" {
     //
-    //        let foregroundHeight = foreground.contentSize.height - foreground.bounds.height
-    //        let percentageScroll = foreground.contentOffset.y / foregroundHeight
-    //        let backgroundHeight = background.contentSize.height - background.bounds.height
+    //            print("enter indexpath")
+    //            let controller = (segue.destination as! UINavigationController).topViewController as!FilterResultViewController
     //
-    //        background.contentOffset = CGPoint(x: 0, y: backgroundHeight * percentageScroll)
+    //            controller.hair = hair
+    //            controller.size = size
+    //            controller.groom = groom
+    //            controller.train = train
+    //            controller.bark = bark
+    //            controller.group = group
+    //            controller.shed = shed
+    //        }
     //    }
-    //
-    //    override func viewDidLayoutSubviews() {
-    //        super.viewDidLayoutSubviews()
-    //
-    //        scrollView.frame = view.bounds
-    //        containerView.frame = CGRect(0, 0, scrollView.contentSize.width, scrollView.contentSize.height)
-    //    }
+    func goBack(){
+        print("call goBack function")
+        dismiss(animated: true, completion: nil)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

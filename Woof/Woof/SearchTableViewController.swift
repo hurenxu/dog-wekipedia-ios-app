@@ -9,12 +9,13 @@
 import UIKit
 import MGSwipeTableCell
 
+
 class SearchTableViewController: UITableViewController, UISearchResultsUpdating {
-    
     
     var dogs = [Breed]()
     var filteredDogs = [Breed]()
     var resultSearchController = UISearchController()
+
     
     override func viewDidLoad() {
         self.resultSearchController = UISearchController(searchResultsController: nil)
@@ -27,8 +28,33 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
         
         let tools = Functionalities()
         print(tools.getBreedList(controller:self))
+
+        
+        self.navigationItem.title = "Lexi&JasperTesting"
+        
+        
+        
+        
+        let filterButton = UIBarButtonItem(title: "Filter", style: .plain, target: self, action: #selector(toFilter))
+        filterButton.tintColor = UIColor.black
+        self.navigationItem.leftBarButtonItem = filterButton
         
         self.tableView.reloadData()
+        super.viewDidLoad()
+        var refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: Selector("refreshTable"), for: UIControlEvents.valueChanged)
+        self.refreshControl = refreshControl
+        
+    }
+    
+    func refreshTable() {
+        tableView.reloadData()
+        refreshControl?.endRefreshing()
+    }
+    
+    func toFilter(){
+        let secondViewController:FilterTableViewController = FilterTableViewController()
+        self.present(secondViewController, animated:true, completion:nil)
     }
     
     override func didReceiveMemoryWarning() {
@@ -54,13 +80,15 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
         let mainDogLike = cell.viewWithTag(4) as! UIImageView
         let breed: Breed
         
-        cell.rightButtons = [MGSwipeButton(title: "Like", icon: UIImage(named:"like.png"), backgroundColor: .white){
+
+        
+        cell.rightButtons = [MGSwipeButton(title: "", icon: UIImage(named:"like.png"), backgroundColor: .clear){
             (sender: MGSwipeTableCell!) -> Bool in
             print("Convenience callback for Like Swipe")
             return true
             }]
         cell.leftSwipeSettings.transition = .rotate3D
-        cell.leftButtons = [MGSwipeButton(title: "Unlike", icon: UIImage(named:"unlike.png"), backgroundColor: .white){
+        cell.leftButtons = [MGSwipeButton(title: "", icon: UIImage(named:"unlike.png"), backgroundColor: .clear){
             (sender: MGSwipeTableCell!) -> Bool in
             print("Convenience callback for UnLike Swipe")
             return true
@@ -94,6 +122,29 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
         mainDogName.text = breed.getBreedName()
         mainDogGroup.text = breed.getGroup()
         
+        //set like heart status
+        if Functionalities.myUser != nil{
+            if (Functionalities.myUser?.breedIsLiked(breedname: breed.getBreedName()))! {
+                print(breed.getBreedName()+" breed is liked")
+                mainDogLike.autoresizingMask = [.flexibleWidth, .flexibleHeight, .flexibleBottomMargin, .flexibleRightMargin, .flexibleLeftMargin, .flexibleTopMargin]
+                mainDogLike.contentMode = .scaleAspectFit
+                mainDogLike.clipsToBounds = true
+                mainDogLike.image = #imageLiteral(resourceName: "like")
+                
+                
+            } else {
+                print(breed.getBreedName()+" breed is not liked")
+                //                mainDogLike.contentMode = UIViewContentMode.scaleAspectFit
+                mainDogLike.autoresizingMask = [.flexibleWidth, .flexibleHeight, .flexibleBottomMargin, .flexibleRightMargin, .flexibleLeftMargin, .flexibleTopMargin]
+                mainDogLike.contentMode = .scaleAspectFit
+                mainDogLike.clipsToBounds = true
+                mainDogLike.image = #imageLiteral(resourceName: "unlike.png")
+
+                
+            }
+            
+        }
+        
         //alternate cell color
         if(indexPath.row % 2==0){
             //set cell background color to light gray
@@ -106,20 +157,10 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
         
         
         //set image in the cell to be cicle
-
-//        mainImageView.layer.cornerRadius = mainImageView.frame.height/2.0
-//        mainImageView.clipsToBounds = true
         let radius = mainImageView.frame.width / 2
         mainImageView.layer.cornerRadius = radius
         mainImageView.layer.masksToBounds = true
-//        let rotationTransform = CATransform3DTranslate(CATransform3DIdentity, -500, 10, 0)
-//        cell.layer.transform = rotationTransform
-//        
-//        UIView.animate(withDuration: 1.0, animations: { () -> Void in
-//            
-//            cell.layer.transform = CATransform3DIdentity
-//            
-//        })
+
         //cell animation
         cell.layer.transform = CATransform3DMakeScale(0.1,0.1,1)
         UIView.animate(withDuration: 0.3, animations: {
@@ -130,6 +171,7 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
             })
         })
         
+        
         return cell
     }
 
@@ -138,7 +180,6 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
     /* This function count the number of item to be displayed for search result
      */
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         if self.resultSearchController.isActive && self.resultSearchController.searchBar.text != "" {
             return filteredDogs.count
         }
@@ -163,6 +204,7 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
         })
         tableView.reloadData()
     }
+
     
     
     // MARK: - Segues
@@ -181,7 +223,8 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
                 } else {
                     breed = dogs[indexPath.row]
                 }
-                let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
+//                let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
+                let controller = segue.destination as! DetailViewController
                 controller.detailDog = breed
             }
         }
