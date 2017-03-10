@@ -1,14 +1,15 @@
 //
-//  FilterResult.swift
+//  FilterResultViewController.swift
 //  Woof
 //
-//  Created by Meiyi He on 3/8/17.
+//  Created by Meiyi He on 3/9/17.
 //  Copyright © 2017 Woof. All rights reserved.
 //
 
 import UIKit
-class FilterResultViewController: UITableViewController{
-    
+
+class FilterResultViewController: UIViewController {
+
     //tags
     var hair:Int? //default 0. short 1, long 2
     var size:Int? //default 0. small 1, medium 2, large 3
@@ -19,8 +20,6 @@ class FilterResultViewController: UITableViewController{
     var groom:Int? //default 0; "High" 1; "Moderate" 2; "Low" 3
     var shed:Int?  //default 0; minimal 1; moderate 2; constant 3; seasonal 4
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         let button = UIButton()
@@ -30,10 +29,25 @@ class FilterResultViewController: UITableViewController{
         //button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
         self.view.addSubview(button)
         print("hair is\(hair)")
-        
+
+        // Do any additional setup after loading the view.
     }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    */
+
 }
+
