@@ -14,6 +14,7 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     // data
     var breedArray: [Breed]! = [Breed]()
+    var localUIImage: [UIImage] = [UIImage]()
     var likeBreeds: [Int] = [Int]()
     var nextBreeds: [Int] = [Int]()
     
@@ -73,24 +74,30 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let row: Int = indexPath.row
         
         var currentBreed: Breed! = nil
+        let myCell = tableView.dequeueReusableCell(withIdentifier: "BreedTableViewCell", for: indexPath) as! BreedTableViewCell
         
         // pick a breed
         if tableView == likeTable {
             
             currentBreed = breedArray[likeBreeds[row]]
+            myCell.imageView?.image = localUIImage[likeBreeds[row]]
         }
         
         else {
             
             currentBreed = breedArray[nextBreeds[row]]
+            myCell.imageView?.image = localUIImage[nextBreeds[row]]
         }
         
         // create table cell
-        let myCell = tableView.dequeueReusableCell(withIdentifier: "BreedTableViewCell", for: indexPath) as! BreedTableViewCell
+        //let myCell = tableView.dequeueReusableCell(withIdentifier: "BreedTableViewCell", for: indexPath) as! BreedTableViewCell
 
         myCell.labelString = currentBreed.getBreedName()
+        
         myCell.imageString = currentBreed.getImage()
         myCell.descriptionString = "Elohim, Essaim... \nElohim, Essaim... \nWare wa motome uttaetari"
+        
+    
         
         return myCell
     }

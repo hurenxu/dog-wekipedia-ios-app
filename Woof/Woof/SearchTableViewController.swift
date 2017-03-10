@@ -156,7 +156,7 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
         
         
         
-        //set image in the cell to be cicle
+        //set image in the cell to be circle
         let radius = mainImageView.frame.width / 2
         mainImageView.layer.cornerRadius = radius
         mainImageView.layer.masksToBounds = true

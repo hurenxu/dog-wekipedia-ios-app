@@ -15,6 +15,7 @@ class StatsViewController: UIViewController {
     // for result page
     var breedArray: [Breed] = [Breed]()
     var likeBreeds: [Int] = [Int]()
+    var localUIImage: [UIImage] = [UIImage]()
     var nextBreeds: [Int] = [Int]()
     
     var scrollView: UIScrollView! = nil
@@ -124,6 +125,7 @@ class StatsViewController: UIViewController {
         let resultVC: ResultViewController = ResultViewController()
         resultVC.breedArray = breedArray
         resultVC.likeBreeds = likeBreeds
+        resultVC.localUIImage = localUIImage
         resultVC.nextBreeds = nextBreeds
         
 

@@ -307,6 +307,7 @@ class SuggestionViewController: UIViewController {
         statsVC.likeFilters = likeFilters
         statsVC.breedArray = breedArray
         statsVC.likeBreeds = likeBreeds
+        statsVC.localUIImage = localUIImage
         statsVC.nextBreeds = nextBreeds
 
 
@@ -451,6 +452,7 @@ class SuggestionViewController: UIViewController {
         var j: Int = 0
         while j < BREED_COUNT {
             let ur = breedArray[j].getImage()
+            
             print(j)
             print(ur)
             
