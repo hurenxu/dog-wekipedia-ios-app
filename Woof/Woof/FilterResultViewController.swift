@@ -92,7 +92,6 @@ class FilterResultViewController: UIViewController, UINavigationBarDelegate ,UIT
         let myCell = tableView.dequeueReusableCell(withIdentifier: "BreedTableViewCell", for: indexPath) as! BreedTableViewCell
         
         myCell.labelString = currentBreed.getBreedName()
-        myCell.imageString = currentBreed.getImage()
         myCell.descriptionString = "Elohim, Essaim... \nElohim, Essaim... \nWare wa motome uttaetari"
         
         return myCell

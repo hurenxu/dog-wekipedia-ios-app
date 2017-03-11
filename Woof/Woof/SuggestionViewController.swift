@@ -301,18 +301,7 @@ class SuggestionViewController: UIViewController {
         likeFilters["Tail: Super long"] = 4
         likeFilters["Ears: Super pointy"] = 5
         
-        // pass data to stats page then switch to stats page
-        let statsVC: StatsViewController = StatsViewController()
-        statsVC.topFilters = topFilters
-        statsVC.likeFilters = likeFilters
-        statsVC.breedArray = breedArray
-        statsVC.likeBreeds = likeBreeds
-        statsVC.localUIImage = localUIImage
-        statsVC.nextBreeds = nextBreeds
-
-
-        //self.navigationController?.pushViewController(statsVC, animated: true)
-        self.present(statsVC, animated: true, completion: nil)
+        self.performSegue(withIdentifier: "ToStatsSegue", sender: sender)
     }
     
     // find top three tags
@@ -410,6 +399,25 @@ class SuggestionViewController: UIViewController {
             
             return 0
         //}
+    }
+    
+    // segue to switch to stats page
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+        print("Prepare for Stats Segue")
+        
+        if segue.identifier == "ToStatsSegue" {
+            
+            let statsVC = segue.destination as! StatsViewController
+            
+            // pass data to stats page then switch to stats page
+            statsVC.topFilters = topFilters
+            statsVC.likeFilters = likeFilters
+            statsVC.breedArray = breedArray
+            statsVC.likeBreeds = likeBreeds
+            statsVC.localUIImage = localUIImage
+            statsVC.nextBreeds = nextBreeds
+        }
     }
     
     override func viewDidLoad() {
