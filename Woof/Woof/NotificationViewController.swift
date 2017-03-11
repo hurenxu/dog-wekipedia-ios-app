@@ -16,7 +16,7 @@ class NotificationViewController: UIViewController, UIPickerViewDelegate, UIPick
     // screen specification
     let SCREEN_SIZE: CGRect = UIScreen.main.bounds
     
-    let ORIGIN: CGPoint = CGPoint(x: 0, y: 0)
+    let ORIGIN: CGPoint = CGPoint(x: 0, y: 10)
     
     let CORNER_RADIUS: Int = 10
     let CHOICES_ALPHA: CGFloat = CGFloat(0.9)
@@ -569,7 +569,7 @@ class NotificationViewController: UIViewController, UIPickerViewDelegate, UIPick
         vPicker.layer.masksToBounds = true
         vPicker.layer.cornerRadius = CGFloat(CORNER_RADIUS)
         vPicker.addTarget(self, action: #selector(self.timeChanged(sender:)), for: UIControlEvents.valueChanged)
-        vPicker.isHidden = true
+        vPicker.isHidden = false
         self.view.addSubview(vPicker)
         
         // configure vaccination duration text
@@ -668,7 +668,7 @@ class NotificationViewController: UIViewController, UIPickerViewDelegate, UIPick
         bPicker.layer.masksToBounds = true
         bPicker.layer.cornerRadius = CGFloat(CORNER_RADIUS)
         bPicker.addTarget(self, action: #selector(self.timeChanged(sender:)), for: UIControlEvents.valueChanged)
-        bPicker.isHidden = true
+        bPicker.isHidden = false
         self.view.addSubview(bPicker)
         
         // configure birthday duration text
