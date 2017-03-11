@@ -46,6 +46,10 @@ class Dog{
             }
         }
         
+        if self.breed == nil {
+            self.breed = Breed(breedName: breedname, popularity: "", origin: "", group: "", size: "", type: "", lifeExpectancy: "", colors: "", litterSize: "", price: "", barkingLevel: "", childFriendly: "", breeders: "", image: "")
+        }
+        
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "YYYY-MM-DD HH:MM:SS"
         self.birthDate = dateFormatter.date(from: birthDate)!
