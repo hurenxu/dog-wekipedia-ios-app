@@ -281,12 +281,14 @@ class AddDogViewController: UIViewController, UINavigationBarDelegate, UIImagePi
         vaccinationdate = dogVaccinationDatetextField.text!
         birthdate = dogBirhDatetextField.text!
         age = agetextField.text!
+        breed = breedtextField.text!
         
         nameLabel.text = "Name: " + name
         genderLabel.text = "Gender: " + gender
         birthDateLabel.text = "Birth Date: " + birthdate
         vaccinationDateLabel.text = "Vaccination Date: " + vaccinationdate
         ageLabel.text = "Age: " + age
+        breedLabel.text = "Breed: " + breed
         
         nameLabel.isHidden = false
         genderLabel.isHidden = false
@@ -296,7 +298,7 @@ class AddDogViewController: UIViewController, UINavigationBarDelegate, UIImagePi
         ageLabel.isHidden = false
         breedLabel.isHidden = false
         
-        var breed = Breed(breedName: "Boxer", popularity: "", origin: "", group: "", size: "", type: "", lifeExpectancy: "", personality: "", height: "", weight: "", colors: "", litterSize: "", price: "", barkingLevel: "", childFriendly: "",
+        var breedObj = Breed(breedName: "Boxer", popularity: "", origin: "", group: "", size: "", type: "", lifeExpectancy: "", personality: "", height: "", weight: "", colors: "", litterSize: "", price: "", barkingLevel: "", childFriendly: "",
             grooming: "",shedding: "", trainability: "", breeders: "", image: "")
         
         //update the dog to the database
@@ -317,7 +319,7 @@ class AddDogViewController: UIViewController, UINavigationBarDelegate, UIImagePi
         }
         
         if (breedLabel.text != nil){
-            breed = Breed(breedName: breedLabel.text!, popularity: "", origin: "", group: "", size: "", type: "", lifeExpectancy: "", personality: "", height: "", weight: "", colors: "", litterSize: "", price: "", barkingLevel: "", childFriendly: "",
+            breedObj = Breed(breedName: breed, popularity: "", origin: "", group: "", size: "", type: "", lifeExpectancy: "", personality: "", height: "", weight: "", colors: "", litterSize: "", price: "", barkingLevel: "", childFriendly: "",
                           grooming: "",shedding: "", trainability: "", breeders: "", image: "")
         }
         
@@ -325,7 +327,7 @@ class AddDogViewController: UIViewController, UINavigationBarDelegate, UIImagePi
         
        
 
-        let updateMyNewDog = Dog(dogID: dogID, name: name, breed: breed, birthDate: Date(), age: age, gender: gender, vaccination: Date(), color: "", description: "", image: "")
+        let updateMyNewDog = Dog(dogID: dogID, name: name, breed: breedObj, birthDate: Date(), age: age, gender: gender, vaccination: Date(), color: "", description: "", image: "")
         Functionalities.myUser?.addDog(dog: updateMyNewDog)
 
     }
