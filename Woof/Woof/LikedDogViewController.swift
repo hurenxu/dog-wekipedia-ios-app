@@ -44,6 +44,7 @@ class LikedDogViewController: UITableViewController, UINavigationBarDelegate {
         
         
         self.view.addSubview(navigationBar)
+        
         //self.tableView.contentInset = UIEdgeInsetsMake(60.0, 0.0, 0.0, 0.0)
         //self.tableView.contentInset = UIEdgeInsetsMake(0, 60, 0, 0)
     }
