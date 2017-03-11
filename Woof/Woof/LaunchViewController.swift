@@ -19,7 +19,29 @@ class LaunchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+/*
+        func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {
+            
+           let scale = newWidth / image.size.width
+            let newHeight = image.size.height * scale
+            UIGraphicsBeginImageContext(CGSize(newWidth, newHeight))
+            image.drawInRect(CGRectMake(0, 0, newWidth, newHeight))
+            let newImage = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+            
+            return newImage
+        }
+        
+        let imageView = UIImageView(frame: CGRectMake(100, 150, 150, 150));
+        var image = UIImage(named: "noeye.png");
+        imageView.image = image;
+        self.view.addSubview(imageView);
+        
+        var imageView = UIImageView(frame: CGRectMake(100, 150, 150, 150));
+        var image = UIImage(named: "noeye.png");
+        imageView.image = image;
+        self.view.addSubview(imageView);
+        */
         
         let logoImage: [UIImage] = [
             UIImage(named: "noeye.jpg")!,
