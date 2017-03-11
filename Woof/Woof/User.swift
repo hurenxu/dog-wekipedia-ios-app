@@ -7,12 +7,12 @@ class User{
     var userID: String
     //var firstName: String
     //var lastName: String
-    var name: String
-    var email: String
+    var name: String?
+    var email: String?
     var age = 0
-    var gender: String
-    var favoriteDogBreeds: [String] = ["Yorkshire", "Chihuahua","Australian Shepherd","Pembroke Welsh Corgi"]
-    var favoriteCategoryFilters: [String] = ["Black", "Small"]
+    var gender: String?
+    var favoriteDogBreeds: [String] = []
+    var favoriteCategoryFilters: [String] = []
     var zipCode = ""
     var image = ""
     var dogIDs: [String] = []
@@ -33,23 +33,43 @@ class User{
     init(dictionary: NSDictionary) {
         
         userID = (dictionary["userID"] as? String) ?? ""
-        name = (dictionary["name"] as? String)!
-        email = (dictionary["email"] as? String)!
-        age = (dictionary["age"] as? Int)!
-        gender = (dictionary["gender"] as? String)!
-        let favoriteDogBreedsDic = (dictionary["favoriteDogBreeds"] as? NSArray)!
-        let favoriteCategoryFiltersDic = (dictionary["favoriteCategoryFilters"] as? NSArray)!
-        zipCode = (dictionary["zipCode"] as? String)!
-        image = (dictionary["image"] as? String)!
-        dogIDs = (dictionary["dogIDs"] as? [String])!
         
-        for breed in favoriteDogBreedsDic {
-            favoriteDogBreeds.append(breed as! String)
+        let keys = dictionary.allKeys
+        for key in keys {
+            if (key as? String == "name") {
+                name = (dictionary["name"] as? String)!
+            }
+            if (key as? String == "email") {
+                email = (dictionary["email"] as? String)!
+            }
+            if (key as? String == "age") {
+                age = (dictionary["age"] as? Int)!
+            }
+            if (key as? String == "gender") {
+                gender = (dictionary["gender"] as? String)!
+            }
+            if (key as? String == "favoriteDogBreeds") {
+                let favoriteDogBreedsDic = (dictionary["favoriteDogBreeds"] as? NSArray)!
+                for breed in favoriteDogBreedsDic {
+                    favoriteDogBreeds.append(breed as! String)
+                }
+            }
+            if (key as? String == "favoriteCategoryFilters") {
+                let favoriteCategoryFiltersDic = (dictionary["favoriteCategoryFilters"] as? NSArray)!
+                for breed in favoriteCategoryFiltersDic {
+                    favoriteCategoryFilters.append(breed as! String)
+                }
+            }
+            if (key as? String == "dogIDs") {
+                dogIDs = (dictionary["dogIDs"] as? [String])!
+            }
+            if (key as? String == "zipCode") {
+                zipCode = (dictionary["zipCode"] as? String)!
+            }
+            if (key as? String == "image") {
+                image = (dictionary["image"] as? String)!
+            }
         }
-        for breed in favoriteCategoryFiltersDic {
-            favoriteCategoryFilters.append(breed as! String)
-        }
-        
     }
     
     
@@ -122,7 +142,7 @@ class User{
     }
     
     func getName() -> String {
-        return self.name
+        return self.name!
     }
     
     func setEmail(email: String) {
@@ -130,7 +150,7 @@ class User{
     }
     
     func getEmail() -> String {
-        return self.email
+        return self.email!
     }
     
     func setAge(age: Int) {
@@ -146,7 +166,7 @@ class User{
     }
     
     func getGender() -> String {
-        return self.gender
+        return self.gender!
     }
     
     func setZipCode(code: String) {

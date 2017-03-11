@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
+class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var name = ""
     var gender = ""
@@ -40,6 +40,9 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
     //Declare the button in this view
     let editProfButton:UIButton = UIButton(frame: CGRect(x: 250, y: 170, width: 50, height: 25))
     let saveProfButton:UIButton = UIButton(frame: CGRect(x: 20, y: 550, width: 330, height: 40))
+    let changeImageButton:UIButton = UIButton(frame: CGRect(x: 50, y: 170, width: 50, height: 25))
+    
+    
     
     //Declare nameLabel of the dog
     let nameLabel = UILabel(frame: CGRect(x: 20, y: 230, width: 330, height: 40))
@@ -176,7 +179,7 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         
         //---------------------------------------------------------------------------------------------------------------------
         /* user profile image */
-        let dogImg = profileImgContainer(string:name)
+        let dogImg = profileImgContainer
         dogImg.setRounded()
         self.view.addSubview(dogImg)
         ImageViewConstraints(Img: dogImg)
@@ -223,6 +226,13 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         //  EditProfileImageButtonConstraints(Button: editProfButton)
         saveProfButton.addTarget(self, action: #selector(saveProfButtonClick), for: UIControlEvents.touchUpInside)
         saveProfButton.isHidden = true
+        
+        changeImageButton.backgroundColor = .black
+        changeImageButton.setTitle("image", for: .normal)
+        self.view.addSubview(changeImageButton)
+        //  EditProfileImageButtonConstraints(Button: editProfButton)
+        changeImageButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectProfileImageView)))
+        
         
         
         
@@ -322,6 +332,10 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         
         self.view.addSubview(picker3)
         
+        
+    }
+    
+    func changeImageButtonClick(sender:UIButton!){
         
     }
     
@@ -515,16 +529,26 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
     }
     
     
-    /* global variable: profileImgContainer --> default profile image */
-    func profileImgContainer(string: String) -> UIImageView{
+//    /* global variable: profileImgContainer --> default profile image */
+//    func profileImgContainer(string: String) -> UIImageView{
+//        let ImgView = UIImageView()
+//        let Img = UIImage(named: "BlackEmptyDog")
+//        ImgView.image = Img
+//        ImgView.frame = CGRect(x: 200, y: 200, width: 100, height: 100)
+//        ImgView.translatesAutoresizingMaskIntoConstraints = false
+//        
+//        return ImgView
+//    }
+    
+    var profileImgContainer: UIImageView = {
         let ImgView = UIImageView()
-        let Img = UIImage(named: string)
+        let Img = UIImage(named: "BlackEmptyDog")
         ImgView.image = Img
-        ImgView.frame = CGRect(x: 200, y: 200, width: 100, height: 100)
+        ImgView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
         ImgView.translatesAutoresizingMaskIntoConstraints = false
         
         return ImgView
-    }
+    }()
     
     /* layout constriants for profile image */
     func ImageViewConstraints(Img: UIImageView) {
@@ -535,6 +559,33 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
     }
     
     
+    /* function: add an UIImagePickerController */
+    func handleSelectProfileImageView(){
+        let picker = UIImagePickerController()
+        print("in adding dog view gesture recognizing")
+        picker.delegate = self
+        picker.allowsEditing = true
+        present(picker, animated: true, completion: nil)
+    }
+    
+    /* imagePickerController & imagePickerControllerDidCancel handle the pop over and dismissal of profile changing */
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        var chosenImageFromPicker: UIImage?
+        if let editedImage = info["UIImagePickerControllerEditedImage"] as? UIImage{
+            chosenImageFromPicker = editedImage
+        }
+        
+        if let chosenImage = chosenImageFromPicker{
+            profileImgContainer.image = chosenImage
+        }
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+
     
     
 }
