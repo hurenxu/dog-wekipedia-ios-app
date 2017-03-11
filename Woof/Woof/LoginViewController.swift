@@ -282,8 +282,8 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
         
         if GIDSignIn.sharedInstance().hasAuthInKeychain() {
             
-            //GIDSignIn.sharedInstance().scopes.append("https://www.googleapis.com/auth/userinfo.email")
-            //GIDSignIn.sharedInstance().scopes.append("https://www.googleapis.com/auth/userinfo.profile")
+            GIDSignIn.sharedInstance().scopes.append("https://www.googleapis.com/auth/userinfo.email")
+            GIDSignIn.sharedInstance().scopes.append("https://www.googleapis.com/auth/userinfo.profile")
             GIDSignIn.sharedInstance().clientID = FIRApp.defaultApp()?.options.clientID
             print("HAS KEY!!!!!!!!!")
             let usr = GIDSignIn.sharedInstance().currentUser
