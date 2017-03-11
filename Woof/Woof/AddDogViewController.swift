@@ -290,8 +290,6 @@ class AddDogViewController: UIViewController, UINavigationBarDelegate, UIImagePi
         
         ageLabel.text = "2"
         genderLabel.text = "female"
-        
-        
         let updateMyNewDog = Dog(dogID: dogID, name: nameLabel.text!, breed: breed, birthDate: Date(), age: ageLabel.text!, gender: genderLabel.text!, vaccination: Date(), color: "", description: "", image: "")
         Functionalities.myUser?.updateDog(dog: updateMyNewDog)
 
