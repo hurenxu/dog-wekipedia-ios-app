@@ -18,7 +18,7 @@ import UIKit
 
 
 class FilterTableViewController: UIViewController, UINavigationBarDelegate{
-    var hair=0 //default 0. short 1, long 2
+    //var hair=0 //default 0. short 1, long 2
     var size=0 //default 0. small 1, medium 2, large 3
     var group=0 //default 0. Herding 1; Hound 2; Non-sporting 3; Sporting 4; Terrier 5; Toy 6; Working 7
     var train=0 //default 0. easy 1; aveg 2; moderately easy 3
@@ -34,7 +34,7 @@ class FilterTableViewController: UIViewController, UINavigationBarDelegate{
     //buttons:
     var button: UIButton! = nil
     var save: UIButton! = nil
-    var hair_buttons = [ "Short hair", "Long hair"]
+    //var hair_buttons = [ "Short hair", "Long hair"]
     var body_buttons = ["Small", "Medium", "Large"]
     var group_buttons = ["Herding", "Hound", "Non-sporting", "Sporting", "Terrier", "Toy", "Working"]
     var train_buttons = ["Easy", "Average", "Fair"]
@@ -62,8 +62,8 @@ class FilterTableViewController: UIViewController, UINavigationBarDelegate{
     
     let font = "Rubik"
     //origins
-    let top_origin = CGPoint(x: 20, y: 50)
-    let next_origin = CGPoint(x: 250, y: 30)
+    let top_origin = CGPoint(x: 40, y: 80)
+    let next_origin = CGPoint(x: 250, y: 20)
     
     let button_size: CGSize = CGSize(width: 80, height: 30)
     let save_button_size: CGSize = CGSize(width: 100, height: 40)
@@ -72,7 +72,7 @@ class FilterTableViewController: UIViewController, UINavigationBarDelegate{
     let save_button_font_size: Int = 18
     
     
-    let pale_green: UIColor = UIColor(red: 165/255, green: 195/255, blue: 187/255, alpha: 0.5)
+    let yellow: UIColor = UIColor(red: 225/255, green: 210/255, blue: 161/255, alpha: 0.9)
     let green_Full: UIColor = UIColor(red: 165/255, green: 195/255, blue: 187/255, alpha: 1)
     let pink: UIColor = UIColor(red: 253/255, green: 127/255, blue: 124/255, alpha: 0.8)
     let white_half: UIColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.7)
@@ -91,159 +91,184 @@ class FilterTableViewController: UIViewController, UINavigationBarDelegate{
         print("store \(buttonLabel)")
         
         sender.isUserInteractionEnabled = false
-        sender.backgroundColor = pink
+        sender.backgroundColor = yellow
         switch (sender.titleLabel!.text){
-        case "Long hair"?:
-            if hair != 0 {
-                hair = 100
-            }
-            hair = 2;
-            print ("hair is \(hair)")
-            break;
-        case "Short hair"?:
-            hair = 1;
-            if hair != 0 {
-                hair = 100
-            }
-            print ("hair is \(hair)")
-            break;
+            /* case "Long hair"?:
+             if hair != 0 {
+             hair = 100
+             }
+             hair = 2;
+             print ("hair is \(hair)")
+             break;
+             case "Short hair"?:
+             hair = 1;
+             if hair != 0 {
+             hair = 100
+             }
+             print ("hair is \(hair)")
+             break;*/
         case "Small"?:
-            size = 1;
+            //print ("before set size is \(size)")
             if size != 0 {
                 size = 100
+                break
             }
+            //print ("after set size is \(size)")
+            size = 1;
             break;
         case "Large"?:
-            size = 3;
             if size != 0 {
                 size = 100
+                break
             }
+            size = 3;
             break;
         case "Medium"?:
-            size = 2;
             if size != 0 {
                 size = 100
+                break
             }
+            size = 2;
             break;
         case "Herding"?:
-            group = 1;
             if group != 0 {
                 group = 100
+                break
             }
+            group = 1;
             break;
         case "Hound"?:
-            group = 2;
             if group != 0 {
                 group = 100
+                break
             }
+            group = 2;
             break;
         case "Non_sporting"?:
-            group = 3;
             if group != 0 {
                 group = 100
+                break
             }
+            group = 3;
             break;
         case "Sporting"?:
-            group = 4;
             if group != 0 {
                 group = 100
+                break
             }
+            group = 4;
             break;
         case "Terrier"?:
-            group = 5;
             if group != 0 {
                 group = 100
+                break
             }
+            group = 5;
             break;
         case "Toy"?:
-            group = 6;
             if group != 0 {
                 group = 100
+                break
             }
+            group = 6;
             break;
         case "Working"?:
-            group = 7;
             if group != 0 {
                 group = 100
+                break
             }
+            group = 7;
             break;
         case "Easy"?:
-            train = 1;
             if train != 0 {
                 train = 100
+                break
             }
+            train = 1;
             break;
         case "Average"?:
-            train=2;
             if train != 0 {
                 train = 100
+                break
             }
+            train = 2;
             break;
         case "Fair"?:
-            train=3;
             if train != 0 {
                 train = 100
+                break
             }
+            train = 3;
             break;
         case "Frequent"?:
-            bark=1;
             if bark != 0 {
                 bark = 100
+                break
             }
+            bark = 1;
             break;
         case "Occasional"?:
-            bark=2;
             if bark != 0 {
                 bark = 100
+                break
             }
+            bark = 2;
             break;
         case "Rare"?:
-            bark=3;
             if bark != 0 {
                 bark = 100
+                break
             }
+            bark = 3;
             break;
         case "High"?:
-            groom=1;
             if groom != 0 {
                 groom = 100
+                break
             }
+            groom = 1;
             break;
         case "Occasional"?:
-            groom=2;
             if groom != 0 {
                 groom = 100
+                break
             }
+            groom = 2;
             break;
         case "Low"?:
-            groom=3;
             if groom != 0 {
                 groom = 100
+                break
             }
+            groom = 3;
             break;
         case "Minimal"?:
-            shed=1;
             if shed != 0 {
                 shed = 100
+                break
             }
+            shed = 1;
             break;
         case "Moderate"?:
-            shed=2;
             if shed != 0 {
                 shed = 100
+                break
             }
+            shed = 2;
             break;
         case "Constant"?:
-            shed=3;
             if shed != 0 {
                 shed = 100
+                break
             }
+            shed = 3;
             break;
         case "Seasonal"?:
-            shed=4;
             if shed != 0 {
                 shed = 100
+                break
             }
+            shed = 4;
             break;
         default:
             break;
@@ -287,31 +312,43 @@ class FilterTableViewController: UIViewController, UINavigationBarDelegate{
         scrollView = UIScrollView(frame: CGRect(x:0, y:58, width:self.view.frame.size.width, height:self.view.frame.size.height-CGFloat(58)))
         scrollView.backgroundColor = UIColor(patternImage: UIImage(named: "backgroundHomeLarge.jpg")!)
         
+        
+        let shade = UIImageView(frame:UIScreen.main.bounds)
+        shade.backgroundColor = UIColor.black
+        shade.alpha = 0.5
+        scrollView.addSubview(shade)
+        scrollView.sendSubview(toBack: shade)
+        
+        
+        let BackimageView = UIImageView(frame:UIScreen.main.bounds)
+        BackimageView.image = UIImage(named:"bacgroundHome.png")
+        scrollView.addSubview(BackimageView)
+        scrollView.sendSubview(toBack: BackimageView)
         //start adding buttons
         button = UIButton(frame: CGRect(origin: CGPoint(x: top_origin.x, y: top_origin.y), size: button_size))
         var buttonOrigin = CGPoint(x:0,y:0)
         
         button_offset=0
         // for looooooooooooop for hair buttons
-        for key in hair_buttons {
-            if buttonOrigin.x != 0 {
-                button_offset = BUTTON_OFFSET
-                
-                
-            }
-            
-            print("x value: \(button.frame.origin.x+CGFloat(button_offset))")
-            button.frame.origin.x += CGFloat(button_offset)
-            buttonOrigin = CGPoint(x: button.frame.origin.x + CGFloat(button_offset), y: button.frame.origin.y)
-            
-            button = UIButton(frame: CGRect(origin: buttonOrigin, size: button_size))
-            setUpButtons(myLabel: key, myFontSize: button_font_size, myButton: button)
-            button.addTarget(self, action: #selector(self.filterPressed(sender:)), for: UIControlEvents.touchDown)
-        }
+        /*for key in hair_buttons {
+         if buttonOrigin.x != 0 {
+         button_offset = BUTTON_OFFSET
+         
+         
+         }
+         
+         print("x value: \(button.frame.origin.x+CGFloat(button_offset))")
+         button.frame.origin.x += CGFloat(button_offset)
+         buttonOrigin = CGPoint(x: button.frame.origin.x + CGFloat(button_offset), y: button.frame.origin.y)
+         
+         button = UIButton(frame: CGRect(origin: buttonOrigin, size: button_size))
+         setUpButtons(myLabel: key, myFontSize: button_font_size, myButton: button)
+         button.addTarget(self, action: #selector(self.filterPressed(sender:)), for: UIControlEvents.touchDown)
+         }*/
         
         buttonOrigin = CGPoint(x:0,y:0)
         button_offset = 0
-        line_offset = LINE_OFFSET
+        line_offset = 0
         button.frame.origin.x = top_origin.x
         
         for key in body_buttons {
@@ -334,7 +371,7 @@ class FilterTableViewController: UIViewController, UINavigationBarDelegate{
         }
         buttonOrigin = CGPoint(x:0,y:0)
         button_offset = 0
-        line_offset = LINE_OFFSET*2
+        line_offset = LINE_OFFSET
         button.frame.origin.x = top_origin.x
         
         for key in train_buttons {
@@ -357,7 +394,7 @@ class FilterTableViewController: UIViewController, UINavigationBarDelegate{
         }
         buttonOrigin = CGPoint(x:0,y:0)
         button_offset = 0
-        line_offset = LINE_OFFSET*3
+        line_offset = LINE_OFFSET*2
         button.frame.origin.x = top_origin.x
         
         for key in bark_buttons {
@@ -380,7 +417,7 @@ class FilterTableViewController: UIViewController, UINavigationBarDelegate{
         }
         buttonOrigin = CGPoint(x:0,y:0)
         button_offset = 0
-        line_offset = LINE_OFFSET*4
+        line_offset = LINE_OFFSET*3
         button.frame.origin.x = top_origin.x
         
         for key in groom_buttons {
@@ -403,7 +440,7 @@ class FilterTableViewController: UIViewController, UINavigationBarDelegate{
         }
         buttonOrigin = CGPoint(x:0,y:0)
         button_offset = 0
-        line_offset = LINE_OFFSET*5
+        line_offset = LINE_OFFSET*4
         button.frame.origin.x = top_origin.x
         for key in shedding_buttons {
             if buttonOrigin.x != 0 {
@@ -429,7 +466,7 @@ class FilterTableViewController: UIViewController, UINavigationBarDelegate{
         
         buttonOrigin = CGPoint(x:0,y:0)
         button_offset = 0
-        line_offset = LINE_OFFSET*6 + LINE_OFFSET_SMALL
+        line_offset = LINE_OFFSET*5 + LINE_OFFSET_SMALL
         button.frame.origin.x = top_origin.x
         for key in group_buttons {
             if buttonOrigin.x != 0 {
@@ -486,9 +523,14 @@ class FilterTableViewController: UIViewController, UINavigationBarDelegate{
     func showResult(_ Sender: UIButton!){
         let secondViewController:FilterResultViewController = FilterResultViewController()
         
-        let LexiTesting = "lexi"
-        secondViewController.Lexi = LexiTesting
         secondViewController.size = size
+        secondViewController.groom = groom
+        secondViewController.train = train
+        secondViewController.bark = bark
+        secondViewController.group = group
+        secondViewController.shed = shed
+        
+        
         self.present(secondViewController, animated: true, completion: nil)
     }
     //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
