@@ -200,7 +200,7 @@ class AddDogViewController: UIViewController, UINavigationBarDelegate, UIImagePi
         dogVaccinationDatetextField.placeholder = "Vaccination Test Date"
         dogVaccinationDatetextField.autocapitalizationType = UITextAutocapitalizationType.words // If you need any capitalization
         self.view.addSubview(dogVaccinationDatetextField)
-        dogVaccinationDatetextField.isHidden = true
+        dogVaccinationDatetextField.isHidden = false
 
         
         breedLabel.textAlignment = .center
@@ -219,7 +219,14 @@ class AddDogViewController: UIViewController, UINavigationBarDelegate, UIImagePi
         agetextField.placeholder = "Age"
         agetextField.autocapitalizationType = UITextAutocapitalizationType.words // If you need any capitalization
         self.view.addSubview(agetextField)
-        agetextField.isHidden = true
+        agetextField.isHidden = false
+        
+        breedtextField.textAlignment = NSTextAlignment.center
+        breedtextField.textColor = UIColor.blue
+        breedtextField.borderStyle = UITextBorderStyle.roundedRect
+        breedtextField.placeholder = "Breed"
+        breedtextField.autocapitalizationType = UITextAutocapitalizationType.words // If you need any capitalization
+        self.view.addSubview(breedtextField)
 
         self.editProfButtonClick()
         // Do any additional setup after loading the view.
@@ -267,6 +274,7 @@ class AddDogViewController: UIViewController, UINavigationBarDelegate, UIImagePi
         dogNametextField.isHidden = true
         agetextField.isHidden = true
         saveProfButton.isHidden = true
+        breedtextField.isHidden = true
         
         name = dogNametextField.text!
         gender = dogGendertextField.text!
@@ -286,6 +294,7 @@ class AddDogViewController: UIViewController, UINavigationBarDelegate, UIImagePi
         vaccinationDateLabel.isHidden = false
         breedLabel.isHidden = false
         ageLabel.isHidden = false
+        breedLabel.isHidden = false
         
         let breed = Breed(breedName: "York", popularity: "", origin: "", group: "", size: "", type: "", lifeExpectancy: "", personality: "", height: "", weight: "", colors: "", litterSize: "", price: "", barkingLevel: "", childFriendly: "",
             grooming: "",shedding: "", trainability: "", breeders: "", image: "")
