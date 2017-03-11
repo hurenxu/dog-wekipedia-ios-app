@@ -37,8 +37,8 @@ class SuggestionViewController: UIViewController {
     
     // everything about the label
     let LABEL_SIZE: CGSize = CGSize(width: 345, height: 60)
-    let FONT_SIZE = CGFloat(35)
-    let FONT = "Noteworthy"
+    let FONT_SIZE = CGFloat(25)
+    let FONT = "Rubik"
     var labelStatic: UILabel = UILabel()
     var labelDynamic: UILabel = UILabel()
     var labelRelativeCenter: CGPoint! = nil
@@ -417,6 +417,7 @@ class SuggestionViewController: UIViewController {
             statsVC.likeBreeds = likeBreeds
             statsVC.localUIImage = localUIImage
             statsVC.nextBreeds = nextBreeds
+            statsVC.suggestionVC = self
         }
     }
     
