@@ -13,7 +13,7 @@ class LikedViewController: UIViewController, UINavigationBarDelegate, UITableVie
     let likedArray = Functionalities.myUser?.favoriteDogBreeds
     var scrollView: UIScrollView! = nil
     var table: UITableView! = nil
-    let result_origin = CGPoint(x:12, y:100)
+    let result_origin = CGPoint(x:12, y:60)
     //let TITLE_SIZE: CGSize = CGSize(width: 353, height: 40)
     
 
@@ -43,7 +43,7 @@ class LikedViewController: UIViewController, UINavigationBarDelegate, UITableVie
         self.view.addSubview(scrollView)
         
 
-        table = UITableView(frame: CGRect(origin: result_origin, size: CGSize(width: 353, height: 400)))
+        table = UITableView(frame: CGRect(origin: result_origin, size: CGSize(width: 353, height: self.view.frame.height)))
         setUpTable(myColor: UIColor.white, myTable: table)
         
         table.delegate = self
