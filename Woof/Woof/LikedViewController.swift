@@ -13,7 +13,7 @@ class LikedViewController: UIViewController, UINavigationBarDelegate, UITableVie
     let likedArray = Functionalities.myUser?.favoriteDogBreeds
     var scrollView: UIScrollView! = nil
     var table: UITableView! = nil
-    let result_origin = CGPoint(x:12, y:60)
+    let result_origin = CGPoint(x:12, y:40)
     //let TITLE_SIZE: CGSize = CGSize(width: 353, height: 40)
     
 
@@ -21,7 +21,7 @@ class LikedViewController: UIViewController, UINavigationBarDelegate, UITableVie
         super.viewDidLoad()
         
         self.view.backgroundColor = UIColor.white
-        let navigationBar = UINavigationBar(frame: CGRect(x:0, y:0, width:self.view.frame.size.width, height:58)) // Offset by 20 pixels vertically to take the status bar into account
+        let navigationBar = UINavigationBar(frame: CGRect(x:0, y:0, width:self.view.frame.size.width, height:65)) // Offset by 20 pixels vertically to take the status bar into account
         
         //tableView.rowHeight = 80
         
@@ -39,11 +39,13 @@ class LikedViewController: UIViewController, UINavigationBarDelegate, UITableVie
         self.view.addSubview(navigationBar)
 
         scrollView = UIScrollView(frame: CGRect(x:0, y:58, width:self.view.frame.size.width, height:self.view.frame.size.height-CGFloat(64)))
+        
+        scrollView.contentInset = UIEdgeInsetsMake(0, 0, 10, 0)
         scrollView.backgroundColor = UIColor(patternImage: UIImage(named: "backgroundHomeLarge.jpg")!)
         self.view.addSubview(scrollView)
         
 
-        table = UITableView(frame: CGRect(origin: result_origin, size: CGSize(width: 353, height: self.view.frame.height)))
+        table = UITableView(frame: CGRect(origin: result_origin, size: CGSize(width: 353, height: self.view.frame.height-12)))
         setUpTable(myColor: UIColor.white, myTable: table)
         
         table.delegate = self
@@ -59,6 +61,7 @@ class LikedViewController: UIViewController, UINavigationBarDelegate, UITableVie
         myTable.rowHeight = CGFloat(80)
         //myTable.register(BreedTableViewCell.self, forCellReuseIdentifier: "BreedTableViewCell")
         scrollView.addSubview(myTable)
+        myTable.contentInset = UIEdgeInsetsMake(0, 0, 10, 0)
     }
 
     override func didReceiveMemoryWarning() {
