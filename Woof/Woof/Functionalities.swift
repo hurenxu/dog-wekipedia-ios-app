@@ -56,6 +56,8 @@ class Functionalities{
         //        breedList.append(currBreed!)
     }
     
+
+    
     func retrieveDogList(controller: iPetViewController) {
         let ref = FIRDatabase.database().reference()
         //Functionalities.myUser = controller.user
@@ -69,13 +71,22 @@ class Functionalities{
                         print("found")
                         let dog = dogs?[key] as? NSDictionary
                         let thisDog = Dog(dictionary: dog!)
-                        controller.ownedDog.append(thisDog.name)
-                        controller.dogList.append(thisDog)
-                        controller.age.append(thisDog.age)
-                        controller.breed.append(thisDog.breed.breedName)
-                        controller.gender.append(thisDog.gender)
-                        controller.color.append(thisDog.color)
-                        controller.collectView.reloadData()
+                        var toCheck = 0
+                        for index in controller.dogID {
+                            if (index == key as String) {
+                                toCheck = 1
+                            }
+                        }
+                        if (toCheck != 1) {
+                            controller.ownedDog.append(thisDog.name)
+                            controller.dogList.append(thisDog)
+                            controller.age.append(thisDog.age)
+                            controller.breed.append(thisDog.breed.breedName)
+                            controller.gender.append(thisDog.gender)
+                            controller.color.append(thisDog.color)
+                            controller.dogID.append(key as String)
+                            controller.collectView.reloadData()
+                        }
                     }
                 }
             }

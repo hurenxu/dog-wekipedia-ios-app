@@ -23,6 +23,8 @@ UICollectionViewDelegate, UICollectionViewDataSource {
     
     var color = [String]()
     
+    var dogID = [String]()
+    
     //test added
     var dogList: [Dog] = []
     
