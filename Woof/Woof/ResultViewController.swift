@@ -151,8 +151,6 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
             navigationController?.viewControllers.remove(at: 0)
         }
         
-        print(navigationController?.viewControllers)
-        
         self.performSegue(withIdentifier: "BackToSuggestionSegue", sender: sender)
     }
     
