@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
+class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var name = ""
     var gender = ""
@@ -16,11 +16,12 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
     var birthdate = ""
     var discription = ""
     var breed = ""
-    var age:Int = 0
+    var age = ""
     
     var ageData = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30"]
     var picker = UIPickerView()
     var picker2 = UIPickerView()
+    var picker3 = UIPickerView()
     //var picker2 = UIDatePicker()
     
     
@@ -36,10 +37,12 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
     
     
     
-    
     //Declare the button in this view
     let editProfButton:UIButton = UIButton(frame: CGRect(x: 250, y: 170, width: 50, height: 25))
     let saveProfButton:UIButton = UIButton(frame: CGRect(x: 20, y: 550, width: 330, height: 40))
+    let changeImageButton:UIButton = UIButton(frame: CGRect(x: 50, y: 170, width: 50, height: 25))
+    
+    
     
     //Declare nameLabel of the dog
     let nameLabel = UILabel(frame: CGRect(x: 20, y: 230, width: 330, height: 40))
@@ -79,6 +82,9 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         picker2.delegate = self
         picker2.dataSource = self
         
+        picker3.delegate = self
+        picker3.dataSource = self
+        
         
         self.title = "My dog"
         
@@ -87,7 +93,6 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         //    let nameLabel = UILabel(frame: CGRect(x: 200, y: 250, width: 200, height: 200))
         //    nameLabel.center = CGPoint(x: 20, y: 250)
         nameLabel.textAlignment = .center
-        
         nameLabel.text = "Name: " + name
         nameLabel.textColor = UIColor.white
         nameLabel.font = nameLabel.font.withSize(30)
@@ -154,7 +159,7 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         
         //age Label
         ageLabel.textAlignment = .center
-        ageLabel.text = "Age: " + breed
+        ageLabel.text = "Age: " + age
         ageLabel.textColor = UIColor.white
         ageLabel.font = ageLabel.font.withSize(30)
         ageLabel.font = UIFont(name: "Rubik", size: 25)
@@ -174,7 +179,7 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         
         //---------------------------------------------------------------------------------------------------------------------
         /* user profile image */
-        let dogImg = profileImgContainer(string:name)
+        let dogImg = profileImgContainer
         dogImg.setRounded()
         self.view.addSubview(dogImg)
         ImageViewConstraints(Img: dogImg)
@@ -208,7 +213,7 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         //The edit Button
         //    let editProfButton:UIButton = UIButton(frame: CGRect(x: 250, y: 200, width: 50, height: 25))
         editProfButton.backgroundColor = .black
-        editProfButton.setTitle("Lexi", for: .normal)
+        editProfButton.setTitle("edit", for: .normal)
         self.view.addSubview(editProfButton)
         //   EditProfileImageButtonConstraints(Button: editProfButton)
         editProfButton.addTarget(self, action: #selector(editProfButtonClick), for: UIControlEvents.touchUpInside)
@@ -221,6 +226,13 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         //  EditProfileImageButtonConstraints(Button: editProfButton)
         saveProfButton.addTarget(self, action: #selector(saveProfButtonClick), for: UIControlEvents.touchUpInside)
         saveProfButton.isHidden = true
+        
+        changeImageButton.backgroundColor = .black
+        changeImageButton.setTitle("image", for: .normal)
+        self.view.addSubview(changeImageButton)
+        //  EditProfileImageButtonConstraints(Button: editProfButton)
+        changeImageButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectProfileImageView)))
+        
         
         
         
@@ -277,6 +289,14 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         agetextField.isHidden = true
         
         
+        breedtextField.textAlignment = NSTextAlignment.center
+        breedtextField.textColor = UIColor.blue
+        breedtextField.borderStyle = UITextBorderStyle.roundedRect
+        breedtextField.placeholder = "Breed"
+        breedtextField.autocapitalizationType = UITextAutocapitalizationType.words // If you need any capitalization
+        self.view.addSubview(breedtextField)
+        breedtextField.isHidden = true
+
         
         
         
@@ -296,6 +316,26 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         //picker2.datePickerMode = UIDatePickerMode.date
         
         self.view.addSubview(picker2)
+        
+        
+        picker3.center = CGPoint(x: 180, y: 560)
+        picker3.backgroundColor = UIColor.white
+        //let currentDate = Date.init()
+        // picker2.minimumDate = Date(timeIntervalSince1970: currentDate.timeIntervalSince1970 - currentDate.timeIntervalSince1970.truncatingRemainder(dividingBy: 60))
+        picker3.layer.masksToBounds = true
+        picker3.layer.cornerRadius = CGFloat(20)
+        
+        self.textFieldEditing2(sender: dogBirhDatetextField)
+        picker3.isHidden = true
+        
+        //picker2.datePickerMode = UIDatePickerMode.date
+        
+        self.view.addSubview(picker3)
+        
+        
+    }
+    
+    func changeImageButtonClick(sender:UIButton!){
         
     }
     
@@ -320,6 +360,14 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         datePickerView.addTarget(self, action: #selector(OwnedDogDetailViewController.datePickerValueChanged), for: UIControlEvents.valueChanged)
     }
     
+    func textFieldEditing2(sender: UITextField) {
+        let datePickerView:UIDatePicker = UIDatePicker()
+        datePickerView.datePickerMode = UIDatePickerMode.date
+        sender.inputView = datePickerView
+        datePickerView.addTarget(self, action: #selector(OwnedDogDetailViewController.datePickerValueChanged2), for: UIControlEvents.valueChanged)
+    }
+
+    
     
     
     func datePickerValueChanged(datePicker:UIDatePicker) {
@@ -337,12 +385,39 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         //dateFormatter.timeStyle = DateFormatter.Style.short
         
         let strDate = dateFormatter.string(from: datePicker.date)
+        
         dogVaccinationDatetextField.text = strDate
         vaccinationDateLabel.text = strDate
         
-        //datePicker.isHidden = true
         
+        //datePicker.isHidden = true
     }
+    
+    
+    func datePickerValueChanged2(datePicker:UIDatePicker) {
+        /**
+         let formatter: DateFormatter = DateFormatter()
+         dogVaccinationDatetextField.font = UIFont(name: "Rubik", size: 20)
+         dogVaccinationDatetextField.textColor = UIColor.black
+         dogVaccinationDatetextField.text = formatter.string(from: picker2.date)
+         */
+        datePicker.isHidden = false
+        let dateFormatter: DateFormatter = DateFormatter()
+        
+        
+        dateFormatter.dateStyle = DateFormatter.Style.short
+        //dateFormatter.timeStyle = DateFormatter.Style.short
+        
+        let strDate = dateFormatter.string(from: datePicker.date)
+        
+        dogBirhDatetextField.text = strDate
+        birthDateLabel.text = strDate
+        
+        
+        //datePicker.isHidden = true
+    }
+
+    
     
     
     //Action when user clicks the Save Button
@@ -354,17 +429,24 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         dogBirhDatetextField.isHidden = true
         dogGendertextField.isHidden = true
         dogNametextField.isHidden = true
+        agetextField.isHidden = true
+        breedtextField.isHidden = true
         saveProfButton.isHidden = true
+        
         
         name = dogNametextField.text!
         gender = dogGendertextField.text!
         vaccinationdate = dogVaccinationDatetextField.text!
         birthdate = dogBirhDatetextField.text!
+        age = agetextField.text!
+        breed = agetextField.text!
         
         nameLabel.text = "Name: " + name
         genderLabel.text = "Gender: " + gender
         birthDateLabel.text = "Birth Date: " + birthdate
         vaccinationDateLabel.text = "Vaccination Date: " + vaccinationdate
+        ageLabel.text = "Age: " + age
+        breedLabel.text = "Breed: " + breed
         
         nameLabel.isHidden = false
         genderLabel.isHidden = false
@@ -372,6 +454,7 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         vaccinationDateLabel.isHidden = false
         breedLabel.isHidden = false
         ageLabel.isHidden = false
+        breedLabel.isHidden = false
         
     }
     
@@ -383,7 +466,9 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         dogGendertextField.isHidden = false
         dogNametextField.isHidden = false
         agetextField.isHidden = false
+        breedtextField.isHidden = false
         saveProfButton.isHidden = false
+        
         
         nameLabel.isHidden = true
         genderLabel.isHidden = true
@@ -391,6 +476,7 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         vaccinationDateLabel.isHidden = true
         breedLabel.isHidden = true
         ageLabel.isHidden = true
+        breedLabel.isHidden = true
         
         
     }
@@ -443,16 +529,26 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
     }
     
     
-    /* global variable: profileImgContainer --> default profile image */
-    func profileImgContainer(string: String) -> UIImageView{
+//    /* global variable: profileImgContainer --> default profile image */
+//    func profileImgContainer(string: String) -> UIImageView{
+//        let ImgView = UIImageView()
+//        let Img = UIImage(named: "BlackEmptyDog")
+//        ImgView.image = Img
+//        ImgView.frame = CGRect(x: 200, y: 200, width: 100, height: 100)
+//        ImgView.translatesAutoresizingMaskIntoConstraints = false
+//        
+//        return ImgView
+//    }
+    
+    var profileImgContainer: UIImageView = {
         let ImgView = UIImageView()
-        let Img = UIImage(named: string)
+        let Img = UIImage(named: "BlackEmptyDog")
         ImgView.image = Img
-        ImgView.frame = CGRect(x: 200, y: 200, width: 100, height: 100)
+        ImgView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
         ImgView.translatesAutoresizingMaskIntoConstraints = false
         
         return ImgView
-    }
+    }()
     
     /* layout constriants for profile image */
     func ImageViewConstraints(Img: UIImageView) {
@@ -463,6 +559,33 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
     }
     
     
+    /* function: add an UIImagePickerController */
+    func handleSelectProfileImageView(){
+        let picker = UIImagePickerController()
+        print("in adding dog view gesture recognizing")
+        picker.delegate = self
+        picker.allowsEditing = true
+        present(picker, animated: true, completion: nil)
+    }
+    
+    /* imagePickerController & imagePickerControllerDidCancel handle the pop over and dismissal of profile changing */
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        var chosenImageFromPicker: UIImage?
+        if let editedImage = info["UIImagePickerControllerEditedImage"] as? UIImage{
+            chosenImageFromPicker = editedImage
+        }
+        
+        if let chosenImage = chosenImageFromPicker{
+            profileImgContainer.image = chosenImage
+        }
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+
     
     
 }
