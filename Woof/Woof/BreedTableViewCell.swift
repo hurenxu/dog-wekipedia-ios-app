@@ -20,7 +20,6 @@ class BreedTableViewCell: UITableViewCell {
     let SCROLL_OFFSET = 65
 
     var labelString: String! = ""
-    var imageString: String! = "Dachshund"
     var descriptionString: String! = ""
     
     let TITLE_COLOR: UIColor = UIColor(red: 253.0/255.0, green: 127.0/255.0, blue: 124.0/255.0, alpha: 1.0)
@@ -91,7 +90,6 @@ class BreedTableViewCell: UITableViewCell {
                 myLabel.numberOfLines = 2
                 contentView.addSubview(myLabel)
                 
-                //myImage.image = UIImage(named: imageString)
                 myImage.setRound()
                 contentView.addSubview(myImage)
 

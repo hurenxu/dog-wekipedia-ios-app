@@ -121,16 +121,24 @@ class StatsViewController: UIViewController {
         
         print("switch to result page")
         
-        // pass data to result page
-        let resultVC: ResultViewController = ResultViewController()
-        resultVC.breedArray = breedArray
-        resultVC.likeBreeds = likeBreeds
-        resultVC.localUIImage = localUIImage
-        resultVC.nextBreeds = nextBreeds
+        self.performSegue(withIdentifier: "ToResultSegue", sender: sender)
+    }
+    
+    // segue to switch to result page
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-
-        //self.navigationController?.pushViewController(resultVC, animated: true)
-        self.present(resultVC, animated: true, completion: nil)
+        print("Prepare for Result Segue")
+        
+        if segue.identifier == "ToResultSegue" {
+            
+            let resultVC = segue.destination as! ResultViewController
+            
+            // pass data to stats page then switch to result page
+            resultVC.breedArray = breedArray
+            resultVC.likeBreeds = likeBreeds
+            resultVC.localUIImage = localUIImage
+            resultVC.nextBreeds = nextBreeds
+        }
     }
     
     override func viewDidLoad() {

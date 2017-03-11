@@ -97,11 +97,7 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
         //let myCell = tableView.dequeueReusableCell(withIdentifier: "BreedTableViewCell", for: indexPath) as! BreedTableViewCell
 
         myCell.labelString = currentBreed.getBreedName()
-        
-        //myCell.imageString = currentBreed.getImage()
-        
         myCell.myImage.image = currentImage
-        
         myCell.descriptionString = "Elohim, Essaim... \nElohim, Essaim... \nWare wa motome uttaetari"
         
         return myCell
