@@ -72,6 +72,12 @@ class BreedTableViewCell: UITableViewCell {
                 
                 // skip the first time
                 first = false
+                
+                // set up the image
+                let IMAGE_SIZE: CGSize = CGSize(width: 140, height: 140)
+                let IMAGE_ORIGIN: CGPoint = CGPoint(x: IMAGE_OFFSET_X, y: IMAGE_OFFSET_Y)
+                
+                myImage = UIImageView(frame: CGRect(origin: IMAGE_ORIGIN, size: IMAGE_SIZE))
             }
             
             else if !initialized {
@@ -85,12 +91,7 @@ class BreedTableViewCell: UITableViewCell {
                 myLabel.numberOfLines = 2
                 contentView.addSubview(myLabel)
                 
-                // set up the image
-                let IMAGE_SIZE: CGSize = CGSize(width: 140, height: 140)
-                let IMAGE_ORIGIN: CGPoint = CGPoint(x: IMAGE_OFFSET_X, y: IMAGE_OFFSET_Y)
-                
-                myImage = UIImageView(frame: CGRect(origin: IMAGE_ORIGIN, size: IMAGE_SIZE))
-                myImage.image = UIImage(named: imageString)
+                //myImage.image = UIImage(named: imageString)
                 myImage.setRound()
                 contentView.addSubview(myImage)
 
@@ -122,7 +123,7 @@ class BreedTableViewCell: UITableViewCell {
 
                 myLabel.text = labelString
                 myDescription.text = descriptionString
-                myImage.image = UIImage(named: imageString)
+                //myImage.image = UIImage(named: imageString)
             }
         }
     }

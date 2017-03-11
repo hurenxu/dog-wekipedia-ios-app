@@ -76,28 +76,33 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
         var currentBreed: Breed! = nil
         let myCell = tableView.dequeueReusableCell(withIdentifier: "BreedTableViewCell", for: indexPath) as! BreedTableViewCell
         
+        var currentImage: UIImage! = nil
+        
+        print("stuck?")
         // pick a breed
         if tableView == likeTable {
             
             currentBreed = breedArray[likeBreeds[row]]
-            myCell.imageView?.image = localUIImage[likeBreeds[row]]
+            currentImage = localUIImage[likeBreeds[row]]
         }
         
         else {
             
             currentBreed = breedArray[nextBreeds[row]]
-            myCell.imageView?.image = localUIImage[nextBreeds[row]]
+            currentImage = localUIImage[nextBreeds[row]]
         }
         
+        print("reach here?")
         // create table cell
         //let myCell = tableView.dequeueReusableCell(withIdentifier: "BreedTableViewCell", for: indexPath) as! BreedTableViewCell
 
         myCell.labelString = currentBreed.getBreedName()
         
-        myCell.imageString = currentBreed.getImage()
-        myCell.descriptionString = "Elohim, Essaim... \nElohim, Essaim... \nWare wa motome uttaetari"
+        //myCell.imageString = currentBreed.getImage()
         
-    
+        myCell.myImage.image = currentImage
+        
+        myCell.descriptionString = "Elohim, Essaim... \nElohim, Essaim... \nWare wa motome uttaetari"
         
         return myCell
     }
