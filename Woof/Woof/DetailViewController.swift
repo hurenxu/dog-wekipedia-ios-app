@@ -151,9 +151,14 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         
         table.delegate = self
         table.dataSource = self
+        
+        
+        
+        
         configureView()
         
     }
+    
     
     func setUpTable(myColor: UIColor, myTable: UITableView) {
         
