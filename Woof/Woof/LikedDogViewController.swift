@@ -10,8 +10,14 @@ import UIKit
 
 class LikedDogViewController: UITableViewController {
 
+    let likedArray = Functionalities.myUser?.favoriteDogBreeds
+    let testArray = ["a","b","c"]
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+    
+        
+        self.tableView.reloadData()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -34,18 +40,21 @@ class LikedDogViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return testArray.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 
-        // Configure the cell...
+        // Configure the cell... let cell = tableView.dequeueReusableCellWithIdentifier("Dog Cell", forIndexPath: indexPath as IndexPath) as! DogCell
+        //        cell.dog = dogs[indexPath.row]
+        //        return cell
+        cell.textLabel?.text = testArray[indexPath.row]
 
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.
