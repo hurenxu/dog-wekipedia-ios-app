@@ -16,7 +16,7 @@ class AddDogViewController: UIViewController, UINavigationBarDelegate, UIImagePi
     var birthdate = ""
     var discription = ""
     var breed = ""
-    var age:Int = 0
+    var age = ""
     
     var ageData = ["1","2","3","4","5","6","7","8","9","10"]
     var picker = UIPickerView()
@@ -33,7 +33,7 @@ class AddDogViewController: UIViewController, UINavigationBarDelegate, UIImagePi
     var breedtextField = UITextField(frame: CGRect(20.0, 410, 330.0, 40.0))
     var agetextField = UITextField(frame: CGRect(20.0, 455, 330.0, 40.0))
 
-    let editProfButton:UIButton = UIButton(frame: CGRect(x: 155, y: 220, width: 60, height: 20))
+    let editProfButton:UIButton = UIButton(frame: CGRect(x: 250, y: 170, width: 50, height: 25))
     let saveProfButton:UIButton = UIButton(frame: CGRect(x: 20, y: 550, width: 330, height: 40))
     
     
@@ -108,7 +108,6 @@ class AddDogViewController: UIViewController, UINavigationBarDelegate, UIImagePi
         self.view.addSubview(navigationBar)
         
         nameLabel.textAlignment = .center
-        
         nameLabel.text = "Name: " + name
         nameLabel.textColor = UIColor.white
         nameLabel.font = nameLabel.font.withSize(30)
@@ -117,6 +116,18 @@ class AddDogViewController: UIViewController, UINavigationBarDelegate, UIImagePi
         nameLabel.layer.cornerRadius = 5
         nameLabel.clipsToBounds = true
         view.addSubview(nameLabel)
+        
+        
+        ageLabel.textAlignment = .center
+        ageLabel.text = "Age: " + age
+        ageLabel.textColor = UIColor.white
+        ageLabel.font = ageLabel.font.withSize(30)
+        ageLabel.font = UIFont(name: "Rubik", size: 25)
+        ageLabel.backgroundColor = UIColor(red: 100/255, green: 120/255, blue: 150/255, alpha: 0.65)
+        ageLabel.layer.cornerRadius = 5
+        ageLabel.clipsToBounds = true
+        view.addSubview(ageLabel)
+
         
         
         dogNametextField.textAlignment = NSTextAlignment.center
@@ -254,17 +265,20 @@ class AddDogViewController: UIViewController, UINavigationBarDelegate, UIImagePi
         dogBirhDatetextField.isHidden = true
         dogGendertextField.isHidden = true
         dogNametextField.isHidden = true
+        agetextField.isHidden = true
         saveProfButton.isHidden = true
         
         name = dogNametextField.text!
         gender = dogGendertextField.text!
         vaccinationdate = dogVaccinationDatetextField.text!
         birthdate = dogBirhDatetextField.text!
+        age = agetextField.text!
         
         nameLabel.text = "Name: " + name
         genderLabel.text = "Gender: " + gender
         birthDateLabel.text = "Birth Date: " + birthdate
         vaccinationDateLabel.text = "Vaccination Date: " + vaccinationdate
+        ageLabel.text = "Age: " + age
         
         nameLabel.isHidden = false
         genderLabel.isHidden = false
@@ -286,12 +300,18 @@ class AddDogViewController: UIViewController, UINavigationBarDelegate, UIImagePi
         let dogID = (Functionalities.myUser?.userID)! + (Functionalities.myUser?.dogIDs.count.description)!
         
         
-        nameLabel.text = "Lexi"
+        if (nameLabel.text == nil){
+           nameLabel.text = "Lexi"
+        }
         
-        ageLabel.text = "2"
-        genderLabel.text = "female"
+        if (ageLabel.text == nil){
+           ageLabel.text = "2"
+        }
         
-        
+        if (genderLabel.text == nil){
+           genderLabel.text = "female"
+        }
+       
         let updateMyNewDog = Dog(dogID: dogID, name: nameLabel.text!, breed: breed, birthDate: Date(), age: ageLabel.text!, gender: genderLabel.text!, vaccination: Date(), color: "", description: "", image: "")
         Functionalities.myUser?.updateDog(dog: updateMyNewDog)
 
