@@ -553,7 +553,7 @@ class SuggestionViewController: UIViewController {
         
         // buttons set up
         leftButton = UIButton(frame: CGRect(origin: LEFT_CENTER, size: BUTTON_SIZE))
-        leftButton.setBackgroundImage(UIImage(named: "Red Heart"), for: UIControlState.normal)
+        leftButton.setBackgroundImage(UIImage(named: "like"), for: UIControlState.normal)
         leftButton.addTarget(self, action: #selector(self.sidePressed(sender:)), for: UIControlEvents.touchDown)
         
         rightButton = UIButton(frame: CGRect(origin: RIGHT_CENTER, size: BUTTON_SIZE))
