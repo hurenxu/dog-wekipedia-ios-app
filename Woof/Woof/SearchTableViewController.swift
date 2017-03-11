@@ -30,19 +30,22 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
         print(tools.getBreedList(controller:self))
 
         
-        self.navigationItem.title = "Lexi&JasperTesting"
-        
-        
+        self.navigationItem.title = "Woofipedia"
         
         
         let filterButton = UIBarButtonItem(title: "Filter", style: .plain, target: self, action: #selector(toFilter))
         filterButton.tintColor = UIColor.black
         self.navigationItem.leftBarButtonItem = filterButton
         
+        let likedButton = UIBarButtonItem(title: "View", style: .plain, target: self, action: #selector(toLiked))
+        likedButton.tintColor = UIColor.black
+        self.navigationItem.rightBarButtonItem = likedButton
+
+        
         self.tableView.reloadData()
         super.viewDidLoad()
-        var refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: Selector("refreshTable"), for: UIControlEvents.valueChanged)
+        //var refreshControl = UIRefreshControl()
+        //refreshControl.addTarget(self, action: Selector("refreshTable"), for: UIControlEvents.valueChanged)
         self.refreshControl = refreshControl
         
     }
@@ -54,6 +57,11 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
     
     func toFilter(){
         let secondViewController:FilterTableViewController = FilterTableViewController()
+        self.present(secondViewController, animated:true, completion:nil)
+    }
+    
+    func toLiked(){
+        let secondViewController:LikedDogViewController = LikedDogViewController()
         self.present(secondViewController, animated:true, completion:nil)
     }
     
