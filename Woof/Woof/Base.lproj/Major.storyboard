@@ -187,7 +187,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sza-Zy-MRW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2992.8000000000002" y="-1254.4227886056972"/>
+            <point key="canvasLocation" x="1697" y="-1302"/>
         </scene>
         <!--Animated Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -263,7 +263,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lvn-i6-r9S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2619" y="208"/>
+            <point key="canvasLocation" x="2785" y="-85"/>
         </scene>
         <!--Result View Controller-->
         <scene sceneID="wvQ-ke-ul0">
@@ -278,10 +278,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <segue destination="nW2-EI-7nf" kind="show" identifier="BackToSuggestionSegue" id="tIV-Pn-8bj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xH9-Ki-tWh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3401" y="158"/>
+            <point key="canvasLocation" x="2785" y="638"/>
         </scene>
         <!--iPet-->
         <scene sceneID="G2m-83-k8X">
@@ -307,7 +310,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PbC-FO-5hM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1696.8" y="950.37481259370327"/>
+            <point key="canvasLocation" x="1615" y="1012"/>
         </scene>
         <!--Detail-->
         <scene sceneID="uFi-hN-VVc">
@@ -355,7 +358,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mGC-lS-OR0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3228" y="-526"/>
+            <point key="canvasLocation" x="3170" y="-956"/>
         </scene>
         <!--Main-->
         <scene sceneID="EZH-1w-dcu">
@@ -480,7 +483,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mek-wi-cfX" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <customObject id="KTH-vM-83b" customClass="RAMFlipRightTransitionItemAnimations" customModule="RAMAnimatedTabBarController"/>
             </objects>
-            <point key="canvasLocation" x="757.60000000000002" y="950.37481259370327"/>
+            <point key="canvasLocation" x="505" y="1012"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="au0-gy-CAc">
@@ -498,7 +501,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4SE-NJ-KPJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3880.8000000000002" y="-573.46326836581716"/>
+            <point key="canvasLocation" x="4092" y="-956"/>
         </scene>
     </scenes>
     <resources>
@@ -513,7 +516,8 @@
         <image name="unlike" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Ngo-1w-MZM"/>
+        <segue reference="Zld-aX-HHB"/>
+        <segue reference="tIV-Pn-8bj"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="0.97739707450220481" blue="0.98941910780827447" alpha="1" colorSpace="calibratedRGB"/>
 </document>

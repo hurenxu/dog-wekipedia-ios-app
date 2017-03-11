@@ -12,6 +12,8 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     let SCREEN_SIZE: CGRect = UIScreen.main.bounds
     
+    var suggestionVC: SuggestionViewController? = nil
+    
     // data
     var breedArray: [Breed]! = [Breed]()
     var localUIImage: [UIImage] = [UIImage]()
@@ -25,9 +27,11 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
     let HALF = 2
     
     // offsets
-    let TOP_OFFSET = 50
+    let TOP_OFFSET = 20
     let TABLE_OFFSET = 70
     let NEXT_TITLE_OFFSET = 210
+    let BUTTON_OFFSET = 120
+    let SCROLL_OFFSET = 65
     
     // the radius of the corner
     let CORNER_RADIUS = 20
@@ -46,6 +50,12 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
     let CELL_HEIGHT: Int! = 200
     var likeTable: UITableView! = nil
     var nextTable: UITableView! = nil
+    
+    // the button
+    let BUTTON_SIZE: CGSize = CGSize(width: 260, height: 70)
+    let BUTTON_FONT_SIZE: Int = 40
+    let BUTTON_COLOR: UIColor = UIColor(red: 111.0/255.0, green: 135.0/255.0, blue: 143.0/255.0, alpha: 0.9)
+    var restartButton: UIButton! = nil
     
     // function to set up the common specs of labels
     func setUpLabel(myText: String, myFont: String, myFontSize: Int, myAlignment: NSTextAlignment, myLabel: UILabel, myColor: UIColor) {
@@ -78,7 +88,6 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         var currentImage: UIImage! = nil
         
-        print("stuck?")
         // pick a breed
         if tableView == likeTable {
             
@@ -91,10 +100,6 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
             currentBreed = breedArray[nextBreeds[row]]
             currentImage = localUIImage[nextBreeds[row]]
         }
-        
-        print("reach here?")
-        // create table cell
-        //let myCell = tableView.dequeueReusableCell(withIdentifier: "BreedTableViewCell", for: indexPath) as! BreedTableViewCell
 
         myCell.labelString = currentBreed.getBreedName()
         myCell.myImage.image = currentImage
@@ -136,6 +141,46 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return false
     }
     
+    func restartPressed(sender: UIButton!) {
+        
+        print("switch to suggestion page")
+        
+        
+        while navigationController?.viewControllers.count != 1 {
+            
+            navigationController?.viewControllers.remove(at: 0)
+        }
+        
+        print(navigationController?.viewControllers)
+        
+        self.performSegue(withIdentifier: "BackToSuggestionSegue", sender: sender)
+    }
+    
+    // segue to switch to result page
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        print("Prepare for Suggestion Segue")
+        
+        if segue.identifier == "BackToSuggestionSegue" {
+            
+            let suggestionVC = segue.destination as! SuggestionViewController
+            
+            //segue.
+        }
+    }
+    
+    // function to set up the common specs of buttons
+    func setUpButtons(myLabel: String, myFontSize: Int, myButton: UIButton) {
+        
+        myButton.setTitle(myLabel, for: UIControlState.normal)
+        myButton.setTitleColor(UIColor.black, for: UIControlState.normal)
+        myButton.titleLabel?.font = UIFont(name: FONT, size: CGFloat(myFontSize))
+        myButton.backgroundColor = BUTTON_COLOR
+        myButton.isUserInteractionEnabled = true
+        myButton.layer.cornerRadius = CGFloat(CORNER_RADIUS)
+        scrollView.addSubview(myButton)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -167,6 +212,14 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
         setUpTable(myColor: TABLE_COLOR, myTable: nextTable)
         nextTable.delegate = self
         nextTable.dataSource = self
+        
+        // the restart page button
+        let RESTART_ORIGIN: CGPoint = CGPoint(x: nextTable.center.x - BUTTON_SIZE.width / CGFloat(HALF), y: nextTable.center.y + CGFloat(BUTTON_OFFSET))
+        restartButton = UIButton(frame: CGRect(origin: RESTART_ORIGIN, size: BUTTON_SIZE))
+        setUpButtons(myLabel: "New Survey", myFontSize: BUTTON_FONT_SIZE, myButton: restartButton)
+        restartButton.addTarget(self, action: #selector(self.restartPressed(sender:)), for: UIControlEvents.touchDown)
+        
+        scrollView.contentSize.height = restartButton.center.y + CGFloat(SCROLL_OFFSET)
     }
 
     override func didReceiveMemoryWarning() {
