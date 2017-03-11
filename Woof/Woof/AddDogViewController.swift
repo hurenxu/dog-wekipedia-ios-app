@@ -246,7 +246,7 @@ class AddDogViewController: UIViewController, UINavigationBarDelegate, UIImagePi
     //Action when user clicks the edit Button
     func editProfButtonClick()
     {
-        dogVaccinationDatetextField.isHidden = true
+        dogVaccinationDatetextField.isHidden = false
         dogBirhDatetextField.isHidden = false
         dogGendertextField.isHidden = false
         dogNametextField.isHidden = false
@@ -298,7 +298,7 @@ class AddDogViewController: UIViewController, UINavigationBarDelegate, UIImagePi
         ageLabel.isHidden = false
         breedLabel.isHidden = false
         
-        var breedObj = Breed(breedName: "Boxer", popularity: "", origin: "", group: "", size: "", type: "", lifeExpectancy: "", personality: "", height: "", weight: "", colors: "", litterSize: "", price: "", barkingLevel: "", childFriendly: "",
+        var breedObj = Breed(breedName: "Unknown Breed", popularity: "", origin: "", group: "", size: "", type: "", lifeExpectancy: "", personality: "", height: "", weight: "", colors: "", litterSize: "", price: "", barkingLevel: "", childFriendly: "",
             grooming: "",shedding: "", trainability: "", breeders: "", image: "")
         
         //update the dog to the database
@@ -318,7 +318,7 @@ class AddDogViewController: UIViewController, UINavigationBarDelegate, UIImagePi
            genderLabel.text = "female"
         }
         
-        if (breedLabel.text != nil){
+        if (breed != ""){
             breedObj = Breed(breedName: breed, popularity: "", origin: "", group: "", size: "", type: "", lifeExpectancy: "", personality: "", height: "", weight: "", colors: "", litterSize: "", price: "", barkingLevel: "", childFriendly: "",
                           grooming: "",shedding: "", trainability: "", breeders: "", image: "")
         }
