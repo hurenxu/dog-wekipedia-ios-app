@@ -36,6 +36,7 @@ class AddDogViewController: UIViewController, UINavigationBarDelegate, UIImagePi
     let editProfButton:UIButton = UIButton(frame: CGRect(x: 155, y: 220, width: 60, height: 20))
     let saveProfButton:UIButton = UIButton(frame: CGRect(x: 20, y: 550, width: 330, height: 40))
     
+    
     //Declare nameLabel of the dog
     let nameLabel = UILabel(frame: CGRect(x: 20, y: 230, width: 330, height: 40))
     
@@ -271,6 +272,27 @@ class AddDogViewController: UIViewController, UINavigationBarDelegate, UIImagePi
         vaccinationDateLabel.isHidden = false
         breedLabel.isHidden = false
         ageLabel.isHidden = false
+        
+        
+//        let ageLabelInt = Int(ageLabel.text!)
+        
+        let breed = Breed(breedName: "York", popularity: "", origin: "", group: "", size: "", type: "", lifeExpectancy: "", personality: "",
+                               height: "", weight: "",
+                               colors: "", litterSize: "", price: "", barkingLevel: "", childFriendly: "",
+                               
+                               grooming: "",shedding: "", trainability: "",
+                               breeders: "", image: "")
+        //update the dog to the database
+        let dogID = (Functionalities.myUser?.userID)! + (Functionalities.myUser?.dogIDs.count.description)!
+        
+        
+        nameLabel.text = "Lexi"
+        
+        ageLabel.text = "2"
+        genderLabel.text = "female"
+        let updateMyNewDog = Dog(dogID: dogID, name: nameLabel.text!, breed: breed, birthDate: Date(), age: ageLabel.text!, gender: genderLabel.text!, vaccination: Date(), color: "", description: "", image: "")
+        Functionalities.myUser?.updateDog(dog: updateMyNewDog)
+
         
     }
 
