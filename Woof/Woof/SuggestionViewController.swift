@@ -148,7 +148,7 @@ class SuggestionViewController: UIViewController {
         leftButton.isUserInteractionEnabled = false
         rightButton.isUserInteractionEnabled = false
         
-        UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.5, options: UIViewAnimationOptions.curveEaseIn , animations: ({
+        UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 3.0, options: UIViewAnimationOptions.curveEaseIn , animations: ({
             
             self.imageDynamic.center.x = outsideX
             self.imageDynamic.center.y = outsideY
@@ -312,18 +312,21 @@ class SuggestionViewController: UIViewController {
             // get the current breed
             let myBreed: Breed = breedArray[breedIndex]
             
-            likeFilters["Personality: \(myBreed.getPersonality())"]! += 1
+            likeFilters["Popularity: \(myBreed.getPopularity())"]! += 1
             likeFilters["Origin: \(myBreed.getOrigin())"]! += 1
             likeFilters["Group: \(myBreed.getGroup())"]! += 1
-
-            //likeFilters["Head: \(myBreed.getHead())"]! += 1
-            //likeFilters["Body: \(myBreed.getBody())"]! += 1
-            //likeFilters["Ears: \(myBreed.getEars())"]! += 1
-            // likeFilters["Hair: \(myBreed.getHair())"]! += 1
-            //likeFilters["Tail \(myBreed.getTail())"]! += 1
-
+            likeFilters["Size: \(myBreed.getSize())"]! += 1
+            likeFilters["Type: \(myBreed.getType())"]! += 1
+            likeFilters["Life Expectancy: \(myBreed.getLifeExpectancy())"]! += 1
+            likeFilters["Personality: \(myBreed.getPersonality())"]! += 1
+            likeFilters["Weight: \(myBreed.getWeight())"]! += 1
+            likeFilters["Colors: \(myBreed.getColors())"]! += 1
+            likeFilters["Litter Size: \(myBreed.getLitterSize())"]! += 1
+            likeFilters["Price: \(myBreed.getPrice())"]! += 1
+            likeFilters["Barking Level: \(myBreed.getBarkingLevel())"]! += 1
             likeFilters["Shedding \(myBreed.getShedding())"]! += 1
             likeFilters["Grooming \(myBreed.getGrooming())"]! += 1
+            likeFilters["Trainability: \(myBreed.getTrainability())"]! += 1
         }
         
         // determine the top filters
