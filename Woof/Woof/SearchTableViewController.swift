@@ -61,7 +61,7 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
     }
     
     func toLiked(){
-        let secondViewController:LikedDogViewController = LikedDogViewController()
+        let secondViewController:LikedViewController = LikedViewController()
         self.present(secondViewController, animated:true, completion:nil)
     }
     
