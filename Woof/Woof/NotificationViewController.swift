@@ -740,7 +740,7 @@ class NotificationViewController: UIViewController, UIPickerViewDelegate, UIPick
         self.view.addSubview(vDurationValueChoices)
         self.view.addSubview(bDurationChoices)
         self.view.addSubview(bDurationValueChoices)
-        let navigationBar = UINavigationBar(frame: CGRect(x:0, y:0, width:self.view.frame.size.width, height:44)) // Offset by 20 pixels vertically to take the status bar into account
+        let navigationBar = UINavigationBar(frame: CGRect(x:0, y:0, width:self.view.frame.size.width, height:56)) // Offset by 20 pixels vertically to take the status bar into account
         
         let navigationItem = UINavigationItem()
         navigationItem.title = "Notification"

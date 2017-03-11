@@ -308,6 +308,8 @@ UICollectionViewDelegate, UICollectionViewDataSource {
     /* function: add an UIImagePickerController */
     func handleSelectProfileImageView(){
         let picker = UIImagePickerController()
+        //let backButton = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(goBack))
+        
         picker.delegate = self
         picker.allowsEditing = true
         present(picker, animated: true, completion: nil)
@@ -315,7 +317,7 @@ UICollectionViewDelegate, UICollectionViewDataSource {
     
     /* imagePickerController & imagePickerControllerDidCancel handle the pop over and dismissal of profile changing */
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        
+        //picker.navigationItem.rightBarButtonItem?.tintColor = UIColor.black
         var chosenImageFromPicker: UIImage?
         if let editedImage = info["UIImagePickerControllerEditedImage"] as? UIImage{
             chosenImageFromPicker = editedImage
@@ -330,6 +332,9 @@ UICollectionViewDelegate, UICollectionViewDataSource {
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
+    
+    
+
     //----------------------------------------------------------------------------------------------------------------
     
     func addDogProfileButtonClick(sender: UIButton)
@@ -351,6 +356,14 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         tabBarItem.badgeValue = "3"
     }
     
+}
+
+extension UIImagePickerController {
+    open override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        self.navigationBar.topItem?.rightBarButtonItem?.tintColor = UIColor.black
+        self.navigationBar.topItem?.rightBarButtonItem?.isEnabled = true
+    }
 }
 
 
