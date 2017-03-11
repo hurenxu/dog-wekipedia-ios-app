@@ -11,8 +11,11 @@ import UIKit
 class FilterResultViewController: UIViewController, UINavigationBarDelegate ,UITableViewDelegate, UITableViewDataSource{
     
     //tags
-    var Lexi = ""
-    var hair:Int? //default 0. short 1, long 2
+    //var dogs = Functionalities.breedList
+    
+    
+    var filterDogs = [Breed]()
+    //var hair:Int? //default 0. short 1, long 2
     var size:Int? //default 0. small 1, medium 2, large 3
     var group:Int? //default 0. Herding 1; Hound 2; Non-sporting 3; Sporting 4; Terrier 5; Toy 6; Working 7
     var train:Int? //default 0. easy 1; aveg 2; moderately easy 3
@@ -23,9 +26,9 @@ class FilterResultViewController: UIViewController, UINavigationBarDelegate ,UIT
     let SCREEN_SIZE: CGRect = UIScreen.main.bounds
     
     // data
-    var breedArray: [Breed]! = [Breed]()
-    var breeds: [Int] = [Int]()
-    
+    var breedArray = Functionalities.breedList
+    //var breeds: [Int] = [Int]()
+    var breeds = ["1","2","3"]
     // scroll view
     var scrollView: UIScrollView! = nil
     
@@ -54,7 +57,7 @@ class FilterResultViewController: UIViewController, UINavigationBarDelegate ,UIT
     // the tables
     let TABLE_SIZE: CGSize = CGSize(width: 353, height: 600)
     let TABLE_COLOR: UIColor = UIColor.white
-    let CELL_HEIGHT: Int! = 80
+    let CELL_HEIGHT: Int! = 50
     var table: UITableView! = nil
     
     // function to set up the common specs of labels
@@ -81,25 +84,37 @@ class FilterResultViewController: UIViewController, UINavigationBarDelegate ,UIT
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let row: Int = indexPath.row
+        //let row: Int = indexPath.row
         
-        var currentBreed: Breed! = nil
+        //var currentBreed: Breed! = nil
         
-        currentBreed = breedArray[breeds[row]]
-        
+        //currentBreed = filterDogs[indexPath.row]
+        //[breeds[indexPath.row]]
+        let cell = UITableViewCell()
+        cell.textLabel?.text  = filterDogs[indexPath.row].getBreedName()
+        //"lexi"
         
         // create table cell
-        let myCell = tableView.dequeueReusableCell(withIdentifier: "BreedTableViewCell", for: indexPath) as! BreedTableViewCell
+        //        let myCell = tableView.dequeueReusableCell(withIdentifier: "BreedTableViewCell", for: indexPath) as! BreedTableViewCell
+        //
+        //        myCell.labelString = currentBreed.getBreedName()
+        //        myCell.descriptionString = "Elohim, Essaim... \nElohim, Essaim... \nWare wa motome uttaetari"
         
-        myCell.labelString = currentBreed.getBreedName()
-        myCell.descriptionString = "Elohim, Essaim... \nElohim, Essaim... \nWare wa motome uttaetari"
-        
-        return myCell
+        return cell
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return breeds.count
+        print(filterDogs.count)
+        return filterDogs.count
+        
     }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        print("return sectin !!")
+        return 1
+    }
+    
     
     public func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
         
@@ -147,13 +162,10 @@ class FilterResultViewController: UIViewController, UINavigationBarDelegate ,UIT
         //navigationItem.items[navigationItem]
         self.view.addSubview(navigationBar)
         
-        print(Lexi)
-        print("hair is\(hair)")
-        
-        // Do any additional setup after loading the view.
+        print("size is\(size)")
+        print("train is\(train)")
         
         
-        print("i'm result")
         
         // Do any additional setup after loading the view.
         
@@ -161,17 +173,165 @@ class FilterResultViewController: UIViewController, UINavigationBarDelegate ,UIT
         scrollView.backgroundColor = UIColor(patternImage: UIImage(named: "backgroundHomeLarge.jpg")!)
         self.view.addSubview(scrollView)
         
+        //self.view.backgroundColor = UIColor.orange
         
         
         anounce_label = UILabel(frame: CGRect(origin: anounce_origin, size: TITLE_SIZE))
-        setUpLabel(myText: "ALL TAGS SAVED Σ(っ°Д°)っ !!!∑(ﾟДﾟノ)ノ", myFont: FONT, myFontSize: TITLE_FONT_SIZE, myAlignment: NSTextAlignment.center, myLabel: anounce_label, myColor: white_half)
+        setUpLabel(myText: "ALL TAGS SAVED    Σ(っ°Д°)っ", myFont: FONT, myFontSize: TITLE_FONT_SIZE, myAlignment: NSTextAlignment.center, myLabel: anounce_label, myColor: white_half)
         
         table = UITableView(frame: CGRect(origin: result_origin, size: TABLE_SIZE))
         setUpTable(myColor: TABLE_COLOR, myTable: table)
+        let a = search()
+        if a == -1{
+            setUpLabel(myText: "More than 1 tag each category  !!!∑(ﾟДﾟノ)ノ", myFont: FONT, myFontSize: TITLE_FONT_SIZE, myAlignment: NSTextAlignment.center, myLabel: anounce_label, myColor: white_half)
+            //table = nil
+            return
+        }
+        
         table.delegate = self
         table.dataSource = self
         
     }
+    
+    func search () -> Int {
+        let count = filterDogs.count
+        let COUNT = breedArray.count
+        print("filter has \(count) dogs")
+        print("dogs has \(COUNT) dogs")
+        //search by size
+        if size == 100 {
+            return -1 ;
+        }
+        
+        if size == 1{
+            filterDogs = breedArray.filter({( dog : Breed) -> Bool in
+                return dog.size == "Small"
+            })
+        }else if size == 2{
+            filterDogs = breedArray.filter({( dog : Breed) -> Bool in
+                return dog.size.lowercased().contains("Medium")
+            })
+        }else if size == 3{
+            filterDogs = breedArray.filter({( dog : Breed) -> Bool in
+                return dog.size.lowercased().contains("Large")
+            })
+        }
+        print("filter has \(count) dogs")
+        print("dogs has \(COUNT) dogs")
+        if train == 100 {
+            return -1 ;
+        }
+        if train == 1{
+            filterDogs = filterDogs.filter({( dog : Breed) -> Bool in
+                return dog.trainability == "Easy"
+            })
+        }else if train == 2{
+            filterDogs = filterDogs.filter({( dog : Breed) -> Bool in
+                return dog.trainability.lowercased().contains("Average")
+            })
+        }else if train == 3{
+            filterDogs = filterDogs.filter({( dog : Breed) -> Bool in
+                return dog.trainability.lowercased().contains("Moderately Easy")
+            })
+        }
+        print("filter has \(count) dogs")
+        print("dogs has \(COUNT) dogs")
+        if bark == 100 {
+            return -1 ;
+        }
+        if bark == 1{
+            filterDogs = filterDogs.filter({( dog : Breed) -> Bool in
+                return dog.barkingLevel == "Easy"
+            })
+        }else if bark == 2{
+            filterDogs = filterDogs.filter({( dog : Breed) -> Bool in
+                return dog.barkingLevel.lowercased().contains("Average")
+            })
+        }else if bark == 3{
+            filterDogs = filterDogs.filter({( dog : Breed) -> Bool in
+                return dog.barkingLevel.lowercased().contains("Moderately Easy")
+            })
+        }
+        print("filter has \(count) dogs")
+        print("dogs has \(COUNT) dogs")
+        if groom == 100 {
+            return -1 ;
+        }
+        if groom == 1{
+            filterDogs = filterDogs.filter({( dog : Breed) -> Bool in
+                return dog.grooming == "High"
+            })
+        }else if groom == 2{
+            filterDogs = filterDogs.filter({( dog : Breed) -> Bool in
+                return dog.grooming.lowercased().contains("Moderate")
+            })
+        }else if groom == 3{
+            filterDogs = filterDogs.filter({( dog : Breed) -> Bool in
+                return dog.grooming.lowercased().contains("Low")
+            })
+        }
+        print("filter has \(count) dogs")
+        print("dogs has \(COUNT) dogs")
+        if shed == 100 {
+            return -1 ;
+        }
+        if shed == 1{
+            filterDogs = filterDogs.filter({( dog : Breed) -> Bool in
+                return dog.shedding == "Minimal"
+            })
+        }else if shed == 2{
+            filterDogs = filterDogs.filter({( dog : Breed) -> Bool in
+                return dog.shedding.lowercased().contains("Moderate")
+            })
+        }else if shed == 3{
+            filterDogs = filterDogs.filter({( dog : Breed) -> Bool in
+                return dog.shedding.lowercased().contains("Constant")
+            })
+        }else if shed == 4{
+            filterDogs = filterDogs.filter({( dog : Breed) -> Bool in
+                return dog.shedding.lowercased().contains("Seasonal")
+            })
+        }
+        print("filter has \(count) dogs")
+        print("dogs has \(COUNT) dogs")
+        if group == 100 {
+            return -1 ;
+        }
+        if group == 1{
+            filterDogs = filterDogs.filter({( dog : Breed) -> Bool in
+                return dog.group == "Herding"
+            })
+        }else if group == 2{
+            filterDogs = filterDogs.filter({( dog : Breed) -> Bool in
+                return dog.group.lowercased().contains("Hound")
+            })
+        }else if group == 3{
+            filterDogs = filterDogs.filter({( dog : Breed) -> Bool in
+                return dog.group.lowercased().contains("Non-sporting")
+            })
+        }else if group == 4{
+            filterDogs = filterDogs.filter({( dog : Breed) -> Bool in
+                return dog.group.lowercased().contains("Sporting")
+            })
+        }else if group == 5{
+            filterDogs = filterDogs.filter({( dog : Breed) -> Bool in
+                return dog.group.lowercased().contains("Terrier")
+            })
+        }else if group == 6{
+            filterDogs = filterDogs.filter({( dog : Breed) -> Bool in
+                return dog.group.lowercased().contains("Toy")
+            })
+        }else if group == 7{
+            filterDogs = filterDogs.filter({( dog : Breed) -> Bool in
+                return dog.group.lowercased().contains("Working")
+            })
+        }
+        
+        //        var group=0 //default 0. Herding 1; Hound 2; Non-sporting 3; Sporting 4; Terrier 5; Toy 6; Working 7
+        
+        return 0
+    }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

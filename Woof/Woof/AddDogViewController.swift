@@ -200,7 +200,7 @@ class AddDogViewController: UIViewController, UINavigationBarDelegate, UIImagePi
         dogVaccinationDatetextField.placeholder = "Vaccination Test Date"
         dogVaccinationDatetextField.autocapitalizationType = UITextAutocapitalizationType.words // If you need any capitalization
         self.view.addSubview(dogVaccinationDatetextField)
-        dogVaccinationDatetextField.isHidden = true
+        dogVaccinationDatetextField.isHidden = false
 
         
         breedLabel.textAlignment = .center
@@ -219,7 +219,14 @@ class AddDogViewController: UIViewController, UINavigationBarDelegate, UIImagePi
         agetextField.placeholder = "Age"
         agetextField.autocapitalizationType = UITextAutocapitalizationType.words // If you need any capitalization
         self.view.addSubview(agetextField)
-        agetextField.isHidden = true
+        agetextField.isHidden = false
+        
+        breedtextField.textAlignment = NSTextAlignment.center
+        breedtextField.textColor = UIColor.blue
+        breedtextField.borderStyle = UITextBorderStyle.roundedRect
+        breedtextField.placeholder = "Breed"
+        breedtextField.autocapitalizationType = UITextAutocapitalizationType.words // If you need any capitalization
+        self.view.addSubview(breedtextField)
 
         self.editProfButtonClick()
         // Do any additional setup after loading the view.
@@ -239,7 +246,7 @@ class AddDogViewController: UIViewController, UINavigationBarDelegate, UIImagePi
     //Action when user clicks the edit Button
     func editProfButtonClick()
     {
-        dogVaccinationDatetextField.isHidden = true
+        dogVaccinationDatetextField.isHidden = false
         dogBirhDatetextField.isHidden = false
         dogGendertextField.isHidden = false
         dogNametextField.isHidden = false
@@ -267,18 +274,21 @@ class AddDogViewController: UIViewController, UINavigationBarDelegate, UIImagePi
         dogNametextField.isHidden = true
         agetextField.isHidden = true
         saveProfButton.isHidden = true
+        breedtextField.isHidden = true
         
         name = dogNametextField.text!
         gender = dogGendertextField.text!
         vaccinationdate = dogVaccinationDatetextField.text!
         birthdate = dogBirhDatetextField.text!
         age = agetextField.text!
+        breed = breedtextField.text!
         
         nameLabel.text = "Name: " + name
         genderLabel.text = "Gender: " + gender
         birthDateLabel.text = "Birth Date: " + birthdate
         vaccinationDateLabel.text = "Vaccination Date: " + vaccinationdate
         ageLabel.text = "Age: " + age
+        breedLabel.text = "Breed: " + breed
         
         nameLabel.isHidden = false
         genderLabel.isHidden = false
@@ -286,8 +296,9 @@ class AddDogViewController: UIViewController, UINavigationBarDelegate, UIImagePi
         vaccinationDateLabel.isHidden = false
         breedLabel.isHidden = false
         ageLabel.isHidden = false
+        breedLabel.isHidden = false
         
-        let breed = Breed(breedName: "York", popularity: "", origin: "", group: "", size: "", type: "", lifeExpectancy: "", personality: "", height: "", weight: "", colors: "", litterSize: "", price: "", barkingLevel: "", childFriendly: "",
+        var breedObj = Breed(breedName: "Unknown Breed", popularity: "", origin: "", group: "", size: "", type: "", lifeExpectancy: "", personality: "", height: "", weight: "", colors: "", litterSize: "", price: "", barkingLevel: "", childFriendly: "",
             grooming: "",shedding: "", trainability: "", breeders: "", image: "")
         
         //update the dog to the database
@@ -306,10 +317,18 @@ class AddDogViewController: UIViewController, UINavigationBarDelegate, UIImagePi
         if (genderLabel.text == nil){
            genderLabel.text = "female"
         }
+        
+        if (breed != ""){
+            breedObj = Breed(breedName: breed, popularity: "", origin: "", group: "", size: "", type: "", lifeExpectancy: "", personality: "", height: "", weight: "", colors: "", litterSize: "", price: "", barkingLevel: "", childFriendly: "",
+                          grooming: "",shedding: "", trainability: "", breeders: "", image: "")
+        }
+        
+        
+        
        
 
-        let updateMyNewDog = Dog(dogID: dogID, name: nameLabel.text!, breed: breed, birthDate: Date(), age: ageLabel.text!, gender: genderLabel.text!, vaccination: Date(), color: "", description: "", image: "")
-        Functionalities.myUser?.updateDog(dog: updateMyNewDog)
+        let updateMyNewDog = Dog(dogID: dogID, name: name, breed: breedObj, birthDate: Date(), age: age, gender: gender, vaccination: Date(), color: "", description: "", image: "")
+        Functionalities.myUser?.addDog(dog: updateMyNewDog)
 
     }
 

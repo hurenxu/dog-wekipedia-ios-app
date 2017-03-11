@@ -8,13 +8,17 @@
 import UIKit
 import DOFavoriteButton
 
-class DetailViewController: UIViewController, UINavigationBarDelegate{
+class DetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UINavigationBarDelegate{
     
     // MARK: - Outlet from UI
     @IBOutlet weak var detailBreedName: UILabel!
     @IBOutlet weak var detailImageView: UIImageView!
     @IBOutlet weak var button: DOFavoriteButton!
-    
+    let SCROLL_OFFSET = 0
+    var scrollView = UIScrollView(frame: CGRect(x:0, y:410, width:400, height:200))
+    let likedArray = Functionalities.myUser?.favoriteDogBreeds
+    var table: UITableView! = nil
+    let result_origin = CGPoint(x:12, y:40)
     
     // MARK: - Setup data passing variable matches the SearchTableViewController.swift class's prepare function
     
@@ -89,6 +93,15 @@ class DetailViewController: UIViewController, UINavigationBarDelegate{
     
     
     override func viewDidLoad() {
+        
+        //add tableview for testing
+        table = UITableView(frame: CGRect(origin: result_origin, size: CGSize(width: 353, height: self.view.frame.height-12)))
+        setUpTable(myColor: UIColor.white, myTable: table)
+        
+        table.delegate = self
+        table.dataSource = self
+        
+        //view
         super.viewDidLoad()
         
         let width = (self.view.frame.width - 100)
@@ -112,10 +125,70 @@ class DetailViewController: UIViewController, UINavigationBarDelegate{
         self.view.addSubview(button)
         x += width
         
+//        add labels to the scroll view
+        let labelPersonality = UILabel(frame: CGRect(x: 0, y: 0, width: 350, height: 21))
+        labelPersonality.lineBreakMode = NSLineBreakMode.byWordWrapping
+        labelPersonality.numberOfLines = 0
+        if detailDog != nil {
+            labelPersonality.text =
+                "Personality: " + "\t" + ((detailDog?.getPersonality())!) + "\n" + "Size: " + "\t" + ((detailDog?.getSize())!)
+//             + "\n" + "Group: " + "\t" + (detailDog?.getGroup())!) + "\n" + "Life Expectancy: " + "\t" + ((detailDog?.getLifeExpectancy)!) + "\n" + "Origin: " + "\t" + ((detailDog?.getOrigin())!) + "\n" + "Trainability: " + "\t" + ((detailDog?.getTrainability())!) + "\n" + "Gromming: " + "\t" + ((detailDog?.getGrooming())!) + "\n" + "Shredding: " + "\t" + ((detailDog?.getShredding)!) + "\n"
+        }
+////            labelSize.text = (detailDog?.getSize())!
+////            labelGroup.text = (detailDog?.getGroup())!
+////            lifeExpectancy.text = (detailDog?.getLifeExpectancy())!
+////            labelOrigin.text = (detailDog?.getOrigin())!
+////            labelTrainability.text = (detailDog?.getTrainability())!
+//            labelGromming.text = (detailDog?.getGrooming())!
+        
+        
+        scrollView.contentInset = UIEdgeInsetsMake(0, 0, 10, 0)
+        scrollView.backgroundColor = UIColor(patternImage: UIImage(named: "backgroundHomeLarge.jpg")!)
+        self.view.addSubview(scrollView)
+        scrollView.addSubview(labelPersonality)
+        table = UITableView(frame: CGRect(origin: result_origin, size: CGSize(width: 353, height: self.view.frame.height-12)))
+        setUpTable(myColor: UIColor.white, myTable: table)
+        
+        table.delegate = self
+        table.dataSource = self
+        
+        
+        
+        
         configureView()
         
     }
     
+    
+    func setUpTable(myColor: UIColor, myTable: UITableView) {
+        
+        myTable.backgroundColor = myColor
+        myTable.layer.cornerRadius = CGFloat(10)
+        myTable.rowHeight = CGFloat(80)
+        //myTable.register(BreedTableViewCell.self, forCellReuseIdentifier: "BreedTableViewCell")
+        print("myTable")
+//        scrollView.addSubview(myTable)
+        myTable.contentInset = UIEdgeInsetsMake(0, 0, 10, 0)
+    }
+    func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        //print(testArray.count)
+        return likedArray!.count
+    }
+    
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell()
+        
+        cell.textLabel?.text = likedArray?[indexPath.row]
+        
+        return cell
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
