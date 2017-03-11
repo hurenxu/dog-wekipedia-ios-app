@@ -12,6 +12,8 @@ class StatsViewController: UIViewController {
 
     let SCREEN_SIZE: CGRect = UIScreen.main.bounds
     
+    var suggestionVC: SuggestionViewController? = nil
+    
     // for result page
     var breedArray: [Breed] = [Breed]()
     var likeBreeds: [Int] = [Int]()
@@ -28,7 +30,7 @@ class StatsViewController: UIViewController {
     var likeFilters = [String: Int]()
     
     // offsets
-    let TOP_OFFSET = 50
+    let TOP_OFFSET = 20
     let TOP_BAR_OFFSET = 150
     let BAR_OFFSET = 110
     let LABEL_OFFSET = 70 // up from bar
@@ -109,11 +111,18 @@ class StatsViewController: UIViewController {
         
         let buttonLabel: String = sender.titleLabel!.text!
         
-        print("store \(buttonLabel)")
+        if sender.backgroundColor == BUTTON_COLOR {
+            
+            print("store \(buttonLabel)")
+            
+            sender.backgroundColor = UIColor.gray
+        }
         
-        sender.isUserInteractionEnabled = false
-        sender.backgroundColor = UIColor.gray
-        
+        else {
+            
+            print("remove \(buttonLabel)")
+            sender.backgroundColor = BUTTON_COLOR
+        }
         // user.addFavoriteFilter(\buttonLabel)
     }
     
@@ -138,10 +147,12 @@ class StatsViewController: UIViewController {
             resultVC.likeBreeds = likeBreeds
             resultVC.localUIImage = localUIImage
             resultVC.nextBreeds = nextBreeds
+            resultVC.suggestionVC = self.suggestionVC!
         }
     }
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
 
         // initialize user here

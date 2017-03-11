@@ -287,17 +287,12 @@ class AddDogViewController: UIViewController, UINavigationBarDelegate, UIImagePi
         breedLabel.isHidden = false
         ageLabel.isHidden = false
         
+        let breed = Breed(breedName: "York", popularity: "", origin: "", group: "", size: "", type: "", lifeExpectancy: "", personality: "", height: "", weight: "", colors: "", litterSize: "", price: "", barkingLevel: "", childFriendly: "",
+            grooming: "",shedding: "", trainability: "", breeders: "", image: "")
         
-//        let ageLabelInt = Int(ageLabel.text!)
-        
-        let breed = Breed(breedName: "York", popularity: "", origin: "", group: "", size: "", type: "", lifeExpectancy: "", personality: "",
-                               height: "", weight: "",
-                               colors: "", litterSize: "", price: "", barkingLevel: "", childFriendly: "",
-                               
-                               grooming: "",shedding: "", trainability: "",
-                               breeders: "", image: "")
         //update the dog to the database
         let dogID = (Functionalities.myUser?.userID)! + (Functionalities.myUser?.dogIDs.count.description)!
+
         
         
         if (nameLabel.text == nil){
@@ -312,10 +307,10 @@ class AddDogViewController: UIViewController, UINavigationBarDelegate, UIImagePi
            genderLabel.text = "female"
         }
        
+
         let updateMyNewDog = Dog(dogID: dogID, name: nameLabel.text!, breed: breed, birthDate: Date(), age: ageLabel.text!, gender: genderLabel.text!, vaccination: Date(), color: "", description: "", image: "")
         Functionalities.myUser?.updateDog(dog: updateMyNewDog)
 
-        
     }
 
     
