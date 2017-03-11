@@ -57,6 +57,8 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
     let BUTTON_COLOR: UIColor = UIColor(red: 111.0/255.0, green: 135.0/255.0, blue: 143.0/255.0, alpha: 0.9)
     var restartButton: UIButton! = nil
     
+    var breedSelected: Breed! = nil
+    
     // function to set up the common specs of labels
     func setUpLabel(myText: String, myFont: String, myFontSize: Int, myAlignment: NSTextAlignment, myLabel: UILabel, myColor: UIColor) {
         
@@ -130,13 +132,17 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         if tableView == likeTable {
             
-            // switch
+            // get the breed that the user selected
+            breedSelected = breedArray[likeBreeds[indexPath.row]]
         }
         
         else {
             
-            // switch
+            // get the breed that the user selected
+            breedSelected = breedArray[nextBreeds[indexPath.row]]
         }
+
+        self.performSegue(withIdentifier: "ToDetailViewSegue", sender: tableView)
         
         return false
     }
@@ -151,21 +157,19 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
             navigationController?.viewControllers.remove(at: 0)
         }
         
-        print(navigationController?.viewControllers)
-        
         self.performSegue(withIdentifier: "BackToSuggestionSegue", sender: sender)
     }
     
     // segue to switch to result page
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        print("Prepare for Suggestion Segue")
+        print("Prepare for Detail View Segue")
         
-        if segue.identifier == "BackToSuggestionSegue" {
+        if segue.identifier == "ToDetailViewSegue" {
             
-            let suggestionVC = segue.destination as! SuggestionViewController
+            let detailVC = segue.destination as! DetailViewController
             
-            //segue.
+            detailVC.detailDog = breedSelected
         }
     }
     

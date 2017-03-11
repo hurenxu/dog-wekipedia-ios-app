@@ -111,11 +111,18 @@ class StatsViewController: UIViewController {
         
         let buttonLabel: String = sender.titleLabel!.text!
         
-        print("store \(buttonLabel)")
+        if sender.backgroundColor == BUTTON_COLOR {
+            
+            print("store \(buttonLabel)")
+            
+            sender.backgroundColor = UIColor.gray
+        }
         
-        sender.isUserInteractionEnabled = false
-        sender.backgroundColor = UIColor.gray
-        
+        else {
+            
+            print("remove \(buttonLabel)")
+            sender.backgroundColor = BUTTON_COLOR
+        }
         // user.addFavoriteFilter(\buttonLabel)
     }
     
@@ -145,6 +152,7 @@ class StatsViewController: UIViewController {
     }
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
 
         // initialize user here
