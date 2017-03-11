@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LikedDogViewController: UITableViewController {
+class LikedDogViewController: UITableViewController, UINavigationBarDelegate {
 
     let likedArray = Functionalities.myUser?.favoriteDogBreeds
     let testArray = ["a","b","c"]
@@ -24,6 +24,36 @@ class LikedDogViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        let navigationBar = UINavigationBar(frame: CGRect(x:0, y:0, width:self.view.frame.size.width, height:58)) // Offset by 20 pixels vertically to take the status bar into account
+        
+        tableView.rowHeight = 80
+        
+        let navigationItem = UINavigationItem()
+        navigationItem.title = "Liked Dog"
+        
+        
+        navigationBar.backgroundColor = UIColor.white
+        navigationBar.delegate = self;
+        
+        let backButton = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(goBack))
+        backButton.tintColor = UIColor.black
+        navigationItem.leftBarButtonItem = backButton
+        navigationBar.pushItem(navigationItem, animated: true)
+        
+        self.tableView.register(BreedTableViewCell.self, forCellReuseIdentifier: "BreedTableViewCell")
+        
+        
+        self.view.addSubview(navigationBar)
+        //self.tableView.contentInset = UIEdgeInsetsMake(60.0, 0.0, 0.0, 0.0)
+        //self.tableView.contentInset = UIEdgeInsetsMake(0, 60, 0, 0)
+    }
+    
+    func goBack(){
+        print("call goBack function")
+        //        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        //        let vc = storyboard.instantiateViewController(withIdentifier: "iPetViewController") as! iPetViewController
+        //        self.present(vc, animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,22 +65,21 @@ class LikedDogViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return testArray.count
+        //print(testArray.count)
+        return likedArray!.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        var cell = UITableViewCell()
+        
 
-        // Configure the cell... let cell = tableView.dequeueReusableCellWithIdentifier("Dog Cell", forIndexPath: indexPath as IndexPath) as! DogCell
-        //        cell.dog = dogs[indexPath.row]
-        //        return cell
-        cell.textLabel?.text = testArray[indexPath.row]
+        cell.textLabel?.text = likedArray?[indexPath.row]
 
         return cell
     }
