@@ -257,36 +257,22 @@ class AddDogViewController: UIViewController, UINavigationBarDelegate, UIImagePi
         // Do any additional setup after loading the view.
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if let touch = touches.first {
-            let position = touch.location(in: self.view)
-            print(position.x)
-            print(position.y)
-        }
-    }
-    
-    // Renxu Modification
-    //func contains(  )
-    //{
-      //  if() {
-        
-        //}
-    //}
     
     func textFieldEditing(sender: UITextField) {
-        // Renxu Hu edit on changes
-        //if(  ) {
-        //}
+
         let datePickerView:UIDatePicker = UIDatePicker()
         datePickerView.datePickerMode = UIDatePickerMode.date
         sender.inputView = datePickerView
         datePickerView.addTarget(self, action: #selector(AddDogViewController.datePickerValueChanged), for: UIControlEvents.valueChanged)
     }
     
+    
     func datePickerValueChanged(datePicker:UIDatePicker) {
 
+        // this two lines can toggle the date picker
         datePicker.isHidden = false
         self.view.endEditing(true)
+        
         let dateFormatter: DateFormatter = DateFormatter()
         dateFormatter.dateStyle = DateFormatter.Style.short
         let strDate = dateFormatter.string(from: datePicker.date)
@@ -295,34 +281,20 @@ class AddDogViewController: UIViewController, UINavigationBarDelegate, UIImagePi
         
     }
     
-//    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-//        if pickerView == picker2{
-//            picker2.isHidden = true
-//            self.view.endEditing(true)
-//        }
-//        else if pickerView == picker3{
-//            picker3.isHidden = true
-//            self.view.endEditing(true)
-//        }
-//    }
+
     
     func datePickerValueChanged2(datePicker:UIDatePicker) {
 
+        // this two lines can toggle the date picker
         datePicker.isHidden = false
         self.view.endEditing(true)
+        
         let dateFormatter: DateFormatter = DateFormatter()
-        
-        
         dateFormatter.dateStyle = DateFormatter.Style.short
-        //dateFormatter.timeStyle = DateFormatter.Style.short
-        
         let strDate = dateFormatter.string(from: datePicker.date)
-        
         dogBirhDatetextField.text = strDate
         birthDateLabel.text = strDate
         
-        
-        //datePicker.isHidden = true
     }
 
     
@@ -426,9 +398,6 @@ class AddDogViewController: UIViewController, UINavigationBarDelegate, UIImagePi
                           grooming: "",shedding: "", trainability: "", breeders: "", image: "")
         }
         
-        
-        
-       
 
         let updateMyNewDog = Dog(dogID: dogID, name: name, breed: breedObj, birthDate: Date(), age: age, gender: gender, vaccination: Date(), color: "", description: "", image: "")
         Functionalities.myUser?.addDog(dog: updateMyNewDog)

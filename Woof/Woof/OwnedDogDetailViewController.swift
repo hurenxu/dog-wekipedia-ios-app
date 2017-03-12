@@ -82,18 +82,6 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         return true
     }
     
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        
-        if textField == breedtextField {
-            
-            //self.view.frame.origin.y += CGFloat(200)
-            
-        }
-        //if (breedtextField.text != "" ){
-            //self.view.frame.origin.y += CGFloat(0)
-        //}
-        
-    }
     
     override func viewDidLoad() {
         //super.viewDidLoad()
@@ -201,12 +189,6 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         
         
         
-        
-        
-        
-        //picker2.inputAccessoryView = toolBar
-        
-        
         //---------------------------------------------------------------------------------------------------------------------
         /* user profile image */
         let dogImg = profileImgContainer
@@ -237,9 +219,7 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         self.view.addSubview(navigationBar)
         
         
-        
-        
-        
+    
         //The edit Button
         //    let editProfButton:UIButton = UIButton(frame: CGRect(x: 250, y: 200, width: 50, height: 25))
         editProfButton.backgroundColor = .black
@@ -262,8 +242,6 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         self.view.addSubview(changeImageButton)
         //  EditProfileImageButtonConstraints(Button: editProfButton)
         changeImageButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectProfileImageView)))
-        
-        
         
         
         
@@ -329,15 +307,8 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         breedtextField.delegate = self
 
         
-        
-        
-        //picker2 = UIDatePickerView()
-        //picker2 = UIDatePicker(frame: CGRect( origin: CGPoint(x:0, y:0), size: CGSize(width:320, height:115) ))
-        
         picker2.center = CGPoint(x: 180, y: 560)
         picker2.backgroundColor = UIColor.white
-        //let currentDate = Date.init()
-        // picker2.minimumDate = Date(timeIntervalSince1970: currentDate.timeIntervalSince1970 - currentDate.timeIntervalSince1970.truncatingRemainder(dividingBy: 60))
         picker2.layer.masksToBounds = true
         picker2.layer.cornerRadius = CGFloat(20)
         
@@ -351,8 +322,7 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         
         picker3.center = CGPoint(x: 180, y: 560)
         picker3.backgroundColor = UIColor.white
-        //let currentDate = Date.init()
-        // picker2.minimumDate = Date(timeIntervalSince1970: currentDate.timeIntervalSince1970 - currentDate.timeIntervalSince1970.truncatingRemainder(dividingBy: 60))
+
         picker3.layer.masksToBounds = true
         picker3.layer.cornerRadius = CGFloat(20)
         
@@ -362,8 +332,6 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         //picker2.datePickerMode = UIDatePickerMode.date
         
         self.view.addSubview(picker3)
-        
-        
         
     }
     
@@ -389,7 +357,7 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
     }
 
     
-    
+
     
     func datePickerValueChanged(datePicker:UIDatePicker) {
 
@@ -398,15 +366,11 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         
         
         dateFormatter.dateStyle = DateFormatter.Style.short
-        //dateFormatter.timeStyle = DateFormatter.Style.short
         
         let strDate = dateFormatter.string(from: datePicker.date)
         
         dogVaccinationDatetextField.text = strDate
         vaccinationDateLabel.text = strDate
-        
-        
-        //datePicker.isHidden = true
     }
     
     
@@ -417,7 +381,6 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         
         
         dateFormatter.dateStyle = DateFormatter.Style.short
-        //dateFormatter.timeStyle = DateFormatter.Style.short
         
         let strDate = dateFormatter.string(from: datePicker.date)
         
@@ -512,7 +475,7 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         
         
         let newDog = Dog(dogID: (thisDog?.dogID)!, name: name, breed: newBreed, birthDate: newBirthDate,age: age, gender: gender,  vaccination: newVaccineDate, color: (thisDog?.color)!, description: (thisDog?.description)!, image: (thisDog?.image)!)
-        print("This line below is importnatn!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+       
         print(newDog.name)
         print(newDog.dogID)
         print(newDog.breed.breedName)
@@ -522,13 +485,11 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         print(newDog.color)
         print(newDog.description)
         print(newDog.image)
-        print("Look here !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+
         Functionalities.myUser?.updateDog(dog: newDog)
        
         
         self.view.frame.origin.y = 0
-        //let Img = self.convertBase64ToImage(base64String: (thisDog?.image)!)
-        
     }
     
     //Action when user clicks the edit Button
@@ -582,12 +543,9 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
     
     
     
-    
     //--------------------------------end picker------------------------------------------------------------------
     
-    
-    
-    
+
     func goBack(){
         print("call goBack function")
         //        let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -603,19 +561,6 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         // Dispose of any resources that can be recreated.
     }
     
-    
-//    /* global variable: profileImgContainer --> default profile image */
-//    func profileImgContainer(string: String) -> UIImageView{
-//        let ImgView = UIImageView()
-//        let Img = UIImage(named: "BlackEmptyDog")
-//        ImgView.image = Img
-//        ImgView.frame = CGRect(x: 200, y: 200, width: 100, height: 100)
-//        ImgView.translatesAutoresizingMaskIntoConstraints = false
-//        
-//        return ImgView
-//    }
-    
-   
     
     
     var profileImgContainer: UIImageView = {
@@ -633,15 +578,6 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         return ImgView
     }()
     
-//    func convertBase64ToImage(base64String: String) -> UIImage {
-//        
-//        let decodedData = NSData(base64Encoded: base64String, options: NSData.Base64DecodingOptions(rawValue: 0) )
-//        
-//        let decodedimage = UIImage(data: decodedData! as Data)
-//        
-//        return decodedimage!
-//        
-//    }
     
     /* layout constriants for profile image */
     func ImageViewConstraints(Img: UIImageView) {
@@ -673,8 +609,8 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
             profileImgContainer.image = chosenImage
             
             let tools = Functionalities()
-            let imageUrl = tools.addImage(imageData: chosenImage)
-            self.thisDog?.image = imageUrl
+            //let imageUrl = tools.addImage(imageData: chosenImage)
+            //self.thisDog?.image = imageUrl
             
             Functionalities.myUser?.updateDog(dog: self.thisDog!)
             
@@ -690,14 +626,6 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         self.dismiss(animated: true, completion: nil)
     }
     
-//    func convertImageToBase64(image: UIImage) -> String {
-//        
-//        var imageData = UIImagePNGRepresentation(image)
-//        let base64String = imageData?.base64EncodedString()
-//        
-//        return base64String!
-//        
-//    }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)

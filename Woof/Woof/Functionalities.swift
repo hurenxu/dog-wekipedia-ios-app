@@ -149,7 +149,8 @@ class Functionalities{
         
         return Functionalities.myUser!
     }
-    
+   
+    /*
     func addImage(imageData: UIImage) -> String {
         let storageRef = FIRStorage.storage().reference().child(thisDogID)
         
@@ -162,6 +163,7 @@ class Functionalities{
         }
         
     }
+ */
     
     func retrieveImage() {
         
