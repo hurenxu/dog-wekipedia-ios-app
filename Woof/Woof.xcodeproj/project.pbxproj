@@ -512,7 +512,7 @@
 				TargetAttributes = {
 					076344811E415470001E20C9 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 9EPWHD42X7;
+						DevelopmentTeam = 55L773VGHV;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Maps.iOS = {
@@ -998,7 +998,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: hemeiyi0225@icloud.com (3CH6TSBANA)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
-				DEVELOPMENT_TEAM = 9EPWHD42X7;
+				DEVELOPMENT_TEAM = 55L773VGHV;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1006,7 +1006,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				INFOPLIST_FILE = Woof/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = jasper.Woof.ios.Woof;
+				PRODUCT_BUNDLE_IDENTIFIER = meiyi.he.Woof.ios.Woof;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Woof-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
@@ -1021,7 +1021,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: hemeiyi0225@icloud.com (3CH6TSBANA)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
-				DEVELOPMENT_TEAM = 9EPWHD42X7;
+				DEVELOPMENT_TEAM = 55L773VGHV;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1029,7 +1029,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				INFOPLIST_FILE = Woof/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = jasper.Woof.ios.Woof;
+				PRODUCT_BUNDLE_IDENTIFIER = meiyi.he.Woof.ios.Woof;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Woof-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
