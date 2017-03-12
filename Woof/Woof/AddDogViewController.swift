@@ -23,8 +23,8 @@ class AddDogViewController: UIViewController, UINavigationBarDelegate, UIImagePi
     var picker2 = UIPickerView()
     var picker3 = UIPickerView()
     //var picker2 = UIDatePicker()
-    
-    
+    // position var
+    //var position: [String?: NSObject?] = [:]
     
     //Declare the texctfield in this view
     var dogNametextField = UITextField(frame: CGRect(20.0, 230, 330.0, 40.0))
@@ -227,7 +227,6 @@ class AddDogViewController: UIViewController, UINavigationBarDelegate, UIImagePi
         picker2.delegate = self
         
         self.view.addSubview(picker2)
-
         
         breedLabel.textAlignment = .center
         breedLabel.text = "Breed: " + breed
@@ -258,7 +257,26 @@ class AddDogViewController: UIViewController, UINavigationBarDelegate, UIImagePi
         // Do any additional setup after loading the view.
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let touch = touches.first {
+            let position = touch.location(in: self.view)
+            print(position.x)
+            print(position.y)
+        }
+    }
+    
+    // Renxu Modification
+    //func contains(  )
+    //{
+      //  if() {
+        
+        //}
+    //}
+    
     func textFieldEditing(sender: UITextField) {
+        // Renxu Hu edit on changes
+        //if(  ) {
+        //}
         let datePickerView:UIDatePicker = UIDatePicker()
         datePickerView.datePickerMode = UIDatePickerMode.date
         sender.inputView = datePickerView
@@ -268,6 +286,7 @@ class AddDogViewController: UIViewController, UINavigationBarDelegate, UIImagePi
     func datePickerValueChanged(datePicker:UIDatePicker) {
 
         datePicker.isHidden = false
+        self.view.endEditing(true)
         let dateFormatter: DateFormatter = DateFormatter()
         dateFormatter.dateStyle = DateFormatter.Style.short
         let strDate = dateFormatter.string(from: datePicker.date)
@@ -276,9 +295,21 @@ class AddDogViewController: UIViewController, UINavigationBarDelegate, UIImagePi
         
     }
     
+//    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+//        if pickerView == picker2{
+//            picker2.isHidden = true
+//            self.view.endEditing(true)
+//        }
+//        else if pickerView == picker3{
+//            picker3.isHidden = true
+//            self.view.endEditing(true)
+//        }
+//    }
+    
     func datePickerValueChanged2(datePicker:UIDatePicker) {
 
         datePicker.isHidden = false
+        self.view.endEditing(true)
         let dateFormatter: DateFormatter = DateFormatter()
         
         
