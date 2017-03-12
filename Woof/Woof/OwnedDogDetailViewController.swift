@@ -71,7 +71,23 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
     let ageLabel = UILabel(frame: CGRect(x: 20, y: 455, width: 330, height: 40))
     
 
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        
+        if textField == breedtextField {
+            
+            self.view.frame.origin.y -= CGFloat(200)
+        }
+        
+        return true
+    }
     
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+        if textField == breedtextField {
+            
+            self.view.frame.origin.y += CGFloat(200)
+        }
+    }
     
     override func viewDidLoad() {
         //super.viewDidLoad()
@@ -304,6 +320,7 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         breedtextField.autocapitalizationType = UITextAutocapitalizationType.words // If you need any capitalization
         self.view.addSubview(breedtextField)
         breedtextField.isHidden = true
+        breedtextField.delegate = self
 
         
         
@@ -525,6 +542,8 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         self.view.endEditing(true)
         return false
     }
+    
+    
     //---------------------------function about picker-----------------------------------------------------------
     
     

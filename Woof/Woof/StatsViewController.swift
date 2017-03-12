@@ -75,7 +75,7 @@ class StatsViewController: UIViewController {
     // function to set up the common specs of bars
     func setUpStatsBar(myValue: Int, myBar: UIProgressView) {
         
-        myBar.progress = Float(Double(myValue) / 10.0)
+        myBar.progress = Float(Double(myValue) / Double(likeBreeds.count))
         myBar.transform = myBar.transform.scaledBy(x: 1, y: 20)
         myBar.tintColor = UIColor.white
         myBar.trackTintColor = UIColor.white.withAlphaComponent(0.4)
@@ -114,13 +114,14 @@ class StatsViewController: UIViewController {
         if sender.backgroundColor == BUTTON_COLOR {
             
             print("store \(buttonLabel)")
-            
+            Functionalities.myUser?.addFavoriteCategoryFilter(filter: (sender.titleLabel?.text!)!)
             sender.backgroundColor = UIColor.gray
         }
         
         else {
             
             print("remove \(buttonLabel)")
+            Functionalities.myUser?.removeFavoriteCategoryFilter(filter: (sender.titleLabel?.text!)!)
             sender.backgroundColor = BUTTON_COLOR
         }
         // user.addFavoriteFilter(\buttonLabel)
@@ -130,7 +131,7 @@ class StatsViewController: UIViewController {
         
         print("switch to result page")
         
-        self.performSegue(withIdentifier: "ToResultSegue", sender: sender)
+        self.performSegue(withIdentifier: "ToResultSegue", sender: sender)        
     }
     
     // segue to switch to result page
