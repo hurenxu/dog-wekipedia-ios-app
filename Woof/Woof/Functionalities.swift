@@ -24,6 +24,8 @@ class Functionalities{
     
     static var userExist = false
     
+    static var dogList = [Dog]()
+    
     init(){}
     // return a whole dog breed list for woofipedia
     // call this method in viewdidload
@@ -80,6 +82,7 @@ class Functionalities{
                         }
                         if (toCheck != 1) {
                             thisDog.dogID = key as String
+                            Functionalities.dogList.append(thisDog)
                             controller.ownedDog.append(thisDog.name)
                             controller.age.append(thisDog.age)
                             controller.breed.append(thisDog.breed.breedName)
@@ -87,6 +90,25 @@ class Functionalities{
                             controller.color.append(thisDog.color)
                             controller.dogID.append(key as String)
                             controller.dogList.append(thisDog)
+                            
+                            controller.collectView.reloadData()
+                        }
+                        else {
+                            var count = 0
+                            for index in controller.dogList {
+                                if (index.dogID == key as String) {
+                                    break
+                                }
+                                count = count + 1
+                            }
+                            thisDog.dogID = key as String
+                            controller.ownedDog[count] = thisDog.name
+                            controller.age[count] = thisDog.age
+                            controller.breed[count] = thisDog.breed.breedName
+                            controller.gender[count] = thisDog.gender
+                            controller.color[count] = thisDog.color
+                            controller.dogList[count] = thisDog
+                            controller.dogID[count] = thisDog.dogID
                             
                             controller.collectView.reloadData()
                         }
