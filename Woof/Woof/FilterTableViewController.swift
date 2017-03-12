@@ -110,6 +110,8 @@ class FilterTableViewController: UIViewController, UINavigationBarDelegate{
     @IBOutlet weak var background: UIScrollView!
     @IBOutlet weak var foreground: UIScrollView!
     
+    var buttonsReference: [UIButton] = [UIButton]()
+    
     var filtersString = [String]()
     let filtersDictionary: [String: String] = [
         
@@ -237,6 +239,7 @@ class FilterTableViewController: UIViewController, UINavigationBarDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let currentFavFilters: [String] = (Functionalities.myUser?.favoriteCategoryFilters)!
         
         let navigationBar = UINavigationBar(frame: CGRect(x:0, y:0, width:self.view.frame.size.width, height:58)) // Offset by 20 pixels vertically to take the status bar into account
         
@@ -308,6 +311,11 @@ class FilterTableViewController: UIViewController, UINavigationBarDelegate{
             button = UIButton(frame: CGRect(origin: buttonOrigin, size: button_size))
             setUpButtons(myLabel: key, myFontSize: button_font_size, myButton: button)
             button.addTarget(self, action: #selector(self.filterPressed(sender:)), for: UIControlEvents.touchDown)
+            
+            if currentFavFilters.contains("Size: \(key)") {
+                
+                filterPressed(sender: button)
+            }
         }
         buttonOrigin = CGPoint(x:0,y:0)
         button_offset = 0
@@ -331,6 +339,11 @@ class FilterTableViewController: UIViewController, UINavigationBarDelegate{
             button = UIButton(frame: CGRect(origin: buttonOrigin, size: button_size))
             setUpButtons(myLabel: key, myFontSize: button_font_size, myButton: button)
             button.addTarget(self, action: #selector(self.filterPressed(sender:)), for: UIControlEvents.touchDown)
+            
+            if currentFavFilters.contains("Trainability: \(key)") {
+                
+                filterPressed(sender: button)
+            }
         }
         buttonOrigin = CGPoint(x:0,y:0)
         button_offset = 0
@@ -354,6 +367,11 @@ class FilterTableViewController: UIViewController, UINavigationBarDelegate{
             button = UIButton(frame: CGRect(origin: buttonOrigin, size: button_size))
             setUpButtons(myLabel: key, myFontSize: button_font_size, myButton: button)
             button.addTarget(self, action: #selector(self.filterPressed(sender:)), for: UIControlEvents.touchDown)
+            
+            if currentFavFilters.contains("Barking Level: \(key)") {
+                
+                filterPressed(sender: button)
+            }
         }
         buttonOrigin = CGPoint(x:0,y:0)
         button_offset = 0
@@ -377,6 +395,11 @@ class FilterTableViewController: UIViewController, UINavigationBarDelegate{
             button = UIButton(frame: CGRect(origin: buttonOrigin, size: button_size))
             setUpButtons(myLabel: key, myFontSize: button_font_size, myButton: button)
             button.addTarget(self, action: #selector(self.filterPressed(sender:)), for: UIControlEvents.touchDown)
+            
+            if currentFavFilters.contains("Grooming: \(key)") {
+                
+                filterPressed(sender: button)
+            }
         }
         buttonOrigin = CGPoint(x:0,y:0)
         button_offset = 0
@@ -402,6 +425,11 @@ class FilterTableViewController: UIViewController, UINavigationBarDelegate{
             button = UIButton(frame: CGRect(origin: buttonOrigin, size: button_size))
             setUpButtons(myLabel: key, myFontSize: button_font_size, myButton: button)
             button.addTarget(self, action: #selector(self.filterPressed(sender:)), for: UIControlEvents.touchDown)
+            
+            if currentFavFilters.contains("Shedding: \(key)") {
+                
+                filterPressed(sender: button)
+            }
         }
         
         buttonOrigin = CGPoint(x:0,y:0)
@@ -432,6 +460,11 @@ class FilterTableViewController: UIViewController, UINavigationBarDelegate{
             }
             setUpButtons(myLabel: key, myFontSize: button_font_size, myButton: button)
             button.addTarget(self, action: #selector(self.filterPressed(sender:)), for: UIControlEvents.touchDown)
+            
+            if currentFavFilters.contains("Group: \(key)") {
+                
+                filterPressed(sender: button)
+            }
         }
         
         buttonOrigin = CGPoint(x: next_origin.x, y: next_origin.y)
