@@ -168,6 +168,7 @@ class DetailViewController: UIViewController, UINavigationBarDelegate{
         label.backgroundColor = UIColor(netHex: 0xa5c3bb)
         label.layer.masksToBounds = true
         label.sizeToFit()
+        label.frame = CGRect(origin: label.frame.origin, size: CGSize(width: scrollView.frame.width-80, height: label.frame.height))
         scrollView.addSubview(label)
         return label.frame.height
     }
