@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddDogViewController: UIViewController, UINavigationBarDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
+class AddDogViewController: UIViewController, UINavigationBarDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UIPickerViewDelegate {
     
     var name = ""
     var gender = ""
@@ -21,6 +21,7 @@ class AddDogViewController: UIViewController, UINavigationBarDelegate, UIImagePi
     var ageData = ["1","2","3","4","5","6","7","8","9","10"]
     var picker = UIPickerView()
     var picker2 = UIPickerView()
+    var picker3 = UIPickerView()
     //var picker2 = UIDatePicker()
     
     
@@ -178,10 +179,25 @@ class AddDogViewController: UIViewController, UINavigationBarDelegate, UIImagePi
         dogBirhDatetextField.borderStyle = UITextBorderStyle.roundedRect
         dogBirhDatetextField.placeholder = "Birthdate"
         dogBirhDatetextField.autocapitalizationType = UITextAutocapitalizationType.words // If you need any capitalization
+       
         self.view.addSubview(dogBirhDatetextField)
         dogBirhDatetextField.isHidden = true
         
         self.dogBirhDatetextField.delegate = self;
+        
+        picker3.center = CGPoint(x: 180, y: 560)
+        picker3.backgroundColor = UIColor.white
+        //let currentDate = Date.init()
+        // picker2.minimumDate = Date(timeIntervalSince1970: currentDate.timeIntervalSince1970 - currentDate.timeIntervalSince1970.truncatingRemainder(dividingBy: 60))
+        picker3.layer.masksToBounds = true
+        picker3.layer.cornerRadius = CGFloat(20)
+        
+        self.textFieldEditing2(sender: dogBirhDatetextField)
+        picker3.isHidden = true
+        
+        //picker2.datePickerMode = UIDatePickerMode.date
+        
+        self.view.addSubview(picker3)
 
         
         vaccinationDateLabel.textAlignment = .center
@@ -201,6 +217,16 @@ class AddDogViewController: UIViewController, UINavigationBarDelegate, UIImagePi
         dogVaccinationDatetextField.autocapitalizationType = UITextAutocapitalizationType.words // If you need any capitalization
         self.view.addSubview(dogVaccinationDatetextField)
         dogVaccinationDatetextField.isHidden = false
+        
+        picker2.center = CGPoint(x: 180, y: 560)
+        picker2.backgroundColor = UIColor.white
+        picker2.layer.masksToBounds = true
+        picker2.layer.cornerRadius = CGFloat(20)
+        self.textFieldEditing(sender: dogVaccinationDatetextField)
+        picker2.isHidden = true
+        picker2.delegate = self
+        
+        self.view.addSubview(picker2)
 
         
         breedLabel.textAlignment = .center
@@ -231,6 +257,52 @@ class AddDogViewController: UIViewController, UINavigationBarDelegate, UIImagePi
         self.editProfButtonClick()
         // Do any additional setup after loading the view.
     }
+    
+    func textFieldEditing(sender: UITextField) {
+        let datePickerView:UIDatePicker = UIDatePicker()
+        datePickerView.datePickerMode = UIDatePickerMode.date
+        sender.inputView = datePickerView
+        datePickerView.addTarget(self, action: #selector(AddDogViewController.datePickerValueChanged), for: UIControlEvents.valueChanged)
+    }
+    
+    func datePickerValueChanged(datePicker:UIDatePicker) {
+
+        datePicker.isHidden = false
+        let dateFormatter: DateFormatter = DateFormatter()
+        dateFormatter.dateStyle = DateFormatter.Style.short
+        let strDate = dateFormatter.string(from: datePicker.date)
+        dogVaccinationDatetextField.text = strDate
+        vaccinationDateLabel.text = strDate
+        
+    }
+    
+    func datePickerValueChanged2(datePicker:UIDatePicker) {
+
+        datePicker.isHidden = false
+        let dateFormatter: DateFormatter = DateFormatter()
+        
+        
+        dateFormatter.dateStyle = DateFormatter.Style.short
+        //dateFormatter.timeStyle = DateFormatter.Style.short
+        
+        let strDate = dateFormatter.string(from: datePicker.date)
+        
+        dogBirhDatetextField.text = strDate
+        birthDateLabel.text = strDate
+        
+        
+        //datePicker.isHidden = true
+    }
+
+    
+    func textFieldEditing2(sender: UITextField) {
+        let datePickerView:UIDatePicker = UIDatePicker()
+        datePickerView.datePickerMode = UIDatePickerMode.date
+        sender.inputView = datePickerView
+        datePickerView.addTarget(self, action: #selector(OwnedDogDetailViewController.datePickerValueChanged2), for: UIControlEvents.valueChanged)
+    }
+
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
