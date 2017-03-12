@@ -125,7 +125,7 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         
         //      birthDateLabel.center = CGPoint(x: 20, y: 350)
         birthDateLabel.textAlignment = .center
-        birthDateLabel.text = "Birth Date: " + gender
+        birthDateLabel.text = "Birth Date: " + birthdate
         birthDateLabel.textColor = UIColor.white
         birthDateLabel.font = birthDateLabel.font.withSize(30)
         birthDateLabel.font = UIFont(name: "Rubik", size: 25)
@@ -140,7 +140,7 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         //Label of the vaccination date
         //     vaccinationDateLabel.center = CGPoint(x: 20, y: 400)
         vaccinationDateLabel.textAlignment = .center
-        vaccinationDateLabel.text = "Vaccination Date: " + gender
+        vaccinationDateLabel.text = "Vaccination Date: " + vaccinationdate
         vaccinationDateLabel.textColor = UIColor.white
         vaccinationDateLabel.font = vaccinationDateLabel.font.withSize(30)
         vaccinationDateLabel.font = UIFont(name: "Rubik", size: 25)
@@ -376,12 +376,7 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
     
     
     func datePickerValueChanged(datePicker:UIDatePicker) {
-        /**
-         let formatter: DateFormatter = DateFormatter()
-         dogVaccinationDatetextField.font = UIFont(name: "Rubik", size: 20)
-         dogVaccinationDatetextField.textColor = UIColor.black
-         dogVaccinationDatetextField.text = formatter.string(from: picker2.date)
-         */
+
         datePicker.isHidden = false
         let dateFormatter: DateFormatter = DateFormatter()
         
@@ -400,12 +395,7 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
     
     
     func datePickerValueChanged2(datePicker:UIDatePicker) {
-        /**
-         let formatter: DateFormatter = DateFormatter()
-         dogVaccinationDatetextField.font = UIFont(name: "Rubik", size: 20)
-         dogVaccinationDatetextField.textColor = UIColor.black
-         dogVaccinationDatetextField.text = formatter.string(from: picker2.date)
-         */
+
         datePicker.isHidden = false
         let dateFormatter: DateFormatter = DateFormatter()
         
