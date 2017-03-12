@@ -89,6 +89,25 @@ class Functionalities{
                             
                             controller.collectView.reloadData()
                         }
+                        else {
+                            var count = 0
+                            for index in controller.dogList {
+                                if (index.dogID == key as String) {
+                                    break
+                                }
+                                count = count + 1
+                            }
+                            thisDog.dogID = key as String
+                            controller.ownedDog[count] = thisDog.name
+                            controller.age[count] = thisDog.age
+                            controller.breed[count] = thisDog.breed.breedName
+                            controller.gender[count] = thisDog.gender
+                            controller.color[count] = thisDog.color
+                            controller.dogList[count] = thisDog
+                            controller.dogID[count] = thisDog.dogID
+                            
+                            controller.collectView.reloadData()
+                        }
                         toCheck = 0
                     }
                 }

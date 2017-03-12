@@ -470,7 +470,7 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
             name = (thisDog?.name)!
         }
         if (gender == "") {
-            gender = (thisDog?.name)!
+            gender = (thisDog?.gender)!
         }
         if (age == "") {
             age = (thisDog?.age)!
@@ -509,9 +509,18 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
             newVaccineDate = dateFormatter.date(from: vaccinationdate)!
         }
         
+        
         let newDog = Dog(dogID: (thisDog?.dogID)!, name: name, breed: newBreed, birthDate: newBirthDate,age: age, gender: gender,  vaccination: newVaccineDate, color: (thisDog?.color)!, description: (thisDog?.description)!, image: (thisDog?.image)!)
         print("This line below is importnatn!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-        print(thisDog?.name)
+        print(newDog.name)
+        print(newDog.dogID)
+        print(newDog.breed.breedName)
+        print(newDog.birthDate)
+        print(newDog.gender)
+        print(newDog.vaccination)
+        print(newDog.color)
+        print(newDog.description)
+        print(newDog.image)
         print("Look here !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
         Functionalities.myUser?.updateDog(dog: newDog)
        
