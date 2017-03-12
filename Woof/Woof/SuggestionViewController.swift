@@ -225,6 +225,8 @@ class SuggestionViewController: UIViewController {
                     // append the current index to like breed then slideout
                     appendIndex(myArray: &likeBreeds)
                     slideOut(outsideX, outsideY)
+                    
+                    Functionalities.myUser?.addFavoriteDogBreed(breedname: breedArray[index - 1].getBreedName())
                 }
             }
             
@@ -269,6 +271,8 @@ class SuggestionViewController: UIViewController {
                 outsideX = CGFloat(0 - IMAGE_HALF - OFFSET)
                 outsideY = CGFloat(imageStatic.center.y)
                 appendIndex(myArray: &likeBreeds)
+                
+                Functionalities.myUser?.addFavoriteDogBreed(breedname: breedArray[index - 1].getBreedName())
             }
             
             else if sender == rightButton {

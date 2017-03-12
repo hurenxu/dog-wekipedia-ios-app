@@ -90,14 +90,21 @@ class User{
     }
     
     func addFavoriteDogBreed(breedname: String) {
-        if (self.favoriteDogBreeds.contains(breedname)) {
+        
+        if (!self.favoriteDogBreeds.contains(breedname)) {
             
-        } else {
             self.favoriteDogBreeds.append(breedname)
         }
+        
+        let dao = DataAccessObject()
+        dao.updateUser(user: self)
     }
     func removeFavoriteDogBreed(breedname: String) {
+        
         self.favoriteDogBreeds = self.favoriteDogBreeds.filter{$0 != breedname}
+        
+        let dao = DataAccessObject()
+        dao.updateUser(user: self)
     }
     
     
