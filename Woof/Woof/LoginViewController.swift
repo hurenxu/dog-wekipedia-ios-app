@@ -13,6 +13,7 @@ import GoogleSignIn
 import FirebaseAuth
 
 class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate{
+<<<<<<< HEAD
     public func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         if error != nil {
             // TODO
@@ -129,6 +130,8 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
 
     }
 
+=======
+>>>>>>> ed5c7b930c0e81e45bd4e022905e46159f324f98
     
     var count: Int = 0
     override func viewDidLoad() {
@@ -197,22 +200,22 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
                 
                 if user != nil {
                     Functionalities.myUser = User(authData:(user)!)
-                    Functionalities.userExist = true
-                    let dogID = (Functionalities.myUser?.userID)! + (Functionalities.myUser?.dogIDs.count.description)!
-                    let age = "3"
-                    let birthdate = NSDate.distantPast
-                    let vaccinedate = NSDate.distantFuture
+                    //Functionalities.userExist = true
+//                    let dogID = (Functionalities.myUser?.userID)! + (Functionalities.myUser?.dogIDs.count.description)!
+//                    let age = "3"
+//                    let birthdate = NSDate.distantPast
+//                    let vaccinedate = NSDate.distantFuture
                     
                     
                     //let myDogBreed = Breed(breedName: "Yorkshire", image: "none", personality: "cute", origin:    "England", group: "Small", weight: "light", height: "short", head: "small", body: "small", ears: "small", tail: "short", shedding: "no", grooming: "no", trainability: "easy", energyLevel: "high", barkingLevel: "low", lifeExpectancy: "long", description: "dorable", history: "long", breeders: "none")
                     
-                    let myDogBreed = Breed(breedName: "Yorkshire Terrier", popularity: "Highest", origin: "England", group: "Small", size: "small", type: "type", lifeExpectancy: "20", colors: "white", litterSize: "20", price: "1000", barkingLevel: "okay", childFriendly: "yes", breeders: "none", image: "image")
-                    
-                    let myDog = Dog(dogID: dogID, name: "cutie", breed: myDogBreed, birthDate: birthdate, age: age, gender: "female", vaccination: vaccinedate, color: "Brown", description: "Mine", image: "non")
-                    Functionalities.myUser?.addDog(dog: myDog)
-                    
-                    
-                    let updateMyNewDog = Dog(dogID: dogID, name: "cutie", breed: myDogBreed, birthDate: birthdate, age: age, gender: "female", vaccination: vaccinedate, color: "Brown", description: "Mine", image: "this time I add in some description")
+//                    let myDogBreed = Breed(breedName: "Yorkshire Terrier", popularity: "Highest", origin: "England", group: "Small", size: "small", type: "type", lifeExpectancy: "20", colors: "white", litterSize: "20", price: "1000", barkingLevel: "okay", childFriendly: "yes", breeders: "none", image: "image")
+//                    
+//                    let myDog = Dog(dogID: dogID, name: "cutie", breed: myDogBreed, birthDate: birthdate, age: age, gender: "female", vaccination: vaccinedate, color: "Brown", description: "Mine", image: "non")
+//                    Functionalities.myUser?.addDog(dog: myDog)
+//                    
+//                    
+//                    let updateMyNewDog = Dog(dogID: dogID, name: "cutie", breed: myDogBreed, birthDate: birthdate, age: age, gender: "female", vaccination: vaccinedate, color: "Brown", description: "Mine", image: "this time I add in some description")
                     //user.updateDog(dog: updateMyNewDog)
                     //user.deleteDog(dog: updateMyNewDog)
 
@@ -272,7 +275,120 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
         
         
     }
-
+    
+    public func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        if error != nil {
+            // TODO
+            print("GIDSIGNIN!!!!! ERROR")
+            return
+        }
+        
+        // google_credential
+        guard let authentication = user.authentication else { return }
+        print("NO ERROR!!!!!!")
+        
+        
+        let credential = FIRGoogleAuthProvider.credential(withIDToken: authentication.idToken,
+                                                          accessToken: authentication.accessToken)
+        
+        let rootViewController = self
+        // [START_EXCLUDE]
+        // Perform login by calling Firebase APIs
+        FIRAuth.auth()?.signIn(with: credential, completion: { (user, error) in
+            if let error = error {
+                print("Login error: \(error.localizedDescription)")
+                let alertController = UIAlertController(title: "Login Error", message: error.localizedDescription, preferredStyle: .alert)
+                let okayAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                alertController.addAction(okayAction)
+                rootViewController.present(alertController, animated: true, completion: nil)
+                
+                return
+            }
+            
+            print("FIREBASE CURRENT USER ??????")
+            if FIRAuth.auth()?.currentUser != nil {
+                print("FIREBASE CURRENT USER NOT NIL@@@@@@@@")
+                let user = User(authData: (FIRAuth.auth()?.currentUser)!)
+                
+                Functionalities.myUser = user
+                //Functionalities.userExist = true
+                
+//                let dogID = user.userID + user.dogIDs.count.description
+//                let age = "3"
+//                let birthdate = NSDate.distantPast
+//                let vaccinedate = NSDate.distantFuture
+                
+                
+                //let myDogBreed = Breed(breedName: "Yorkshire", image: "none", personality: "cute", origin:    "England", group: "Small", weight: "light", height: "short", head: "small", body: "small", ears: "small", tail: "short", shedding: "no", grooming: "no", trainability: "easy", energyLevel: "high", barkingLevel: "low", lifeExpectancy: "long", description: "dorable", history: "long", breeders: "none")
+                
+//                let myDogBreed = Breed(breedName: "Yorkshire Terrier", popularity: "Highest", origin: "England", group: "Small", size: "small", type: "type", lifeExpectancy: "20", colors: "white", litterSize: "20", price: "1000", barkingLevel: "okay", childFriendly: "yes", breeders: "none", image: "image")
+//                
+//                let myDog = Dog(dogID: dogID, name: "cutie", breed: myDogBreed, birthDate: birthdate, age: age, gender: "female", vaccination: vaccinedate, color: "Brown", description: "Mine", image: "non")
+//                user.addDog(dog: myDog)
+//                
+//                
+//                let updateMyNewDog = Dog(dogID: dogID, name: "cutie", breed: myDogBreed, birthDate: birthdate, age: age, gender: "female", vaccination: vaccinedate, color: "Brown", description: "Mine", image: "this time I add in some description")
+                
+            }
+            self.performSegue(withIdentifier: "login", sender: self)
+            
+            // Present the main view
+            //if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "MainView") {
+            //    UIApplication.shared.keyWindow?.rootViewController = viewController
+            //    self.dismiss(animated: true, completion: nil)
+            //}
+            
+        })/*
+         print("FIREBASE CURRENT USER ??????")
+         if FIRAuth.auth()?.currentUser != nil {
+         print("FIREBASE CURRENT USER NOT NIL@@@@@@@@")
+         let user = User(authData: (FIRAuth.auth()?.currentUser)!)
+         
+         Functionalities.myUser = user
+         Functionalities.userExist = true
+         
+         let dogID = user.userID + user.dogIDs.count.description
+         let age = "3"
+         let birthdate = NSDate.distantPast
+         let vaccinedate = NSDate.distantFuture
+         
+         
+         //let myDogBreed = Breed(breedName: "Yorkshire", image: "none", personality: "cute", origin:    "England", group: "Small", weight: "light", height: "short", head: "small", body: "small", ears: "small", tail: "short", shedding: "no", grooming: "no", trainability: "easy", energyLevel: "high", barkingLevel: "low", lifeExpectancy: "long", description: "dorable", history: "long", breeders: "none")
+         
+         let myDogBreed = Breed(breedName: "Yorkshire Terrier", popularity: "Highest", origin: "England", group: "Small", size: "small", type: "type", lifeExpectancy: "20", colors: "white", litterSize: "20", price: "1000", barkingLevel: "okay", childFriendly: "yes", breeders: "none", image: "image")
+         
+         let myDog = Dog(dogID: dogID, name: "cutie", breed: myDogBreed, birthDate: birthdate, age: age, gender: "female", vaccination: vaccinedate, color: "Brown", description: "Mine", image: "non")
+         user.addDog(dog: myDog)
+         
+         
+         let updateMyNewDog = Dog(dogID: dogID, name: "cutie", breed: myDogBreed, birthDate: birthdate, age: age, gender: "female", vaccination: vaccinedate, color: "Brown", description: "Mine", image: "this time I add in some description")
+         
+         }*/
+        
+        
+        
+        
+        print("google Login there???")/*
+         let myStBd = UIStoryboard(name: "Main",bundle:nil)
+         logCon.performSegue(withIdentifier: "login", sender: self)*/
+        
+        
+        self.performSegue(withIdentifier: "login", sender: self)
+        
+        
+        
+        //viewController.performSegue(withIdentifier: "login", sender: viewController)
+        // Then push that view controller onto the navigation stack
+        
+        //rootViewController?.navigationController?.pushViewController(viewController, animated: true);
+        //rootViewController?.navigationController?.performSegue(withIdentifier: <#T##String#>, sender: <#T##Any?#>)
+        
+        print("HOPE PERFORM SEGUE HERE")
+        //rootViewController?.childViewControllers.performSegue(withIdentifier: login, sender: LoginViewController)
+        // [END_EXCLUDE]
+        
+    }
+    
     @IBAction func googleLogin(sender: GIDSignInButton) {
         
         

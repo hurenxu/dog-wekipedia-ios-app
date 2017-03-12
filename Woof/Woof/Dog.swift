@@ -2,7 +2,7 @@ import Foundation
 
 class Dog{
     
-    let dogID: String
+    var dogID = ""
     var name = ""
     var breed: Breed!
     var age = ""

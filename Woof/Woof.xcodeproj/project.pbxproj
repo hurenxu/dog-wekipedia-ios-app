@@ -112,7 +112,6 @@
 		2FD762301E73CDB500E315D0 /* LikedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD7622F1E73CDB500E315D0 /* LikedViewController.swift */; };
 		2FFCB09B1E7271DB00B4D6E9 /* AddDogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFCB09A1E7271DB00B4D6E9 /* AddDogViewController.swift */; };
 		58C3A872E1D87A2AA2091BAF /* Pods_Woof.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B9FF199C9CAEB89DFB8BD0B /* Pods_Woof.framework */; };
-		73C8B1631E72FA6000185C8B /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73C8B1621E72FA6000185C8B /* StoreKit.framework */; };
 		73C8B1651E72FA6A00185C8B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73C8B1641E72FA6A00185C8B /* SystemConfiguration.framework */; };
 		73C8B1671E72FA7300185C8B /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73C8B1661E72FA7300185C8B /* AddressBook.framework */; };
 		73C8B16B1E73014800185C8B /* GoogleSignIn.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 73C8B1691E73014800185C8B /* GoogleSignIn.bundle */; };
@@ -210,7 +209,6 @@
 		2FFCB09A1E7271DB00B4D6E9 /* AddDogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDogViewController.swift; sourceTree = "<group>"; };
 		417FEE35B18CEC60476A1012 /* Pods-WoofTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoofTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WoofTests/Pods-WoofTests.release.xcconfig"; sourceTree = "<group>"; };
 		6E144974F62DFDBD7A02E026 /* Pods-Woof.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Woof.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Woof/Pods-Woof.debug.xcconfig"; sourceTree = "<group>"; };
-		73C8B1621E72FA6000185C8B /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		73C8B1641E72FA6A00185C8B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		73C8B1661E72FA7300185C8B /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		73C8B1681E72FAF700185C8B /* Woof-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Woof-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -241,7 +239,6 @@
 				73C8B16C1E73014800185C8B /* GoogleSignIn.framework in Frameworks */,
 				73C8B1671E72FA7300185C8B /* AddressBook.framework in Frameworks */,
 				73C8B1651E72FA6A00185C8B /* SystemConfiguration.framework in Frameworks */,
-				73C8B1631E72FA6000185C8B /* StoreKit.framework in Frameworks */,
 				076344BA1E415DC1001E20C9 /* FBSDKLoginKit.framework in Frameworks */,
 				58C3A872E1D87A2AA2091BAF /* Pods_Woof.framework in Frameworks */,
 			);
@@ -427,7 +424,6 @@
 				73C8B16A1E73014800185C8B /* GoogleSignIn.framework */,
 				73C8B1661E72FA7300185C8B /* AddressBook.framework */,
 				73C8B1641E72FA6A00185C8B /* SystemConfiguration.framework */,
-				73C8B1621E72FA6000185C8B /* StoreKit.framework */,
 				076344B91E415DC1001E20C9 /* FBSDKLoginKit.framework */,
 				2B9FF199C9CAEB89DFB8BD0B /* Pods_Woof.framework */,
 				D8C1D9890B526C0947E28C55 /* Pods_WoofTests.framework */,
@@ -518,16 +514,21 @@
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 9EPWHD42X7;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 0;
+							};
+						};
 					};
 					076344971E415470001E20C9 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 5CPEK2K37C;
+						DevelopmentTeam = 55L773VGHV;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 076344811E415470001E20C9;
 					};
 					076344A21E415470001E20C9 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 5CPEK2K37C;
+						DevelopmentTeam = 55L773VGHV;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 076344811E415470001E20C9;
 					};
@@ -911,12 +912,12 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: hemeiyi0225@icloud.com (3CH6TSBANA)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: meiyi.he@yahoo.com (8JLU6KX85B)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = 5CPEK2K37C;
+				DEVELOPMENT_TEAM = 55L773VGHV;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -964,12 +965,12 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: hemeiyi0225@icloud.com (3CH6TSBANA)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: meiyi.he@yahoo.com (8JLU6KX85B)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 5CPEK2K37C;
+				DEVELOPMENT_TEAM = 55L773VGHV;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;

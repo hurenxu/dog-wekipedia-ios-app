@@ -8,17 +8,16 @@
 import UIKit
 import DOFavoriteButton
 
-class DetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UINavigationBarDelegate{
+class DetailViewController: UIViewController, UINavigationBarDelegate{
     
     // MARK: - Outlet from UI
     @IBOutlet weak var detailBreedName: UILabel!
     @IBOutlet weak var detailImageView: UIImageView!
     @IBOutlet weak var button: DOFavoriteButton!
     let SCROLL_OFFSET = 0
-    var scrollView = UIScrollView(frame: CGRect(x:0, y:410, width:400, height:200))
-    let likedArray = Functionalities.myUser?.favoriteDogBreeds
-    var table: UITableView! = nil
-    let result_origin = CGPoint(x:12, y:40)
+    let LABEL_OFFSET = 20
+    var scrollView = UIScrollView(frame: CGRect(x:0, y:410, width:400, height:350))
+    let result_origin = CGPoint(x:2, y:40)
     
     // MARK: - Setup data passing variable matches the SearchTableViewController.swift class's prepare function
     
@@ -39,13 +38,14 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
             {
                 // Assign breed name to the textLabel references in UI
                 detailBreedName.text = detailDog.getBreedName()
+                detailBreedName.adjustsFontSizeToFitWidth = true
                 
                 //Get Breed Profile Image URL
                 let urlString = detailDog.getImage();
                 if let url = URL(string: urlString){
                     URLSession.shared.dataTask(with: url) { (data, response, error) in
                         if error != nil {
-                            print("Failed fetching image:", error)
+                            print("Failed fetching image:", error ?? "")
                             return
                         }
                         
@@ -94,13 +94,6 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     
     override func viewDidLoad() {
         
-        //add tableview for testing
-        table = UITableView(frame: CGRect(origin: result_origin, size: CGSize(width: 353, height: self.view.frame.height-12)))
-        setUpTable(myColor: UIColor.white, myTable: table)
-        
-        table.delegate = self
-        table.dataSource = self
-        
         //view
         super.viewDidLoad()
         
@@ -108,8 +101,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         var x = width / 2
         let y = self.view.frame.height / 2
         
-        // heart button
-        
+        // add heart button
         let button = DOFavoriteButton(frame: CGRect(x: x, y: y, width: 100, height: 100), image: UIImage(named: "like"))
         button.imageColorOn = UIColor(red: 254/255, green: 110/255, blue: 111/255, alpha: 1.0)
         button.circleColor = UIColor(red: 254/255, green: 110/255, blue: 111/255, alpha: 1.0)
@@ -123,75 +115,76 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
             }
         }
         self.view.addSubview(button)
-        x += width
         
-//        add labels to the scroll view
-        let labelPersonality = UILabel(frame: CGRect(x: 0, y: 0, width: 350, height: 21))
-        labelPersonality.lineBreakMode = NSLineBreakMode.byWordWrapping
-        labelPersonality.numberOfLines = 0
-        if detailDog != nil {
-            labelPersonality.text =
-                "Personality: " + "\t" + ((detailDog?.getPersonality())!) + "\n" + "Size: " + "\t" + ((detailDog?.getSize())!)
-//             + "\n" + "Group: " + "\t" + (detailDog?.getGroup())!) + "\n" + "Life Expectancy: " + "\t" + ((detailDog?.getLifeExpectancy)!) + "\n" + "Origin: " + "\t" + ((detailDog?.getOrigin())!) + "\n" + "Trainability: " + "\t" + ((detailDog?.getTrainability())!) + "\n" + "Gromming: " + "\t" + ((detailDog?.getGrooming())!) + "\n" + "Shredding: " + "\t" + ((detailDog?.getShredding)!) + "\n"
-        }
-////            labelSize.text = (detailDog?.getSize())!
-////            labelGroup.text = (detailDog?.getGroup())!
-////            lifeExpectancy.text = (detailDog?.getLifeExpectancy())!
-////            labelOrigin.text = (detailDog?.getOrigin())!
-////            labelTrainability.text = (detailDog?.getTrainability())!
-//            labelGromming.text = (detailDog?.getGrooming())!
-        
-        
-        scrollView.contentInset = UIEdgeInsetsMake(0, 0, 10, 0)
-        scrollView.backgroundColor = UIColor(patternImage: UIImage(named: "backgroundHomeLarge.jpg")!)
+        // add scroll view
         self.view.addSubview(scrollView)
-        scrollView.addSubview(labelPersonality)
-        table = UITableView(frame: CGRect(origin: result_origin, size: CGSize(width: 353, height: self.view.frame.height-12)))
-        setUpTable(myColor: UIColor.white, myTable: table)
-        
-        table.delegate = self
-        table.dataSource = self
-        
-        
-        
-        
+        scrollView.isScrollEnabled = true
+        scrollView.contentInset = UIEdgeInsetsMake(0, 0, 10, 0)
+        scrollView.backgroundColor = UIColor.clear
+    
+        // add labels to the scroll view
+        var firstLabely = 0
+        let labelPersonality = UILabel(frame: CGRect(x: 20, y: 0, width: Int(scrollView.frame.width-50), height: 50))
+        labelPersonality.text = "PERSONALITY: " + ((detailDog?.getPersonality())!)
+        firstLabely = firstLabely + Int(heightForView(label: labelPersonality)) + LABEL_OFFSET
+        let labelSize = UILabel(frame: CGRect(x: 20, y: firstLabely, width: Int(scrollView.frame.width-50), height: 50))
+        labelSize.text = "SIZE: " + ((detailDog?.getSize())!)
+        firstLabely = firstLabely + Int(heightForView(label: labelSize)) + LABEL_OFFSET
+        let labelGroup = UILabel(frame: CGRect(x: 20, y: firstLabely, width: Int(scrollView.frame.width-50), height: 50))
+        labelGroup.text = "GROUP: " + ((detailDog?.getGroup())!)
+        firstLabely = firstLabely + Int(heightForView(label: labelGroup)) + LABEL_OFFSET
+        let labelType = UILabel(frame: CGRect(x: 20, y: firstLabely, width: Int(scrollView.frame.width-50), height: 50))
+        labelType.text = "TYPE: " + ((detailDog?.getType())!)
+        firstLabely = firstLabely + Int(heightForView(label: labelType)) + LABEL_OFFSET
+        let labelLifeExpectancy = UILabel(frame: CGRect(x: 20, y: firstLabely, width: Int(scrollView.frame.width-50), height: 50))
+        labelLifeExpectancy.text = "LIFE EXPECTANCY: " + ((detailDog?.getLifeExpectancy())!)
+        firstLabely = firstLabely + Int(heightForView(label: labelLifeExpectancy)) + LABEL_OFFSET
+        let labelOrigin = UILabel(frame: CGRect(x: 20, y: firstLabely, width: Int(scrollView.frame.width-50), height: 50))
+        labelOrigin.text = "ORIGIN: " + ((detailDog?.getOrigin())!)
+        firstLabely = firstLabely + Int(heightForView(label: labelOrigin)) + LABEL_OFFSET
+        let labelTrainability = UILabel(frame: CGRect(x: 20, y: firstLabely, width: Int(scrollView.frame.width-50), height: 50))
+        labelTrainability.text = "TRAINABILITY: " + ((detailDog?.getTrainability())!)
+        firstLabely = firstLabely + Int(heightForView(label: labelTrainability)) + LABEL_OFFSET
+        let labelGrooming = UILabel(frame: CGRect(x: 20, y: firstLabely, width: Int(scrollView.frame.width-50), height: 50))
+        labelGrooming.text = "GROOMING: " + ((detailDog?.getGrooming())!)
+        firstLabely = firstLabely + Int(heightForView(label: labelGrooming)) + LABEL_OFFSET
+        let labelShedding = UILabel(frame: CGRect(x: 20, y: firstLabely, width: Int(scrollView.frame.width-50), height: 50))
+        labelShedding.text = "SHEDDING: " + ((detailDog?.getShedding())!)
+        firstLabely = firstLabely + Int(heightForView(label: labelShedding)) + LABEL_OFFSET
+        let labelBarkingLevel = UILabel(frame: CGRect(x: 20, y: firstLabely, width: Int(scrollView.frame.width-50), height: 50))
+        labelBarkingLevel.text = "BARKING LEVEL: " + ((detailDog?.getBarkingLevel())!)
+        firstLabely = firstLabely + Int(heightForView(label: labelBarkingLevel)) + LABEL_OFFSET
+        let labelPrice = UILabel(frame: CGRect(x: 20, y: firstLabely, width: Int(scrollView.frame.width-50), height: 50))
+        labelPrice.text = "PRICE: " + ((detailDog?.getPrice())!)
+        firstLabely = firstLabely + Int(heightForView(label: labelPrice)) + LABEL_OFFSET
         configureView()
         
     }
-    
-    
-    func setUpTable(myColor: UIColor, myTable: UITableView) {
-        
-        myTable.backgroundColor = myColor
-        myTable.layer.cornerRadius = CGFloat(10)
-        myTable.rowHeight = CGFloat(80)
-        //myTable.register(BreedTableViewCell.self, forCellReuseIdentifier: "BreedTableViewCell")
-        print("myTable")
-//        scrollView.addSubview(myTable)
-        myTable.contentInset = UIEdgeInsetsMake(0, 0, 10, 0)
+    /* This function is to set label format */
+    func heightForView(label:UILabel) -> CGFloat{
+        label.numberOfLines = 0
+        label.lineBreakMode = NSLineBreakMode.byWordWrapping
+        label.layer.cornerRadius = 8
+        label.backgroundColor = UIColor(netHex: 0xa5c3bb)
+        label.layer.masksToBounds = true
+        label.sizeToFit()
+        label.frame = CGRect(origin: label.frame.origin, size: CGSize(width: scrollView.frame.width-80, height: label.frame.height))
+        scrollView.addSubview(label)
+        return label.frame.height
     }
-    func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
+
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        //print(testArray.count)
-        return likedArray!.count
-    }
-    
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        
-        cell.textLabel?.text = likedArray?[indexPath.row]
-        
-        return cell
-    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        scrollView.contentSize = CGSize(width:375, height:1000)
+    }
+    
+
 
     
 }

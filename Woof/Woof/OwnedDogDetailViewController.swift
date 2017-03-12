@@ -24,6 +24,11 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
     var picker3 = UIPickerView()
     //var picker2 = UIDatePicker()
     
+    // testing
+    let myUser = Functionalities.myUser
+    var thisDogID = ""
+    var thisDog: Dog?
+    
     
     
     //Declare the texctfield in this view
@@ -120,7 +125,7 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         
         //      birthDateLabel.center = CGPoint(x: 20, y: 350)
         birthDateLabel.textAlignment = .center
-        birthDateLabel.text = "Birth Date: " + gender
+        birthDateLabel.text = "Birth Date: " + birthdate
         birthDateLabel.textColor = UIColor.white
         birthDateLabel.font = birthDateLabel.font.withSize(30)
         birthDateLabel.font = UIFont(name: "Rubik", size: 25)
@@ -135,7 +140,7 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         //Label of the vaccination date
         //     vaccinationDateLabel.center = CGPoint(x: 20, y: 400)
         vaccinationDateLabel.textAlignment = .center
-        vaccinationDateLabel.text = "Vaccination Date: " + gender
+        vaccinationDateLabel.text = "Vaccination Date: " + vaccinationdate
         vaccinationDateLabel.textColor = UIColor.white
         vaccinationDateLabel.font = vaccinationDateLabel.font.withSize(30)
         vaccinationDateLabel.font = UIFont(name: "Rubik", size: 25)
@@ -335,24 +340,13 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         
     }
     
-    func changeImageButtonClick(sender:UIButton!){
-        
-    }
-    
-    
+
     func pickerView(_ pickerView: UIPickerView, didSelectRow row:Int, inComponent component : Int)
     {
         agetextField.text = ageData[row]
         self.view.endEditing(true)
     }
-    
-    
-    func dismissPicker() {
-        
-        view.endEditing(true)
-        
-    }
-    
+
     func textFieldEditing(sender: UITextField) {
         let datePickerView:UIDatePicker = UIDatePicker()
         datePickerView.datePickerMode = UIDatePickerMode.date
@@ -371,12 +365,7 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
     
     
     func datePickerValueChanged(datePicker:UIDatePicker) {
-        /**
-         let formatter: DateFormatter = DateFormatter()
-         dogVaccinationDatetextField.font = UIFont(name: "Rubik", size: 20)
-         dogVaccinationDatetextField.textColor = UIColor.black
-         dogVaccinationDatetextField.text = formatter.string(from: picker2.date)
-         */
+
         datePicker.isHidden = false
         let dateFormatter: DateFormatter = DateFormatter()
         
@@ -395,12 +384,7 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
     
     
     func datePickerValueChanged2(datePicker:UIDatePicker) {
-        /**
-         let formatter: DateFormatter = DateFormatter()
-         dogVaccinationDatetextField.font = UIFont(name: "Rubik", size: 20)
-         dogVaccinationDatetextField.textColor = UIColor.black
-         dogVaccinationDatetextField.text = formatter.string(from: picker2.date)
-         */
+
         datePicker.isHidden = false
         let dateFormatter: DateFormatter = DateFormatter()
         
@@ -439,7 +423,7 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         vaccinationdate = dogVaccinationDatetextField.text!
         birthdate = dogBirhDatetextField.text!
         age = agetextField.text!
-        breed = agetextField.text!
+        breed = breedtextField.text!
         
         nameLabel.text = "Name: " + name
         genderLabel.text = "Gender: " + gender
@@ -455,6 +439,26 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         breedLabel.isHidden = false
         ageLabel.isHidden = false
         breedLabel.isHidden = false
+        
+        
+        print(breed)
+        let newBreed = Breed(breedName: breed, popularity: (thisDog?.breed.popularity)!, origin: (thisDog?.breed.origin)!, group: (thisDog?.breed.group)!, size: (thisDog?.breed.size)!, type: (thisDog?.breed.type)!, lifeExpectancy: (thisDog?.breed.lifeExpectancy)!, personality: (thisDog?.breed.personality)!,
+                             height: (thisDog?.breed.height)!, weight: (thisDog?.breed.weight)!,
+                             colors: (thisDog?.breed.colors)!, litterSize: (thisDog?.breed.litterSize)!, price: (thisDog?.breed.price)!, barkingLevel: (thisDog?.breed.barkingLevel)!, childFriendly: (thisDog?.breed.childFriendly)!,
+                             
+                             grooming: (thisDog?.breed.grooming)!,shedding: (thisDog?.breed.shedding)!, trainability: (thisDog?.breed.trainability)!,
+                             breeders: (thisDog?.breed.breeders)!, image: (thisDog?.breed.image)!)
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/DD/YY"
+        let newBirthDate = dateFormatter.date(from: birthdate)!
+        let newVaccineDate = dateFormatter.date(from: vaccinationdate)!
+        
+        let newDog = Dog(dogID: (thisDog?.dogID)!, name: name, breed: newBreed, birthDate: newBirthDate,age: age, gender: gender,  vaccination: newVaccineDate, color: (thisDog?.color)!, description: (thisDog?.description)!, image: (thisDog?.image)!)
+        print(thisDog?.dogID)
+        print("Look here !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+        Functionalities.myUser?.updateDog(dog: newDog)
+       
         
     }
     
@@ -478,6 +482,8 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         ageLabel.isHidden = true
         breedLabel.isHidden = true
         
+//        Functionalities.retrieveDogID(<#T##Functionalities#>)
+//        
         
     }
     
