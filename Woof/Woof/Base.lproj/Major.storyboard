@@ -400,7 +400,7 @@
                         </connections>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="FgG-aF-CJq">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="FgG-aF-CJq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -478,7 +478,7 @@
                         </connections>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="w8L-5L-583">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="w8L-5L-583">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -497,7 +497,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="V84-9r-r8h" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="os0-Jo-CL0">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="os0-Jo-CL0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
