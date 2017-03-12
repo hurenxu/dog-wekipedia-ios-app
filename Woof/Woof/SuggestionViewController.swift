@@ -115,6 +115,9 @@ class SuggestionViewController: UIViewController {
             labelDynamic.isHidden = true
             borderDynamic.isHidden = true
             
+            leftButton.isHidden = true
+            rightButton.isHidden = true
+            
             storeFilters()
         }
         
