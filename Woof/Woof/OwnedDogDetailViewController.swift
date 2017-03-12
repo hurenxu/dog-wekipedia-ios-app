@@ -340,24 +340,13 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         
     }
     
-    func changeImageButtonClick(sender:UIButton!){
-        
-    }
-    
-    
+
     func pickerView(_ pickerView: UIPickerView, didSelectRow row:Int, inComponent component : Int)
     {
         agetextField.text = ageData[row]
         self.view.endEditing(true)
     }
-    
-    
-    func dismissPicker() {
-        
-        view.endEditing(true)
-        
-    }
-    
+
     func textFieldEditing(sender: UITextField) {
         let datePickerView:UIDatePicker = UIDatePicker()
         datePickerView.datePickerMode = UIDatePickerMode.date
