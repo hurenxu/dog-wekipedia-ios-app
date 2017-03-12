@@ -262,6 +262,10 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         let secondViewController:OwnedDogDetailViewController = OwnedDogDetailViewController()
         secondViewController.name = ownedDog[indexPath.row]
         secondViewController.gender = gender[indexPath.row % 3]
+        secondViewController.thisDogID = dogID[indexPath.row]
+        secondViewController.thisDog = dogList[indexPath.row]
+        print(dogList[indexPath.row])
+        print("Above is the indexPath.row##################################################################################################################################################################")
         
         
         self.present(secondViewController, animated: true, completion: nil)

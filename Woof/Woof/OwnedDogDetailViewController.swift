@@ -26,7 +26,8 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
     
     // testing
     let myUser = Functionalities.myUser
-    let thisDogID = ""
+    var thisDogID = ""
+    var thisDog: Dog?
     
     
     
@@ -443,7 +444,7 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         vaccinationdate = dogVaccinationDatetextField.text!
         birthdate = dogBirhDatetextField.text!
         age = agetextField.text!
-        breed = agetextField.text!
+        breed = breedtextField.text!
         
         nameLabel.text = "Name: " + name
         genderLabel.text = "Gender: " + gender
@@ -460,11 +461,25 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         ageLabel.isHidden = false
         breedLabel.isHidden = false
         
-        //let myUser = Functionalities.myUser
-        /*dogID: String, name: String, breed: Breed, birthDate: Date = Date(), age: String = "", gender: String = "", vaccination: Date = Date(), color: String = "", description: String = "", image: String*/
         
-//        let newDog = Dog(dogID: thisDogID, name: name, breed: breed, birthDate: birthdate, age: age, gender: gender, vaccination: vaccinationdate, color: )
-//        myUser?.updateDog(dog: <#T##Dog#>)
+        print(breed)
+        let newBreed = Breed(breedName: breed, popularity: (thisDog?.breed.popularity)!, origin: (thisDog?.breed.origin)!, group: (thisDog?.breed.group)!, size: (thisDog?.breed.size)!, type: (thisDog?.breed.type)!, lifeExpectancy: (thisDog?.breed.lifeExpectancy)!, personality: (thisDog?.breed.personality)!,
+                             height: (thisDog?.breed.height)!, weight: (thisDog?.breed.weight)!,
+                             colors: (thisDog?.breed.colors)!, litterSize: (thisDog?.breed.litterSize)!, price: (thisDog?.breed.price)!, barkingLevel: (thisDog?.breed.barkingLevel)!, childFriendly: (thisDog?.breed.childFriendly)!,
+                             
+                             grooming: (thisDog?.breed.grooming)!,shedding: (thisDog?.breed.shedding)!, trainability: (thisDog?.breed.trainability)!,
+                             breeders: (thisDog?.breed.breeders)!, image: (thisDog?.breed.image)!)
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/DD/YY"
+        let newBirthDate = dateFormatter.date(from: birthdate)!
+        let newVaccineDate = dateFormatter.date(from: vaccinationdate)!
+        
+        let newDog = Dog(dogID: (thisDog?.dogID)!, name: name, breed: newBreed, birthDate: newBirthDate,age: age, gender: gender,  vaccination: newVaccineDate, color: (thisDog?.color)!, description: (thisDog?.description)!, image: (thisDog?.image)!)
+        print(thisDog?.dogID)
+        print("Look here !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+        Functionalities.myUser?.updateDog(dog: newDog)
+       
         
     }
     

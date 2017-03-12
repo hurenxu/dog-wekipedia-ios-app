@@ -78,6 +78,7 @@ class Functionalities{
                             }
                         }
                         if (toCheck != 1) {
+                            thisDog.dogID = key as String
                             controller.ownedDog.append(thisDog.name)
                             controller.dogList.append(thisDog)
                             controller.age.append(thisDog.age)
@@ -85,6 +86,7 @@ class Functionalities{
                             controller.gender.append(thisDog.gender)
                             controller.color.append(thisDog.color)
                             controller.dogID.append(key as String)
+                            controller.dogList.append(thisDog)
                             controller.collectView.reloadData()
                         }
                     }

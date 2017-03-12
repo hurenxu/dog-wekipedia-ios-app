@@ -24,7 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate , GIDSignInDelegate{
         
         //change nav bar appearance
         var navigationBarAppearance = UINavigationBar.appearance()
-        navigationBarAppearance.tintColor = UIColor(netHex: 0xa5c3bb)
+//        navigationBarAppearance.tintColor = UIColor(netHex: 0xa5c3bb)
+        navigationBarAppearance.tintColor = UIColor(netHex: 0x000000)
         navigationBarAppearance.barTintColor = UIColor(netHex: 0xa5c3bb)
         var searchBarAppearance = UISearchBar.appearance()
         searchBarAppearance.barTintColor = UIColor(netHex: 0xa5c3bb)
