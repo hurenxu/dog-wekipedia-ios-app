@@ -10,13 +10,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Woof/OwnedDogDetailViewController.swift"
-            timestampString = "510916270.914506"
+            timestampString = "510986659.340519"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "580"
-            endingLineNumber = "580"
-            landmarkName = "OwnedDogDetailViewController"
-            landmarkType = "3">
+            startingLineNumber = "599"
+            endingLineNumber = "599"
+            landmarkName = "imagePickerController(_:didFinishPickingMediaWithInfo:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

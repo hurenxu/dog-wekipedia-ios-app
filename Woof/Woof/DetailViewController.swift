@@ -17,7 +17,7 @@ class DetailViewController: UIViewController, UINavigationBarDelegate{
     let SCROLL_OFFSET = 0
     let LABEL_OFFSET = 20
     var scrollView = UIScrollView(frame: CGRect(x:0, y:410, width:400, height:350))
-    let result_origin = CGPoint(x:12, y:40)
+    let result_origin = CGPoint(x:2, y:40)
     
     // MARK: - Setup data passing variable matches the SearchTableViewController.swift class's prepare function
     
@@ -45,7 +45,7 @@ class DetailViewController: UIViewController, UINavigationBarDelegate{
                 if let url = URL(string: urlString){
                     URLSession.shared.dataTask(with: url) { (data, response, error) in
                         if error != nil {
-                            print("Failed fetching image:", error)
+                            print("Failed fetching image:", error ?? "")
                             return
                         }
                         
@@ -168,6 +168,7 @@ class DetailViewController: UIViewController, UINavigationBarDelegate{
         label.backgroundColor = UIColor(netHex: 0xa5c3bb)
         label.layer.masksToBounds = true
         label.sizeToFit()
+        label.frame = CGRect(origin: label.frame.origin, size: CGSize(width: scrollView.frame.width-80, height: label.frame.height))
         scrollView.addSubview(label)
         return label.frame.height
     }
