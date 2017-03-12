@@ -28,7 +28,7 @@ class NotificationViewController: UIViewController, UIPickerViewDelegate, UIPick
     let FULL_MINUTE: Double = 60
     
     // offsets
-    let TOP_OFFSET: Int = 70
+    let TOP_OFFSET: Int = 90
     let DATE_OFFSET: Int = 40
     let PICKER_OFFSET: Int = 80
     let DURATION_LABEL_OFFSET: Int = 80

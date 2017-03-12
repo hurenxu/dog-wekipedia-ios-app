@@ -115,7 +115,7 @@ class SuggestionViewController: UIViewController {
             labelDynamic.isHidden = true
             borderDynamic.isHidden = true
             
-            // storeFilters()
+            storeFilters()
         }
         
         if index == breedArray.count {
@@ -287,21 +287,173 @@ class SuggestionViewController: UIViewController {
         
         print("switch to stats page")
         
-        // TODO instantiate user then store like breeds
-        
-        // Sample filters
-        topFilters.append("Body: Small")
-        topFilters.append("Group: Hound")
-        topFilters.append("Personality: Super duper friendly")
-        
-        likeFilters["Body: Small"] = 5
-        likeFilters["Group: Hound"] = 10
-        likeFilters["Personality: Super duper friendly"] = 3
-        
-        likeFilters["Tail: Super long"] = 4
-        likeFilters["Ears: Super pointy"] = 5
-        
         self.performSegue(withIdentifier: "ToStatsSegue", sender: sender)
+    }
+    
+    func processSize(_ myFilter: String) -> String {
+        
+        let defaultSize = "Medium"
+        
+        // case for medium
+        if myFilter.contains(defaultSize) {
+            
+            return defaultSize
+        }
+        
+        // case for large
+        else if myFilter.contains("Large") {
+            
+            return "Large"
+        }
+        
+        // case for small
+        else {
+            
+            return "Small"
+        }
+    }
+    
+    func processTrainability(_ myFilter: String) -> String {
+        
+        let defaultTrainability = "Fair"
+        
+        // case for fair
+        if myFilter.contains(defaultTrainability) {
+            
+            return defaultTrainability
+        }
+            
+        // case for easy
+        else if myFilter.contains("Easy") {
+            
+            return "Easy"
+        }
+            
+        // case for difficult
+        else {
+            
+            return "Difficult"
+        }
+    }
+    
+    func processBarking(_ myFilter: String) -> String {
+        
+        let defaultBarking = "Occasional"
+        
+        // case for occastional
+        if myFilter.contains(defaultBarking) {
+            
+            return defaultBarking
+        }
+            
+        // case for rare
+        else if myFilter.contains("Rare") {
+            
+            return "Rare"
+        }
+            
+        // case for frequent
+        else {
+            
+            return "Frequent"
+        }
+    }
+    
+    func processGrooming(_ myFilter: String) -> String {
+        
+        let defaultGrooming = "Moderate"
+        
+        // case for moderate
+        if myFilter.contains(defaultGrooming) {
+            
+            return defaultGrooming
+        }
+            
+        // case for low
+        else if myFilter.contains("Low") {
+            
+            return "Low"
+        }
+            
+        // case for high
+        else {
+            
+            return "High"
+        }
+    }
+
+    func processShedding(_ myFilter: String) -> String {
+        
+        let defaultShedding = "Moderate"
+        
+        // case for moderate
+        if myFilter.contains(defaultShedding) {
+            
+            return defaultShedding
+        }
+            
+        // case for constant
+        else if myFilter.contains("Constant") {
+            
+            return "Constant"
+        }
+            
+        // case for minimal
+        else if myFilter.contains("Minimal") {
+            
+            return "Minimal"
+        }
+        
+        // case for seasonal
+        else {
+            
+            return "Seasonal"
+        }
+    }
+    
+    func processGroup(_ myFilter: String) -> String {
+        
+        let defaultGroup = "Unknown"
+        
+        if myFilter.contains("Non-sporting") {
+            
+            return "Non-sporting"
+        }
+        
+        else if myFilter.contains("Herding") {
+            
+            return "Herding"
+        }
+        
+        else if myFilter.contains("Hound") {
+            
+            return "Hound"
+        }
+        
+        else if myFilter.contains("Toy") {
+            
+            return "Toy"
+        }
+        
+        else if myFilter.contains("Sporting") {
+            
+            return "Sporting"
+        }
+        
+        else if myFilter.contains("Terrier") {
+            
+            return "Terrier"
+        }
+        
+        else if myFilter.contains("Working") {
+            
+            return "Working"
+        }
+        
+        else {
+            
+            return defaultGroup
+        }
     }
     
     // find top three tags
@@ -312,21 +464,36 @@ class SuggestionViewController: UIViewController {
             // get the current breed
             let myBreed: Breed = breedArray[breedIndex]
             
-            likeFilters["Popularity: \(myBreed.getPopularity())"]! += 1
-            likeFilters["Origin: \(myBreed.getOrigin())"]! += 1
-            likeFilters["Group: \(myBreed.getGroup())"]! += 1
-            likeFilters["Size: \(myBreed.getSize())"]! += 1
-            likeFilters["Type: \(myBreed.getType())"]! += 1
-            likeFilters["Life Expectancy: \(myBreed.getLifeExpectancy())"]! += 1
-            likeFilters["Personality: \(myBreed.getPersonality())"]! += 1
-            likeFilters["Weight: \(myBreed.getWeight())"]! += 1
-            likeFilters["Colors: \(myBreed.getColors())"]! += 1
-            likeFilters["Litter Size: \(myBreed.getLitterSize())"]! += 1
-            likeFilters["Price: \(myBreed.getPrice())"]! += 1
-            likeFilters["Barking Level: \(myBreed.getBarkingLevel())"]! += 1
-            likeFilters["Shedding \(myBreed.getShedding())"]! += 1
-            likeFilters["Grooming \(myBreed.getGrooming())"]! += 1
-            likeFilters["Trainability: \(myBreed.getTrainability())"]! += 1
+            let filtersArray: [String] = [
+                //"Popularity: \(myBreed.getPopularity())",
+                "Origin: \(myBreed.getOrigin())",
+                "Group: \(processGroup(myBreed.getGroup()))",
+                "Size: \(processSize(myBreed.getSize()))",
+                //"Type: \(myBreed.getType())",
+                //"Life Expectancy: \(myBreed.getLifeExpectancy())",
+                //"Personality: \(myBreed.getPersonality())",
+                //"Weight: \(myBreed.getWeight())",
+                //"Colors: \(myBreed.getColors())",
+                //"Litter Size: \(myBreed.getLitterSize())",
+                //"Price: \(myBreed.getPrice())",
+                "Barking Level: \(processBarking(myBreed.getBarkingLevel()))",
+                "Shedding: \(processShedding(myBreed.getShedding()))",
+                "Grooming: \(processGrooming(myBreed.getGrooming()))",
+                "Trainability: \(processTrainability(myBreed.getTrainability()))"
+            ]
+            
+            for myElement in filtersArray {
+                
+                if likeFilters[myElement] == nil {
+                    
+                    likeFilters[myElement] = 1
+                }
+                
+                else {
+                    
+                    likeFilters[myElement]! += 1
+                }
+            }
         }
         
         // determine the top filters
