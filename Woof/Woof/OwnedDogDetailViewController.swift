@@ -29,6 +29,8 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
     var thisDogID = ""
     var thisDog: Dog?
     
+    var Img =  UIImage()
+    
     
     
     //Declare the texctfield in this view
@@ -76,6 +78,7 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         self.view.backgroundColor = UIColor(red: 165.0/255.0, green: 195.0/255.0, blue: 187.0/255.0, alpha: 1)
         
         
+        //Img = self.convertBase64ToImage(base64String: (thisDog?.image)!)
         print(name)
         // Do any additional setup after loading the view.
         
@@ -338,6 +341,7 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         self.view.addSubview(picker3)
         
         
+        
     }
     
 
@@ -440,25 +444,55 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         ageLabel.isHidden = false
         breedLabel.isHidden = false
         
+        if (name == "") {
+            name = (thisDog?.name)!
+        }
+        if (gender == "") {
+            gender = (thisDog?.name)!
+        }
+        if (age == "") {
+            age = (thisDog?.age)!
+        }
+        let newBreed: Breed
+        if (breed == "") {
+            newBreed = (thisDog?.breed)!
+        }
+        else {
         
-        print(breed)
-        let newBreed = Breed(breedName: breed, popularity: (thisDog?.breed.popularity)!, origin: (thisDog?.breed.origin)!, group: (thisDog?.breed.group)!, size: (thisDog?.breed.size)!, type: (thisDog?.breed.type)!, lifeExpectancy: (thisDog?.breed.lifeExpectancy)!, personality: (thisDog?.breed.personality)!,
+        
+        //print(breed)
+            newBreed = Breed(breedName: breed, popularity: (thisDog?.breed.popularity)!, origin: (thisDog?.breed.origin)!, group: (thisDog?.breed.group)!, size: (thisDog?.breed.size)!, type: (thisDog?.breed.type)!, lifeExpectancy: (thisDog?.breed.lifeExpectancy)!, personality: (thisDog?.breed.personality)!,
                              height: (thisDog?.breed.height)!, weight: (thisDog?.breed.weight)!,
                              colors: (thisDog?.breed.colors)!, litterSize: (thisDog?.breed.litterSize)!, price: (thisDog?.breed.price)!, barkingLevel: (thisDog?.breed.barkingLevel)!, childFriendly: (thisDog?.breed.childFriendly)!,
                              
                              grooming: (thisDog?.breed.grooming)!,shedding: (thisDog?.breed.shedding)!, trainability: (thisDog?.breed.trainability)!,
                              breeders: (thisDog?.breed.breeders)!, image: (thisDog?.breed.image)!)
-        
+        }
+        let newBirthDate: Date
+        let newVaccineDate: Date
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM/DD/YY"
-        let newBirthDate = dateFormatter.date(from: birthdate)!
-        let newVaccineDate = dateFormatter.date(from: vaccinationdate)!
+        if (birthdate == "") {
+            newBirthDate = (thisDog?.birthDate)!
+        }
+        else {
+        
+            newBirthDate = dateFormatter.date(from: birthdate)!
+        }
+        
+        if (vaccinationdate == "") {
+            newVaccineDate = (thisDog?.vaccination)!
+        }
+        else {
+            newVaccineDate = dateFormatter.date(from: vaccinationdate)!
+        }
         
         let newDog = Dog(dogID: (thisDog?.dogID)!, name: name, breed: newBreed, birthDate: newBirthDate,age: age, gender: gender,  vaccination: newVaccineDate, color: (thisDog?.color)!, description: (thisDog?.description)!, image: (thisDog?.image)!)
-        print(thisDog?.dogID)
+        print(thisDog?.name)
         print("Look here !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
         Functionalities.myUser?.updateDog(dog: newDog)
        
+        //let Img = self.convertBase64ToImage(base64String: (thisDog?.image)!)
         
     }
     
@@ -546,15 +580,33 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
 //        return ImgView
 //    }
     
+   
+    
+    
     var profileImgContainer: UIImageView = {
         let ImgView = UIImageView()
-        let Img = UIImage(named: "BlackEmptyDog")
+        //let anyImg = UIImage(named:"")
+        var Img = UIImage(named: "BlackEmptyDog")
         ImgView.image = Img
+        //ImgView.image = convertBase64ToImage(thisDog.image)
+        
+        
+        //ImgView.image = convertBase64ToImage(base64String: (thisDog?.image)!)
         ImgView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
         ImgView.translatesAutoresizingMaskIntoConstraints = false
         
         return ImgView
     }()
+    
+//    func convertBase64ToImage(base64String: String) -> UIImage {
+//        
+//        let decodedData = NSData(base64Encoded: base64String, options: NSData.Base64DecodingOptions(rawValue: 0) )
+//        
+//        let decodedimage = UIImage(data: decodedData! as Data)
+//        
+//        return decodedimage!
+//        
+//    }
     
     /* layout constriants for profile image */
     func ImageViewConstraints(Img: UIImageView) {
@@ -584,8 +636,26 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         
         if let chosenImage = chosenImageFromPicker{
             profileImgContainer.image = chosenImage
+            //TODO
+            let myImage = convertImageToBase64(image: chosenImage)
+            
+            let newDog = Dog(dogID: (thisDog?.dogID)!, name: (thisDog?.name)!, breed: (thisDog?.breed)!, birthDate: (thisDog?.birthDate)!,age: (thisDog?.age)!, gender: (thisDog?.gender)!,  vaccination: (thisDog?.vaccination)!, color: (thisDog?.color)!, description: (thisDog?.description)!, image: myImage)
+            
+            Functionalities.myUser?.updateDog(dog: newDog)
+            
+            Img = chosenImage
+            //TODO
         }
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    func convertImageToBase64(image: UIImage) -> String {
+        
+        var imageData = UIImagePNGRepresentation(image)
+        let base64String = imageData?.base64EncodedString()
+        
+        return base64String!
+        
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
