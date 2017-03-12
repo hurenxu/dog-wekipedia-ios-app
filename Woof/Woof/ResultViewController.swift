@@ -105,7 +105,7 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
         myCell.labelString = currentBreed.getBreedName()
         myCell.myImage.image = currentImage
-        myCell.descriptionString = "Elohim, Essaim... \nElohim, Essaim... \nWare wa motome uttaetari"
+        myCell.descriptionString = "Personality: \(currentBreed.getPersonality())"
         
         return myCell
     }
