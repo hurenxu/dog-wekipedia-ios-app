@@ -15,7 +15,7 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
     var dogs = [Breed]()
     var filteredDogs = [Breed]()
     var resultSearchController = UISearchController()
-
+    
     
     override func viewDidLoad() {
         self.resultSearchController = UISearchController(searchResultsController: nil)
@@ -28,7 +28,7 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
         
         let tools = Functionalities()
         print(tools.getBreedList(controller:self))
-
+        
         
         self.navigationItem.title = "Woofipedia"
         
@@ -37,14 +37,14 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
         filterButton.tintColor = UIColor.black
         self.navigationItem.leftBarButtonItem = filterButton
         
-        let likedButton = UIBarButtonItem(title: "View", style: .plain, target: self, action: #selector(toLiked))
+        let likedButton = UIBarButtonItem(title: "Likes", style: .plain, target: self, action: #selector(toLiked))
         likedButton.tintColor = UIColor.black
         self.navigationItem.rightBarButtonItem = likedButton
-
+        
         
         self.tableView.reloadData()
         super.viewDidLoad()
-        var refreshControl = UIRefreshControl()
+        let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: Selector("refreshTable"), for: UIControlEvents.valueChanged)
         tableView.addSubview(refreshControl)
         self.refreshControl = refreshControl
@@ -62,8 +62,28 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
     }
     
     func toLiked(){
-        let secondViewController:LikedViewController = LikedViewController()
-        self.present(secondViewController, animated:true, completion:nil)
+        if Functionalities.myUser == nil{
+            // create the alert
+            let alert = UIAlertController(title: "Login Needed", message: "Would you like to login to add your favoriate dogs to your profile?", preferredStyle: UIAlertControllerStyle.alert)
+            
+            // add the actions (buttons)
+            alert.addAction(UIAlertAction(title: "Login", style: UIAlertActionStyle.default, handler: { action in
+                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let initViewController: UIViewController = storyBoard.instantiateViewController(withIdentifier: "Login") as! LoginViewController
+                appDelegate.window?.rootViewController? = initViewController
+                
+                
+                let MyrootViewController = appDelegate.window!.rootViewController
+            }))
+            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
+            
+            // show the alert
+            self.present(alert, animated: true, completion: nil)
+        }else{
+            let secondViewController:LikedViewController = LikedViewController()
+            self.present(secondViewController, animated:true, completion:nil)
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -89,7 +109,7 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
         let mainDogLike = cell.viewWithTag(4) as! UIImageView
         let breed: Breed
         
-
+        
         //get breed
         if self.resultSearchController.isActive && self.resultSearchController.searchBar.text != "" {
             breed = filteredDogs[indexPath.row]
@@ -106,7 +126,7 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
             tableView.reloadRows(at: [indexPath], with: .top)
             print("successfuly liked dog by swiping")
             return true
-            })]
+        })]
         cell.leftSwipeSettings.transition = .rotate3D
         cell.leftButtons = [MGSwipeButton(title: "Click to Unlike", icon: UIImage(named:"unlike.png"), backgroundColor: UIColor(netHex: 0xa5c3bb), callback: {
             (sender: MGSwipeTableCell!) -> Bool in
@@ -116,7 +136,7 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
             tableView.reloadRows(at: [indexPath], with: .top)
             print("successfuly liked dog by swiping")
             return true
-            })]
+        })]
         cell.leftSwipeSettings.transition = .rotate3D
         
         
@@ -160,7 +180,7 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
                 mainDogLike.contentMode = .scaleAspectFit
                 mainDogLike.clipsToBounds = true
                 mainDogLike.image = #imageLiteral(resourceName: "unlike.png")
-
+                
                 
             }
             
@@ -181,7 +201,7 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
         let radius = mainImageView.frame.width / 2
         mainImageView.layer.cornerRadius = radius
         mainImageView.layer.masksToBounds = true
-
+        
         //cell animation
         cell.layer.transform = CATransform3DMakeScale(0.1,0.1,1)
         UIView.animate(withDuration: 0.3, animations: {
@@ -195,7 +215,7 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
         
         return cell
     }
-
+    
     
     
     /* This function count the number of item to be displayed for search result
@@ -225,7 +245,7 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
         })
         tableView.reloadData()
     }
-
+    
     
     
     // MARK: - Segues
@@ -244,7 +264,7 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
                 } else {
                     breed = dogs[indexPath.row]
                 }
-//                let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
+                //                let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
                 let controller = segue.destination as! DetailViewController
                 controller.detailDog = breed
             }
