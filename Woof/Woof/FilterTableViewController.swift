@@ -173,6 +173,12 @@ class FilterTableViewController: UIViewController, UINavigationBarDelegate{
         if sender.backgroundColor != yellow {
             
             print("store \(buttonLabel)")
+            Functionalities.myUser?.addFavoriteCategoryFilter(filter: (sender.titleLabel?.text!)!)
+            
+            if !filtersString.contains(buttonLabel) {
+                
+                filtersString.append(buttonLabel)
+            }
             //Functionalities.myUser?.addFavoriteCategoryFilter(filter: (sender.titleLabel?.text!)!)
             filtersString.append(buttonLabel)
             
