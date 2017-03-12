@@ -23,8 +23,8 @@ class AddDogViewController: UIViewController, UINavigationBarDelegate, UIImagePi
     var picker2 = UIPickerView()
     var picker3 = UIPickerView()
     //var picker2 = UIDatePicker()
-    
-    
+    // position var
+    //var position: [String?: NSObject?] = [:]
     
     //Declare the texctfield in this view
     var dogNametextField = UITextField(frame: CGRect(20.0, 230, 330.0, 40.0))
@@ -227,7 +227,6 @@ class AddDogViewController: UIViewController, UINavigationBarDelegate, UIImagePi
         picker2.delegate = self
         
         self.view.addSubview(picker2)
-
         
         breedLabel.textAlignment = .center
         breedLabel.text = "Breed: " + breed
@@ -258,16 +257,22 @@ class AddDogViewController: UIViewController, UINavigationBarDelegate, UIImagePi
         // Do any additional setup after loading the view.
     }
     
+    
     func textFieldEditing(sender: UITextField) {
+
         let datePickerView:UIDatePicker = UIDatePicker()
         datePickerView.datePickerMode = UIDatePickerMode.date
         sender.inputView = datePickerView
         datePickerView.addTarget(self, action: #selector(AddDogViewController.datePickerValueChanged), for: UIControlEvents.valueChanged)
     }
     
+    
     func datePickerValueChanged(datePicker:UIDatePicker) {
 
+        // this two lines can toggle the date picker
         datePicker.isHidden = false
+        self.view.endEditing(true)
+        
         let dateFormatter: DateFormatter = DateFormatter()
         dateFormatter.dateStyle = DateFormatter.Style.short
         let strDate = dateFormatter.string(from: datePicker.date)
@@ -276,22 +281,20 @@ class AddDogViewController: UIViewController, UINavigationBarDelegate, UIImagePi
         
     }
     
+
+    
     func datePickerValueChanged2(datePicker:UIDatePicker) {
 
+        // this two lines can toggle the date picker
         datePicker.isHidden = false
+        self.view.endEditing(true)
+        
         let dateFormatter: DateFormatter = DateFormatter()
-        
-        
         dateFormatter.dateStyle = DateFormatter.Style.short
-        //dateFormatter.timeStyle = DateFormatter.Style.short
-        
         let strDate = dateFormatter.string(from: datePicker.date)
-        
         dogBirhDatetextField.text = strDate
         birthDateLabel.text = strDate
         
-        
-        //datePicker.isHidden = true
     }
 
     
@@ -395,9 +398,6 @@ class AddDogViewController: UIViewController, UINavigationBarDelegate, UIImagePi
                           grooming: "",shedding: "", trainability: "", breeders: "", image: "")
         }
         
-        
-        
-       
 
         let updateMyNewDog = Dog(dogID: dogID, name: name, breed: breedObj, birthDate: Date(), age: age, gender: gender, vaccination: Date(), color: "", description: "", image: "")
         Functionalities.myUser?.addDog(dog: updateMyNewDog)

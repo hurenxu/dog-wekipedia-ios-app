@@ -82,7 +82,7 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         let imageName = "backgroundHome.jpg"
         let image = UIImage(named: imageName)
         let imageView = UIImageView(image: image!)
-        imageView.frame = CGRect(x: 0, y: 65, width: 375, height: 240)
+        imageView.frame = CGRect(x: 0, y: 65, width: 380, height: 380)
         view.addSubview(imageView)
 
         
@@ -166,6 +166,7 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         //print("look here @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
         //print(Functionalities.myUser?.dogIDs.count)
         print(tools.retrieveDogList(controller:self))
+            
         //add finished
         
         
@@ -262,10 +263,8 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         let secondViewController:OwnedDogDetailViewController = OwnedDogDetailViewController()
         secondViewController.name = ownedDog[indexPath.row]
         secondViewController.gender = gender[indexPath.row % 3]
-        secondViewController.thisDogID = dogID[indexPath.row]
-        secondViewController.thisDog = dogList[indexPath.row]
-        print(dogList[indexPath.row])
-        print("Above is the indexPath.row##################################################################################################################################################################")
+        secondViewController.thisDogID = dogID[indexPath.item]
+        secondViewController.thisDog = dogList[indexPath.item]
         
         
         self.present(secondViewController, animated: true, completion: nil)

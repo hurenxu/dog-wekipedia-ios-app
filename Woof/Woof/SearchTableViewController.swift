@@ -44,8 +44,9 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
         
         self.tableView.reloadData()
         super.viewDidLoad()
-        //var refreshControl = UIRefreshControl()
-        //refreshControl.addTarget(self, action: Selector("refreshTable"), for: UIControlEvents.valueChanged)
+        var refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: Selector("refreshTable"), for: UIControlEvents.valueChanged)
+        tableView.addSubview(refreshControl)
         self.refreshControl = refreshControl
         
     }
@@ -89,24 +90,36 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
         let breed: Breed
         
 
-        
-        cell.rightButtons = [MGSwipeButton(title: "", icon: UIImage(named:"like.png"), backgroundColor: .clear){
-            (sender: MGSwipeTableCell!) -> Bool in
-            print("Convenience callback for Like Swipe")
-            return true
-            }]
-        cell.leftSwipeSettings.transition = .rotate3D
-        cell.leftButtons = [MGSwipeButton(title: "", icon: UIImage(named:"unlike.png"), backgroundColor: .clear){
-            (sender: MGSwipeTableCell!) -> Bool in
-            print("Convenience callback for UnLike Swipe")
-            return true
-            }]
-        cell.leftSwipeSettings.transition = .rotate3D
+        //get breed
         if self.resultSearchController.isActive && self.resultSearchController.searchBar.text != "" {
             breed = filteredDogs[indexPath.row]
         } else {
             breed = dogs[indexPath.row]
         }
+        
+        //swipe for like
+        cell.rightButtons = [MGSwipeButton(title: "Click to Like", icon: UIImage(named:"like.png"), backgroundColor: UIColor(netHex: 0xa5c3bb), callback: {
+            (sender: MGSwipeTableCell!) -> Bool in
+            print("Convenience callback for Like Swipe")
+            Functionalities.myUser?.addFavoriteDogBreed(breedname: breed.getBreedName())
+            Functionalities.myUser?.updateUser()
+            tableView.reloadRows(at: [indexPath], with: .top)
+            print("successfuly liked dog by swiping")
+            return true
+            })]
+        cell.leftSwipeSettings.transition = .rotate3D
+        cell.leftButtons = [MGSwipeButton(title: "Click to Unlike", icon: UIImage(named:"unlike.png"), backgroundColor: UIColor(netHex: 0xa5c3bb), callback: {
+            (sender: MGSwipeTableCell!) -> Bool in
+            print("Convenience callback for UnLike Swipe")
+            Functionalities.myUser?.removeFavoriteDogBreed(breedname: breed.getBreedName())
+            Functionalities.myUser?.updateUser()
+            tableView.reloadRows(at: [indexPath], with: .top)
+            print("successfuly liked dog by swiping")
+            return true
+            })]
+        cell.leftSwipeSettings.transition = .rotate3D
+        
+        
         //load URL image
         let urlString = breed.getImage()
         if let url = URL(string: urlString){

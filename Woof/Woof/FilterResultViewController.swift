@@ -28,7 +28,7 @@ class FilterResultViewController: UIViewController, UINavigationBarDelegate ,UIT
     // data
     var breedArray = Functionalities.breedList
     //var breeds: [Int] = [Int]()
-    var breeds = ["1","2","3"]
+    //var breeds = ["1","2","3"]
     // scroll view
     var scrollView: UIScrollView! = nil
     
@@ -55,7 +55,7 @@ class FilterResultViewController: UIViewController, UINavigationBarDelegate ,UIT
     
     
     // the tables
-    let TABLE_SIZE: CGSize = CGSize(width: 353, height: 600)
+    let TABLE_SIZE: CGSize = CGSize(width: 353, height: 500)
     let TABLE_COLOR: UIColor = UIColor.white
     let CELL_HEIGHT: Int! = 50
     var table: UITableView! = nil
@@ -104,7 +104,7 @@ class FilterResultViewController: UIViewController, UINavigationBarDelegate ,UIT
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(filterDogs.count)
+        print("filter has \(filterDogs.count)")
         return filterDogs.count
         
     }
@@ -169,7 +169,7 @@ class FilterResultViewController: UIViewController, UINavigationBarDelegate ,UIT
         
         // Do any additional setup after loading the view.
         
-        scrollView = UIScrollView(frame: CGRect(x:0, y:58, width:self.view.frame.size.width, height:self.view.frame.size.height-CGFloat(64)))
+        scrollView = UIScrollView(frame: CGRect(x:0, y:58, width:self.view.frame.size.width, height:self.view.frame.size.height-CGFloat(50)))
         scrollView.backgroundColor = UIColor(patternImage: UIImage(named: "backgroundHomeLarge.jpg")!)
         self.view.addSubview(scrollView)
         
@@ -193,9 +193,50 @@ class FilterResultViewController: UIViewController, UINavigationBarDelegate ,UIT
         
     }
     
+    func searchBy (from: [Breed], type: String, filter: String) -> [Breed]{
+        var toRe = [Breed]()
+        for curr in from{
+            if type == "train" {
+                if curr.getTrainability().lowercased().contains(filter){
+                    toRe.append(curr)
+                }
+            }
+                
+            else if type == "shed" {
+                if curr.getShedding().lowercased().contains(filter){
+                    toRe.append(curr)
+                }
+            }
+                
+            else if type == "bark" {
+                if curr.getBarkingLevel().lowercased().contains(filter){
+                    toRe.append(curr)
+                }
+            }
+                
+            else if type == "groom" {
+                if curr.getGrooming().lowercased().contains(filter){
+                    toRe.append(curr)
+                }
+            }
+            else if type == "size" {
+                if curr.getSize().lowercased().contains(filter){
+                    toRe.append(curr)
+                }
+            }
+            else if type == "group" {
+                if curr.getGroup().lowercased().contains(filter){
+                    toRe.append(curr)
+                }
+            }
+        }
+        return toRe
+    }
+    
     func search () -> Int {
         let count = filterDogs.count
         let COUNT = breedArray.count
+        filterDogs = breedArray
         print("filter has \(count) dogs")
         print("dogs has \(COUNT) dogs")
         //search by size
@@ -203,54 +244,72 @@ class FilterResultViewController: UIViewController, UINavigationBarDelegate ,UIT
             return -1 ;
         }
         
-        if size == 1{
-            filterDogs = breedArray.filter({( dog : Breed) -> Bool in
-                return dog.size == "Small"
-            })
-        }else if size == 2{
-            filterDogs = breedArray.filter({( dog : Breed) -> Bool in
-                return dog.size.lowercased().contains("Medium")
-            })
-        }else if size == 3{
-            filterDogs = breedArray.filter({( dog : Breed) -> Bool in
-                return dog.size.lowercased().contains("Large")
-            })
+        if size == 1{/*
+             filterDogs = breedArray.filter({( dog : Breed) -> Bool in
+             return dog.size == "Small"
+             })*/
+            filterDogs = searchBy(from:filterDogs, type: "size", filter: "small")
+            
+        }else if size == 2{/*
+             filterDogs = breedArray.filter({( dog : Breed) -> Bool in
+             return dog.size == "Medium"
+             })*/
+            filterDogs = searchBy(from:filterDogs, type: "size", filter: "medium")
+            
+        }else if size == 3{/*
+             filterDogs = breedArray.filter({( dog : Breed) -> Bool in
+             return dog.size == "Large"
+             })*/
+            filterDogs = searchBy(from:filterDogs, type: "size", filter: "large")
+            
         }
         print("filter has \(count) dogs")
         print("dogs has \(COUNT) dogs")
         if train == 100 {
             return -1 ;
         }
-        if train == 1{
-            filterDogs = filterDogs.filter({( dog : Breed) -> Bool in
-                return dog.trainability == "Easy"
-            })
-        }else if train == 2{
-            filterDogs = filterDogs.filter({( dog : Breed) -> Bool in
-                return dog.trainability.lowercased().contains("Average")
-            })
-        }else if train == 3{
-            filterDogs = filterDogs.filter({( dog : Breed) -> Bool in
-                return dog.trainability.lowercased().contains("Moderately Easy")
-            })
+        if train == 3{/*
+             filterDogs = filterDogs.filter({( dog : Breed) -> Bool in
+             return dog.trainability.lowercased().contains("moderate")
+             })*/
+            filterDogs = searchBy(from:filterDogs, type: "train", filter: "moderate")
+            
+        }else if train == 2{/*
+             filterDogs = filterDogs.filter({( dog : Breed) -> Bool in
+             return dog.trainability.lowercased().contains("difficult")
+             })*/
+            filterDogs = searchBy(from:filterDogs, type: "train", filter: "difficult")
+            
+        }else if train == 1{/*
+             filterDogs = filterDogs.filter({( dog : Breed) -> Bool in
+             return dog.trainability.lowercased().contains("easy")
+             })*/
+            filterDogs = searchBy(from:filterDogs, type: "train", filter: "easy")
+            
         }
         print("filter has \(count) dogs")
         print("dogs has \(COUNT) dogs")
         if bark == 100 {
             return -1 ;
         }
-        if bark == 1{
-            filterDogs = filterDogs.filter({( dog : Breed) -> Bool in
-                return dog.barkingLevel == "Easy"
-            })
-        }else if bark == 2{
-            filterDogs = filterDogs.filter({( dog : Breed) -> Bool in
-                return dog.barkingLevel.lowercased().contains("Average")
-            })
-        }else if bark == 3{
-            filterDogs = filterDogs.filter({( dog : Breed) -> Bool in
-                return dog.barkingLevel.lowercased().contains("Moderately Easy")
-            })
+        if bark == 1{/*
+             filterDogs = filterDogs.filter({( dog : Breed) -> Bool in
+             return dog.barkingLevel.lowercased().contains("frequent")
+             })*/
+            filterDogs = searchBy(from:filterDogs, type: "bark", filter: "frequent")
+            
+        }else if bark == 2{/*
+             filterDogs = filterDogs.filter({( dog : Breed) -> Bool in
+             return dog.barkingLevel.lowercased().contains("occational")
+             })*/
+            filterDogs = searchBy(from:filterDogs, type: "bark", filter: "occational")
+            
+        }else if bark == 3{/*
+             filterDogs = filterDogs.filter({( dog : Breed) -> Bool in
+             return dog.barkingLevel.lowercased().contains("rare")
+             })*/
+            filterDogs = searchBy(from:filterDogs, type: "bark", filter: "rare")
+            
         }
         print("filter has \(count) dogs")
         print("dogs has \(COUNT) dogs")
@@ -258,73 +317,106 @@ class FilterResultViewController: UIViewController, UINavigationBarDelegate ,UIT
             return -1 ;
         }
         if groom == 1{
-            filterDogs = filterDogs.filter({( dog : Breed) -> Bool in
-                return dog.grooming == "High"
-            })
+            /*print("high find is ")
+             let a = breedArray[1]
+             print (a.grooming.lowercased().contains("high"))
+             
+             filterDogs = filterDogs.filter({( dog : Breed) -> Bool in
+             return dog.grooming.lowercased().contains("high")
+             })*/
+            filterDogs = searchBy(from:filterDogs, type: "groom", filter: "high")
         }else if groom == 2{
-            filterDogs = filterDogs.filter({( dog : Breed) -> Bool in
-                return dog.grooming.lowercased().contains("Moderate")
-            })
+            /*
+             filterDogs = filterDogs.filter({( dog : Breed) -> Bool in
+             return dog.grooming.lowercased().contains("moderate")
+             })*/
+            filterDogs = searchBy(from:filterDogs, type: "groom", filter: "moderate")
+            
         }else if groom == 3{
-            filterDogs = filterDogs.filter({( dog : Breed) -> Bool in
-                return dog.grooming.lowercased().contains("Low")
-            })
+            /*
+             filterDogs = filterDogs.filter({( dog : Breed) -> Bool in
+             return dog.grooming.lowercased().contains("low")
+             })*/
+            filterDogs = searchBy(from:filterDogs, type: "groom", filter: "low")
+            
         }
         print("filter has \(count) dogs")
         print("dogs has \(COUNT) dogs")
         if shed == 100 {
             return -1 ;
         }
-        if shed == 1{
-            filterDogs = filterDogs.filter({( dog : Breed) -> Bool in
-                return dog.shedding == "Minimal"
-            })
-        }else if shed == 2{
-            filterDogs = filterDogs.filter({( dog : Breed) -> Bool in
-                return dog.shedding.lowercased().contains("Moderate")
-            })
-        }else if shed == 3{
-            filterDogs = filterDogs.filter({( dog : Breed) -> Bool in
-                return dog.shedding.lowercased().contains("Constant")
-            })
-        }else if shed == 4{
-            filterDogs = filterDogs.filter({( dog : Breed) -> Bool in
-                return dog.shedding.lowercased().contains("Seasonal")
-            })
+        if shed == 1{/*
+             filterDogs = filterDogs.filter({( dog : Breed) -> Bool in
+             return dog.shedding.lowercased().contains("minimal")
+             })*/
+            filterDogs = searchBy(from:filterDogs, type: "shed", filter: "minimal")
+            
+        }else if shed == 2{/*
+             filterDogs = filterDogs.filter({( dog : Breed) -> Bool in
+             return dog.shedding.lowercased().contains("moderate")
+             })*/
+            filterDogs = searchBy(from:filterDogs, type: "shed", filter: "moderate")
+            
+        }else if shed == 3{/*
+             filterDogs = filterDogs.filter({( dog : Breed) -> Bool in
+             return dog.shedding.lowercased().contains("constant")
+             })*/
+            filterDogs = searchBy(from:filterDogs, type: "shed", filter: "constant")
+            
+        }else if shed == 4{/*
+             filterDogs = filterDogs.filter({( dog : Breed) -> Bool in
+             return dog.shedding.lowercased().contains("seasonal")
+             })*/
+            filterDogs = searchBy(from:filterDogs, type: "shed", filter: "seasonal")
+            
         }
         print("filter has \(count) dogs")
         print("dogs has \(COUNT) dogs")
         if group == 100 {
             return -1 ;
         }
-        if group == 1{
-            filterDogs = filterDogs.filter({( dog : Breed) -> Bool in
-                return dog.group == "Herding"
-            })
-        }else if group == 2{
-            filterDogs = filterDogs.filter({( dog : Breed) -> Bool in
-                return dog.group.lowercased().contains("Hound")
-            })
-        }else if group == 3{
-            filterDogs = filterDogs.filter({( dog : Breed) -> Bool in
-                return dog.group.lowercased().contains("Non-sporting")
-            })
-        }else if group == 4{
-            filterDogs = filterDogs.filter({( dog : Breed) -> Bool in
-                return dog.group.lowercased().contains("Sporting")
-            })
-        }else if group == 5{
-            filterDogs = filterDogs.filter({( dog : Breed) -> Bool in
-                return dog.group.lowercased().contains("Terrier")
-            })
-        }else if group == 6{
-            filterDogs = filterDogs.filter({( dog : Breed) -> Bool in
-                return dog.group.lowercased().contains("Toy")
-            })
-        }else if group == 7{
-            filterDogs = filterDogs.filter({( dog : Breed) -> Bool in
-                return dog.group.lowercased().contains("Working")
-            })
+        if group == 1{/*
+             filterDogs = filterDogs.filter({( dog : Breed) -> Bool in
+             return dog.group.lowercased().contains("herding")
+             })*/
+            filterDogs = searchBy(from:filterDogs, type: "group", filter: "herding")
+            
+        }else if group == 2{/*
+             filterDogs = filterDogs.filter({( dog : Breed) -> Bool in
+             return dog.group.lowercased().contains("hound")
+             })*/
+            filterDogs = searchBy(from:filterDogs, type: "group", filter: "hound")
+            
+        }else if group == 3{/*
+             filterDogs = filterDogs.filter({( dog : Breed) -> Bool in
+             return dog.group.lowercased().contains("non-sporting")
+             })*/
+            filterDogs = searchBy(from:filterDogs, type: "group", filter: "non-sporting")
+            
+        }else if group == 4{/*
+             filterDogs = filterDogs.filter({( dog : Breed) -> Bool in
+             return dog.group.lowercased().contains("sporting")
+             })*/
+            filterDogs = searchBy(from:filterDogs, type: "group", filter: "sporting")
+            
+        }else if group == 5{/*
+             filterDogs = filterDogs.filter({( dog : Breed) -> Bool in
+             return dog.group.lowercased().contains("terrier")
+             })*/
+            filterDogs = searchBy(from:filterDogs, type: "group", filter: "terrier")
+            
+        }else if group == 6{/*
+             filterDogs = filterDogs.filter({( dog : Breed) -> Bool in
+             return dog.group.lowercased().contains("toy")
+             })*/
+            filterDogs = searchBy(from:filterDogs, type: "group", filter: "toy")
+            
+        }else if group == 7{/*
+             filterDogs = filterDogs.filter({( dog : Breed) -> Bool in
+             return dog.group.lowercased().contains("working")
+             })*/
+            filterDogs = searchBy(from:filterDogs, type: "group", filter: "working")
+            
         }
         
         //        var group=0 //default 0. Herding 1; Hound 2; Non-sporting 3; Sporting 4; Terrier 5; Toy 6; Working 7

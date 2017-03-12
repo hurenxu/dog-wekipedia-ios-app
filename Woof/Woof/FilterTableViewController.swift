@@ -20,6 +20,7 @@ import UIKit
 class FilterTableViewController: UIViewController, UINavigationBarDelegate{
     //var hair=0 //default 0. short 1, long 2
     var size=0 //default 0. small 1, medium 2, large 3
+    //var sizeA = {0}
     var group=0 //default 0. Herding 1; Hound 2; Non-sporting 3; Sporting 4; Terrier 5; Toy 6; Working 7
     var train=0 //default 0. easy 1; aveg 2; moderately easy 3
     var bark=0 //default 0. frequent 1; occasional 2; rare 3
@@ -36,10 +37,10 @@ class FilterTableViewController: UIViewController, UINavigationBarDelegate{
     var save: UIButton! = nil
     //var hair_buttons = [ "Short hair", "Long hair"]
     var body_buttons = ["Small", "Medium", "Large"]
-    var group_buttons = ["Herding", "Hound", "Non-sporting", "Sporting", "Terrier", "Toy", "Working"]
-    var train_buttons = ["Easy", "Average", "Fair"]
+    var group_buttons = ["Herding", "Hound", "Working", "Sporting", "Terrier", "Toy", "Non-sporting"]
+    var train_buttons = ["Easy", "Difficult", "Fair"]
     var bark_buttons = ["Frequent", "Occasional","Rare"]
-    var groom_buttons = ["High","Moderate","Low"]
+    var groom_buttons = ["High","Moderatg","Low"]
     var shedding_buttons = ["Minimal", "Moderate", "Constant", "Seasonal"]
     
     var color = 0 //default 0 black 1; white 2; chocolate 3; golden 4; gray 5
@@ -66,7 +67,9 @@ class FilterTableViewController: UIViewController, UINavigationBarDelegate{
     let next_origin = CGPoint(x: 250, y: 20)
     
     let button_size: CGSize = CGSize(width: 80, height: 30)
+    let large_button_size: CGSize = CGSize(width: 120, height: 30)
     let save_button_size: CGSize = CGSize(width: 100, height: 40)
+    
     
     let button_font_size: Int = 15
     let save_button_font_size: Int = 18
@@ -83,197 +86,382 @@ class FilterTableViewController: UIViewController, UINavigationBarDelegate{
     
     
     
+    
+    
+    var filtersString = [String]()
+    let filtersDictionary: [String: String] = [
+        
+        "Large": "size3",
+        "Small": "size1",
+        "Medium": "size2",
+        
+        "Herding":"group1",
+        "Hound":"group2",
+        "Working":"group3",
+        "Sporting":"group4",
+        "Terrier":"group5",
+        "Toy":"group6",
+        "Non-sporting":"group7",
+        
+        "Easy":"train1",
+        "Difficult":"train1",
+        "Fair":"train1",
+        
+        "High": "groom1",
+        "Moderatg": "groom2",
+        "Low": "groom3",
+        
+        "Frequent": "bark1",
+        "Occasional": "bark2",
+        "Rare": "bark3",
+        
+        "Minimal": "shed1",
+        "Moderate": "shed2",
+        "Constant": "shed3",
+        "Seasonal": "shed4"
+    ]
+    var typeDictionary: [String: Int] = [
+        
+        "size": 0,
+        "groom": 0,
+        "shed": 0,
+        "group": 0,
+        "bark": 0,
+        "train": 0
+    ]
+    
+    var typeSizeDictionary: [String: Int]! = [
+        
+        "size": 0,
+        "groom": 0,
+        "shed": 0,
+        "group": 0,
+        "bark": 0,
+        "train": 0
+    ]
+    
     // filters are added, implement to remove?
     func filterPressed(sender: UIButton!) {
+        //var select = false
         
         let buttonLabel: String = sender.titleLabel!.text!
         
-        print("store \(buttonLabel)")
-        
-        sender.isUserInteractionEnabled = false
-        sender.backgroundColor = yellow
-        switch (sender.titleLabel!.text){
-            /* case "Long hair"?:
-             if hair != 0 {
-             hair = 100
-             }
-             hair = 2;
-             print ("hair is \(hair)")
-             break;
-             case "Short hair"?:
-             hair = 1;
-             if hair != 0 {
-             hair = 100
-             }
-             print ("hair is \(hair)")
-             break;*/
-        case "Small"?:
-            //print ("before set size is \(size)")
-            if size != 0 {
-                size = 100
-                break
-            }
-            //print ("after set size is \(size)")
-            size = 1;
-            break;
-        case "Large"?:
-            if size != 0 {
-                size = 100
-                break
-            }
-            size = 3;
-            break;
-        case "Medium"?:
-            if size != 0 {
-                size = 100
-                break
-            }
-            size = 2;
-            break;
-        case "Herding"?:
-            if group != 0 {
-                group = 100
-                break
-            }
-            group = 1;
-            break;
-        case "Hound"?:
-            if group != 0 {
-                group = 100
-                break
-            }
-            group = 2;
-            break;
-        case "Non_sporting"?:
-            if group != 0 {
-                group = 100
-                break
-            }
-            group = 3;
-            break;
-        case "Sporting"?:
-            if group != 0 {
-                group = 100
-                break
-            }
-            group = 4;
-            break;
-        case "Terrier"?:
-            if group != 0 {
-                group = 100
-                break
-            }
-            group = 5;
-            break;
-        case "Toy"?:
-            if group != 0 {
-                group = 100
-                break
-            }
-            group = 6;
-            break;
-        case "Working"?:
-            if group != 0 {
-                group = 100
-                break
-            }
-            group = 7;
-            break;
-        case "Easy"?:
-            if train != 0 {
-                train = 100
-                break
-            }
-            train = 1;
-            break;
-        case "Average"?:
-            if train != 0 {
-                train = 100
-                break
-            }
-            train = 2;
-            break;
-        case "Fair"?:
-            if train != 0 {
-                train = 100
-                break
-            }
-            train = 3;
-            break;
-        case "Frequent"?:
-            if bark != 0 {
-                bark = 100
-                break
-            }
-            bark = 1;
-            break;
-        case "Occasional"?:
-            if bark != 0 {
-                bark = 100
-                break
-            }
-            bark = 2;
-            break;
-        case "Rare"?:
-            if bark != 0 {
-                bark = 100
-                break
-            }
-            bark = 3;
-            break;
-        case "High"?:
-            if groom != 0 {
-                groom = 100
-                break
-            }
-            groom = 1;
-            break;
-        case "Occasional"?:
-            if groom != 0 {
-                groom = 100
-                break
-            }
-            groom = 2;
-            break;
-        case "Low"?:
-            if groom != 0 {
-                groom = 100
-                break
-            }
-            groom = 3;
-            break;
-        case "Minimal"?:
-            if shed != 0 {
-                shed = 100
-                break
-            }
-            shed = 1;
-            break;
-        case "Moderate"?:
-            if shed != 0 {
-                shed = 100
-                break
-            }
-            shed = 2;
-            break;
-        case "Constant"?:
-            if shed != 0 {
-                shed = 100
-                break
-            }
-            shed = 3;
-            break;
-        case "Seasonal"?:
-            if shed != 0 {
-                shed = 100
-                break
-            }
-            shed = 4;
-            break;
-        default:
-            break;
+        if sender.backgroundColor != yellow {
             
+            print("store \(buttonLabel)")
+            Functionalities.myUser?.addFavoriteCategoryFilter(filter: (sender.titleLabel?.text!)!)
+            filtersString.append(buttonLabel)
+            
+            sender.backgroundColor = yellow
         }
+            
+        else {
+            
+            print("remove \(buttonLabel)")
+            Functionalities.myUser?.removeFavoriteCategoryFilter(filter: (sender.titleLabel?.text!)!)
+            filtersString.remove(at: filtersString.index(of: buttonLabel)!)
+            sender.backgroundColor = white_half
+        }
+        
+        /**
+         //sender.isUserInteractionEnabled = false
+         //sender.backgroundColor = yellow
+         switch (sender.titleLabel!.text){
+         /* case "Long hair"?:
+         if hair != 0 {
+         hair = 100
+         }
+         hair = 2;
+         print ("hair is \(hair)")
+         break;
+         case "Short hair"?:
+         hair = 1;
+         if hair != 0 {
+         hair = 100
+         }
+         print ("hair is \(hair)")
+         break;*/
+         case "Small"?:
+         if size == 1 {
+         size = 0
+         break
+         }
+         
+         if size != 0 {
+         size = 100
+         break
+         }
+         size = 1;
+         break;
+         case "Large"?:
+         if size == 3 {
+         size = 0
+         break
+         }
+         if size != 0 {
+         size = 100
+         break
+         }
+         
+         size = 3;
+         break;
+         case "Medium"?:
+         if size == 2 {
+         size = 0
+         break
+         }
+         if size != 0 {
+         size = 100
+         break
+         }
+         
+         size = 2;
+         break;
+         case "Herding"?:
+         if group == 1 {
+         group = 0
+         break
+         }
+         if group != 0 {
+         group = 100
+         break
+         }
+         
+         group = 1;
+         break;
+         case "Hound"?:
+         if group == 2 {
+         group = 0
+         break
+         }
+         if group != 0 {
+         group = 100
+         break
+         }
+         
+         group = 2;
+         break;
+         case "Non_sporting"?:
+         if group == 3 {
+         group = 0
+         break
+         }
+         if group != 0 {
+         group = 100
+         break
+         }
+         
+         group = 3;
+         break;
+         case "Sporting"?:
+         if group == 4 {
+         group = 0
+         break
+         }
+         if group != 0 {
+         group = 100
+         break
+         }
+         
+         group = 4;
+         break;
+         case "Terrier"?:
+         if group == 5 {
+         group = 0
+         break
+         }
+         if group != 0 {
+         group = 100
+         break
+         }
+         
+         group = 5;
+         break;
+         case "Toy"?:
+         if group == 6 {
+         group = 0
+         break
+         }
+         if group != 0 {
+         group = 100
+         break
+         }
+         
+         group = 6;
+         break;
+         case "Working"?:
+         if group == 7 {
+         group = 0
+         break
+         }
+         if group != 0 {
+         group = 100
+         break
+         }
+         
+         group = 7;
+         break;
+         case "Easy"?:
+         if train == 1 {
+         train = 0
+         break
+         }
+         if train != 0 {
+         train = 100
+         break
+         }
+         
+         train = 1;
+         break;
+         case "Difficult"?:
+         if train == 2 {
+         train = 0
+         break
+         }
+         
+         if train != 0 {
+         train = 100
+         break
+         }
+         train = 2;
+         break;
+         case "Fair"?:
+         if train == 3 {
+         train = 0
+         break
+         }
+         if train != 0 {
+         train = 100
+         break
+         }
+         
+         train = 3;
+         break;
+         case "Frequent"?:
+         if bark == 1 {
+         bark = 0
+         break
+         }
+         if bark != 0 {
+         bark = 100
+         break
+         }
+         
+         bark = 1;
+         break;
+         case "Occasional"?:
+         if bark == 2 {
+         bark = 0
+         break
+         }
+         if bark != 0 {
+         bark = 100
+         break
+         }
+         
+         bark = 2;
+         break;
+         case "Rare"?:
+         if bark == 3 {
+         bark = 0
+         break
+         }
+         if bark != 0 {
+         bark = 100
+         break
+         }
+         
+         bark = 3;
+         break;
+         case "High"?:
+         if groom == 1 {
+         groom = 0
+         break
+         }
+         if groom != 0 {
+         groom = 100
+         break
+         }
+         
+         groom = 1;
+         break;
+         case "Moderate"?:
+         if groom == 2 {
+         groom = 0
+         break
+         }
+         if groom != 0 {
+         groom = 100
+         break
+         }
+         
+         groom = 2;
+         break;
+         case "Low"?:
+         if groom == 3 {
+         groom = 0
+         break
+         }
+         if groom != 0 {
+         groom = 100
+         break
+         }
+         
+         
+         groom = 3;
+         break;
+         case "Minimal"?:
+         if shed == 1 {
+         shed = 0
+         break
+         }
+         if shed != 0 {
+         shed = 100
+         break
+         }
+         
+         shed = 1;
+         break;
+         case "Moderate"?:
+         if shed == 2 {
+         shed = 0
+         break
+         }
+         if shed != 0 {
+         shed = 100
+         break
+         }
+         
+         shed = 2;
+         break;
+         case "Constant"?:
+         if shed == 3 {
+         shed = 0
+         break
+         }
+         if shed != 0 {
+         shed = 100
+         break
+         }
+         
+         shed = 3;
+         break;
+         case "Seasonal"?:
+         if shed == 4 {
+         shed = 0
+         break
+         }
+         if shed != 0 {
+         shed = 100
+         break
+         }
+         
+         shed = 4;
+         break;
+         default:
+         break;
+         
+         }*/
         
     }
     
@@ -310,20 +498,20 @@ class FilterTableViewController: UIViewController, UINavigationBarDelegate{
         //self.title = "Filter"
         //scrolling
         scrollView = UIScrollView(frame: CGRect(x:0, y:58, width:self.view.frame.size.width, height:self.view.frame.size.height-CGFloat(58)))
-        scrollView.backgroundColor = UIColor(patternImage: UIImage(named: "backgroundHomeLarge.jpg")!)
+        scrollView.backgroundColor = UIColor(patternImage: UIImage(named: "backgroundHomeLarge-shade.jpg")!)
         
         
-        let shade = UIImageView(frame:UIScreen.main.bounds)
-        shade.backgroundColor = UIColor.black
-        shade.alpha = 0.5
-        scrollView.addSubview(shade)
-        scrollView.sendSubview(toBack: shade)
-        
-        
-        let BackimageView = UIImageView(frame:UIScreen.main.bounds)
-        BackimageView.image = UIImage(named:"bacgroundHome.png")
-        scrollView.addSubview(BackimageView)
-        scrollView.sendSubview(toBack: BackimageView)
+        /*let shade = UIImageView(frame:UIScreen.main.bounds)
+         shade.backgroundColor = UIColor.black
+         shade.alpha = 0.5
+         scrollView.addSubview(shade)
+         scrollView.sendSubview(toBack: shade)
+         
+         
+         let BackimageView = UIImageView(frame:UIScreen.main.bounds)
+         BackimageView.image = UIImage(named:"bacgroundHome.png")
+         scrollView.addSubview(BackimageView)
+         scrollView.sendSubview(toBack: BackimageView)*/
         //start adding buttons
         button = UIButton(frame: CGRect(origin: CGPoint(x: top_origin.x, y: top_origin.y), size: button_size))
         var buttonOrigin = CGPoint(x:0,y:0)
@@ -484,8 +672,12 @@ class FilterTableViewController: UIViewController, UINavigationBarDelegate{
             button.frame.origin.x += CGFloat(button_offset)
             
             buttonOrigin = CGPoint(x: button.frame.origin.x, y: top_origin.y + CGFloat(line_offset))
-            
-            button = UIButton(frame: CGRect(origin: buttonOrigin, size: button_size))
+            if key == "Non-sporting" {
+                button = UIButton(frame: CGRect(origin: buttonOrigin, size: large_button_size))
+                
+            }else{
+                button = UIButton(frame: CGRect(origin: buttonOrigin, size: button_size))
+            }
             setUpButtons(myLabel: key, myFontSize: button_font_size, myButton: button)
             button.addTarget(self, action: #selector(self.filterPressed(sender:)), for: UIControlEvents.touchDown)
         }
@@ -520,16 +712,54 @@ class FilterTableViewController: UIViewController, UINavigationBarDelegate{
         
     }
     
+    func setZero(){
+        
+        for pair in typeSizeDictionary {
+            
+            typeSizeDictionary[pair.key] = 0
+        }
+        
+        for pair in typeDictionary {
+            
+            typeDictionary[pair.key] = 0
+        }
+    }
+    
     func showResult(_ Sender: UIButton!){
         let secondViewController:FilterResultViewController = FilterResultViewController()
         
-        secondViewController.size = size
-        secondViewController.groom = groom
-        secondViewController.train = train
-        secondViewController.bark = bark
-        secondViewController.group = group
-        secondViewController.shed = shed
+        setZero()
         
+        for myFilter in filtersString {
+            
+            let value: String! = filtersDictionary[myFilter]!
+            
+            let end = value.index(before: value.endIndex)
+            
+            let filterType = value.substring(to: end)
+            let filterNum = Int(value.substring(from: end))
+            print("end index \(filterType) & \(filterNum)")
+            typeSizeDictionary[filterType]! += 1
+            
+            if typeDictionary[filterType] != 0 {
+                
+                typeDictionary[filterType] = 100
+            }
+                
+            else {
+                
+                typeDictionary[filterType] = filterNum
+            }
+        }
+        
+        secondViewController.size = typeDictionary["size"]
+        secondViewController.groom = typeDictionary["groom"]
+        secondViewController.train = typeDictionary["train"]
+        secondViewController.bark = typeDictionary["bark"]
+        secondViewController.group = typeDictionary["group"]
+        secondViewController.shed = typeDictionary["shed"]
+        
+        print("done processing filters")
         
         self.present(secondViewController, animated: true, completion: nil)
     }

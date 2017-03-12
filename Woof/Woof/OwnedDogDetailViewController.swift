@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseStorage
 
 class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -28,6 +29,8 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
     let myUser = Functionalities.myUser
     var thisDogID = ""
     var thisDog: Dog?
+    
+    //var Img =  UIImage()
     
     
     
@@ -79,19 +82,13 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         return true
     }
     
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        
-        if textField == breedtextField {
-            
-            self.view.frame.origin.y += CGFloat(200)
-        }
-    }
     
     override func viewDidLoad() {
         //super.viewDidLoad()
         self.view.backgroundColor = UIColor(red: 165.0/255.0, green: 195.0/255.0, blue: 187.0/255.0, alpha: 1)
         
         
+        //Img = self.convertBase64ToImage(base64String: (thisDog?.image)!)
         print(name)
         // Do any additional setup after loading the view.
         
@@ -192,12 +189,6 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         
         
         
-        
-        
-        
-        //picker2.inputAccessoryView = toolBar
-        
-        
         //---------------------------------------------------------------------------------------------------------------------
         /* user profile image */
         let dogImg = profileImgContainer
@@ -228,9 +219,7 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         self.view.addSubview(navigationBar)
         
         
-        
-        
-        
+    
         //The edit Button
         //    let editProfButton:UIButton = UIButton(frame: CGRect(x: 250, y: 200, width: 50, height: 25))
         editProfButton.backgroundColor = .black
@@ -253,8 +242,6 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         self.view.addSubview(changeImageButton)
         //  EditProfileImageButtonConstraints(Button: editProfButton)
         changeImageButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectProfileImageView)))
-        
-        
         
         
         
@@ -320,15 +307,8 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         breedtextField.delegate = self
 
         
-        
-        
-        //picker2 = UIDatePickerView()
-        //picker2 = UIDatePicker(frame: CGRect( origin: CGPoint(x:0, y:0), size: CGSize(width:320, height:115) ))
-        
         picker2.center = CGPoint(x: 180, y: 560)
         picker2.backgroundColor = UIColor.white
-        //let currentDate = Date.init()
-        // picker2.minimumDate = Date(timeIntervalSince1970: currentDate.timeIntervalSince1970 - currentDate.timeIntervalSince1970.truncatingRemainder(dividingBy: 60))
         picker2.layer.masksToBounds = true
         picker2.layer.cornerRadius = CGFloat(20)
         
@@ -342,8 +322,7 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         
         picker3.center = CGPoint(x: 180, y: 560)
         picker3.backgroundColor = UIColor.white
-        //let currentDate = Date.init()
-        // picker2.minimumDate = Date(timeIntervalSince1970: currentDate.timeIntervalSince1970 - currentDate.timeIntervalSince1970.truncatingRemainder(dividingBy: 60))
+
         picker3.layer.masksToBounds = true
         picker3.layer.cornerRadius = CGFloat(20)
         
@@ -353,7 +332,6 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         //picker2.datePickerMode = UIDatePickerMode.date
         
         self.view.addSubview(picker3)
-        
         
     }
     
@@ -379,7 +357,7 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
     }
 
     
-    
+
     
     func datePickerValueChanged(datePicker:UIDatePicker) {
 
@@ -388,15 +366,11 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         
         
         dateFormatter.dateStyle = DateFormatter.Style.short
-        //dateFormatter.timeStyle = DateFormatter.Style.short
         
         let strDate = dateFormatter.string(from: datePicker.date)
         
         dogVaccinationDatetextField.text = strDate
         vaccinationDateLabel.text = strDate
-        
-        
-        //datePicker.isHidden = true
     }
     
     
@@ -407,7 +381,6 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         
         
         dateFormatter.dateStyle = DateFormatter.Style.short
-        //dateFormatter.timeStyle = DateFormatter.Style.short
         
         let strDate = dateFormatter.string(from: datePicker.date)
         
@@ -457,26 +430,66 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         ageLabel.isHidden = false
         breedLabel.isHidden = false
         
+        if (name == "") {
+            name = (thisDog?.name)!
+        }
+        if (gender == "") {
+            gender = (thisDog?.gender)!
+        }
+        if (age == "") {
+            age = (thisDog?.age)!
+        }
+        let newBreed: Breed
+        if (breed == "") {
+            newBreed = (thisDog?.breed)!
+        }
+        else {
         
-        print(breed)
-        let newBreed = Breed(breedName: breed, popularity: (thisDog?.breed.popularity)!, origin: (thisDog?.breed.origin)!, group: (thisDog?.breed.group)!, size: (thisDog?.breed.size)!, type: (thisDog?.breed.type)!, lifeExpectancy: (thisDog?.breed.lifeExpectancy)!, personality: (thisDog?.breed.personality)!,
+        
+        //print(breed)
+            newBreed = Breed(breedName: breed, popularity: (thisDog?.breed.popularity)!, origin: (thisDog?.breed.origin)!, group: (thisDog?.breed.group)!, size: (thisDog?.breed.size)!, type: (thisDog?.breed.type)!, lifeExpectancy: (thisDog?.breed.lifeExpectancy)!, personality: (thisDog?.breed.personality)!,
                              height: (thisDog?.breed.height)!, weight: (thisDog?.breed.weight)!,
                              colors: (thisDog?.breed.colors)!, litterSize: (thisDog?.breed.litterSize)!, price: (thisDog?.breed.price)!, barkingLevel: (thisDog?.breed.barkingLevel)!, childFriendly: (thisDog?.breed.childFriendly)!,
                              
                              grooming: (thisDog?.breed.grooming)!,shedding: (thisDog?.breed.shedding)!, trainability: (thisDog?.breed.trainability)!,
                              breeders: (thisDog?.breed.breeders)!, image: (thisDog?.breed.image)!)
-        
+        }
+        let newBirthDate: Date
+        let newVaccineDate: Date
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM/DD/YY"
-        let newBirthDate = dateFormatter.date(from: birthdate)!
-        let newVaccineDate = dateFormatter.date(from: vaccinationdate)!
+        if (birthdate == "") {
+            newBirthDate = (thisDog?.birthDate)!
+        }
+        else {
+        
+            newBirthDate = dateFormatter.date(from: birthdate)!
+        }
+        
+        if (vaccinationdate == "") {
+            newVaccineDate = (thisDog?.vaccination)!
+        }
+        else {
+            newVaccineDate = dateFormatter.date(from: vaccinationdate)!
+        }
+        
         
         let newDog = Dog(dogID: (thisDog?.dogID)!, name: name, breed: newBreed, birthDate: newBirthDate,age: age, gender: gender,  vaccination: newVaccineDate, color: (thisDog?.color)!, description: (thisDog?.description)!, image: (thisDog?.image)!)
-        print(thisDog?.dogID)
-        print("Look here !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+       
+        print(newDog.name)
+        print(newDog.dogID)
+        print(newDog.breed.breedName)
+        print(newDog.birthDate)
+        print(newDog.gender)
+        print(newDog.vaccination)
+        print(newDog.color)
+        print(newDog.description)
+        print(newDog.image)
+
         Functionalities.myUser?.updateDog(dog: newDog)
        
         
+        self.view.frame.origin.y = 0
     }
     
     //Action when user clicks the edit Button
@@ -498,9 +511,7 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         breedLabel.isHidden = true
         ageLabel.isHidden = true
         breedLabel.isHidden = true
-        
-//        Functionalities.retrieveDogID(<#T##Functionalities#>)
-//        
+       
         
     }
     
@@ -532,12 +543,9 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
     
     
     
-    
     //--------------------------------end picker------------------------------------------------------------------
     
-    
-    
-    
+
     func goBack(){
         print("call goBack function")
         //        let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -554,26 +562,22 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
     }
     
     
-//    /* global variable: profileImgContainer --> default profile image */
-//    func profileImgContainer(string: String) -> UIImageView{
-//        let ImgView = UIImageView()
-//        let Img = UIImage(named: "BlackEmptyDog")
-//        ImgView.image = Img
-//        ImgView.frame = CGRect(x: 200, y: 200, width: 100, height: 100)
-//        ImgView.translatesAutoresizingMaskIntoConstraints = false
-//        
-//        return ImgView
-//    }
     
     var profileImgContainer: UIImageView = {
         let ImgView = UIImageView()
-        let Img = UIImage(named: "BlackEmptyDog")
+        //let anyImg = UIImage(named:"")
+        var Img = UIImage(named: "BlackEmptyDog")
         ImgView.image = Img
+        //ImgView.image = convertBase64ToImage(thisDog.image)
+        
+        
+        //ImgView.image = convertBase64ToImage(base64String: (thisDog?.image)!)
         ImgView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
         ImgView.translatesAutoresizingMaskIntoConstraints = false
         
         return ImgView
     }()
+    
     
     /* layout constriants for profile image */
     func ImageViewConstraints(Img: UIImageView) {
@@ -601,11 +605,27 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
             chosenImageFromPicker = editedImage
         }
         
-        if let chosenImage = chosenImageFromPicker{
+        if let chosenImage = chosenImageFromPicker {
             profileImgContainer.image = chosenImage
+            
+            let tools = Functionalities()
+            //let imageUrl = tools.addImage(imageData: chosenImage)
+            //self.thisDog?.image = imageUrl
+            
+            Functionalities.myUser?.updateDog(dog: self.thisDog!)
+            
+//            let myImage = convertImageToBase64(image: chosenImage)
+//            
+//            let newDog = Dog(dogID: (thisDog?.dogID)!, name: (thisDog?.name)!, breed: (thisDog?.breed)!, birthDate: (thisDog?.birthDate)!,age: (thisDog?.age)!, gender: (thisDog?.gender)!,  vaccination: (thisDog?.vaccination)!, color: (thisDog?.color)!, description: (thisDog?.description)!, image: myImage)
+//            
+//            Functionalities.myUser?.updateDog(dog: newDog)
+            
+            //Img = chosenImage
+            //TODO
         }
         self.dismiss(animated: true, completion: nil)
     }
+    
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)

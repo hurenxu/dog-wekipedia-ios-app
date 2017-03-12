@@ -95,9 +95,6 @@
 		07AFF2711E6A55D20089867C /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07AFF23C1E6A55D20089867C /* SearchTableViewController.swift */; };
 		07AFF2721E6A55D20089867C /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07AFF23C1E6A55D20089867C /* SearchTableViewController.swift */; };
 		07AFF2731E6A55D20089867C /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07AFF23C1E6A55D20089867C /* SearchTableViewController.swift */; };
-		07AFF2741E6A55D20089867C /* WoofipediaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07AFF23D1E6A55D20089867C /* WoofipediaViewController.swift */; };
-		07AFF2751E6A55D20089867C /* WoofipediaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07AFF23D1E6A55D20089867C /* WoofipediaViewController.swift */; };
-		07AFF2761E6A55D20089867C /* WoofipediaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07AFF23D1E6A55D20089867C /* WoofipediaViewController.swift */; };
 		07AFF2771E6A5E8B0089867C /* Breed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075FBD7E1E4D635D009ECE7C /* Breed.swift */; };
 		07AFF2781E6A5E8C0089867C /* Breed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075FBD7E1E4D635D009ECE7C /* Breed.swift */; };
 		07AFF2791E6A5E8F0089867C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075FBD801E4D635D009ECE7C /* User.swift */; };
@@ -109,6 +106,7 @@
 		07B4D74C1E56A13200DA6A2C /* DataAccessObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B4D74B1E56A13200DA6A2C /* DataAccessObject.swift */; };
 		07B4D74E1E56A21200DA6A2C /* Functionalities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B4D74D1E56A21200DA6A2C /* Functionalities.swift */; };
 		2F1D1E8F1E726833001DDFBD /* FilterResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1D1E8E1E726833001DDFBD /* FilterResultViewController.swift */; };
+		2FBB4B651E75D50A001FD150 /* backgroundHomeLarge-shade.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2FBB4B641E75D50A001FD150 /* backgroundHomeLarge-shade.jpg */; };
 		2FD762301E73CDB500E315D0 /* LikedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD7622F1E73CDB500E315D0 /* LikedViewController.swift */; };
 		2FFCB09B1E7271DB00B4D6E9 /* AddDogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFCB09A1E7271DB00B4D6E9 /* AddDogViewController.swift */; };
 		58C3A872E1D87A2AA2091BAF /* Pods_Woof.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B9FF199C9CAEB89DFB8BD0B /* Pods_Woof.framework */; };
@@ -199,12 +197,12 @@
 		07AFF23A1E6A55D20089867C /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		07AFF23B1E6A55D20089867C /* Pulsing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pulsing.swift; sourceTree = "<group>"; };
 		07AFF23C1E6A55D20089867C /* SearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
-		07AFF23D1E6A55D20089867C /* WoofipediaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WoofipediaViewController.swift; sourceTree = "<group>"; };
 		07B4D74B1E56A13200DA6A2C /* DataAccessObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataAccessObject.swift; sourceTree = "<group>"; };
 		07B4D74D1E56A21200DA6A2C /* Functionalities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functionalities.swift; sourceTree = "<group>"; };
 		155EBE63D3C365708CD5B5D5 /* Pods-WoofUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoofUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WoofUITests/Pods-WoofUITests.release.xcconfig"; sourceTree = "<group>"; };
 		2B9FF199C9CAEB89DFB8BD0B /* Pods_Woof.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Woof.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F1D1E8E1E726833001DDFBD /* FilterResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterResultViewController.swift; sourceTree = "<group>"; };
+		2FBB4B641E75D50A001FD150 /* backgroundHomeLarge-shade.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "backgroundHomeLarge-shade.jpg"; sourceTree = "<group>"; };
 		2FD7622F1E73CDB500E315D0 /* LikedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikedViewController.swift; sourceTree = "<group>"; };
 		2FFCB09A1E7271DB00B4D6E9 /* AddDogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDogViewController.swift; sourceTree = "<group>"; };
 		417FEE35B18CEC60476A1012 /* Pods-WoofTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WoofTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WoofTests/Pods-WoofTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -359,6 +357,7 @@
 		07AFF27D1E6A61590089867C /* Pics */ = {
 			isa = PBXGroup;
 			children = (
+				2FBB4B641E75D50A001FD150 /* backgroundHomeLarge-shade.jpg */,
 				07AFF22B1E6A55D20089867C /* bacgroundHome.png */,
 				07AFF22C1E6A55D20089867C /* backgroundHome.jpg */,
 				9E7828831E713FB000EF3B9C /* unlike.png */,
@@ -381,7 +380,6 @@
 			isa = PBXGroup;
 			children = (
 				07AFF22F1E6A55D20089867C /* DetailViewController.swift */,
-				07AFF23D1E6A55D20089867C /* WoofipediaViewController.swift */,
 				07AFF23C1E6A55D20089867C /* SearchTableViewController.swift */,
 				07AFF23A1E6A55D20089867C /* ProfileViewController.swift */,
 				07AFF2371E6A55D20089867C /* IPetViewController.swift */,
@@ -512,7 +510,7 @@
 				TargetAttributes = {
 					076344811E415470001E20C9 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 9EPWHD42X7;
+						DevelopmentTeam = 55L773VGHV;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Maps.iOS = {
@@ -559,6 +557,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FBB4B651E75D50A001FD150 /* backgroundHomeLarge-shade.jpg in Resources */,
 				076344921E415470001E20C9 /* LaunchScreen.storyboard in Resources */,
 				9E7828841E713FB000EF3B9C /* unlike.png in Resources */,
 				0758A9201E450B5B00BE9145 /* Rubik-Regular.ttf in Resources */,
@@ -800,7 +799,6 @@
 				07B4D74C1E56A13200DA6A2C /* DataAccessObject.swift in Sources */,
 				07B4D74E1E56A21200DA6A2C /* Functionalities.swift in Sources */,
 				07AFF25C1E6A55D20089867C /* HomepageViewController.swift in Sources */,
-				07AFF2741E6A55D20089867C /* WoofipediaViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -818,7 +816,6 @@
 				07AFF2571E6A55D20089867C /* FilterTableViewController.swift in Sources */,
 				07AFF27B1E6A5EA40089867C /* Dog.swift in Sources */,
 				07AFF27E1E6A64090089867C /* Functionalities.swift in Sources */,
-				07AFF2751E6A55D20089867C /* WoofipediaViewController.swift in Sources */,
 				07AFF24E1E6A55D20089867C /* DogCell.swift in Sources */,
 				07AFF2721E6A55D20089867C /* SearchTableViewController.swift in Sources */,
 				07AFF26C1E6A55D20089867C /* ProfileViewController.swift in Sources */,
@@ -840,7 +837,6 @@
 				07AFF2581E6A55D20089867C /* FilterTableViewController.swift in Sources */,
 				07AFF27C1E6A5EA50089867C /* Dog.swift in Sources */,
 				07AFF27F1E6A640A0089867C /* Functionalities.swift in Sources */,
-				07AFF2761E6A55D20089867C /* WoofipediaViewController.swift in Sources */,
 				07AFF24F1E6A55D20089867C /* DogCell.swift in Sources */,
 				07AFF2731E6A55D20089867C /* SearchTableViewController.swift in Sources */,
 				07AFF26D1E6A55D20089867C /* ProfileViewController.swift in Sources */,
@@ -998,7 +994,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: hemeiyi0225@icloud.com (3CH6TSBANA)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
-				DEVELOPMENT_TEAM = 9EPWHD42X7;
+				DEVELOPMENT_TEAM = 55L773VGHV;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1006,7 +1002,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				INFOPLIST_FILE = Woof/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = jasper.Woof.ios.Woof;
+				PRODUCT_BUNDLE_IDENTIFIER = meiyi.he.Woof.ios.Woof;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Woof-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
@@ -1021,7 +1017,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: hemeiyi0225@icloud.com (3CH6TSBANA)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
-				DEVELOPMENT_TEAM = 9EPWHD42X7;
+				DEVELOPMENT_TEAM = 55L773VGHV;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1029,7 +1025,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				INFOPLIST_FILE = Woof/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = jasper.Woof.ios.Woof;
+				PRODUCT_BUNDLE_IDENTIFIER = meiyi.he.Woof.ios.Woof;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Woof-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;

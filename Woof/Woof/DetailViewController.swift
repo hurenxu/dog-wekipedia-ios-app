@@ -16,7 +16,7 @@ class DetailViewController: UIViewController, UINavigationBarDelegate{
     @IBOutlet weak var button: DOFavoriteButton!
     let SCROLL_OFFSET = 0
     let LABEL_OFFSET = 20
-    var scrollView = UIScrollView(frame: CGRect(x:0, y:410, width:400, height:350))
+    var scrollView = UIScrollView(frame: CGRect(x:0, y:350, width:400, height:350))
     let result_origin = CGPoint(x:2, y:40)
     
     // MARK: - Setup data passing variable matches the SearchTableViewController.swift class's prepare function
@@ -71,22 +71,45 @@ class DetailViewController: UIViewController, UINavigationBarDelegate{
         }
     }
     func tappedButton(sender: DOFavoriteButton) {
-        if sender.isSelected {
-            // deselect
-            sender.deselect()
-            if Functionalities.myUser != nil{
-                Functionalities.myUser?.removeFavoriteDogBreed(breedname:(detailDog?.getBreedName())!)
-                Functionalities.myUser?.updateUser()
-                print("Successfully removed breed from user favorite")
-                //print()
-            }
-        } else {
-            // select with animation
-            sender.select()
-            if Functionalities.myUser != nil{
-                Functionalities.myUser?.addFavoriteDogBreed(breedname:(detailDog?.getBreedName())!)
-                Functionalities.myUser?.updateUser()
-                print("Successfully added breed to user favorite")
+        if Functionalities.myUser == nil{
+            // create the alert
+            let alert = UIAlertController(title: "Login Needed", message: "Would you like to login to add your favoriate dogs to your profile?", preferredStyle: UIAlertControllerStyle.alert)
+            
+            // add the actions (buttons)
+            alert.addAction(UIAlertAction(title: "Login", style: UIAlertActionStyle.default, handler: { action in
+                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let initViewController: UIViewController = storyBoard.instantiateViewController(withIdentifier: "Login") as! LoginViewController
+                appDelegate.window?.rootViewController? = initViewController
+                
+                
+                let MyrootViewController = appDelegate.window!.rootViewController
+            }))
+            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
+            
+            // show the alert
+            self.present(alert, animated: true, completion: nil)
+        }
+        else{
+            
+            if sender.isSelected {
+                // deselect
+                sender.deselect()
+                if Functionalities.myUser != nil{
+                    Functionalities.myUser?.removeFavoriteDogBreed(breedname:(detailDog?.getBreedName())!)
+                    Functionalities.myUser?.updateUser()
+                    print("Successfully removed breed from user favorite")
+                    //print()
+                }
+            } else {
+                // select with animation
+                sender.select()
+                if Functionalities.myUser != nil{
+                    Functionalities.myUser?.addFavoriteDogBreed(breedname:(detailDog?.getBreedName())!)
+                    Functionalities.myUser?.updateUser()
+                    print("Successfully added breed to user favorite")
+                }
+                
             }
         }
     }
@@ -99,7 +122,7 @@ class DetailViewController: UIViewController, UINavigationBarDelegate{
         
         let width = (self.view.frame.width - 100)
         var x = width / 2
-        let y = self.view.frame.height / 2
+        let y = (self.view.frame.height / 3)+50
         
         // add heart button
         let button = DOFavoriteButton(frame: CGRect(x: x, y: y, width: 100, height: 100), image: UIImage(named: "like"))
@@ -165,7 +188,7 @@ class DetailViewController: UIViewController, UINavigationBarDelegate{
         label.numberOfLines = 0
         label.lineBreakMode = NSLineBreakMode.byWordWrapping
         label.layer.cornerRadius = 8
-        label.backgroundColor = UIColor(netHex: 0xa5c3bb)
+        label.backgroundColor = .clear
         label.layer.masksToBounds = true
         label.sizeToFit()
         label.frame = CGRect(origin: label.frame.origin, size: CGSize(width: scrollView.frame.width-80, height: label.frame.height))
@@ -181,7 +204,7 @@ class DetailViewController: UIViewController, UINavigationBarDelegate{
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        scrollView.contentSize = CGSize(width:375, height:1000)
+        scrollView.contentSize = CGSize(width:375, height:800)
     }
     
 
