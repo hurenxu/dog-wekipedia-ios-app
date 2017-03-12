@@ -13,10 +13,25 @@ class NotificationViewController: UIViewController, UIPickerViewDelegate, UIPick
     // TODO: figure out how to reset view when entering from background when the day has expired
     // TODO: see viewDidLoad, check existing notification, don't reset (Alternately, use database?)
     
+    //the data array of the dog names of the user
+    
+    
+    var  dogNameData = [""]
+    let arraysize = Functionalities.dogList.count
+    
+    //declare a new textfield that allows user to select which dog
+    var dogNametextField = UITextField(frame: CGRect(20.0, 230, 330.0, 40.0))
+    
+    //declare a new picker to pick the dog
+    var picker2 = UIPickerView()
+    
+    
+    
     // screen specification
     let SCREEN_SIZE: CGRect = UIScreen.main.bounds
     
     let ORIGIN: CGPoint = CGPoint(x: 0, y: 10)
+    
     
     let CORNER_RADIUS: Int = 10
     let CHOICES_ALPHA: CGFloat = CGFloat(0.9)
@@ -459,6 +474,10 @@ class NotificationViewController: UIViewController, UIPickerViewDelegate, UIPick
             return bDurationValues.count
         }
         
+        else if pickerView == picker2 {
+            return dogNameData.count
+        }
+        
         return 0
     }
     
@@ -485,6 +504,9 @@ class NotificationViewController: UIViewController, UIPickerViewDelegate, UIPick
         else if pickerView == bDurationValueChoices {
             
             return String(bDurationValues[row])
+        }
+        else if pickerView == picker2{
+            return dogNameData[row]
         }
         
         return durationUnits[row]
@@ -527,13 +549,67 @@ class NotificationViewController: UIViewController, UIPickerViewDelegate, UIPick
                 bDurationValueChoices.isHidden = true
             }
         }
+        
+        if pickerView == picker2{
+            dogNametextField.text = dogNameData[row]
+            picker2.isHidden = true
+            self.view.endEditing(true)
+        }
     }
     
     
+    //----------------------------------------------------
+    
+//    func numberOfComponents(in pickerView: UIPickerView) -> Int
+//    {
+//        return 1
+//    }
+    
+    // returns the # of rows in each component..
+    func pickerView2(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int
+    {
+        return dogNameData.count
+    }
+    
+    
+    func pickerView2(_ pickerView: UIPickerView, titleForRow row:Int, forComponent component : Int)->String?
+    {
+        return dogNameData[row]
+    }
+
+    
+    
+    //-----------------------------------------------------
+    func pickerView2(_ pickerView: UIPickerView, didSelectRow row:Int, inComponent component : Int)
+    {
+        dogNametextField.text = dogNameData[row]
+        self.view.endEditing(true)
+    }
     
     // initial setup
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //set the picker2
+        picker2.delegate = self
+        picker2.dataSource = self
+        
+        for index in 0...Functionalities.dogList.count-1{
+            dogNameData.append(Functionalities.dogList[index].getName())
+            print(dogNameData[index])
+            print("dogName Array")
+        }
+        
+        
+        dogNametextField.textColor = UIColor.blue
+        dogNametextField.borderStyle = UITextBorderStyle.roundedRect
+        dogNametextField.placeholder = "Name"
+        dogNametextField.autocapitalizationType = UITextAutocapitalizationType.words // If you need any capitalization
+        self.view.addSubview(dogNametextField)
+        dogNametextField.isHidden = false
+        
+        dogNametextField.inputView = picker2
+        
         // Do any additional setup after loading the view, typically from a nib.
         self.title = "Notification"
         // request for notification, TODO: handle error, not allowed
