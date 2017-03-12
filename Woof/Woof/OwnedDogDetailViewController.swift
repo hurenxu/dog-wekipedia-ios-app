@@ -86,7 +86,12 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         if textField == breedtextField {
             
             self.view.frame.origin.y += CGFloat(200)
+            
         }
+        //if (breedtextField.text != "" ){
+            //self.view.frame.origin.y += CGFloat(0)
+        //}
+        
     }
     
     override func viewDidLoad() {
@@ -510,6 +515,8 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         print("Look here !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
         Functionalities.myUser?.updateDog(dog: newDog)
        
+        
+        self.view.frame.origin.y = 0
         //let Img = self.convertBase64ToImage(base64String: (thisDog?.image)!)
         
     }
