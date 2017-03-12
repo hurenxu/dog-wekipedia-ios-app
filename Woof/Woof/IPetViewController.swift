@@ -209,7 +209,22 @@ UICollectionViewDelegate, UICollectionViewDataSource {
     func transition(_ Sender: UIButton!) {
         let secondViewController:NotificationViewController = NotificationViewController()
         
-        self.present(secondViewController, animated: true, completion: nil)
+        if dogList.count == 0 {
+            
+            // create the alert
+            let alert = UIAlertController(title: "Dog Needed", message: "Please add a new dog profile to enter the notification page", preferredStyle: UIAlertControllerStyle.alert)
+            
+            // add the actions (buttons)
+            alert.addAction(UIAlertAction(title: "Ok!", style: UIAlertActionStyle.default, handler: nil))
+            
+            // show the alert
+            self.present(alert, animated: true, completion: nil)
+        }
+        
+        else {
+            
+            self.present(secondViewController, animated: true, completion: nil)
+        }
         
     }
     
