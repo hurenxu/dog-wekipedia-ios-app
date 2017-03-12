@@ -24,6 +24,10 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
     var picker3 = UIPickerView()
     //var picker2 = UIDatePicker()
     
+    // testing
+    let myUser = Functionalities.myUser
+    let thisDogID = ""
+    
     
     
     //Declare the texctfield in this view
@@ -456,6 +460,12 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         ageLabel.isHidden = false
         breedLabel.isHidden = false
         
+        //let myUser = Functionalities.myUser
+        /*dogID: String, name: String, breed: Breed, birthDate: Date = Date(), age: String = "", gender: String = "", vaccination: Date = Date(), color: String = "", description: String = "", image: String*/
+        
+//        let newDog = Dog(dogID: thisDogID, name: name, breed: breed, birthDate: birthdate, age: age, gender: gender, vaccination: vaccinationdate, color: )
+//        myUser?.updateDog(dog: <#T##Dog#>)
+        
     }
     
     //Action when user clicks the edit Button
@@ -478,6 +488,8 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         ageLabel.isHidden = true
         breedLabel.isHidden = true
         
+//        Functionalities.retrieveDogID(<#T##Functionalities#>)
+//        
         
     }
     
