@@ -90,7 +90,11 @@ class User{
     }
     
     func addFavoriteDogBreed(breedname: String) {
-        self.favoriteDogBreeds.append(breedname)
+        if (self.favoriteDogBreeds.contains(breedname)) {
+            
+        } else {
+            self.favoriteDogBreeds.append(breedname)
+        }
     }
     func removeFavoriteDogBreed(breedname: String) {
         self.favoriteDogBreeds = self.favoriteDogBreeds.filter{$0 != breedname}
