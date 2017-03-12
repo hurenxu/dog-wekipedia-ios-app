@@ -85,7 +85,7 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         
         if textField == breedtextField {
             
-            self.view.frame.origin.y += CGFloat(200)
+            //self.view.frame.origin.y += CGFloat(200)
             
         }
         //if (breedtextField.text != "" ){

@@ -23,6 +23,8 @@ class Functionalities{
     
     static var userExist = false
     
+    static var dogList = [Dog]()
+    
     init(){}
     // return a whole dog breed list for woofipedia
     // call this method in viewdidload
@@ -79,6 +81,7 @@ class Functionalities{
                         }
                         if (toCheck != 1) {
                             thisDog.dogID = key as String
+                            Functionalities.dogList.append(thisDog)
                             controller.ownedDog.append(thisDog.name)
                             controller.age.append(thisDog.age)
                             controller.breed.append(thisDog.breed.breedName)
