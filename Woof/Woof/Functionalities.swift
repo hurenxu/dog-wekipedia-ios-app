@@ -83,15 +83,16 @@ class Functionalities{
                             thisDog.dogID = key as String
                             Functionalities.dogList.append(thisDog)
                             controller.ownedDog.append(thisDog.name)
-                            controller.dogList.append(thisDog)
                             controller.age.append(thisDog.age)
                             controller.breed.append(thisDog.breed.breedName)
                             controller.gender.append(thisDog.gender)
                             controller.color.append(thisDog.color)
                             controller.dogID.append(key as String)
                             controller.dogList.append(thisDog)
+                            
                             controller.collectView.reloadData()
                         }
+                        toCheck = 0
                     }
                 }
             }
