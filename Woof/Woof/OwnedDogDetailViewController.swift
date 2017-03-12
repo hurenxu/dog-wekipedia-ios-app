@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseStorage
 
 class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -29,7 +30,7 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
     var thisDogID = ""
     var thisDog: Dog?
     
-    var Img =  UIImage()
+    //var Img =  UIImage()
     
     
     
@@ -540,9 +541,7 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         breedLabel.isHidden = true
         ageLabel.isHidden = true
         breedLabel.isHidden = true
-        
-//        Functionalities.retrieveDogID(<#T##Functionalities#>)
-//        
+       
         
     }
     
@@ -661,29 +660,35 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
             chosenImageFromPicker = editedImage
         }
         
-        if let chosenImage = chosenImageFromPicker{
+        if let chosenImage = chosenImageFromPicker {
             profileImgContainer.image = chosenImage
-            //TODO
-            let myImage = convertImageToBase64(image: chosenImage)
             
-            let newDog = Dog(dogID: (thisDog?.dogID)!, name: (thisDog?.name)!, breed: (thisDog?.breed)!, birthDate: (thisDog?.birthDate)!,age: (thisDog?.age)!, gender: (thisDog?.gender)!,  vaccination: (thisDog?.vaccination)!, color: (thisDog?.color)!, description: (thisDog?.description)!, image: myImage)
+            let tools = Functionalities()
+            let imageUrl = tools.addImage(imageData: chosenImage)
+            self.thisDog?.image = imageUrl
             
-            Functionalities.myUser?.updateDog(dog: newDog)
+            Functionalities.myUser?.updateDog(dog: self.thisDog!)
             
-            Img = chosenImage
+//            let myImage = convertImageToBase64(image: chosenImage)
+//            
+//            let newDog = Dog(dogID: (thisDog?.dogID)!, name: (thisDog?.name)!, breed: (thisDog?.breed)!, birthDate: (thisDog?.birthDate)!,age: (thisDog?.age)!, gender: (thisDog?.gender)!,  vaccination: (thisDog?.vaccination)!, color: (thisDog?.color)!, description: (thisDog?.description)!, image: myImage)
+//            
+//            Functionalities.myUser?.updateDog(dog: newDog)
+            
+            //Img = chosenImage
             //TODO
         }
         self.dismiss(animated: true, completion: nil)
     }
     
-    func convertImageToBase64(image: UIImage) -> String {
-        
-        var imageData = UIImagePNGRepresentation(image)
-        let base64String = imageData?.base64EncodedString()
-        
-        return base64String!
-        
-    }
+//    func convertImageToBase64(image: UIImage) -> String {
+//        
+//        var imageData = UIImagePNGRepresentation(image)
+//        let base64String = imageData?.base64EncodedString()
+//        
+//        return base64String!
+//        
+//    }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)

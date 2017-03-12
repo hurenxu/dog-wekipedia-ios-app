@@ -8,6 +8,7 @@
 
 import Foundation
 import FirebaseDatabase
+import FirebaseStorage
 
 class Functionalities{
     
@@ -93,30 +94,6 @@ class Functionalities{
                     }
                 }
             }
-            
-//            let enumerator = snapshot.children
-//            while let next = enumerator.nextObject() as? FIRDataSnapshot {
-//                var dog = next.value as? NSDictionary
-//                let currentDogID = dog?["dogID"] as? String
-//                for id in (Functionalities.myUser?.dogIDs)! {
-//                    var nowID = id
-//                    if (currentDogID == nowID) {
-//                        let thisDog = Dog(dictionary: dog!)
-//                        controller.ownedDog.append(thisDog.name)
-//                        controller.dogList.append(thisDog)
-//                        controller.age.append(thisDog.age)
-//                        controller.breed.append(thisDog.breed.breedName)
-//                        controller.gender.append(thisDog.gender)
-//                        controller.color.append(thisDog.color)
-//                        controller.collectView.reloadData()
-//                        print("REACH &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&")
-//                    }
-//                }
-            
-                
-                
-            //}
-            
         })
     }
     
@@ -151,29 +128,22 @@ class Functionalities{
         return Functionalities.myUser!
     }
     
-//    func retrieveProfileForDogList(controller: iPetViewController) {
-//        let ref = FIRDatabase.database().reference()
-//        let myUserID = Functionalities.myUser?.userID
-//        databaseHandle = ref.child("User Profile").observe(.value, with: { (snapshot) in
-//            let enumerator = snapshot.children
-//            while let next = enumerator.nextObject() as? FIRDataSnapshot {
-//                var currentUser = next.value as? NSDictionary
-//                let currentUserID = currentUser?["userID"] as? String
-//                if (currentUserID == myUserID) {
-//                    let currentUserWanted = User(dictionary: currentUser!)
-//                    
-//                    //TODO: need to replace the following with correct dog object
-//                    //controller.dogIDList = currentUserWanted.dogIDs
-//                    //like this:
-//                    Functionalities.myUser = currentUserWanted
-//                    
-//                    print("REACH THIS LINE ************************************************************************************************************************************************************************************************************")
-//                    self.retrieveDogList(controller: controller)
-//                }
-//            }
-//            
-//        })
-//    }
+    func addImage(imageData: UIImage) -> String {
+        let storageRef = FIRStorage.storage().reference().child(thisDogID)
+        
+        if let imageData = UIImagePNGRepresentation(chosenImage) {
+            storageRef.put(imageData, metadata: nil)
+            
+            return metadata.downloadUrl()
+        } else {
+            return ""
+        }
+        
+    }
+    
+    func retrieveImage() {
+        
+    }
     
     func getBreedList(controller: SearchTableViewController) -> [Breed] {
         retrieveBreedList(controller: controller)
