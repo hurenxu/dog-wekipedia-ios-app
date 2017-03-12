@@ -12,11 +12,13 @@ class SuggestionViewController: UIViewController {
     
     // the size of the phone
     let SCREEN_SIZE: CGRect = UIScreen.main.bounds
-    
+    let white: UIColor = UIColor(red: 225/255, green: 245/255, blue: 245/255, alpha: 1)
+    let bright: UIColor = UIColor(red: 225/255, green: 220/255, blue: 171/255, alpha: 0.8)
+
     // offsets
-    let IMAGE_OFFSET: Int = 70
-    let BORDER_OFFSET: Int = 40
-    let LABEL_OFFSET: Int = 350
+    let IMAGE_OFFSET: Int = 140
+    let BORDER_OFFSET: Int = 30
+    let LABEL_OFFSET: Int = 275
     let MIDDLE_BUTTON_OFFSET: Int = 85
     let SIDE_BUTTON_OFFSET: Int = 35
     
@@ -25,20 +27,26 @@ class SuggestionViewController: UIViewController {
     let DOUBLE: Int = 2
     
     // everything about the image
-    let IMAGE_SIZE: CGSize = CGSize(width: 345, height: 385)
+    let IMAGE_SIZE: CGSize = CGSize(width: 325, height: 290)
     var imageStatic: UIImageView! = nil
     var imageDynamic: UIImageView! = nil
 
     // everything about the border
-    let BORDER_SIZE: CGSize = CGSize(width: 345, height: 425)
+    let BORDER_SIZE: CGSize = CGSize(width: 325, height: 335)
     var borderStatic: UIView! = nil
     var borderDynamic: UIView! = nil
     var borderRelativeCenter: CGPoint! = nil
     
     // everything about the label
-    let LABEL_SIZE: CGSize = CGSize(width: 345, height: 60)
+    let LABEL_SIZE: CGSize = CGSize(width: 325, height: 50)
     let FONT_SIZE = CGFloat(25)
+    let FONT_SIZE_MED = CGFloat(19)
+
+    let FONT_SIZE_SMALL = CGFloat(15)
+
     let FONT = "Rubik"
+    let FONT_LARGER = "Rubik-Medium"
+
     var labelStatic: UILabel = UILabel()
     var labelDynamic: UILabel = UILabel()
     var labelRelativeCenter: CGPoint! = nil
@@ -135,6 +143,8 @@ class SuggestionViewController: UIViewController {
             // update static if possible
             //imageStatic.image = UIImage(named: nextBreed.getImage())
             labelStatic.text = nextBreed.getBreedName()
+            labelStatic.font = UIFont(name: FONT_LARGER, size: FONT_SIZE_MED)
+ 
         }
         
         self.ready = true
@@ -670,7 +680,7 @@ class SuggestionViewController: UIViewController {
         
         self.title = ""
         self.tabBarItem.title=""
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "backgroundHomeLarge.jpg")!)
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "backgroundHomeLarge-shade.jpg")!)
         
         // the center of all components
         let IMAGE_CENTER = CGPoint(x: Int(SCREEN_SIZE.width) / HALF - Int(IMAGE_SIZE.width) / HALF, y: IMAGE_OFFSET)
@@ -686,16 +696,16 @@ class SuggestionViewController: UIViewController {
         labelRelativeCenter = CGPoint(x: 0, y: LABEL_CENTER.y - IMAGE_CENTER.y)
         
         statsButton = UIButton(frame: CGRect(origin: CENTER_BUTTON, size: CENTER_BUTTON_SIZE))
-        statsButton.backgroundColor = UIColor(red: 100.0/255.0, green: 120.0/255.0, blue: 150.0/255.0, alpha: 0.9)
+        statsButton.backgroundColor = bright
         statsButton.layer.cornerRadius = CGFloat(CORNER_RADIUS)
         statsButton.setTitle("View Statistics", for: UIControlState.normal)
         statsButton.setTitleColor(UIColor.black, for: UIControlState.normal)
-        statsButton.titleLabel?.font = UIFont(name: FONT, size: FONT_SIZE)
+        statsButton.titleLabel?.font = UIFont(name: FONT_LARGER, size: FONT_SIZE)
         statsButton.addTarget(self, action: #selector(self.centerPressed(sender:)), for: UIControlEvents.touchDown)
         
         // static: border, image, and label
         borderStatic = UIView(frame: CGRect(origin: BORDER_CENTER, size: BORDER_SIZE))
-        borderStatic.backgroundColor = UIColor.white
+        borderStatic.backgroundColor = white
         borderStatic.layer.cornerRadius = CGFloat(CORNER_RADIUS)
         
         imageStatic = UIImageView(image: localUIImage[index])
@@ -706,12 +716,12 @@ class SuggestionViewController: UIViewController {
         
         labelStatic.text = nextBreed.getBreedName()
         labelStatic.frame = CGRect(origin: LABEL_CENTER, size: LABEL_SIZE)
-        labelStatic.font = UIFont(name: FONT, size: FONT_SIZE)
+        labelStatic.font = UIFont(name: FONT_LARGER, size: FONT_SIZE_MED)
         labelStatic.textAlignment = NSTextAlignment.center
         
         // dynamic: border, image, and label
         borderDynamic = UIView(frame: CGRect(origin: BORDER_CENTER, size: BORDER_SIZE))
-        borderDynamic.backgroundColor = UIColor.white
+        borderDynamic.backgroundColor = white
         borderDynamic.layer.cornerRadius = CGFloat(CORNER_RADIUS)
         
         imageDynamic = UIImageView(image: localUIImage[index-1])
@@ -721,8 +731,10 @@ class SuggestionViewController: UIViewController {
         imageDynamic.roundCorners(corners: [.topLeft, .topRight], radius: CGFloat(CORNER_RADIUS))
         
         labelDynamic.text = currentBreed.getBreedName()
+
+        labelDynamic.font = UIFont(name: FONT_LARGER, size: FONT_SIZE_MED)
+
         labelDynamic.frame = CGRect(origin: LABEL_CENTER, size: LABEL_SIZE)
-        labelDynamic.font = UIFont(name: FONT, size: FONT_SIZE)
         labelDynamic.textAlignment = NSTextAlignment.center
         
         // buttons set up
