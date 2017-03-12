@@ -376,12 +376,7 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
     
     
     func datePickerValueChanged(datePicker:UIDatePicker) {
-        /**
-         let formatter: DateFormatter = DateFormatter()
-         dogVaccinationDatetextField.font = UIFont(name: "Rubik", size: 20)
-         dogVaccinationDatetextField.textColor = UIColor.black
-         dogVaccinationDatetextField.text = formatter.string(from: picker2.date)
-         */
+
         datePicker.isHidden = false
         let dateFormatter: DateFormatter = DateFormatter()
         
@@ -400,12 +395,7 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
     
     
     func datePickerValueChanged2(datePicker:UIDatePicker) {
-        /**
-         let formatter: DateFormatter = DateFormatter()
-         dogVaccinationDatetextField.font = UIFont(name: "Rubik", size: 20)
-         dogVaccinationDatetextField.textColor = UIColor.black
-         dogVaccinationDatetextField.text = formatter.string(from: picker2.date)
-         */
+
         datePicker.isHidden = false
         let dateFormatter: DateFormatter = DateFormatter()
         
