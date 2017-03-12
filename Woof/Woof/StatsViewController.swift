@@ -58,6 +58,7 @@ class StatsViewController: UIViewController {
     var filterTitleLabel: UILabel! = nil
     let LABEL_COLOR: UIColor = UIColor(red: 253.0/255.0, green: 127.0/255.0, blue: 124.0/255.0, alpha: 0.9)
     let TITLE_COLOR: UIColor = UIColor(red: 122.0/255.0, green: 215.0/255.0, blue: 253.0/255.0, alpha: 0.9)
+    let NO_FILTER_TEXT = "No Top Filters Available"
     
     // the buttons
     var currentButton: UIButton! = nil
@@ -75,7 +76,16 @@ class StatsViewController: UIViewController {
     // function to set up the common specs of bars
     func setUpStatsBar(myValue: Int, myBar: UIProgressView) {
         
-        myBar.progress = Float(Double(myValue) / Double(likeBreeds.count))
+        if likeBreeds.count != 0 {
+            
+            myBar.progress = Float(Double(myValue) / Double(likeBreeds.count))
+        }
+        
+        else {
+            
+            myBar.progress = 0
+        }
+        
         myBar.transform = myBar.transform.scaledBy(x: 1, y: 20)
         myBar.tintColor = UIColor.white
         myBar.trackTintColor = UIColor.white.withAlphaComponent(0.4)
@@ -180,31 +190,48 @@ class StatsViewController: UIViewController {
         
         // set up the first bar
         firstBar = UIProgressView(frame: CGRect(origin: FIRST_BAR_ORIGIN, size: BAR_SIZE))
-        setUpStatsBar(myValue: likeFilters[topFilters[0]]!, myBar: firstBar)
         
         // set up the first label
         firstLabel = UILabel(frame: CGRect(origin: FIRST_LABEL_ORIGIN, size: LABEL_SIZE))
-        setUpLabel(myText: topFilters[0], myFont: FONT, myFontSize: LABEL_FONT_SIZE, myAlignment: NSTextAlignment.center, myLabel: firstLabel, myColor: LABEL_COLOR)
+        
 
         // set up the second bar
         secondBar = UIProgressView(frame: CGRect(origin: SECOND_BAR_ORIGIN, size: BAR_SIZE))
-        setUpStatsBar(myValue: likeFilters[topFilters[1]]!, myBar: secondBar)
         
         // set up the second label
         secondLabel = UILabel(frame: CGRect(origin: SECOND_LABEL_ORIGIN, size: LABEL_SIZE))
-        setUpLabel(myText: topFilters[1], myFont: FONT, myFontSize: LABEL_FONT_SIZE, myAlignment: NSTextAlignment.center, myLabel: secondLabel, myColor: LABEL_COLOR)
         
         // set up the third bar
         thirdBar = UIProgressView(frame: CGRect(origin: THIRD_BAR_ORIGIN, size: BAR_SIZE))
-        setUpStatsBar(myValue: likeFilters[topFilters[2]]!, myBar: thirdBar)
         
         // set up the third label
         thirdLabel = UILabel(frame: CGRect(origin: THIRD_LABEL_ORIGIN, size: LABEL_SIZE))
-        setUpLabel(myText: topFilters[2], myFont: FONT, myFontSize: LABEL_FONT_SIZE, myAlignment: NSTextAlignment.center, myLabel: thirdLabel, myColor: LABEL_COLOR)
         
         // set up the filter title label
         filterTitleLabel = UILabel(frame: CGRect(origin: FILTER_LABEL_ORIGIN, size: TITLE_SIZE))
         setUpLabel(myText: "Click to Add Filters", myFont: FONT, myFontSize: TITLE_FONT_SIZE, myAlignment: NSTextAlignment.center, myLabel: filterTitleLabel, myColor: TITLE_COLOR)
+        
+        if likeFilters.count != 0 {
+            
+            setUpStatsBar(myValue: likeFilters[topFilters[0]]!, myBar: firstBar)
+            setUpStatsBar(myValue: likeFilters[topFilters[1]]!, myBar: secondBar)
+            setUpStatsBar(myValue: likeFilters[topFilters[2]]!, myBar: thirdBar)
+            
+            setUpLabel(myText: topFilters[0], myFont: FONT, myFontSize: LABEL_FONT_SIZE, myAlignment: NSTextAlignment.center, myLabel: firstLabel, myColor: LABEL_COLOR)
+            setUpLabel(myText: topFilters[1], myFont: FONT, myFontSize: LABEL_FONT_SIZE, myAlignment: NSTextAlignment.center, myLabel: secondLabel, myColor: LABEL_COLOR)
+            setUpLabel(myText: topFilters[2], myFont: FONT, myFontSize: LABEL_FONT_SIZE, myAlignment: NSTextAlignment.center, myLabel: thirdLabel, myColor: LABEL_COLOR)
+        }
+            
+        else {
+            
+            setUpStatsBar(myValue: 0, myBar: firstBar)
+            setUpStatsBar(myValue: 0, myBar: secondBar)
+            setUpStatsBar(myValue: 0, myBar: thirdBar)
+            
+            setUpLabel(myText: NO_FILTER_TEXT, myFont: FONT, myFontSize: LABEL_FONT_SIZE, myAlignment: NSTextAlignment.center, myLabel: firstLabel, myColor: LABEL_COLOR)
+            setUpLabel(myText: NO_FILTER_TEXT, myFont: FONT, myFontSize: LABEL_FONT_SIZE, myAlignment: NSTextAlignment.center, myLabel: secondLabel, myColor: LABEL_COLOR)
+            setUpLabel(myText: NO_FILTER_TEXT, myFont: FONT, myFontSize: LABEL_FONT_SIZE, myAlignment: NSTextAlignment.center, myLabel: thirdLabel, myColor: LABEL_COLOR)
+        }
         
         // dummy current button reference, set its position
         currentButton = UIButton(frame: CGRect(origin: CGPoint(x: filterTitleLabel.center.x - BUTTON_SIZE.width / CGFloat(HALF), y: filterTitleLabel.frame.origin.y + CGFloat(TOP_BUTTON_OFFSET)), size: CGSize(width: 0, height: 0)))
@@ -218,6 +245,8 @@ class StatsViewController: UIViewController {
             setUpButtons(myLabel: keyAndValuePair.key, myFontSize: BUTTON_FONT_SIZE, myButton: currentButton)
             currentButton.addTarget(self, action: #selector(self.filterPressed(sender:)), for: UIControlEvents.touchDown)
         }
+        
+        print("in suggestion")
         
         // the next page button
         let NEXT_ORIGIN: CGPoint = CGPoint(x: firstBar.frame.origin.x + BAR_SIZE.width - NEXT_BUTTON_SIZE.width, y: currentButton.center.y + CGFloat(FILTER_OFFSET))
