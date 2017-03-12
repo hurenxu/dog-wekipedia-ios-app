@@ -389,9 +389,9 @@
 				076A4D841E6E52E800ABFC98 /* OwnedDogCell.swift */,
 				076A4D851E6E52E800ABFC98 /* OwnedDogDetailViewController.swift */,
 				07AFF2351E6A55D20089867C /* HomepageViewController.swift */,
+				076344BD1E416EA0001E20C9 /* LoginViewController.swift */,
 				07AFF2331E6A55D20089867C /* FilterTableViewController.swift */,
 				076344871E415470001E20C9 /* FirstViewController.swift */,
-				076344BD1E416EA0001E20C9 /* LoginViewController.swift */,
 				A4A8A32F1E6E713F000657E1 /* BreedTableViewCell.swift */,
 				A4A8A3301E6E713F000657E1 /* ResultViewController.swift */,
 				A4A8A3311E6E713F000657E1 /* StatsViewController.swift */,
@@ -512,7 +512,7 @@
 				TargetAttributes = {
 					076344811E415470001E20C9 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 55L773VGHV;
+						DevelopmentTeam = 9EPWHD42X7;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Maps.iOS = {
@@ -998,7 +998,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: hemeiyi0225@icloud.com (3CH6TSBANA)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
-				DEVELOPMENT_TEAM = 55L773VGHV;
+				DEVELOPMENT_TEAM = 9EPWHD42X7;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1006,7 +1006,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				INFOPLIST_FILE = Woof/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = meiyi.he.Woof.ios.Woof;
+				PRODUCT_BUNDLE_IDENTIFIER = jasper.Woof.ios.Woof;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Woof-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
@@ -1021,7 +1021,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: hemeiyi0225@icloud.com (3CH6TSBANA)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
-				DEVELOPMENT_TEAM = 55L773VGHV;
+				DEVELOPMENT_TEAM = 9EPWHD42X7;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1029,7 +1029,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				INFOPLIST_FILE = Woof/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = meiyi.he.Woof.ios.Woof;
+				PRODUCT_BUNDLE_IDENTIFIER = jasper.Woof.ios.Woof;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Woof-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
