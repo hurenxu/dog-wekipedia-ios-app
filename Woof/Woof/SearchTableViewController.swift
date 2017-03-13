@@ -16,7 +16,6 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
     var filteredDogs = [Breed]()
     var resultSearchController = UISearchController()
     
-    
     override func viewDidLoad() {
         self.resultSearchController = UISearchController(searchResultsController: nil)
         self.resultSearchController.searchResultsUpdater = self
@@ -121,9 +120,29 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
         cell.rightButtons = [MGSwipeButton(title: "Click to Like", icon: UIImage(named:"like.png"), backgroundColor: UIColor(netHex: 0xa5c3bb), callback: {
             (sender: MGSwipeTableCell!) -> Bool in
             print("Convenience callback for Like Swipe")
-            Functionalities.myUser?.addFavoriteDogBreed(breedname: breed.getBreedName())
-            Functionalities.myUser?.updateUser()
-            tableView.reloadRows(at: [indexPath], with: .top)
+            if Functionalities.myUser == nil{
+                // create the alert
+                let alert = UIAlertController(title: "Login Needed", message: "Would you like to login to add your favoriate dogs to your profile?", preferredStyle: UIAlertControllerStyle.alert)
+                
+                // add the actions (buttons)
+                alert.addAction(UIAlertAction(title: "Login", style: UIAlertActionStyle.default, handler: { action in
+                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                    let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                    let initViewController: UIViewController = storyBoard.instantiateViewController(withIdentifier: "Login") as! LoginViewController
+                    appDelegate.window?.rootViewController? = initViewController
+                    
+                    
+                    let MyrootViewController = appDelegate.window!.rootViewController
+                }))
+                alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
+                
+                // show the alert
+                self.present(alert, animated: true, completion: nil)
+            } else {
+                Functionalities.myUser?.addFavoriteDogBreed(breedname: breed.getBreedName())
+                Functionalities.myUser?.updateUser()
+                tableView.reloadRows(at: [indexPath], with: .top)
+            }
             print("successfuly liked dog by swiping")
             return true
         })]
@@ -131,9 +150,30 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
         cell.leftButtons = [MGSwipeButton(title: "Click to Unlike", icon: UIImage(named:"unlike.png"), backgroundColor: UIColor(netHex: 0xa5c3bb), callback: {
             (sender: MGSwipeTableCell!) -> Bool in
             print("Convenience callback for UnLike Swipe")
-            Functionalities.myUser?.removeFavoriteDogBreed(breedname: breed.getBreedName())
-            Functionalities.myUser?.updateUser()
-            tableView.reloadRows(at: [indexPath], with: .top)
+            if Functionalities.myUser == nil{
+                // create the alert
+                let alert = UIAlertController(title: "Login Needed", message: "Would you like to login to add your favoriate dogs to your profile?", preferredStyle: UIAlertControllerStyle.alert)
+                
+                // add the actions (buttons)
+                alert.addAction(UIAlertAction(title: "Login", style: UIAlertActionStyle.default, handler: { action in
+                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                    let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                    let initViewController: UIViewController = storyBoard.instantiateViewController(withIdentifier: "Login") as! LoginViewController
+                    appDelegate.window?.rootViewController? = initViewController
+                    
+                    
+                    let MyrootViewController = appDelegate.window!.rootViewController
+                }))
+                alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
+                
+                // show the alert
+                self.present(alert, animated: true, completion: nil)
+            } else {
+                Functionalities.myUser?.removeFavoriteDogBreed(breedname: breed.getBreedName())
+                Functionalities.myUser?.updateUser()
+                tableView.reloadRows(at: [indexPath], with: .top)
+                
+            }
             print("successfuly liked dog by swiping")
             return true
         })]
@@ -229,6 +269,17 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
         }
         return dogs.count
     }
+    override func viewWillAppear(_ animated: Bool) {
+        print("viewWillAppear")
+        let index = tableView.indexPathForSelectedRow
+        print(index)
+        if (index != nil){
+            self.tableView.reloadRows(at: [index!], with: UITableViewRowAnimation.automatic)
+            print("reload")
+        }
+        super.viewWillAppear(animated)
+        print("super.viewWillAppear")
+    }
     
     /* Filter search result*/
     func updateSearchResults(for searchController: UISearchController)
@@ -255,6 +306,7 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //override func prepare(sender: Any?) {
         print("Prepare for DetailView Segue")
+//        resultSearchController.isActive = false
         if segue.identifier == "showDetail" {
             
             print("enter indexpath")

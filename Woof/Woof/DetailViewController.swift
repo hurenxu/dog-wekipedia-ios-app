@@ -17,7 +17,13 @@ class DetailViewController: UIViewController, UINavigationBarDelegate{
     let SCROLL_OFFSET = 0
     let LABEL_OFFSET = 20
     var scrollView = UIScrollView(frame: CGRect(x:0, y:350, width:400, height:350))
-    let result_origin = CGPoint(x:2, y:40)
+    let result_origin = CGPoint(x:20, y:0)
+    
+    //added table
+//    var table: UITableView! = nil
+//    var titleName:[String]!
+//    var titleContent:[String]!
+    
     
     // MARK: - Setup data passing variable matches the SearchTableViewController.swift class's prepare function
     
@@ -83,7 +89,7 @@ class DetailViewController: UIViewController, UINavigationBarDelegate{
                 appDelegate.window?.rootViewController? = initViewController
                 
                 
-                let MyrootViewController = appDelegate.window!.rootViewController
+                _ = appDelegate.window!.rootViewController
             }))
             alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
             
@@ -121,8 +127,8 @@ class DetailViewController: UIViewController, UINavigationBarDelegate{
         super.viewDidLoad()
         
         let width = (self.view.frame.width - 100)
-        var x = width / 2
-        let y = (self.view.frame.height / 3)+50
+        let x = width / 2
+        let y = (self.view.frame.height / 3)+60
         
         // add heart button
         let button = DOFavoriteButton(frame: CGRect(x: x, y: y, width: 100, height: 100), image: UIImage(named: "like"))
@@ -144,7 +150,15 @@ class DetailViewController: UIViewController, UINavigationBarDelegate{
         scrollView.isScrollEnabled = true
         scrollView.contentInset = UIEdgeInsetsMake(0, 0, 10, 0)
         scrollView.backgroundColor = UIColor.clear
-    
+        
+//        table = UITableView(frame: CGRect(origin: result_origin, size: CGSize(width: 353, height: 500)))//self.view.frame.height-12
+//        setUpTable(myColor: UIColor.white, myTable: table)
+//        
+//        table.delegate = self
+//        table.dataSource = self
+//        titleName = ["Personality","Size","Group","Type","Life Expectancy","Origin","Trainability","Grooming","Shedding","Barking Level","Price"]
+//        titleContent = [((detailDog?.getPersonality())!),((detailDog?.getSize())!),((detailDog?.getGroup())!),((detailDog?.getType())!),((detailDog?.getLifeExpectancy())!),((detailDog?.getOrigin())!),((detailDog?.getTrainability())!),((detailDog?.getGrooming())!),((detailDog?.getShedding())!),((detailDog?.getBarkingLevel())!),((detailDog?.getPrice())!)]
+        
         // add labels to the scroll view
         var firstLabely = 0
         let labelPersonality = UILabel(frame: CGRect(x: 20, y: 0, width: Int(scrollView.frame.width-50), height: 50))
@@ -183,6 +197,49 @@ class DetailViewController: UIViewController, UINavigationBarDelegate{
         configureView()
         
     }
+//    func setUpTable(myColor: UIColor, myTable: UITableView) {
+//        
+//        myTable.backgroundColor = myColor
+//        myTable.layer.cornerRadius = CGFloat(10)
+//        myTable.rowHeight = CGFloat(80)
+//        //myTable.register(BreedTableViewCell.self, forCellReuseIdentifier: "BreedTableViewCell")
+//        
+//        myTable.register(ColumnCell.self, forCellReuseIdentifier: "ColumnCell")
+//        myTable.contentInset = UIEdgeInsetsMake(0, 0, 10, 0)
+//        scrollView.addSubview(myTable)
+//    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    
+//    func numberOfSections(in tableView: UITableView) -> Int {
+//        // #warning Incomplete implementation, return the number of sections
+//        return 1
+//    }
+//    
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        // #warning Incomplete implementation, return the number of rows
+//        //print(testArray.count)
+//        return 11
+//    }
+//    
+//    
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "ColumnCell", for: indexPath) as! ColumnCell
+//        cell.column1 = UILabel(frame: CGRect(x: 20, y: 20, width: 40, height: 50))
+//        cell.column1.text = titleName[indexPath.row]
+//        cell.column2 = UILabel(frame: CGRect(x: 50, y: 20, width: 40, height: 50))
+//        cell.column2.text = titleContent[indexPath.row]
+//        print(cell.column1.text)
+////        cell.column1.frame = CGRectMake(10, 10, 42, 21)
+//    
+//        return cell
+//    }
+    
+
     /* This function is to set label format */
     func heightForView(label:UILabel) -> CGFloat{
         label.numberOfLines = 0
@@ -197,10 +254,6 @@ class DetailViewController: UIViewController, UINavigationBarDelegate{
     }
 
     
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()

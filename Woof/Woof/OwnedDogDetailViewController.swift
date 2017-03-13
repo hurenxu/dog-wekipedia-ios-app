@@ -19,6 +19,8 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
     var breed = ""
     var age = ""
     
+    var flag = false
+    
     var ageData = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30"]
     var picker = UIPickerView()
     var picker2 = UIPickerView()
@@ -74,9 +76,10 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
 
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         
-        if textField == breedtextField {
+        if textField == breedtextField && flag == false{
             
             self.view.frame.origin.y -= CGFloat(200)
+            flag = true
         }
         
         return true
@@ -125,7 +128,7 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         //     genderLabel.center = CGPoint(x: 20, y: 300)
         genderLabel.textAlignment = .center
         
-        genderLabel.text = "Gender: " + gender
+        genderLabel.text = "Gender: " + (thisDog?.gender)!
         genderLabel.textColor = UIColor.white
         genderLabel.font = genderLabel.font.withSize(30)
         genderLabel.font = UIFont(name: "Rubik", size: 25)
@@ -135,10 +138,14 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         view.addSubview(genderLabel)
         
         
+        //change format
+        let newdateFormatter1 = DateFormatter()
+        newdateFormatter1.dateFormat = "YYYY-MM-DD HH:MM:SS"
+        let strBir = newdateFormatter1.string(from: (thisDog?.birthDate)!)
         
         //      birthDateLabel.center = CGPoint(x: 20, y: 350)
         birthDateLabel.textAlignment = .center
-        birthDateLabel.text = "Birth Date: " + birthdate
+        birthDateLabel.text = "Birth Date: " + strBir
         birthDateLabel.textColor = UIColor.white
         birthDateLabel.font = birthDateLabel.font.withSize(30)
         birthDateLabel.font = UIFont(name: "Rubik", size: 25)
@@ -151,9 +158,11 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         
         
         //Label of the vaccination date
+        //change format
+        let strVac = newdateFormatter1.string(from: (thisDog?.vaccination)!)
         //     vaccinationDateLabel.center = CGPoint(x: 20, y: 400)
         vaccinationDateLabel.textAlignment = .center
-        vaccinationDateLabel.text = "Vaccination Date: " + vaccinationdate
+        vaccinationDateLabel.text = "Vaccination Date: " + strVac
         vaccinationDateLabel.textColor = UIColor.white
         vaccinationDateLabel.font = vaccinationDateLabel.font.withSize(30)
         vaccinationDateLabel.font = UIFont(name: "Rubik", size: 25)
@@ -165,7 +174,7 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         
         //breed Label
         breedLabel.textAlignment = .center
-        breedLabel.text = "Breed: " + breed
+        breedLabel.text = "Breed: " + (thisDog?.breed.breedName)!
         breedLabel.textColor = UIColor.white
         breedLabel.font = breedLabel.font.withSize(30)
         breedLabel.font = UIFont(name: "Rubik", size: 25)
@@ -177,7 +186,7 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         
         //age Label
         ageLabel.textAlignment = .center
-        ageLabel.text = "Age: " + age
+        ageLabel.text = "Age: " + (thisDog?.age)!
         ageLabel.textColor = UIColor.white
         ageLabel.font = ageLabel.font.withSize(30)
         ageLabel.font = UIFont(name: "Rubik", size: 25)
@@ -362,6 +371,8 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
     func datePickerValueChanged(datePicker:UIDatePicker) {
 
         datePicker.isHidden = false
+        self.view.endEditing(true)
+        
         let dateFormatter: DateFormatter = DateFormatter()
         
         
@@ -377,6 +388,7 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
     func datePickerValueChanged2(datePicker:UIDatePicker) {
 
         datePicker.isHidden = false
+        self.view.endEditing(true)
         let dateFormatter: DateFormatter = DateFormatter()
         
         
@@ -490,6 +502,7 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
        
         
         self.view.frame.origin.y = 0
+        flag = false
     }
     
     //Action when user clicks the edit Button
@@ -497,10 +510,15 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
     {
         dogVaccinationDatetextField.isHidden = false
         dogBirhDatetextField.isHidden = false
+        dogBirhDatetextField.text = birthdate
         dogGendertextField.isHidden = false
+        dogGendertextField.text = gender
         dogNametextField.isHidden = false
+        dogNametextField.text = name
         agetextField.isHidden = false
+        agetextField.text = age
         breedtextField.isHidden = false
+        breedtextField.text = breed
         saveProfButton.isHidden = false
         
         

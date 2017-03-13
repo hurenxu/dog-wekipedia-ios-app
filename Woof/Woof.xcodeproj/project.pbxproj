@@ -116,6 +116,7 @@
 		73C8B16C1E73014800185C8B /* GoogleSignIn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73C8B16A1E73014800185C8B /* GoogleSignIn.framework */; };
 		9E7828841E713FB000EF3B9C /* unlike.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E7828831E713FB000EF3B9C /* unlike.png */; };
 		9E7828861E713FB000EF3B9C /* like.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E7828851E713FB000EF3B9C /* like.png */; };
+		9EDF642B1E76091E00FB2591 /* ColumnCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EDF642A1E76091E00FB2591 /* ColumnCell.swift */; };
 		9EEAB7A61E710EC700E30178 /* discoverTab.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EEAB7A51E710EC700E30178 /* discoverTab.png */; };
 		9EEAB7A81E710ECE00E30178 /* iPetTab.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EEAB7A71E710ECE00E30178 /* iPetTab.png */; };
 		9EEAB7AE1E7113DC00E30178 /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EEAB7AD1E7113DC00E30178 /* star.png */; };
@@ -216,6 +217,7 @@
 		9AA79A7154CB0E70AED07ACA /* Pods_WoofUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WoofUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E7828831E713FB000EF3B9C /* unlike.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unlike.png; sourceTree = "<group>"; };
 		9E7828851E713FB000EF3B9C /* like.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = like.png; sourceTree = "<group>"; };
+		9EDF642A1E76091E00FB2591 /* ColumnCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColumnCell.swift; sourceTree = "<group>"; };
 		9EEAB7A51E710EC700E30178 /* discoverTab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = discoverTab.png; sourceTree = "<group>"; };
 		9EEAB7A71E710ECE00E30178 /* iPetTab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iPetTab.png; sourceTree = "<group>"; };
 		9EEAB7AD1E7113DC00E30178 /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star.png; sourceTree = "<group>"; };
@@ -380,6 +382,7 @@
 			isa = PBXGroup;
 			children = (
 				07AFF22F1E6A55D20089867C /* DetailViewController.swift */,
+				9EDF642A1E76091E00FB2591 /* ColumnCell.swift */,
 				07AFF23C1E6A55D20089867C /* SearchTableViewController.swift */,
 				07AFF23A1E6A55D20089867C /* ProfileViewController.swift */,
 				07AFF2371E6A55D20089867C /* IPetViewController.swift */,
@@ -510,7 +513,7 @@
 				TargetAttributes = {
 					076344811E415470001E20C9 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 9EPWHD42X7;
+						DevelopmentTeam = 55L773VGHV;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Maps.iOS = {
@@ -783,6 +786,7 @@
 				07AFF2621E6A55D20089867C /* IPetViewController.swift in Sources */,
 				07AFF2711E6A55D20089867C /* SearchTableViewController.swift in Sources */,
 				076344BE1E416EA0001E20C9 /* LoginViewController.swift in Sources */,
+				9EDF642B1E76091E00FB2591 /* ColumnCell.swift in Sources */,
 				07AFF26B1E6A55D20089867C /* ProfileViewController.swift in Sources */,
 				A4A8A3361E6E713F000657E1 /* SuggestionViewController.swift in Sources */,
 				075FBD831E4D635D009ECE7C /* User.swift in Sources */,
@@ -994,7 +998,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: hemeiyi0225@icloud.com (3CH6TSBANA)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
-				DEVELOPMENT_TEAM = 9EPWHD42X7;
+				DEVELOPMENT_TEAM = 55L773VGHV;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1003,7 +1007,7 @@
 				INFOPLIST_FILE = Woof/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = jasper2.Woof.ios.Woof;
+				PRODUCT_BUNDLE_IDENTIFIER = meiyi.he.Woof.ios.Woof;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Woof-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
@@ -1019,7 +1023,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: hemeiyi0225@icloud.com (3CH6TSBANA)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
-				DEVELOPMENT_TEAM = 9EPWHD42X7;
+				DEVELOPMENT_TEAM = 55L773VGHV;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1028,7 +1032,7 @@
 				INFOPLIST_FILE = Woof/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = jasper2.Woof.ios.Woof;
+				PRODUCT_BUNDLE_IDENTIFIER = meiyi.he.Woof.ios.Woof;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Woof-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
