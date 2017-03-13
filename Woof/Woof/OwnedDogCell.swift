@@ -19,9 +19,11 @@ class OwnedDogCell: UICollectionViewCell {
         super.init(frame: frame)
         
         self.backgroundColor = UIColor(red: 255.0/255.0, green: 228.0/255.0, blue: 196.0/255.0, alpha: 1)
-        imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height*2/3))
+        //imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height*2/3))
+        imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height))
         imageView?.contentMode = UIViewContentMode.scaleAspectFit
-        self.imageView?.layer.cornerRadius = self.imageView!.frame.size.width / 2
+        //self.imageView?.layer.cornerRadius = self.imageView!.frame.size.width / 2
+        imageView?.setRounded()
         self.imageView?.clipsToBounds = true
         contentView.addSubview(imageView!)
         
