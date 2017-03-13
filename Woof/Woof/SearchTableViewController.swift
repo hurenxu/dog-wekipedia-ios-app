@@ -29,8 +29,7 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
         print(tools.getBreedList(controller:self))
         
         
-        self.navigationItem.title = "Woofipedia"
-        
+        self.navigationItem.title = "Wooftionary"
         
         let filterButton = UIBarButtonItem(title: "Filter", style: .plain, target: self, action: #selector(toFilter))
         filterButton.tintColor = UIColor.black
