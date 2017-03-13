@@ -30,9 +30,10 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
         // configure Breed list
         let tools = Functionalities()
         print(tools.getBreedList(controller:self))
-        
+
         // set page UI Nav bar and Nav Bar buttons
-        self.navigationItem.title = "Woofipedia"
+        self.navigationItem.title = "Wooftionary"
+        
         let filterButton = UIBarButtonItem(title: "Filter", style: .plain, target: self, action: #selector(toFilter))
         filterButton.tintColor = UIColor.black
         self.navigationItem.leftBarButtonItem = filterButton
