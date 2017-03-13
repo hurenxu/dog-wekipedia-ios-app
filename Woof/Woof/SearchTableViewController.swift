@@ -17,31 +17,35 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
     var resultSearchController = UISearchController()
     
     override func viewDidLoad() {
+        
+        // set up Search Result Controller
         self.resultSearchController = UISearchController(searchResultsController: nil)
         self.resultSearchController.searchResultsUpdater = self
         
         self.resultSearchController.dimsBackgroundDuringPresentation = false
         self.resultSearchController.searchBar.sizeToFit()
-        //self
         self.tableView.tableHeaderView = self.resultSearchController.searchBar
         
+        
+        // configure Breed list
         let tools = Functionalities()
         print(tools.getBreedList(controller:self))
-        
-        
+
+        // set page UI Nav bar and Nav Bar buttons
         self.navigationItem.title = "Wooftionary"
         
         let filterButton = UIBarButtonItem(title: "Filter", style: .plain, target: self, action: #selector(toFilter))
         filterButton.tintColor = UIColor.black
         self.navigationItem.leftBarButtonItem = filterButton
-        
         let likedButton = UIBarButtonItem(title: "Likes", style: .plain, target: self, action: #selector(toLiked))
         likedButton.tintColor = UIColor.black
         self.navigationItem.rightBarButtonItem = likedButton
         
-        
+        // load table data
         self.tableView.reloadData()
         super.viewDidLoad()
+        
+        // set pull to refresh controll
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: Selector("refreshTable"), for: UIControlEvents.valueChanged)
         tableView.addSubview(refreshControl)
@@ -49,16 +53,19 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
         
     }
     
+    /* Enables pull to refresh function on table view */
     func refreshTable() {
         tableView.reloadData()
         refreshControl?.endRefreshing()
     }
     
+    /* Nav bar filter button segue connection */
     func toFilter(){
         let secondViewController:FilterTableViewController = FilterTableViewController()
         self.present(secondViewController, animated:true, completion:nil)
     }
     
+    /* Nav bar liked button segue connection */
     func toLiked(){
         if Functionalities.myUser == nil{
             // create the alert
@@ -91,12 +98,13 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
     
     // MARK: - Table view data source
     
+    /* Determine number fo sections to be displayed in table view controller */
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
-    
+    /* Costumize cell view and load image to cell */
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let reuseIdentifier = "cell"
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! MGSwipeTableCell
@@ -119,6 +127,8 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
         cell.rightButtons = [MGSwipeButton(title: "Click to Like", icon: UIImage(named:"like.png"), backgroundColor: UIColor(netHex: 0xa5c3bb), callback: {
             (sender: MGSwipeTableCell!) -> Bool in
             print("Convenience callback for Like Swipe")
+            
+            // check if user's loggedin status, if not logged, prompt alert
             if Functionalities.myUser == nil{
                 // create the alert
                 let alert = UIAlertController(title: "Login Needed", message: "Would you like to login to add your favoriate dogs to your profile?", preferredStyle: UIAlertControllerStyle.alert)
@@ -138,6 +148,7 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
                 // show the alert
                 self.present(alert, animated: true, completion: nil)
             } else {
+                //if user is logged in, redpond to swpie to like gesture and refresh row
                 Functionalities.myUser?.addFavoriteDogBreed(breedname: breed.getBreedName())
                 Functionalities.myUser?.updateUser()
                 tableView.reloadRows(at: [indexPath], with: .top)
@@ -268,6 +279,8 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
         }
         return dogs.count
     }
+    
+    /* Refresh cell when directed from detail page back to the table view page */
     override func viewWillAppear(_ animated: Bool) {
         print("viewWillAppear")
         let index = tableView.indexPathForSelectedRow
@@ -289,9 +302,9 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
         self.filteredDogs.removeAll(keepingCapacity: false)
         filterContentForSearchText(searchText!)
     }
-    /*
-     * This function filters the result using characters in dog name
-     */
+    
+    
+    /* Filters the search result using charcter contains */
     func filterContentForSearchText(_ searchText: String, scope: String = "All") {
         filteredDogs = dogs.filter({( dog : Breed) -> Bool in
             return dog.breedName.lowercased().contains(searchText.lowercased())

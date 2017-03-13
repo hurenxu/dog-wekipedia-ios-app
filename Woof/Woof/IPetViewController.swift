@@ -25,15 +25,13 @@ UICollectionViewDelegate, UICollectionViewDataSource {
     
     var dogID = [String]()
     
-    //test added
     var dogList: [Dog] = []
     
-    //var ownedDog: [Dog] = []
+    var dogImages = [String: UIImage]()
     
     var collectView: UICollectionView!
     
     var cLayout:UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-    //test added end
     
     var user:User?
     
@@ -160,16 +158,14 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         if (!Functionalities.userExist) {
 
             user?.addUserProfileEntry()
-            print("new user profile added @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+            //print("new user profile added @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
         }
         
-        //print("look here @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
-        //print(Functionalities.myUser?.dogIDs.count)
         print(tools.retrieveDogList(controller:self))
-            
+
         //add finished
         
-        
+        tools.retrieveUserImage(UIImageView: profileImgContainer)
         
         
    //     let label = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 250))
@@ -248,12 +244,18 @@ UICollectionViewDelegate, UICollectionViewDataSource {
     
     var i:Int = 0
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
-        //let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath)
+
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! OwnedDogCell
         
         cell.textLabel?.text = ownedDog[indexPath.row]
-        cell.imageView?.image = UIImage(named: "bone")
+        var Img = UIImage(named: "bone")
         
+        let dog = Functionalities.dogList[indexPath.row]
+        
+        let tools = Functionalities()
+        tools.retrieveDogImage(UIImageView:(cell.imageView)!, dog:dog, controller: self)
+
+
         return cell
     }
     
@@ -281,6 +283,10 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         secondViewController.thisDogID = dogID[indexPath.item]
         secondViewController.thisDog = dogList[indexPath.item]
         
+        secondViewController.profileImgContainer.image = dogImages[dogList[indexPath.row].dogID]
+        
+        print(dogImages[dogList[indexPath.row].dogID])
+        print(dogImages[dogList[indexPath.row].dogID])
         
         self.present(secondViewController, animated: true, completion: nil)
         
@@ -293,7 +299,7 @@ UICollectionViewDelegate, UICollectionViewDataSource {
     /* global variable: profileImgContainer --> default profile image */
     var profileImgContainer: UIImageView = {
         let ImgView = UIImageView()
-        let Img = UIImage(named: "BlackEmptyDog")
+        var Img = UIImage(named: "BlackEmptyDog")
         ImgView.image = Img
         ImgView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
         ImgView.translatesAutoresizingMaskIntoConstraints = false
@@ -345,6 +351,9 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         
         if let chosenImage = chosenImageFromPicker{
             profileImgContainer.image = chosenImage
+            
+            let tools = Functionalities()
+            tools.addUserImage(chosenImage: chosenImage, user: Functionalities.myUser!)
         }
         self.dismiss(animated: true, completion: nil)
     }

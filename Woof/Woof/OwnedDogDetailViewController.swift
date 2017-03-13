@@ -78,7 +78,6 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
     //Declare the age Label
     let ageLabel = UILabel(frame: CGRect(x: 20, y: 515, width: 330, height: 40))
     
-
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         
         if textField == breedtextField && flag == false{
@@ -599,6 +598,7 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         let ImgView = UIImageView()
         //let anyImg = UIImage(named:"")
         var Img = UIImage(named: "BlackEmptyDog")
+
         ImgView.image = Img
         //ImgView.image = convertBase64ToImage(thisDog.image)
         
@@ -641,10 +641,7 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
             profileImgContainer.image = chosenImage
             
             let tools = Functionalities()
-            //let imageUrl = tools.addImage(imageData: chosenImage)
-            //self.thisDog?.image = imageUrl
-            
-            Functionalities.myUser?.updateDog(dog: self.thisDog!)
+            tools.addDogImage(chosenImage: chosenImage, dog: thisDog!)
             
             //            let myImage = convertImageToBase64(image: chosenImage)
             //
