@@ -102,6 +102,7 @@ class Functionalities{
                                 count = count + 1
                             }
                             thisDog.dogID = key as String
+                            Functionalities.dogList[count] = thisDog
                             controller.ownedDog[count] = thisDog.name
                             controller.age[count] = thisDog.age
                             controller.breed[count] = thisDog.breed.breedName
@@ -223,6 +224,7 @@ class Functionalities{
                 if let error = error {
                     print(error)
                 } else {
+                    print(dog.dogID)
                     Img = UIImage(data: data!)
                     print(Img)
                     print("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&")

@@ -390,7 +390,8 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         let dateFormatter: DateFormatter = DateFormatter()
         
         
-        dateFormatter.dateStyle = DateFormatter.Style.short
+        dateFormatter.dateStyle = .long
+        dateFormatter.timeStyle = .none
         
         let strDate = dateFormatter.string(from: datePicker.date)
         
@@ -406,7 +407,8 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         let dateFormatter: DateFormatter = DateFormatter()
         
         
-        dateFormatter.dateStyle = DateFormatter.Style.short
+        dateFormatter.dateStyle = .long
+        dateFormatter.timeStyle = .none
         
         let strDate = dateFormatter.string(from: datePicker.date)
         
