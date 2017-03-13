@@ -13,8 +13,8 @@ class User{
     var gender: String?
     var favoriteDogBreeds: [String] = []
     var favoriteCategoryFilters: [String] = []
-    var zipCode = ""
-    var image = ""
+    var zipCode: String?
+    var image: String?
     var dogIDs: [String] = []
     
     
@@ -38,35 +38,27 @@ class User{
         for key in keys {
             if (key as? String == "name") {
                 name = (dictionary["name"] as? String)!
-            }
-            if (key as? String == "email") {
+            } else if (key as? String == "email") {
                 email = (dictionary["email"] as? String)!
-            }
-            if (key as? String == "age") {
+            } else if (key as? String == "age") {
                 age = (dictionary["age"] as? Int)!
-            }
-            if (key as? String == "gender") {
+            } else if (key as? String == "gender") {
                 gender = (dictionary["gender"] as? String)!
-            }
-            if (key as? String == "favoriteDogBreeds") {
+            } else if (key as? String == "favoriteDogBreeds") {
                 let favoriteDogBreedsDic = (dictionary["favoriteDogBreeds"] as? NSArray)!
                 for breed in favoriteDogBreedsDic {
                     favoriteDogBreeds.append(breed as! String)
                 }
-            }
-            if (key as? String == "favoriteCategoryFilters") {
+            } else if (key as? String == "favoriteCategoryFilters") {
                 let favoriteCategoryFiltersDic = (dictionary["favoriteCategoryFilters"] as? NSArray)!
                 for breed in favoriteCategoryFiltersDic {
                     favoriteCategoryFilters.append(breed as! String)
                 }
-            }
-            if (key as? String == "dogIDs") {
+            } else if (key as? String == "dogIDs") {
                 dogIDs = (dictionary["dogIDs"] as? [String])!
-            }
-            if (key as? String == "zipCode") {
+            } else if (key as? String == "zipCode") {
                 zipCode = (dictionary["zipCode"] as? String)!
-            }
-            if (key as? String == "image") {
+            } else if (key as? String == "image") {
                 image = (dictionary["image"] as? String)!
             }
         }
@@ -195,7 +187,7 @@ class User{
     }
     
     func getZipCode() -> String {
-        return self.zipCode
+        return self.zipCode!
     }
     
     func setImage(imageURL: String) {
@@ -203,6 +195,6 @@ class User{
     }
     
     func getImage() -> String {
-        return self.image
+        return self.image!
     }
 }

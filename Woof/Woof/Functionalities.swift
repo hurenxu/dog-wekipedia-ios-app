@@ -150,23 +150,90 @@ class Functionalities{
         return Functionalities.myUser!
     }
    
-    /*
-    func addImage(imageData: UIImage) -> String {
-        let storageRef = FIRStorage.storage().reference().child(thisDogID)
-        
+    func addUserImage(chosenImage: UIImage, user: User) {
+        let storageRef = FIRStorage.storage().reference().child(user.userID)
+        var url:URL?
         if let imageData = UIImagePNGRepresentation(chosenImage) {
-            storageRef.put(imageData, metadata: nil)
-            
-            return metadata.downloadUrl()
-        } else {
-            return ""
+            storageRef.put(imageData, metadata: nil) {(metadata, error) in
+                guard let metadata = metadata else {
+                    print(error)
+                    print("*****************************************************")
+                    return
+                }
+                var downloadURLs = metadata.downloadURLs
+                print(downloadURLs)
+                user.image = String(describing: (downloadURLs?[0])!)
+                Functionalities.myUser?.updateUser()
+            }
         }
-        
     }
- */
     
-    func retrieveImage() {
-        
+    func addDogImage(chosenImage: UIImage, dog: Dog) {
+        let storageRef = FIRStorage.storage().reference().child(dog.dogID)
+        var url:URL?
+        if let imageData = UIImagePNGRepresentation(chosenImage) {
+            storageRef.put(imageData, metadata: nil) {(metadata, error) in
+                guard let metadata = metadata else {
+                    print(error)
+                    print("*****************************************************")
+                    return
+                }
+                var downloadURLs = metadata.downloadURLs
+                print(downloadURLs)
+                dog.image = String(describing: (downloadURLs?[0])!)
+                Functionalities.myUser?.updateDog(dog: dog)
+            }
+        }
+    }
+ 
+    
+    func retrieveUserImage(UIImageView: UIImageView) {
+        var Img = UIImage(named: "BlackEmptyDog")
+        if Functionalities.myUser?.getImage() != "" {
+
+            let storageRef = FIRStorage.storage().reference()
+            
+            let fileRef = storageRef.child((Functionalities.myUser?.userID)!)
+            
+            fileRef.data(withMaxSize: 10 * 1024 * 1024) { data, error in
+                if let error = error {
+                    print(error)
+                } else {
+                    // Data for "images/island.jpg" is returned
+                    Img = UIImage(data: data!)
+                    print(Img)
+                    print("****************************")
+                    UIImageView.image = Img
+                }
+            }
+        } else {
+            UIImageView.image = Img
+        }
+    }
+    
+    func retrieveDogImage(UIImageView: UIImageView, dog: Dog, controller: iPetViewController) {
+        var Img = UIImage(named: "bone")
+        if dog.getImage() != "" {
+            
+            let storageRef = FIRStorage.storage().reference()
+            
+            let fileRef = storageRef.child(dog.getDogID())
+            
+            fileRef.data(withMaxSize: 100 * 1024 * 1024) { data, error in
+                if let error = error {
+                    print(error)
+                } else {
+                    Img = UIImage(data: data!)
+                    print(Img)
+                    print("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&")
+                    UIImageView.image = Img
+                    controller.dogImages[dog.dogID] = Img!
+                }
+            }
+        } else {
+            UIImageView.image = Img
+            controller.dogImages[dog.dogID] = Img!
+        }
     }
     
     func getBreedList(controller: SearchTableViewController) -> [Breed] {
