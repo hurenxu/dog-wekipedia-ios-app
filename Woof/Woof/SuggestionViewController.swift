@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SuggestionViewController: UIViewController {
+class SuggestionViewController: UIViewController, UINavigationBarDelegate {
     
     // the size of the phone
     let SCREEN_SIZE: CGRect = UIScreen.main.bounds
@@ -610,9 +610,23 @@ class SuggestionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.navigationItem.title = "Suggestion"
-        self.navigationController?.navigationItem.title = "Sugg"
+                
+        //let navigationBar = UINavigationBar(frame: CGRect(x:0, y:30, width:self.view.frame.size.width, height:58))
+        
+        //let navigationBar: UINavigationBar! = self.navigationController?.navigationBar
+        
+        //let navigationItem = UINavigationItem()
+        //navigationItem.title = "Suggestion"
+        
+        //navigationBar.backgroundColor = UIColor.white
+        //navigationBar.delegate = self;
+        
+        //navigationBar.pushItem(navigationItem, animated: true)
+        
+        //self.view.addSubview(navigationBar)
+        
+        //self.navigationItem.title = "Suggestion"
+        //self.navigationController?.navigationItem.title = "Sugg"
         
         // Do any additional setup after loading the view, typically from a nib.
         
@@ -684,8 +698,8 @@ class SuggestionViewController: UIViewController {
         
         // colored background
         
-        self.title = ""
-        self.tabBarItem.title=""
+        self.title = "Suggestion"
+        self.tabBarItem.title="Suggestion"
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "backgroundHomeLarge-shade.jpg")!)
         
         // the center of all components
