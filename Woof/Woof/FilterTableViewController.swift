@@ -30,7 +30,7 @@ class FilterTableViewController: UIViewController, UINavigationBarDelegate{
     
     let CORNER_RADIUS: Int = 10
     var scrollView: UIScrollView! = nil
-    let SCROLL_OFFSET = 80
+    let SCROLL_OFFSET = 100
     
     //buttons:
     var button: UIButton! = nil

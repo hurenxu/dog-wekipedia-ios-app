@@ -29,9 +29,9 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
     // offsets
     let TOP_OFFSET = 20
     let TABLE_OFFSET = 70
-    let NEXT_TITLE_OFFSET = 210
-    let BUTTON_OFFSET = 120
-    let SCROLL_OFFSET = 65
+    let NEXT_TITLE_OFFSET = 150
+    let BUTTON_OFFSET = 100
+    let SCROLL_OFFSET = 0
     
     // the radius of the corner
     let CORNER_RADIUS = 10
@@ -51,8 +51,8 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var nextTitleLabel: UILabel! = nil
     
     // the tables
-    let TABLE_SIZE: CGSize = CGSize(width: 330, height: 200)
-    let CELL_HEIGHT: Int! = 200
+    let TABLE_SIZE: CGSize = CGSize(width: 330, height: 140)
+    let CELL_HEIGHT: Int! = 140
     var likeTable: UITableView! = nil
     var nextTable: UITableView! = nil
     

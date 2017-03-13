@@ -10,14 +10,14 @@ import UIKit
 
 class BreedTableViewCell: UITableViewCell {
 
-    let CORNER_RADIUS: Int = 20
+    let CORNER_RADIUS: Int = 10
     
     // the offsets
     let LABEL_OFFSET_X = 220
     let LABEL_OFFSET_Y = 20
-    let IMAGE_OFFSET_X = 15
-    let IMAGE_OFFSET_Y = 30
-    let SCROLL_OFFSET = 65
+    let IMAGE_OFFSET_X = 11
+    let IMAGE_OFFSET_Y = 15
+    let SCROLL_OFFSET = 30
 
     var labelString: String! = ""
     var descriptionString: String! = ""
@@ -80,7 +80,7 @@ class BreedTableViewCell: UITableViewCell {
                 first = false
                 
                 // set up the image
-                let IMAGE_SIZE: CGSize = CGSize(width:150, height: 80)
+                let IMAGE_SIZE: CGSize = CGSize(width: 90, height: 90)
                 let IMAGE_ORIGIN: CGPoint = CGPoint(x: IMAGE_OFFSET_X, y: IMAGE_OFFSET_Y)
                 
                 myImage = UIImageView(frame: CGRect(origin: IMAGE_ORIGIN, size: IMAGE_SIZE))
@@ -88,8 +88,10 @@ class BreedTableViewCell: UITableViewCell {
             
             else if !initialized {
                 
+                self.backgroundColor = white
+                
                 // set up the title label
-                let LABEL_SIZE: CGSize = CGSize(width: 220, height: 20)
+                let LABEL_SIZE: CGSize = CGSize(width: 210, height: 20)
                 let LABEL_ORIGIN: CGPoint = CGPoint(x: contentView.frame.width - CGFloat(LABEL_OFFSET_X), y: CGFloat(LABEL_OFFSET_Y))
 
                 myLabel = UILabel(frame: CGRect(origin: LABEL_ORIGIN, size: LABEL_SIZE))
@@ -101,19 +103,19 @@ class BreedTableViewCell: UITableViewCell {
                 contentView.addSubview(myImage)
 
                 // set up the scroll view
-                let SCROLL_SIZE: CGSize = CGSize(width: 220, height: 120)
+                let SCROLL_SIZE: CGSize = CGSize(width: 210, height: 80)
                 let SCROLL_ORIGIN: CGPoint = CGPoint(x: LABEL_ORIGIN.x, y: LABEL_ORIGIN.y + CGFloat(SCROLL_OFFSET))
                 
                 myScrollView = UIScrollView(frame: CGRect(origin: SCROLL_ORIGIN, size: SCROLL_SIZE))
-                myScrollView.backgroundColor = white
-                myScrollView.layer.cornerRadius = CGFloat(2)
+                myScrollView.backgroundColor = green_half
+                myScrollView.layer.cornerRadius = CGFloat(CORNER_RADIUS)
                 contentView.addSubview(myScrollView)
                 
                 // set up the description label
-                let DESCRIPTION_SIZE: CGSize = CGSize(width: 220, height: 120)
+                let DESCRIPTION_SIZE: CGSize = CGSize(width: 190, height: 80)
                 let DESCRIPTION_ORIGIN: CGPoint = CGPoint(x: 10, y: 0)
                 myDescription = UILabel(frame: CGRect(origin: DESCRIPTION_ORIGIN, size: DESCRIPTION_SIZE))
-                setUpLabel(myString: descriptionString, myFont: FONT, mySize: DESCRIPTION_FONT_SIZE, myColor: UIColor.clear, myAlignment: NSTextAlignment.left, myCorner: 0, myLabel: myDescription)
+                setUpLabel(myString: descriptionString, myFont: FONT, mySize: DESCRIPTION_FONT_SIZE, myColor: UIColor.clear, myAlignment: NSTextAlignment.left, myCorner: CORNER_RADIUS, myLabel: myDescription)
                 myDescription.numberOfLines = NUM_LINES
                 myDescription.sizeToFit()
                 
