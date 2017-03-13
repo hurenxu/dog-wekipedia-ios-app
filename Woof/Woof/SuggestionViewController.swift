@@ -611,6 +611,9 @@ class SuggestionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.navigationItem.title = "Suggestion"
+        self.navigationController?.navigationItem.title = "Sugg"
+        
         // Do any additional setup after loading the view, typically from a nib.
         
         // Request 10 Breeds information

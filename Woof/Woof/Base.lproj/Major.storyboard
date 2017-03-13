@@ -109,7 +109,7 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Small, Family-friendly" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xww-p7-eaK">
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Small, Family-friendly" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xww-p7-eaK">
                                             <rect key="frame" x="83" y="83" width="164" height="26"/>
                                             <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="10"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -400,7 +400,7 @@
                         </connections>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="FgG-aF-CJq">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="FgG-aF-CJq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -478,7 +478,7 @@
                         </connections>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="w8L-5L-583">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="w8L-5L-583">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -497,7 +497,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="V84-9r-r8h" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="os0-Jo-CL0">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="os0-Jo-CL0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -523,7 +523,7 @@
         <image name="unlike" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="HWL-MM-eFt"/>
+        <segue reference="Ngo-1w-MZM"/>
         <segue reference="tIV-Pn-8bj"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="0.97739707450220481" blue="0.98941910780827447" alpha="1" colorSpace="calibratedRGB"/>

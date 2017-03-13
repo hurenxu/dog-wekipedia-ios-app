@@ -29,31 +29,36 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
     // offsets
     let TOP_OFFSET = 20
     let TABLE_OFFSET = 70
-    let NEXT_TITLE_OFFSET = 210
-    let BUTTON_OFFSET = 120
-    let SCROLL_OFFSET = 65
+    let NEXT_TITLE_OFFSET = 150
+    let BUTTON_OFFSET = 100
+    let SCROLL_OFFSET = 0
     
     // the radius of the corner
-    let CORNER_RADIUS = 20
+    let CORNER_RADIUS = 10
     
     // the labels
     let TITLE_SIZE: CGSize = CGSize(width: 330, height: 60)
-    let TITLE_FONT_SIZE: Int = 30
-    let FONT = "Noteworthy"
-    let TITLE_COLOR: UIColor = UIColor(red: 122.0/255.0, green: 215.0/255.0, blue: 253.0/255.0, alpha: 0.9)
+    let TITLE_FONT_SIZE: Int = 20
+    let FONT = "Rubik"
+    let FONT_MED = "Rubik-Medium"
+    
+    let green_half: UIColor = UIColor(red: 165/255, green: 195/255, blue: 187/255, alpha: 0.8)
+    let pink: UIColor = UIColor(red: 253/255, green: 127/255, blue: 124/255, alpha: 0.8)
+    let white: UIColor = UIColor(red: 225/255, green: 245/255, blue: 245/255, alpha: 1)
+
+    
     var likeTitleLabel: UILabel! = nil
     var nextTitleLabel: UILabel! = nil
     
     // the tables
-    let TABLE_SIZE: CGSize = CGSize(width: 330, height: 200)
-    let TABLE_COLOR: UIColor = UIColor.white
-    let CELL_HEIGHT: Int! = 200
+    let TABLE_SIZE: CGSize = CGSize(width: 330, height: 140)
+    let CELL_HEIGHT: Int! = 140
     var likeTable: UITableView! = nil
     var nextTable: UITableView! = nil
     
     // the button
-    let BUTTON_SIZE: CGSize = CGSize(width: 260, height: 70)
-    let BUTTON_FONT_SIZE: Int = 40
+    let BUTTON_SIZE: CGSize = CGSize(width: 260, height: 40)
+    let BUTTON_FONT_SIZE: Int = 25
     let BUTTON_COLOR: UIColor = UIColor(red: 111.0/255.0, green: 135.0/255.0, blue: 143.0/255.0, alpha: 0.9)
     var restartButton: UIButton! = nil
     
@@ -179,7 +184,7 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
         myButton.setTitle(myLabel, for: UIControlState.normal)
         myButton.setTitleColor(UIColor.black, for: UIControlState.normal)
         myButton.titleLabel?.font = UIFont(name: FONT, size: CGFloat(myFontSize))
-        myButton.backgroundColor = BUTTON_COLOR
+        myButton.backgroundColor = pink
         myButton.isUserInteractionEnabled = true
         myButton.layer.cornerRadius = CGFloat(CORNER_RADIUS)
         scrollView.addSubview(myButton)
@@ -193,7 +198,7 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // Do any additional setup after loading the view.
         
         scrollView = UIScrollView(frame: self.view.bounds)
-        scrollView.backgroundColor = UIColor(patternImage: UIImage(named: "backgroundHomeLarge.jpg")!)
+        scrollView.backgroundColor = UIColor(patternImage: UIImage(named: "backgroundHomeLarge-shade.jpg")!)
         self.view.addSubview(scrollView)
         
         let LIKE_TITLE_ORIGIN = CGPoint(x: Int(SCREEN_SIZE.width) / HALF - Int(TITLE_SIZE.width) / HALF, y: TOP_OFFSET)
@@ -202,18 +207,18 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let NEXT_TABLE_ORIGIN = CGPoint(x: NEXT_TITLE_ORIGIN.x, y: NEXT_TITLE_ORIGIN.y + CGFloat(TABLE_OFFSET))
         
         likeTitleLabel = UILabel(frame: CGRect(origin: LIKE_TITLE_ORIGIN, size: TITLE_SIZE))
-        setUpLabel(myText: "Breeds That You Liked", myFont: FONT, myFontSize: TITLE_FONT_SIZE, myAlignment: NSTextAlignment.center, myLabel: likeTitleLabel, myColor: TITLE_COLOR)
+        setUpLabel(myText: "Breeds That You Liked", myFont: FONT_MED, myFontSize: TITLE_FONT_SIZE, myAlignment: NSTextAlignment.center, myLabel: likeTitleLabel, myColor: green_half)
         
         likeTable = UITableView(frame: CGRect(origin: LIKE_TABLE_ORIGIN, size: TABLE_SIZE))
-        setUpTable(myColor: TABLE_COLOR, myTable: likeTable)
+        setUpTable(myColor: white, myTable: likeTable)
         likeTable.delegate = self
         likeTable.dataSource = self
         
         nextTitleLabel = UILabel(frame: CGRect(origin: NEXT_TITLE_ORIGIN, size: TITLE_SIZE))
-        setUpLabel(myText: "Breeds That You Skipped", myFont: FONT, myFontSize: TITLE_FONT_SIZE, myAlignment: NSTextAlignment.center, myLabel: nextTitleLabel, myColor: TITLE_COLOR)
+        setUpLabel(myText: "Breeds That You Skipped", myFont: FONT_MED, myFontSize: TITLE_FONT_SIZE, myAlignment: NSTextAlignment.center, myLabel: nextTitleLabel, myColor: green_half)
     
         nextTable = UITableView(frame: CGRect(origin: NEXT_TABLE_ORIGIN, size: TABLE_SIZE))
-        setUpTable(myColor: TABLE_COLOR, myTable: nextTable)
+        setUpTable(myColor: white, myTable: nextTable)
         nextTable.delegate = self
         nextTable.dataSource = self
         
