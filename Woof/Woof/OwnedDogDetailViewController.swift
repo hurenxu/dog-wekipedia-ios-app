@@ -78,7 +78,6 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
     //Declare the age Label
     let ageLabel = UILabel(frame: CGRect(x: 20, y: 515, width: 330, height: 40))
     
-    
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         
         if textField == breedtextField && flag == false{
@@ -145,7 +144,8 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         
         //change format
         let newdateFormatter1 = DateFormatter()
-        newdateFormatter1.dateFormat = "YYYY-MM-DD HH:MM:SS"
+        newdateFormatter1.dateStyle = .long
+        newdateFormatter1.timeStyle = .none
         let strBir = newdateFormatter1.string(from: (thisDog?.birthDate)!)
         
         //      birthDateLabel.center = CGPoint(x: 20, y: 350)
@@ -483,7 +483,8 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         let newBirthDate: Date
         let newVaccineDate: Date
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM/DD/YY"
+        dateFormatter.dateStyle = .long
+        dateFormatter.timeStyle = .none
         if (birthdate == "") {
             newBirthDate = (thisDog?.birthDate)!
         }

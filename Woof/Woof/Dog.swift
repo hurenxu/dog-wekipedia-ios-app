@@ -35,7 +35,7 @@ class Dog{
         let birthDate = (dictionary["birthDate"] as? String)!
         age = (dictionary["age"] as? String)!
         gender = (dictionary["gender"] as? String)!
-        let vaccination = "4001-12-365 16:12:00" //(dictionary["vaccination"] as? String)!
+        let vaccination = (dictionary["vaccination"] as? String)!
         color = (dictionary["color"] as? String)!
         description = (dictionary["description"] as? String)!
         image = (dictionary["image"] as? String)!
@@ -51,7 +51,8 @@ class Dog{
         }
         
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "YYYY-MM-DD HH:MM:SS"
+        dateFormatter.dateStyle = .long
+        dateFormatter.timeStyle = .none
         self.birthDate = dateFormatter.date(from: birthDate)!
         self.vaccination = dateFormatter.date(from: vaccination)!
         

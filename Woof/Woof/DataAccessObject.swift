@@ -30,7 +30,8 @@ class DataAccessObject {
         let ref = FIRDatabase.database().reference()
         
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "YYYY-MM-DD HH:MM:SS"
+        dateFormatter.dateStyle = .long
+        dateFormatter.timeStyle = .none
         
         
         ref.child("Dog Profile").child(dog.dogID).setValue(["name": dog.name, "breed": dog.breed.breedName, "age": dog.age, "gender": dog.gender, "birthDate": dateFormatter.string(from: dog.birthDate), "description": dog.description, "vaccination": dateFormatter.string(from:dog.vaccination), "color": dog.color, "image": dog.image])
@@ -58,7 +59,8 @@ class DataAccessObject {
         let ref = FIRDatabase.database().reference()
         
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "YYYY-MM-DD HH:MM:SS"
+        dateFormatter.dateStyle = .long
+        dateFormatter.timeStyle = .none
 
         ref.child("Dog Profile").child(dog.dogID).setValue(["name": dog.name, "breed": dog.breed.breedName, "age": dog.age, "gender": dog.gender, "birthDate": dateFormatter.string(from: dog.birthDate), "vaccination": dateFormatter.string(from:dog.vaccination),  "color": dog.color, "description": dog.description, "image": dog.image])
     }
