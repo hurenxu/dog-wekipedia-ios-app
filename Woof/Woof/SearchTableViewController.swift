@@ -161,7 +161,10 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
                 }.resume()
         }else { mainImageView.image = #imageLiteral(resourceName: "dogProfile.png")}
         mainDogName.text = breed.getBreedName()
-        mainDogGroup.text = breed.getGroup()
+        mainDogGroup.text = breed.getPersonality()
+        mainDogGroup.frame = CGRect(origin: mainDogGroup.frame.origin , size: CGSize(width: 200, height: mainDogGroup.frame.height))
+        mainDogGroup.lineBreakMode = NSLineBreakMode.byWordWrapping
+        
         
         //set like heart status
         if Functionalities.myUser != nil{

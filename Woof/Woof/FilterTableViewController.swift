@@ -22,7 +22,7 @@ class FilterTableViewController: UIViewController, UINavigationBarDelegate{
     var size=0 //default 0. small 1, medium 2, large 3
     //var sizeA = {0}
     var group=0 //default 0. Herding 1; Hound 2; Non-sporting 3; Sporting 4; Terrier 5; Toy 6; Working 7
-    var train=0 //default 0. easy 1; aveg 2; moderately easy 3
+    var train=0 //default 0. easy 1; difficult 2; fair 3
     var bark=0 //default 0. frequent 1; occasional 2; rare 3
     
     var groom = 0 //default 0; "High" 1; "Moderate" 2; "Low" 3
@@ -115,85 +115,101 @@ class FilterTableViewController: UIViewController, UINavigationBarDelegate{
     var filtersString = [String]()
     let filtersDictionary: [String: String] = [
         
-        "Large": "size3",
-        "Small": "size1",
-        "Medium": "size2",
+        "Large": "Size3",
+        "Small": "Size1",
+        "Medium": "Size2",
         
-        "Herding":"group1",
-        "Hound":"group2",
-        "Working":"group3",
-        "Sporting":"group4",
-        "Terrier":"group5",
-        "Toy":"group6",
-        "Non-sporting":"group7",
+        "Herding":"Group1",
+        "Hound":"Group2",
+        "Working":"Group3",
+        "Sporting":"Group4",
+        "Terrier":"Group5",
+        "Toy":"Group6",
+        "Non-sporting":"Group7",
         
-        "Easy":"train1",
-        "Difficult":"train1",
-        "Fair":"train1",
+        "Easy":"Trainability1",
+        "Difficult":"Trainability2",
+        "Fair":"Trainability3",
         
-        "High": "groom1",
-        "Average": "groom2",
-        "Low": "groom3",
+        "High": "Grooming1",
+        "Average": "Grooming2",
+        "Low": "Grooming3",
         
-        "Frequent": "bark1",
-        "Occasional": "bark2",
-        "Rare": "bark3",
+        "Frequent": "Barking1",
+        "Occasional": "Barking2",
+        "Rare": "Barking3",
         
-        "Minimal": "shed1",
-        "Moderate": "shed2",
-        "Constant": "shed3",
-        "Seasonal": "shed4"
+        "Minimal": "Shedding1",
+        "Moderate": "Shedding2",
+        "Constant": "Shedding3",
+        "Seasonal": "Shedding4"
     ]
     var typeDictionary: [String: Int] = [
         
-        "size": 0,
-        "groom": 0,
-        "shed": 0,
-        "group": 0,
-        "bark": 0,
-        "train": 0
+        "Size": 0,
+        "Grooming": 0,
+        "Shedding": 0,
+        "Group": 0,
+        "Barking Level": 0,
+        "Trainabilty": 0
     ]
     
     var typeSizeDictionary: [String: Int]! = [
         
-        "size": 0,
-        "groom": 0,
-        "shed": 0,
-        "group": 0,
-        "bark": 0,
-        "train": 0
+        "Size": 0,
+        "Grooming": 0,
+        "Shedding": 0,
+        "Group": 0,
+        "Barking": 0,
+        "Trainability": 0
     ]
     
-    // filters are added, implement to remove?
-    func filterPressed(sender: UIButton!) {
+    func setButton(myButton: UIButton!) {
         
-        //if Functionalities.myUser?.userExist(){
-        //var select = false
+        let buttonLabel: String = myButton.titleLabel!.text!
         
-        let buttonLabel: String = sender.titleLabel!.text!
-        
-        if sender.backgroundColor != yellow {
+        if myButton.backgroundColor != yellow {
             
             print("store \(buttonLabel)")
-            Functionalities.myUser?.addFavoriteCategoryFilter(filter: (sender.titleLabel?.text!)!)
             
             if !filtersString.contains(buttonLabel) {
                 
                 filtersString.append(buttonLabel)
             }
-            //Functionalities.myUser?.addFavoriteCategoryFilter(filter: (sender.titleLabel?.text!)!)
-            filtersString.append(buttonLabel)
             
-            sender.backgroundColor = yellow
+            let typeWithNum: String! = filtersDictionary[buttonLabel]!
+            let end = typeWithNum.index(before: typeWithNum.endIndex)
+            let type = typeWithNum.substring(to: end)
+            
+            Functionalities.myUser?.addFavoriteCategoryFilter(filter: "\(type): \(myButton.titleLabel!.text!)")
+
+            myButton.backgroundColor = yellow
         }
             
         else {
             
             print("remove \(buttonLabel)")
-            //Functionalities.myUser?.removeFavoriteCategoryFilter(filter: (sender.titleLabel?.text!)!)
+            
+            let typeWithNum: String = filtersDictionary[buttonLabel]!
+            let end = typeWithNum.index(before: typeWithNum.endIndex)
+            let type = typeWithNum.substring(to: end)
+            
+            Functionalities.myUser?.removeFavoriteCategoryFilter(filter: (filter: "\(type): \(myButton.titleLabel!.text!)"))
+            
             filtersString.remove(at: filtersString.index(of: buttonLabel)!)
-            sender.backgroundColor = white_half
+            myButton.backgroundColor = white_half
         }
+    }
+    
+    // filters are added, implement to remove?
+    func filterPressed(sender: UIButton!) {
+        
+        setButton(myButton: sender)
+        
+        //if Functionalities.myUser?.userExist(){
+        //var select = false
+        
+        
         /*}else{
          //var select = false
          let buttonLabel: String = sender.titleLabel!.text!
@@ -314,7 +330,7 @@ class FilterTableViewController: UIViewController, UINavigationBarDelegate{
             
             if currentFavFilters.contains("Size: \(key)") {
                 
-                filterPressed(sender: button)
+                setButton(myButton: button)
             }
         }
         buttonOrigin = CGPoint(x:0,y:0)
@@ -342,7 +358,7 @@ class FilterTableViewController: UIViewController, UINavigationBarDelegate{
             
             if currentFavFilters.contains("Trainability: \(key)") {
                 
-                filterPressed(sender: button)
+                setButton(myButton: button)
             }
         }
         buttonOrigin = CGPoint(x:0,y:0)
@@ -524,6 +540,9 @@ class FilterTableViewController: UIViewController, UINavigationBarDelegate{
         
         setZero()
         
+        print(typeDictionary)
+        print(filtersString)
+        
         for myFilter in filtersString {
             
             let value: String! = filtersDictionary[myFilter]!
@@ -546,12 +565,14 @@ class FilterTableViewController: UIViewController, UINavigationBarDelegate{
             }
         }
         
-        secondViewController.size = typeDictionary["size"]
-        secondViewController.groom = typeDictionary["groom"]
-        secondViewController.train = typeDictionary["train"]
-        secondViewController.bark = typeDictionary["bark"]
-        secondViewController.group = typeDictionary["group"]
-        secondViewController.shed = typeDictionary["shed"]
+        print(typeDictionary)
+        
+        secondViewController.size = typeDictionary["Size"]
+        secondViewController.groom = typeDictionary["Grooming"]
+        secondViewController.train = typeDictionary["Trainability"]
+        secondViewController.bark = typeDictionary["Barking"]
+        secondViewController.group = typeDictionary["Group"]
+        secondViewController.shed = typeDictionary["Shedding"]
         
         print("done processing filters")
         
