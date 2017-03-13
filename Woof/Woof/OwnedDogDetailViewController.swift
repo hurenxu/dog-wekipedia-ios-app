@@ -19,6 +19,8 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
     var breed = ""
     var age = ""
     
+    var flag = false
+    
     var ageData = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30"]
     var picker = UIPickerView()
     var picker2 = UIPickerView()
@@ -74,9 +76,10 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
 
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         
-        if textField == breedtextField {
+        if textField == breedtextField && flag == false{
             
             self.view.frame.origin.y -= CGFloat(200)
+            flag = true
         }
         
         return true
@@ -368,6 +371,8 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
     func datePickerValueChanged(datePicker:UIDatePicker) {
 
         datePicker.isHidden = false
+        self.view.endEditing(true)
+        
         let dateFormatter: DateFormatter = DateFormatter()
         
         
@@ -383,6 +388,7 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
     func datePickerValueChanged2(datePicker:UIDatePicker) {
 
         datePicker.isHidden = false
+        self.view.endEditing(true)
         let dateFormatter: DateFormatter = DateFormatter()
         
         
@@ -496,6 +502,7 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
        
         
         self.view.frame.origin.y = 0
+        flag = false
     }
     
     //Action when user clicks the edit Button
