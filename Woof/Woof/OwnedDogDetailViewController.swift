@@ -79,10 +79,6 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
     let ageLabel = UILabel(frame: CGRect(x: 20, y: 515, width: 330, height: 40))
     
     
-<<<<<<< HEAD
-    
-=======
->>>>>>> 4faba263dcf60ea2d5092f7f56c02966fbb4a431
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         
         if textField == breedtextField && flag == false{
