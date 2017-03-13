@@ -15,55 +15,79 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
     var dogs = [Breed]()
     var filteredDogs = [Breed]()
     var resultSearchController = UISearchController()
-
     
     override func viewDidLoad() {
+        
+        // set up Search Result Controller
         self.resultSearchController = UISearchController(searchResultsController: nil)
         self.resultSearchController.searchResultsUpdater = self
         
         self.resultSearchController.dimsBackgroundDuringPresentation = false
         self.resultSearchController.searchBar.sizeToFit()
-        //self
         self.tableView.tableHeaderView = self.resultSearchController.searchBar
         
+        
+        // configure Breed list
         let tools = Functionalities()
         print(tools.getBreedList(controller:self))
-
         
+        // set page UI Nav bar and Nav Bar buttons
         self.navigationItem.title = "Woofipedia"
-        
-        
         let filterButton = UIBarButtonItem(title: "Filter", style: .plain, target: self, action: #selector(toFilter))
         filterButton.tintColor = UIColor.black
         self.navigationItem.leftBarButtonItem = filterButton
-        
-        let likedButton = UIBarButtonItem(title: "View", style: .plain, target: self, action: #selector(toLiked))
+        let likedButton = UIBarButtonItem(title: "Likes", style: .plain, target: self, action: #selector(toLiked))
         likedButton.tintColor = UIColor.black
         self.navigationItem.rightBarButtonItem = likedButton
-
         
+        // load table data
         self.tableView.reloadData()
         super.viewDidLoad()
-        var refreshControl = UIRefreshControl()
+        
+        // set pull to refresh controll
+        let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: Selector("refreshTable"), for: UIControlEvents.valueChanged)
         tableView.addSubview(refreshControl)
         self.refreshControl = refreshControl
         
     }
     
+    /* Enables pull to refresh function on table view */
     func refreshTable() {
         tableView.reloadData()
         refreshControl?.endRefreshing()
     }
     
+    /* Nav bar filter button segue connection */
     func toFilter(){
         let secondViewController:FilterTableViewController = FilterTableViewController()
         self.present(secondViewController, animated:true, completion:nil)
     }
     
+    /* Nav bar liked button segue connection */
     func toLiked(){
-        let secondViewController:LikedViewController = LikedViewController()
-        self.present(secondViewController, animated:true, completion:nil)
+        if Functionalities.myUser == nil{
+            // create the alert
+            let alert = UIAlertController(title: "Login Needed", message: "Would you like to login to add your favoriate dogs to your profile?", preferredStyle: UIAlertControllerStyle.alert)
+            
+            // add the actions (buttons)
+            alert.addAction(UIAlertAction(title: "Login", style: UIAlertActionStyle.default, handler: { action in
+                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let initViewController: UIViewController = storyBoard.instantiateViewController(withIdentifier: "Login") as! LoginViewController
+                appDelegate.window?.rootViewController? = initViewController
+                
+                
+                let MyrootViewController = appDelegate.window!.rootViewController
+            }))
+            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
+            
+            // show the alert
+            self.present(alert, animated: true, completion: nil)
+        }else{
+            let secondViewController:LikedViewController = LikedViewController()
+            self.present(secondViewController, animated:true, completion:nil)
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -73,12 +97,13 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
     
     // MARK: - Table view data source
     
+    /* Determine number fo sections to be displayed in table view controller */
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
-    
+    /* Costumize cell view and load image to cell */
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let reuseIdentifier = "cell"
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! MGSwipeTableCell
@@ -89,7 +114,7 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
         let mainDogLike = cell.viewWithTag(4) as! UIImageView
         let breed: Breed
         
-
+        
         //get breed
         if self.resultSearchController.isActive && self.resultSearchController.searchBar.text != "" {
             breed = filteredDogs[indexPath.row]
@@ -101,22 +126,66 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
         cell.rightButtons = [MGSwipeButton(title: "Click to Like", icon: UIImage(named:"like.png"), backgroundColor: UIColor(netHex: 0xa5c3bb), callback: {
             (sender: MGSwipeTableCell!) -> Bool in
             print("Convenience callback for Like Swipe")
-            Functionalities.myUser?.addFavoriteDogBreed(breedname: breed.getBreedName())
-            Functionalities.myUser?.updateUser()
-            tableView.reloadRows(at: [indexPath], with: .top)
+            
+            // check if user's loggedin status, if not logged, prompt alert
+            if Functionalities.myUser == nil{
+                // create the alert
+                let alert = UIAlertController(title: "Login Needed", message: "Would you like to login to add your favoriate dogs to your profile?", preferredStyle: UIAlertControllerStyle.alert)
+                
+                // add the actions (buttons)
+                alert.addAction(UIAlertAction(title: "Login", style: UIAlertActionStyle.default, handler: { action in
+                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                    let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                    let initViewController: UIViewController = storyBoard.instantiateViewController(withIdentifier: "Login") as! LoginViewController
+                    appDelegate.window?.rootViewController? = initViewController
+                    
+                    
+                    let MyrootViewController = appDelegate.window!.rootViewController
+                }))
+                alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
+                
+                // show the alert
+                self.present(alert, animated: true, completion: nil)
+            } else {
+                //if user is logged in, redpond to swpie to like gesture and refresh row
+                Functionalities.myUser?.addFavoriteDogBreed(breedname: breed.getBreedName())
+                Functionalities.myUser?.updateUser()
+                tableView.reloadRows(at: [indexPath], with: .top)
+            }
             print("successfuly liked dog by swiping")
             return true
-            })]
+        })]
         cell.leftSwipeSettings.transition = .rotate3D
         cell.leftButtons = [MGSwipeButton(title: "Click to Unlike", icon: UIImage(named:"unlike.png"), backgroundColor: UIColor(netHex: 0xa5c3bb), callback: {
             (sender: MGSwipeTableCell!) -> Bool in
             print("Convenience callback for UnLike Swipe")
-            Functionalities.myUser?.removeFavoriteDogBreed(breedname: breed.getBreedName())
-            Functionalities.myUser?.updateUser()
-            tableView.reloadRows(at: [indexPath], with: .top)
+            if Functionalities.myUser == nil{
+                // create the alert
+                let alert = UIAlertController(title: "Login Needed", message: "Would you like to login to add your favoriate dogs to your profile?", preferredStyle: UIAlertControllerStyle.alert)
+                
+                // add the actions (buttons)
+                alert.addAction(UIAlertAction(title: "Login", style: UIAlertActionStyle.default, handler: { action in
+                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                    let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                    let initViewController: UIViewController = storyBoard.instantiateViewController(withIdentifier: "Login") as! LoginViewController
+                    appDelegate.window?.rootViewController? = initViewController
+                    
+                    
+                    let MyrootViewController = appDelegate.window!.rootViewController
+                }))
+                alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
+                
+                // show the alert
+                self.present(alert, animated: true, completion: nil)
+            } else {
+                Functionalities.myUser?.removeFavoriteDogBreed(breedname: breed.getBreedName())
+                Functionalities.myUser?.updateUser()
+                tableView.reloadRows(at: [indexPath], with: .top)
+                
+            }
             print("successfuly liked dog by swiping")
             return true
-            })]
+        })]
         cell.leftSwipeSettings.transition = .rotate3D
         
         
@@ -141,7 +210,10 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
                 }.resume()
         }else { mainImageView.image = #imageLiteral(resourceName: "dogProfile.png")}
         mainDogName.text = breed.getBreedName()
-        mainDogGroup.text = breed.getGroup()
+        mainDogGroup.text = breed.getPersonality()
+        mainDogGroup.frame = CGRect(origin: mainDogGroup.frame.origin , size: CGSize(width: 200, height: mainDogGroup.frame.height))
+        mainDogGroup.lineBreakMode = NSLineBreakMode.byWordWrapping
+        
         
         //set like heart status
         if Functionalities.myUser != nil{
@@ -160,7 +232,7 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
                 mainDogLike.contentMode = .scaleAspectFit
                 mainDogLike.clipsToBounds = true
                 mainDogLike.image = #imageLiteral(resourceName: "unlike.png")
-
+                
                 
             }
             
@@ -181,7 +253,7 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
         let radius = mainImageView.frame.width / 2
         mainImageView.layer.cornerRadius = radius
         mainImageView.layer.masksToBounds = true
-
+        
         //cell animation
         cell.layer.transform = CATransform3DMakeScale(0.1,0.1,1)
         UIView.animate(withDuration: 0.3, animations: {
@@ -195,7 +267,7 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
         
         return cell
     }
-
+    
     
     
     /* This function count the number of item to be displayed for search result
@@ -207,6 +279,19 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
         return dogs.count
     }
     
+    /* Refresh cell when directed from detail page back to the table view page */
+    override func viewWillAppear(_ animated: Bool) {
+        print("viewWillAppear")
+        let index = tableView.indexPathForSelectedRow
+        print(index)
+        if (index != nil){
+            self.tableView.reloadRows(at: [index!], with: UITableViewRowAnimation.automatic)
+            print("reload")
+        }
+        super.viewWillAppear(animated)
+        print("super.viewWillAppear")
+    }
+    
     /* Filter search result*/
     func updateSearchResults(for searchController: UISearchController)
     {
@@ -216,22 +301,23 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
         self.filteredDogs.removeAll(keepingCapacity: false)
         filterContentForSearchText(searchText!)
     }
-    /*
-     * This function filters the result using characters in dog name
-     */
+    
+    
+    /* Filters the search result using charcter contains */
     func filterContentForSearchText(_ searchText: String, scope: String = "All") {
         filteredDogs = dogs.filter({( dog : Breed) -> Bool in
             return dog.breedName.lowercased().contains(searchText.lowercased())
         })
         tableView.reloadData()
     }
-
+    
     
     
     // MARK: - Segues
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //override func prepare(sender: Any?) {
         print("Prepare for DetailView Segue")
+//        resultSearchController.isActive = false
         if segue.identifier == "showDetail" {
             
             print("enter indexpath")
@@ -244,7 +330,7 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
                 } else {
                     breed = dogs[indexPath.row]
                 }
-//                let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
+                //                let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
                 let controller = segue.destination as! DetailViewController
                 controller.detailDog = breed
             }

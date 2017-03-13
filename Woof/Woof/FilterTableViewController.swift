@@ -22,7 +22,7 @@ class FilterTableViewController: UIViewController, UINavigationBarDelegate{
     var size=0 //default 0. small 1, medium 2, large 3
     //var sizeA = {0}
     var group=0 //default 0. Herding 1; Hound 2; Non-sporting 3; Sporting 4; Terrier 5; Toy 6; Working 7
-    var train=0 //default 0. easy 1; aveg 2; moderately easy 3
+    var train=0 //default 0. easy 1; difficult 2; fair 3
     var bark=0 //default 0. frequent 1; occasional 2; rare 3
     
     var groom = 0 //default 0; "High" 1; "Moderate" 2; "Low" 3
@@ -30,17 +30,18 @@ class FilterTableViewController: UIViewController, UINavigationBarDelegate{
     
     let CORNER_RADIUS: Int = 10
     var scrollView: UIScrollView! = nil
-    let SCROLL_OFFSET = 80
+    let SCROLL_OFFSET = 100
     
     //buttons:
     var button: UIButton! = nil
     var save: UIButton! = nil
+    var label: UILabel! = nil
     //var hair_buttons = [ "Short hair", "Long hair"]
     var body_buttons = ["Small", "Medium", "Large"]
     var group_buttons = ["Herding", "Hound", "Working", "Sporting", "Terrier", "Toy", "Non-sporting"]
     var train_buttons = ["Easy", "Difficult", "Fair"]
     var bark_buttons = ["Frequent", "Occasional","Rare"]
-    var groom_buttons = ["High","Moderatg","Low"]
+    var groom_buttons = ["High","Average","Low"]
     var shedding_buttons = ["Minimal", "Moderate", "Constant", "Seasonal"]
     
     var color = 0 //default 0 black 1; white 2; chocolate 3; golden 4; gray 5
@@ -58,411 +59,172 @@ class FilterTableViewController: UIViewController, UINavigationBarDelegate{
     let LINE_OFFSET = 95
     let LINE_OFFSET_SMALL = 38
     
+    
+    let label_size_origin = CGPoint(x:20, y:30)
+    let label_size_size = CGSize(width: 320, height: 30)
+    
+    let label_train_origin = CGPoint(x:20, y:125)
+    let label_train_size = CGSize(width: 320, height: 30)
+    
+    let label_bark_origin = CGPoint(x:20, y:220)
+    let label_bark_size = CGSize(width: 320, height: 30)
+    
+    let label_groom_origin = CGPoint(x:20, y:315)
+    let label_groom_size = CGSize(width: 320, height: 30)
+    
+    let label_shed_origin = CGPoint(x:20, y:410)
+    let label_shed_size = CGSize(width: 320, height: 30)
+    
+    let label_group_origin = CGPoint(x:20, y:543)
+    let label_group_size = CGSize(width: 320, height: 30)
+    let label_end_origin = CGPoint(x:20, y:770)
+    
     //size
     let screen_size: CGRect = UIScreen.main.bounds
     
     let font = "Rubik"
+    let font_large = "Rubik-Medium"
     //origins
     let top_origin = CGPoint(x: 40, y: 80)
-    let next_origin = CGPoint(x: 250, y: 20)
+    let next_origin = CGPoint(x: 20, y: 725)
     
     let button_size: CGSize = CGSize(width: 80, height: 30)
     let large_button_size: CGSize = CGSize(width: 120, height: 30)
-    let save_button_size: CGSize = CGSize(width: 100, height: 40)
+    let save_button_size: CGSize = CGSize(width: 320, height: 30)
     
     
     let button_font_size: Int = 15
     let save_button_font_size: Int = 18
+    let TITLE_FONT_SIZE: Int = 16
+    
     
     
     let yellow: UIColor = UIColor(red: 225/255, green: 210/255, blue: 161/255, alpha: 0.9)
     let green_Full: UIColor = UIColor(red: 165/255, green: 195/255, blue: 187/255, alpha: 1)
     let pink: UIColor = UIColor(red: 253/255, green: 127/255, blue: 124/255, alpha: 0.8)
     let white_half: UIColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.7)
+    let green_half: UIColor = UIColor(red: 165/255, green: 195/255, blue: 187/255, alpha: 0.8)
+    let transparent: UIColor = UIColor(red: 165/255, green: 195/255, blue: 187/255, alpha: 0)
     
     
     @IBOutlet weak var background: UIScrollView!
     @IBOutlet weak var foreground: UIScrollView!
     
-    
-    
-    
+    var buttonsReference: [UIButton] = [UIButton]()
     
     var filtersString = [String]()
     let filtersDictionary: [String: String] = [
         
-        "Large": "size3",
-        "Small": "size1",
-        "Medium": "size2",
+        "Large": "Size3",
+        "Small": "Size1",
+        "Medium": "Size2",
         
-        "Herding":"group1",
-        "Hound":"group2",
-        "Working":"group3",
-        "Sporting":"group4",
-        "Terrier":"group5",
-        "Toy":"group6",
-        "Non-sporting":"group7",
+        "Herding":"Group1",
+        "Hound":"Group2",
+        "Working":"Group3",
+        "Sporting":"Group4",
+        "Terrier":"Group5",
+        "Toy":"Group6",
+        "Non-sporting":"Group7",
         
-        "Easy":"train1",
-        "Difficult":"train1",
-        "Fair":"train1",
+        "Easy":"Trainability1",
+        "Difficult":"Trainability2",
+        "Fair":"Trainability3",
         
-        "High": "groom1",
-        "Moderatg": "groom2",
-        "Low": "groom3",
+        "High": "Grooming1",
+        "Average": "Grooming2",
+        "Low": "Grooming3",
         
-        "Frequent": "bark1",
-        "Occasional": "bark2",
-        "Rare": "bark3",
+        "Frequent": "Barking1",
+        "Occasional": "Barking2",
+        "Rare": "Barking3",
         
-        "Minimal": "shed1",
-        "Moderate": "shed2",
-        "Constant": "shed3",
-        "Seasonal": "shed4"
+        "Minimal": "Shedding1",
+        "Moderate": "Shedding2",
+        "Constant": "Shedding3",
+        "Seasonal": "Shedding4"
     ]
     var typeDictionary: [String: Int] = [
         
-        "size": 0,
-        "groom": 0,
-        "shed": 0,
-        "group": 0,
-        "bark": 0,
-        "train": 0
+        "Size": 0,
+        "Grooming": 0,
+        "Shedding": 0,
+        "Group": 0,
+        "Barking Level": 0,
+        "Trainabilty": 0
     ]
     
     var typeSizeDictionary: [String: Int]! = [
         
-        "size": 0,
-        "groom": 0,
-        "shed": 0,
-        "group": 0,
-        "bark": 0,
-        "train": 0
+        "Size": 0,
+        "Grooming": 0,
+        "Shedding": 0,
+        "Group": 0,
+        "Barking": 0,
+        "Trainability": 0
     ]
     
-    // filters are added, implement to remove?
-    func filterPressed(sender: UIButton!) {
-        //var select = false
+    func setButton(myButton: UIButton!) {
         
-        let buttonLabel: String = sender.titleLabel!.text!
+        let buttonLabel: String = myButton.titleLabel!.text!
         
-        if sender.backgroundColor != yellow {
+        if myButton.backgroundColor != yellow {
             
             print("store \(buttonLabel)")
-            Functionalities.myUser?.addFavoriteCategoryFilter(filter: (sender.titleLabel?.text!)!)
-            filtersString.append(buttonLabel)
             
-            sender.backgroundColor = yellow
+            if !filtersString.contains(buttonLabel) {
+                
+                filtersString.append(buttonLabel)
+            }
+            
+            let typeWithNum: String! = filtersDictionary[buttonLabel]!
+            let end = typeWithNum.index(before: typeWithNum.endIndex)
+            let type = typeWithNum.substring(to: end)
+            
+            Functionalities.myUser?.addFavoriteCategoryFilter(filter: "\(type): \(myButton.titleLabel!.text!)")
+
+            myButton.backgroundColor = yellow
         }
             
         else {
             
             print("remove \(buttonLabel)")
-            Functionalities.myUser?.removeFavoriteCategoryFilter(filter: (sender.titleLabel?.text!)!)
+            
+            let typeWithNum: String = filtersDictionary[buttonLabel]!
+            let end = typeWithNum.index(before: typeWithNum.endIndex)
+            let type = typeWithNum.substring(to: end)
+            
+            Functionalities.myUser?.removeFavoriteCategoryFilter(filter: (filter: "\(type): \(myButton.titleLabel!.text!)"))
+            
             filtersString.remove(at: filtersString.index(of: buttonLabel)!)
-            sender.backgroundColor = white_half
+            myButton.backgroundColor = white_half
         }
+    }
+    
+    // filters are added, implement to remove?
+    func filterPressed(sender: UIButton!) {
         
-        /**
-         //sender.isUserInteractionEnabled = false
-         //sender.backgroundColor = yellow
-         switch (sender.titleLabel!.text){
-         /* case "Long hair"?:
-         if hair != 0 {
-         hair = 100
-         }
-         hair = 2;
-         print ("hair is \(hair)")
-         break;
-         case "Short hair"?:
-         hair = 1;
-         if hair != 0 {
-         hair = 100
-         }
-         print ("hair is \(hair)")
-         break;*/
-         case "Small"?:
-         if size == 1 {
-         size = 0
-         break
-         }
-         
-         if size != 0 {
-         size = 100
-         break
-         }
-         size = 1;
-         break;
-         case "Large"?:
-         if size == 3 {
-         size = 0
-         break
-         }
-         if size != 0 {
-         size = 100
-         break
-         }
-         
-         size = 3;
-         break;
-         case "Medium"?:
-         if size == 2 {
-         size = 0
-         break
-         }
-         if size != 0 {
-         size = 100
-         break
-         }
-         
-         size = 2;
-         break;
-         case "Herding"?:
-         if group == 1 {
-         group = 0
-         break
-         }
-         if group != 0 {
-         group = 100
-         break
-         }
-         
-         group = 1;
-         break;
-         case "Hound"?:
-         if group == 2 {
-         group = 0
-         break
-         }
-         if group != 0 {
-         group = 100
-         break
-         }
-         
-         group = 2;
-         break;
-         case "Non_sporting"?:
-         if group == 3 {
-         group = 0
-         break
-         }
-         if group != 0 {
-         group = 100
-         break
-         }
-         
-         group = 3;
-         break;
-         case "Sporting"?:
-         if group == 4 {
-         group = 0
-         break
-         }
-         if group != 0 {
-         group = 100
-         break
-         }
-         
-         group = 4;
-         break;
-         case "Terrier"?:
-         if group == 5 {
-         group = 0
-         break
-         }
-         if group != 0 {
-         group = 100
-         break
-         }
-         
-         group = 5;
-         break;
-         case "Toy"?:
-         if group == 6 {
-         group = 0
-         break
-         }
-         if group != 0 {
-         group = 100
-         break
-         }
-         
-         group = 6;
-         break;
-         case "Working"?:
-         if group == 7 {
-         group = 0
-         break
-         }
-         if group != 0 {
-         group = 100
-         break
-         }
-         
-         group = 7;
-         break;
-         case "Easy"?:
-         if train == 1 {
-         train = 0
-         break
-         }
-         if train != 0 {
-         train = 100
-         break
-         }
-         
-         train = 1;
-         break;
-         case "Difficult"?:
-         if train == 2 {
-         train = 0
-         break
-         }
-         
-         if train != 0 {
-         train = 100
-         break
-         }
-         train = 2;
-         break;
-         case "Fair"?:
-         if train == 3 {
-         train = 0
-         break
-         }
-         if train != 0 {
-         train = 100
-         break
-         }
-         
-         train = 3;
-         break;
-         case "Frequent"?:
-         if bark == 1 {
-         bark = 0
-         break
-         }
-         if bark != 0 {
-         bark = 100
-         break
-         }
-         
-         bark = 1;
-         break;
-         case "Occasional"?:
-         if bark == 2 {
-         bark = 0
-         break
-         }
-         if bark != 0 {
-         bark = 100
-         break
-         }
-         
-         bark = 2;
-         break;
-         case "Rare"?:
-         if bark == 3 {
-         bark = 0
-         break
-         }
-         if bark != 0 {
-         bark = 100
-         break
-         }
-         
-         bark = 3;
-         break;
-         case "High"?:
-         if groom == 1 {
-         groom = 0
-         break
-         }
-         if groom != 0 {
-         groom = 100
-         break
-         }
-         
-         groom = 1;
-         break;
-         case "Moderate"?:
-         if groom == 2 {
-         groom = 0
-         break
-         }
-         if groom != 0 {
-         groom = 100
-         break
-         }
-         
-         groom = 2;
-         break;
-         case "Low"?:
-         if groom == 3 {
-         groom = 0
-         break
-         }
-         if groom != 0 {
-         groom = 100
-         break
-         }
-         
-         
-         groom = 3;
-         break;
-         case "Minimal"?:
-         if shed == 1 {
-         shed = 0
-         break
-         }
-         if shed != 0 {
-         shed = 100
-         break
-         }
-         
-         shed = 1;
-         break;
-         case "Moderate"?:
-         if shed == 2 {
-         shed = 0
-         break
-         }
-         if shed != 0 {
-         shed = 100
-         break
-         }
-         
-         shed = 2;
-         break;
-         case "Constant"?:
-         if shed == 3 {
-         shed = 0
-         break
-         }
-         if shed != 0 {
-         shed = 100
-         break
-         }
-         
-         shed = 3;
-         break;
-         case "Seasonal"?:
-         if shed == 4 {
-         shed = 0
-         break
-         }
-         if shed != 0 {
-         shed = 100
-         break
-         }
-         
-         shed = 4;
-         break;
-         default:
-         break;
-         
-         }*/
+        setButton(myButton: sender)
         
+        //if Functionalities.myUser?.userExist(){
+        //var select = false
+        
+        
+        /*}else{
+         //var select = false
+         let buttonLabel: String = sender.titleLabel!.text!
+         if sender.backgroundColor != yellow {
+         print("store \(buttonLabel)")
+         Functionalities.myUser?.addFavoriteCategoryFilter(filter: (sender.titleLabel?.text!)!)
+         filtersString.append(buttonLabel)
+         sender.backgroundColor = yellow
+         }else {
+         print("remove \(buttonLabel)")
+         Functionalities.myUser?.removeFavoriteCategoryFilter(filter: (sender.titleLabel?.text!)!)
+         filtersString.remove(at: filtersString.index(of: buttonLabel)!)
+         sender.backgroundColor = white_half
+         }
+         }    */
     }
     
     // function to set up the common specs of buttons
@@ -478,10 +240,22 @@ class FilterTableViewController: UIViewController, UINavigationBarDelegate{
         scrollView.addSubview(myButton)
         
     }
+    // function to set up the common specs of labels
+    func setUpLabel(myText: String, myFont: String, myFontSize: Int, myAlignment: NSTextAlignment, myLabel: UILabel, myColor: UIColor) {
+        
+        myLabel.text = myText
+        myLabel.font = UIFont(name: myFont, size: CGFloat(myFontSize))
+        myLabel.textAlignment = myAlignment
+        myLabel.backgroundColor = myColor
+        myLabel.layer.cornerRadius = CGFloat(CORNER_RADIUS)
+        myLabel.clipsToBounds = true
+        scrollView.addSubview(myLabel)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let currentFavFilters: [String] = (Functionalities.myUser?.favoriteCategoryFilters)!
         
         let navigationBar = UINavigationBar(frame: CGRect(x:0, y:0, width:self.view.frame.size.width, height:58)) // Offset by 20 pixels vertically to take the status bar into account
         
@@ -497,42 +271,39 @@ class FilterTableViewController: UIViewController, UINavigationBarDelegate{
         
         //self.title = "Filter"
         //scrolling
-        scrollView = UIScrollView(frame: CGRect(x:0, y:58, width:self.view.frame.size.width, height:self.view.frame.size.height-CGFloat(58)))
+        scrollView = UIScrollView(frame: CGRect(x:0, y:58, width:self.view.frame.size.width, height:self.view.frame.size.height-CGFloat(38)))
         scrollView.backgroundColor = UIColor(patternImage: UIImage(named: "backgroundHomeLarge-shade.jpg")!)
         
+        //start adding labels
+        label = UILabel(frame: CGRect(origin: label_size_origin, size: label_size_size))
+        setUpLabel(myText: "Sizes", myFont: font_large, myFontSize: TITLE_FONT_SIZE, myAlignment: NSTextAlignment.center, myLabel: label, myColor: green_half)
         
-        /*let shade = UIImageView(frame:UIScreen.main.bounds)
-         shade.backgroundColor = UIColor.black
-         shade.alpha = 0.5
-         scrollView.addSubview(shade)
-         scrollView.sendSubview(toBack: shade)
-         
-         
-         let BackimageView = UIImageView(frame:UIScreen.main.bounds)
-         BackimageView.image = UIImage(named:"bacgroundHome.png")
-         scrollView.addSubview(BackimageView)
-         scrollView.sendSubview(toBack: BackimageView)*/
+        label = UILabel(frame: CGRect(origin: label_train_origin, size: label_train_size))
+        setUpLabel(myText: "Trainability", myFont: font_large, myFontSize: TITLE_FONT_SIZE, myAlignment: NSTextAlignment.center, myLabel: label, myColor: green_half)
+        
+        label = UILabel(frame: CGRect(origin: label_bark_origin, size: label_bark_size))
+        setUpLabel(myText: "Barking Level", myFont: font_large, myFontSize: TITLE_FONT_SIZE, myAlignment: NSTextAlignment.center, myLabel: label, myColor: green_half)
+        
+        label = UILabel(frame: CGRect(origin: label_groom_origin, size: label_groom_size))
+        setUpLabel(myText: "Hair Maintain", myFont: font_large, myFontSize: TITLE_FONT_SIZE, myAlignment: NSTextAlignment.center, myLabel: label, myColor: green_half)
+        
+        label = UILabel(frame: CGRect(origin: label_shed_origin, size: label_shed_size))
+        setUpLabel(myText: "Shedding Frequency", myFont: font_large, myFontSize: TITLE_FONT_SIZE, myAlignment: NSTextAlignment.center, myLabel: label, myColor: green_half)
+        
+        label = UILabel(frame: CGRect(origin: label_group_origin, size: label_group_size))
+        setUpLabel(myText: "Group", myFont: font_large, myFontSize: TITLE_FONT_SIZE, myAlignment: NSTextAlignment.center, myLabel: label, myColor: green_half)
+        
+        /*
+         label = UILabel(frame: CGRect(origin: label_end_origin, size: label_group_size))
+         setUpLabel(myText: "??", myFont: font_large, myFontSize: TITLE_FONT_SIZE, myAlignment: NSTextAlignment.center, myLabel: label, myColor: pink)
+         */
+        
         //start adding buttons
         button = UIButton(frame: CGRect(origin: CGPoint(x: top_origin.x, y: top_origin.y), size: button_size))
         var buttonOrigin = CGPoint(x:0,y:0)
         
         button_offset=0
-        // for looooooooooooop for hair buttons
-        /*for key in hair_buttons {
-         if buttonOrigin.x != 0 {
-         button_offset = BUTTON_OFFSET
-         
-         
-         }
-         
-         print("x value: \(button.frame.origin.x+CGFloat(button_offset))")
-         button.frame.origin.x += CGFloat(button_offset)
-         buttonOrigin = CGPoint(x: button.frame.origin.x + CGFloat(button_offset), y: button.frame.origin.y)
-         
-         button = UIButton(frame: CGRect(origin: buttonOrigin, size: button_size))
-         setUpButtons(myLabel: key, myFontSize: button_font_size, myButton: button)
-         button.addTarget(self, action: #selector(self.filterPressed(sender:)), for: UIControlEvents.touchDown)
-         }*/
+        
         
         buttonOrigin = CGPoint(x:0,y:0)
         button_offset = 0
@@ -556,6 +327,11 @@ class FilterTableViewController: UIViewController, UINavigationBarDelegate{
             button = UIButton(frame: CGRect(origin: buttonOrigin, size: button_size))
             setUpButtons(myLabel: key, myFontSize: button_font_size, myButton: button)
             button.addTarget(self, action: #selector(self.filterPressed(sender:)), for: UIControlEvents.touchDown)
+            
+            if currentFavFilters.contains("Size: \(key)") {
+                
+                setButton(myButton: button)
+            }
         }
         buttonOrigin = CGPoint(x:0,y:0)
         button_offset = 0
@@ -579,6 +355,11 @@ class FilterTableViewController: UIViewController, UINavigationBarDelegate{
             button = UIButton(frame: CGRect(origin: buttonOrigin, size: button_size))
             setUpButtons(myLabel: key, myFontSize: button_font_size, myButton: button)
             button.addTarget(self, action: #selector(self.filterPressed(sender:)), for: UIControlEvents.touchDown)
+            
+            if currentFavFilters.contains("Trainability: \(key)") {
+                
+                setButton(myButton: button)
+            }
         }
         buttonOrigin = CGPoint(x:0,y:0)
         button_offset = 0
@@ -602,6 +383,11 @@ class FilterTableViewController: UIViewController, UINavigationBarDelegate{
             button = UIButton(frame: CGRect(origin: buttonOrigin, size: button_size))
             setUpButtons(myLabel: key, myFontSize: button_font_size, myButton: button)
             button.addTarget(self, action: #selector(self.filterPressed(sender:)), for: UIControlEvents.touchDown)
+            
+            if currentFavFilters.contains("Barking Level: \(key)") {
+                
+                filterPressed(sender: button)
+            }
         }
         buttonOrigin = CGPoint(x:0,y:0)
         button_offset = 0
@@ -625,6 +411,11 @@ class FilterTableViewController: UIViewController, UINavigationBarDelegate{
             button = UIButton(frame: CGRect(origin: buttonOrigin, size: button_size))
             setUpButtons(myLabel: key, myFontSize: button_font_size, myButton: button)
             button.addTarget(self, action: #selector(self.filterPressed(sender:)), for: UIControlEvents.touchDown)
+            
+            if currentFavFilters.contains("Grooming: \(key)") {
+                
+                filterPressed(sender: button)
+            }
         }
         buttonOrigin = CGPoint(x:0,y:0)
         button_offset = 0
@@ -650,6 +441,11 @@ class FilterTableViewController: UIViewController, UINavigationBarDelegate{
             button = UIButton(frame: CGRect(origin: buttonOrigin, size: button_size))
             setUpButtons(myLabel: key, myFontSize: button_font_size, myButton: button)
             button.addTarget(self, action: #selector(self.filterPressed(sender:)), for: UIControlEvents.touchDown)
+            
+            if currentFavFilters.contains("Shedding: \(key)") {
+                
+                filterPressed(sender: button)
+            }
         }
         
         buttonOrigin = CGPoint(x:0,y:0)
@@ -680,6 +476,11 @@ class FilterTableViewController: UIViewController, UINavigationBarDelegate{
             }
             setUpButtons(myLabel: key, myFontSize: button_font_size, myButton: button)
             button.addTarget(self, action: #selector(self.filterPressed(sender:)), for: UIControlEvents.touchDown)
+            
+            if currentFavFilters.contains("Group: \(key)") {
+                
+                filterPressed(sender: button)
+            }
         }
         
         buttonOrigin = CGPoint(x: next_origin.x, y: next_origin.y)
@@ -687,7 +488,7 @@ class FilterTableViewController: UIViewController, UINavigationBarDelegate{
         //setup save button
         save.setTitle("DONE", for: UIControlState.normal)
         save.setTitleColor(UIColor.black, for: UIControlState.normal)
-        save.titleLabel?.font = UIFont(name: "Rubik_Medium", size: CGFloat(save_button_font_size))
+        save.titleLabel?.font = UIFont(name: "Rubik-Medium", size: CGFloat(save_button_font_size))
         save.backgroundColor = pink
         save.isUserInteractionEnabled = true
         save.layer.cornerRadius = CGFloat(CORNER_RADIUS)
@@ -696,7 +497,16 @@ class FilterTableViewController: UIViewController, UINavigationBarDelegate{
         
         save.addTarget(self, action: #selector(self.showResult(_:)), for: .touchUpInside)
         
-        //save.addTarget(self, action: #selector(self.prepare(_ sender:)), for: UIControlEvents.touchDown)
+        /*let end = UIButton(frame: CGRect(origin: label_end_origin, size: save_button_size))
+         //setup save button
+         end.setTitle("??", for: UIControlState.normal)
+         end.setTitleColor(UIColor.black, for: UIControlState.normal)
+         
+         end.backgroundColor = transparent
+         end.isUserInteractionEnabled = false
+         end.layer.cornerRadius = CGFloat(CORNER_RADIUS)
+         
+         scrollView.addSubview(end)*/
         
         
         self.view.addSubview(scrollView)
@@ -730,6 +540,9 @@ class FilterTableViewController: UIViewController, UINavigationBarDelegate{
         
         setZero()
         
+        print(typeDictionary)
+        print(filtersString)
+        
         for myFilter in filtersString {
             
             let value: String! = filtersDictionary[myFilter]!
@@ -752,12 +565,14 @@ class FilterTableViewController: UIViewController, UINavigationBarDelegate{
             }
         }
         
-        secondViewController.size = typeDictionary["size"]
-        secondViewController.groom = typeDictionary["groom"]
-        secondViewController.train = typeDictionary["train"]
-        secondViewController.bark = typeDictionary["bark"]
-        secondViewController.group = typeDictionary["group"]
-        secondViewController.shed = typeDictionary["shed"]
+        print(typeDictionary)
+        
+        secondViewController.size = typeDictionary["Size"]
+        secondViewController.groom = typeDictionary["Grooming"]
+        secondViewController.train = typeDictionary["Trainability"]
+        secondViewController.bark = typeDictionary["Barking"]
+        secondViewController.group = typeDictionary["Group"]
+        secondViewController.shed = typeDictionary["Shedding"]
         
         print("done processing filters")
         
