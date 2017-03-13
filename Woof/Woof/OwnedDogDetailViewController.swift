@@ -510,10 +510,15 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
     {
         dogVaccinationDatetextField.isHidden = false
         dogBirhDatetextField.isHidden = false
+        dogBirhDatetextField.text = birthdate
         dogGendertextField.isHidden = false
+        dogGendertextField.text = gender
         dogNametextField.isHidden = false
+        dogNametextField.text = name
         agetextField.isHidden = false
+        agetextField.text = age
         breedtextField.isHidden = false
+        breedtextField.text = breed
         saveProfButton.isHidden = false
         
         
