@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "916966C7298279D79EBCD92D464DEFB38EEC54D4",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "EEC2556F236B94E447C13976FB8958DDB9441459" : 9223372036854775807,
+    "916966C7298279D79EBCD92D464DEFB38EEC54D4" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "46952097-5F59-409B-9ED2-D5C41600CF75",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "EEC2556F236B94E447C13976FB8958DDB9441459" : "",
+    "916966C7298279D79EBCD92D464DEFB38EEC54D4" : "CSE110_Woof\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Woof",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Woof\/Woof.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Jorx11\/CSE110_Woof.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "916966C7298279D79EBCD92D464DEFB38EEC54D4"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:Jorx11\/CSE110_Woof.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "EEC2556F236B94E447C13976FB8958DDB9441459"
+    }
+  ]
+}
