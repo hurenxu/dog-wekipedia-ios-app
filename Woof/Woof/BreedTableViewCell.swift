@@ -13,7 +13,7 @@ class BreedTableViewCell: UITableViewCell {
     let CORNER_RADIUS: Int = 20
     
     // the offsets
-    let LABEL_OFFSET_X = 170
+    let LABEL_OFFSET_X = 220
     let LABEL_OFFSET_Y = 20
     let IMAGE_OFFSET_X = 15
     let IMAGE_OFFSET_Y = 30
@@ -21,12 +21,19 @@ class BreedTableViewCell: UITableViewCell {
 
     var labelString: String! = ""
     var descriptionString: String! = ""
+    //name
+    let yellow: UIColor = UIColor(red: 225/255, green: 210/255, blue: 161/255, alpha: 0.9)
+    //description
+    let green_half: UIColor = UIColor(red: 165/255, green: 195/255, blue: 187/255, alpha: 0.8)
+    let pink: UIColor = UIColor(red: 253/255, green: 127/255, blue: 124/255, alpha: 0.8)
+    //cell backgroup
+    let white: UIColor = UIColor(red: 225/255, green: 245/255, blue: 245/255, alpha: 1)
+
     
-    let TITLE_COLOR: UIColor = UIColor(red: 253.0/255.0, green: 127.0/255.0, blue: 124.0/255.0, alpha: 1.0)
-    let SCROLL_COLOR: UIColor = UIColor(red: 111.0/255.0, green: 135.0/255.0, blue: 143.0/255.0, alpha: 1.0)
-    
-    let FONT: String = "Noteworthy"
-    let TITLE_FONT_SIZE: Int = 20
+    let FONT: String = "Rubik"
+    let FONT_MED: String = "Rubik-Medium"
+
+    let TITLE_FONT_SIZE: Int = 17
     let DESCRIPTION_FONT_SIZE: Int = 15
     let NUM_LINES: Int = 100
     
@@ -73,7 +80,7 @@ class BreedTableViewCell: UITableViewCell {
                 first = false
                 
                 // set up the image
-                let IMAGE_SIZE: CGSize = CGSize(width: 140, height: 140)
+                let IMAGE_SIZE: CGSize = CGSize(width:150, height: 80)
                 let IMAGE_ORIGIN: CGPoint = CGPoint(x: IMAGE_OFFSET_X, y: IMAGE_OFFSET_Y)
                 
                 myImage = UIImageView(frame: CGRect(origin: IMAGE_ORIGIN, size: IMAGE_SIZE))
@@ -82,28 +89,28 @@ class BreedTableViewCell: UITableViewCell {
             else if !initialized {
                 
                 // set up the title label
-                let LABEL_SIZE: CGSize = CGSize(width: 160, height: 60)
+                let LABEL_SIZE: CGSize = CGSize(width: 220, height: 20)
                 let LABEL_ORIGIN: CGPoint = CGPoint(x: contentView.frame.width - CGFloat(LABEL_OFFSET_X), y: CGFloat(LABEL_OFFSET_Y))
 
                 myLabel = UILabel(frame: CGRect(origin: LABEL_ORIGIN, size: LABEL_SIZE))
-                setUpLabel(myString: labelString, myFont: FONT, mySize: TITLE_FONT_SIZE, myColor: TITLE_COLOR, myAlignment: NSTextAlignment.center, myCorner: CORNER_RADIUS, myLabel: myLabel)
+                setUpLabel(myString: labelString, myFont: FONT_MED, mySize: TITLE_FONT_SIZE, myColor: yellow, myAlignment: NSTextAlignment.center, myCorner: CORNER_RADIUS, myLabel: myLabel)
                 myLabel.numberOfLines = 2
                 contentView.addSubview(myLabel)
-                
                 myImage.setRound()
+                
                 contentView.addSubview(myImage)
 
                 // set up the scroll view
-                let SCROLL_SIZE: CGSize = CGSize(width: 160, height: 80)
+                let SCROLL_SIZE: CGSize = CGSize(width: 220, height: 120)
                 let SCROLL_ORIGIN: CGPoint = CGPoint(x: LABEL_ORIGIN.x, y: LABEL_ORIGIN.y + CGFloat(SCROLL_OFFSET))
                 
                 myScrollView = UIScrollView(frame: CGRect(origin: SCROLL_ORIGIN, size: SCROLL_SIZE))
-                myScrollView.backgroundColor = SCROLL_COLOR
-                myScrollView.layer.cornerRadius = CGFloat(CORNER_RADIUS)
+                myScrollView.backgroundColor = white
+                myScrollView.layer.cornerRadius = CGFloat(2)
                 contentView.addSubview(myScrollView)
                 
                 // set up the description label
-                let DESCRIPTION_SIZE: CGSize = CGSize(width: 150, height: 10)
+                let DESCRIPTION_SIZE: CGSize = CGSize(width: 220, height: 120)
                 let DESCRIPTION_ORIGIN: CGPoint = CGPoint(x: 10, y: 0)
                 myDescription = UILabel(frame: CGRect(origin: DESCRIPTION_ORIGIN, size: DESCRIPTION_SIZE))
                 setUpLabel(myString: descriptionString, myFont: FONT, mySize: DESCRIPTION_FONT_SIZE, myColor: UIColor.clear, myAlignment: NSTextAlignment.left, myCorner: 0, myLabel: myDescription)
