@@ -177,7 +177,13 @@ class FilterResultViewController: UIViewController, UINavigationBarDelegate ,UIT
         
         
         anounce_label = UILabel(frame: CGRect(origin: anounce_origin, size: TITLE_SIZE))
-        setUpLabel(myText: "ALL TAGS SAVED    Σ(っ°Д°)っ", myFont: FONT, myFontSize: TITLE_FONT_SIZE, myAlignment: NSTextAlignment.center, myLabel: anounce_label, myColor: white_half)
+        if Functionalities.myUser == nil {
+            setUpLabel(myText: "FILTER RESULT, LOGIN TO SAVE TAG", myFont: FONT, myFontSize: TITLE_FONT_SIZE, myAlignment: NSTextAlignment.center, myLabel: anounce_label, myColor: white_half)
+        } else {
+            setUpLabel(myText: "ALL TAGS SAVED    Σ(っ°Д°)っ", myFont: FONT, myFontSize: TITLE_FONT_SIZE, myAlignment: NSTextAlignment.center, myLabel: anounce_label, myColor: white_half)
+            
+        }
+        
         
         table = UITableView(frame: CGRect(origin: result_origin, size: TABLE_SIZE))
         setUpTable(myColor: TABLE_COLOR, myTable: table)
