@@ -82,6 +82,7 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         
         if textField == breedtextField && flag == false{
             
+            
             self.view.frame.origin.y -= CGFloat(200)
             flag = true
         }
@@ -187,6 +188,7 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         breedLabel.layer.cornerRadius = 5
         breedLabel.clipsToBounds = true
         view.addSubview(breedLabel)
+        breedtextField.text = breed
         
         
         //age Label
@@ -508,6 +510,8 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         print(newDog.name)
         print(newDog.dogID)
         print(newDog.breed.breedName)
+        breed = newDog.breed.breedName
+        
         print(newDog.birthDate)
         print(newDog.gender)
         print(newDog.vaccination)
@@ -517,7 +521,6 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         
         Functionalities.myUser?.updateDog(dog: newDog)
         
-        
         self.view.frame.origin.y = 0
         flag = false
     }
@@ -526,16 +529,28 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
     func editProfButtonClick(sender:UIButton)
     {
         dogVaccinationDatetextField.isHidden = false
+        dogVaccinationDatetextField.text = vaccinationdate
+        
         dogBirhDatetextField.isHidden = false
         dogBirhDatetextField.text = birthdate
+        
+        
         dogGendertextField.isHidden = false
         dogGendertextField.text = gender
+        
         dogNametextField.isHidden = false
         dogNametextField.text = name
+        
+        
         agetextField.isHidden = false
         agetextField.text = age
+        
+        
         breedtextField.isHidden = false
-        breedtextField.text = breed
+        
+        
+        
+        
         saveProfButton.isHidden = false
         
         
@@ -647,14 +662,6 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
             let tools = Functionalities()
             tools.addDogImage(chosenImage: chosenImage, dog: thisDog!)
             
-            //            let myImage = convertImageToBase64(image: chosenImage)
-            //
-            //            let newDog = Dog(dogID: (thisDog?.dogID)!, name: (thisDog?.name)!, breed: (thisDog?.breed)!, birthDate: (thisDog?.birthDate)!,age: (thisDog?.age)!, gender: (thisDog?.gender)!,  vaccination: (thisDog?.vaccination)!, color: (thisDog?.color)!, description: (thisDog?.description)!, image: myImage)
-            //
-            //            Functionalities.myUser?.updateDog(dog: newDog)
-            
-            //Img = chosenImage
-            //TODO
         }
         self.dismiss(animated: true, completion: nil)
     }

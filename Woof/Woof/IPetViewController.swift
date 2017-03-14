@@ -158,7 +158,7 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         if (!Functionalities.userExist) {
 
             user?.addUserProfileEntry()
-            //print("new user profile added @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+           
         }
         
         print(tools.retrieveDogList(controller:self))
@@ -167,20 +167,6 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         
         tools.retrieveUserImage(UIImageView: profileImgContainer)
         
-        
-   //     let label = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 250))
-    //    label.center = CGPoint(x: 180, y: 270)
-   //     label.text = "User Profile"
-   //     label.textAlignment = .center
-    //    label.textColor = UIColor.white
-        
-        
-   //     label.font = label.font.withSize(30)
-   //     self.view.addSubview(label)
-        
-        
-        //let collectView = UICollectionView()
-        //let cLayout:UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         
         collectView = UICollectionView(frame: CGRect(x: 0, y:300, width:view.frame.width, height: view.frame.height/2), collectionViewLayout: cLayout)
         
@@ -279,9 +265,26 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         collectionView.deselectItem(at: indexPath, animated: true)
         let secondViewController:OwnedDogDetailViewController = OwnedDogDetailViewController()
         secondViewController.name = ownedDog[indexPath.row]
-        secondViewController.gender = gender[indexPath.row % 3]
+        
+        
+        secondViewController.gender = dogList[indexPath.row].getGender()
         secondViewController.thisDogID = dogID[indexPath.item]
         secondViewController.thisDog = dogList[indexPath.item]
+        
+        
+        secondViewController.breed = dogList[indexPath.row].breed.getBreedName()
+        
+        
+        let newdateFormatter = DateFormatter()
+        newdateFormatter.dateStyle = .long
+        newdateFormatter.timeStyle = .none
+        let strVac = newdateFormatter.string(from: (dogList[indexPath.row].getVaccination()))
+        secondViewController.vaccinationdate = strVac
+        
+        let strBir = newdateFormatter.string(from: (dogList[indexPath.row].getBirthDate()))
+        secondViewController.birthdate = strBir
+        
+        secondViewController.age = dogList[indexPath.row].getAge()
         
         secondViewController.profileImgContainer.image = dogImages[dogList[indexPath.row].dogID]
         
