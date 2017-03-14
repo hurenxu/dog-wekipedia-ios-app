@@ -68,8 +68,6 @@
 		<true/>
 		<key>NSExceptionDomains</key>
 		<dict>
-            <key>https://firebasestorage.googleapis.com/v0/b/woof-2e9d3.appspot.com/o/pUUyHLvVHiPQTKaAanSjpXcEKXt2?alt=media%26token=012b8ed1-3b2f-494b-a13d-16b4a54e9f47</key>
-            <string>https://firebasestorage.googleapis.com/v0/b/woof-2e9d3.appspot.com/o/pUUyHLvVHiPQTKaAanSjpXcEKXt2?alt=media%26token=012b8ed1-3b2f-494b-a13d-16b4a54e9f47</string>
 			<key>http://pbs.twimg.com/media/CQKgT40WcAAxTgE.jpg:large</key>
 			<string>http://www.dogbreedslist.info/uploads/allimg/dog-pictures/Labrador-Retriever-2.jpg</string>
 			<key>http://www.allsmalldogbreeds.com/breeds/american-cocker-spaniel.jpg</key>
@@ -109,7 +107,8 @@
 			<string>http://www.dogbreedslist.info/uploads/allimg/dog-pictures/Rottweiler-2.jpg</string>
 			<key>http://www.dogbreedslist.info/uploads/allimg/dog-pictures/Siberian-Husky-2.jpg</key>
 			<string>http://www.dogbreedslist.info/uploads/allimg/dog-pictures/Dachshund-2.jpg</string>
-
+			<key>https://firebasestorage.googleapis.com/v0/b/woof-2e9d3.appspot.com/o/pUUyHLvVHiPQTKaAanSjpXcEKXt2?alt=media%26token=012b8ed1-3b2f-494b-a13d-16b4a54e9f47</key>
+			<string>https://firebasestorage.googleapis.com/v0/b/woof-2e9d3.appspot.com/o/pUUyHLvVHiPQTKaAanSjpXcEKXt2?alt=media%26token=012b8ed1-3b2f-494b-a13d-16b4a54e9f47</string>
 		</dict>
 	</dict>
 	<key>NSPhotoLibraryUsageDescription</key>
