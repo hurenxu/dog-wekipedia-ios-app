@@ -17,6 +17,12 @@ class AddDogViewController: UIViewController, UINavigationBarDelegate, UIImagePi
     var discription = ""
     var breed = ""
     var age = ""
+    var image = UIImage(named:"BlackEmptyDog")
+    
+    var updateMyNewDog: Dog?
+    var breedObj: Breed?
+    var dogID = ""
+
     
     var ageData = ["1","2","3","4","5","6","7","8","9","10"]
     var picker = UIPickerView()
@@ -213,7 +219,7 @@ class AddDogViewController: UIViewController, UINavigationBarDelegate, UIImagePi
         dogVaccinationDatetextField.textAlignment = NSTextAlignment.center
         dogVaccinationDatetextField.textColor = UIColor.blue
         dogVaccinationDatetextField.borderStyle = UITextBorderStyle.roundedRect
-        dogVaccinationDatetextField.placeholder = "Vaccination Test Date"
+        dogVaccinationDatetextField.placeholder = "Vaccination Date"
         dogVaccinationDatetextField.autocapitalizationType = UITextAutocapitalizationType.words // If you need any capitalization
         self.view.addSubview(dogVaccinationDatetextField)
         dogVaccinationDatetextField.isHidden = false
@@ -255,6 +261,16 @@ class AddDogViewController: UIViewController, UINavigationBarDelegate, UIImagePi
 
         self.editProfButtonClick()
         // Do any additional setup after loading the view.
+        
+        
+        breedObj = Breed(breedName: "Unknown Breed", popularity: "", origin: "", group: "", size: "", type: "", lifeExpectancy: "", personality: "", height: "", weight: "", colors: "", litterSize: "", price: "", barkingLevel: "", childFriendly: "",
+                             grooming: "",shedding: "", trainability: "", breeders: "", image: "")
+        dogID = (Functionalities.myUser?.userID)! + (Functionalities.myUser?.dogIDs.count.description)!
+        
+        updateMyNewDog = Dog(dogID: dogID, name: name, breed: breedObj!, birthDate: Date(), age: age, gender: gender, vaccination: Date(), color: "", description: "", image: "")
+
+
+
     }
     
     
@@ -274,7 +290,8 @@ class AddDogViewController: UIViewController, UINavigationBarDelegate, UIImagePi
         self.view.endEditing(true)
         
         let dateFormatter: DateFormatter = DateFormatter()
-        dateFormatter.dateStyle = DateFormatter.Style.short
+        dateFormatter.dateStyle = .long
+        dateFormatter.timeStyle = .none
         let strDate = dateFormatter.string(from: datePicker.date)
         dogVaccinationDatetextField.text = strDate
         vaccinationDateLabel.text = strDate
@@ -290,7 +307,8 @@ class AddDogViewController: UIViewController, UINavigationBarDelegate, UIImagePi
         self.view.endEditing(true)
         
         let dateFormatter: DateFormatter = DateFormatter()
-        dateFormatter.dateStyle = DateFormatter.Style.short
+        dateFormatter.dateStyle = .long
+        dateFormatter.timeStyle = .none
         let strDate = dateFormatter.string(from: datePicker.date)
         dogBirhDatetextField.text = strDate
         birthDateLabel.text = strDate
@@ -373,24 +391,24 @@ class AddDogViewController: UIViewController, UINavigationBarDelegate, UIImagePi
         ageLabel.isHidden = false
         breedLabel.isHidden = false
         
-        var breedObj = Breed(breedName: "Unknown Breed", popularity: "", origin: "", group: "", size: "", type: "", lifeExpectancy: "", personality: "", height: "", weight: "", colors: "", litterSize: "", price: "", barkingLevel: "", childFriendly: "",
-            grooming: "",shedding: "", trainability: "", breeders: "", image: "")
-        
-        //update the dog to the database
-        let dogID = (Functionalities.myUser?.userID)! + (Functionalities.myUser?.dogIDs.count.description)!
+//        var breedObj = Breed(breedName: "Unknown Breed", popularity: "", origin: "", group: "", size: "", type: "", lifeExpectancy: "", personality: "", height: "", weight: "", colors: "", litterSize: "", price: "", barkingLevel: "", childFriendly: "",
+//            grooming: "",shedding: "", trainability: "", breeders: "", image: "")
+//        
+//        //update the dog to the database
+//        let dogID = (Functionalities.myUser?.userID)! + (Functionalities.myUser?.dogIDs.count.description)!
 
         
         
         if (nameLabel.text == nil){
-           nameLabel.text = "Lexi"
+           nameLabel.text = "Woof!"
         }
         
         if (ageLabel.text == nil){
-           ageLabel.text = "2"
+           ageLabel.text = "3"
         }
         
         if (genderLabel.text == nil){
-           genderLabel.text = "female"
+           genderLabel.text = "Female"
         }
         
         if (breed != ""){
@@ -399,8 +417,11 @@ class AddDogViewController: UIViewController, UINavigationBarDelegate, UIImagePi
         }
         
 
-        let updateMyNewDog = Dog(dogID: dogID, name: name, breed: breedObj, birthDate: Date(), age: age, gender: gender, vaccination: Date(), color: "", description: "", image: "")
-        Functionalities.myUser?.addDog(dog: updateMyNewDog)
+        updateMyNewDog = Dog(dogID: dogID, name: name, breed: breedObj!, birthDate: Date(), age: age, gender: gender, vaccination: Date(), color: "", description: "", image: "")
+        Functionalities.myUser?.addDog(dog: updateMyNewDog!)
+        
+        let tools = Functionalities()
+        tools.addDogImage(chosenImage: self.image!, dog: updateMyNewDog!)
 
     }
 
@@ -453,6 +474,10 @@ class AddDogViewController: UIViewController, UINavigationBarDelegate, UIImagePi
         
         if let chosenImage = chosenImageFromPicker{
             profileImgContainer.image = chosenImage
+            
+            self.image = chosenImage
+//            let tools = Functionalities()
+//            tools.addDogImage(chosenImage: chosenImage, dog: updateMyNewDog!)
         }
         self.dismiss(animated: true, completion: nil)
     }
