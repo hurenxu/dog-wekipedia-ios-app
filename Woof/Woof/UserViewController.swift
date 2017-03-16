@@ -26,6 +26,7 @@ class UserViewController: UIViewController, UINavigationBarDelegate, UINavigatio
     let FONT = "Rubik"
     let FONT_SIZE = 19
     let CORNER_RADIUS = 10
+    let DOUBLE = CGFloat(2)
     
     // Labels
     var nameLabel: UILabel! = nil
@@ -42,9 +43,9 @@ class UserViewController: UIViewController, UINavigationBarDelegate, UINavigatio
     var emailField: UITextField! = nil
     
     // Buttons
-    let editButton:UIButton = UIButton(frame: CGRect(x: 250, y: 175, width: 80, height: 30))
-    let imageButton:UIButton = UIButton(frame: CGRect(x: 40, y: 175, width: 80, height: 30))
-    let saveButton:UIButton = UIButton(frame: CGRect(x: 20, y: 550, width: 330, height: 40))
+    var editButton:UIButton = UIButton(frame: CGRect(x: 250, y: 175, width: 80, height: 30))
+    var imageButton:UIButton = UIButton(frame: CGRect(x: 40, y: 175, width: 80, height: 30))
+    var saveButton:UIButton = UIButton(frame: CGRect(x: 20, y: 550, width: 330, height: 40))
     
     // Colors
     let pink: UIColor = UIColor(red: 253/255, green: 127/255, blue: 124/255, alpha: 0.8)
@@ -82,10 +83,44 @@ class UserViewController: UIViewController, UINavigationBarDelegate, UINavigatio
         self.view.addSubview(myTextField)
     }
     
+    // function to set up the common specs of buttons
+    func setUpButtons(myLabel: String, myFontSize: Int, myFontColor: UIColor, myButton: UIButton, myColor: UIColor) {
+        
+        myButton.setTitle(myLabel, for: UIControlState.normal)
+        myButton.setTitleColor(myFontColor, for: UIControlState.normal)
+        myButton.titleLabel?.font = UIFont(name: FONT, size: CGFloat(myFontSize))
+        myButton.backgroundColor = myColor
+        myButton.isUserInteractionEnabled = true
+        myButton.layer.cornerRadius = CGFloat(CORNER_RADIUS)
+        myButton.addTarget(self, action: #selector(self.buttonPressed(sender:)), for: UIControlEvents.touchDown)
+        self.view.addSubview(myButton)
+    }
+    
     func goBack() {
         
         print("go back to ipet")
         dismiss(animated: true, completion: nil)
+    }
+    
+    func buttonPressed(sender: UIButton) {
+        
+        if sender == imageButton {
+            
+            // image access
+        }
+        
+        else if sender == editButton {
+            
+            // hide labels
+            // show text fields and save button
+        }
+        
+        else if sender == saveButton {
+            
+            // hide text fields
+            // update labels
+            // show labels
+        }
     }
     
     override func viewDidLoad() {
@@ -129,7 +164,14 @@ class UserViewController: UIViewController, UINavigationBarDelegate, UINavigatio
         let GENDER_TEXT_ORIGIN = CGPoint(x: NAME_TEXT_ORIGIN.x, y: AGE_TEXT_ORIGIN.y + FIELD_OFFSET)
         let ZIP_TEXT_ORIGIN = CGPoint(x: NAME_TEXT_ORIGIN.x, y: GENDER_TEXT_ORIGIN.y + FIELD_OFFSET)
         let EMAIL_TEXT_ORIGIN = CGPoint(x: NAME_TEXT_ORIGIN.x, y: ZIP_TEXT_ORIGIN.y + FIELD_OFFSET)
-        let SAVE_BUTTON_ORIGIN = CGPoint(x: NAME_TEXT_ORIGIN.x, y: ZIP_TEXT_ORIGIN.y + FIELD_OFFSET)
+        let SAVE_BUTTON_ORIGIN = CGPoint(x: NAME_TEXT_ORIGIN.x, y: ZIP_TEXT_ORIGIN.y + FIELD_OFFSET * DOUBLE)
+        
+        // sets up the top buttons
+        imageButton = UIButton(frame: CGRect(origin: IMAGE_BUTTON_ORIGIN, size: TOP_BUTTONS_SIZE))
+        setUpButtons(myLabel: "image", myFontSize: FONT_SIZE, myFontColor: UIColor.black, myButton: imageButton, myColor: yellow)
+        
+        editButton = UIButton(frame: CGRect(origin: EDIT_BUTTON_ORIGIN, size: TOP_BUTTONS_SIZE))
+        setUpButtons(myLabel: "edit", myFontSize: FONT_SIZE, myFontColor: UIColor.black, myButton: editButton, myColor: yellow)
         
         // sets up the labels
         nameLabel = UILabel(frame: CGRect(origin: NAME_ORIGIN, size: LABEL_SIZE))
@@ -163,6 +205,9 @@ class UserViewController: UIViewController, UINavigationBarDelegate, UINavigatio
         emailField = UITextField(frame: CGRect(origin: EMAIL_TEXT_ORIGIN, size: TEXT_SIZE))
         setUpText(myPlaceholder: "Email", myFont: FONT, myFontSize: FONT_SIZE, myFontColor: UIColor.blue, myAlignment: NSTextAlignment.center, myTextField: emailField, myColor: UIColor.white)
         
+        // sets up the save button
+        saveButton = UIButton(frame: CGRect(origin: SAVE_BUTTON_ORIGIN, size: SAVE_BUTTON_SIZE))
+        setUpButtons(myLabel: "save", myFontSize: FONT_SIZE, myFontColor: UIColor.white, myButton: saveButton, myColor: UIColor.black)
     }
 
     override func didReceiveMemoryWarning() {
