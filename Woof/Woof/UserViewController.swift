@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UserViewController: UIViewController, UINavigationBarDelegate, UINavigationControllerDelegate {
+class UserViewController: UIViewController, UINavigationBarDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
 
     let myUser = Functionalities.myUser
     
@@ -62,7 +62,24 @@ class UserViewController: UIViewController, UINavigationBarDelegate, UINavigatio
         myLabel.backgroundColor = myColor
         myLabel.layer.cornerRadius = CGFloat(CORNER_RADIUS)
         myLabel.clipsToBounds = true
+        myLabel.isHidden = true
         self.view.addSubview(myLabel)
+    }
+    
+    // function to set up the common specs of text fields
+    func setUpText(myPlaceholder: String, myFont: String, myFontSize: Int, myFontColor: UIColor, myAlignment: NSTextAlignment, myTextField: UITextField, myColor: UIColor) {
+        
+        myTextField.placeholder = myPlaceholder
+        myTextField.font = UIFont(name: myFont, size: CGFloat(myFontSize))
+        myTextField.textColor = myFontColor
+        myTextField.textAlignment = myAlignment
+        myTextField.backgroundColor = myColor
+        myTextField.layer.cornerRadius = CGFloat(CORNER_RADIUS)
+        myTextField.clipsToBounds = true
+        myTextField.borderStyle = UITextBorderStyle.roundedRect
+        myTextField.autocapitalizationType = UITextAutocapitalizationType.words
+        myTextField.delegate = self
+        self.view.addSubview(myTextField)
     }
     
     func goBack() {
@@ -130,7 +147,21 @@ class UserViewController: UIViewController, UINavigationBarDelegate, UINavigatio
         emailLabel = UILabel(frame: CGRect(origin: EMAIL_ORIGIN, size: LABEL_SIZE))
         setUpLabel(myText: "Email: ", myFont: FONT, myFontSize: FONT_SIZE, myAlignment: NSTextAlignment.center, myLabel: emailLabel, myColor: green_half)
         
+        // sets up the text fields
+        nameField = UITextField(frame: CGRect(origin: NAME_TEXT_ORIGIN, size: TEXT_SIZE))
+        setUpText(myPlaceholder: "Name", myFont: FONT, myFontSize: FONT_SIZE, myFontColor: UIColor.blue, myAlignment: NSTextAlignment.center, myTextField: nameField, myColor: UIColor.white)
         
+        ageField = UITextField(frame: CGRect(origin: AGE_TEXT_ORIGIN, size: TEXT_SIZE))
+        setUpText(myPlaceholder: "Age", myFont: FONT, myFontSize: FONT_SIZE, myFontColor: UIColor.blue, myAlignment: NSTextAlignment.center, myTextField: ageField, myColor: UIColor.white)
+        
+        genderField = UITextField(frame: CGRect(origin: GENDER_TEXT_ORIGIN, size: TEXT_SIZE))
+        setUpText(myPlaceholder: "Gender", myFont: FONT, myFontSize: FONT_SIZE, myFontColor: UIColor.blue, myAlignment: NSTextAlignment.center, myTextField: genderField, myColor: UIColor.white)
+        
+        zipField = UITextField(frame: CGRect(origin: ZIP_TEXT_ORIGIN, size: TEXT_SIZE))
+        setUpText(myPlaceholder: "Zip", myFont: FONT, myFontSize: FONT_SIZE, myFontColor: UIColor.blue, myAlignment: NSTextAlignment.center, myTextField: zipField, myColor: UIColor.white)
+        
+        emailField = UITextField(frame: CGRect(origin: EMAIL_TEXT_ORIGIN, size: TEXT_SIZE))
+        setUpText(myPlaceholder: "Email", myFont: FONT, myFontSize: FONT_SIZE, myFontColor: UIColor.blue, myAlignment: NSTextAlignment.center, myTextField: emailField, myColor: UIColor.white)
         
     }
 
