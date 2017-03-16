@@ -159,6 +159,7 @@
                         <outlet property="searchDisplayController" destination="yAG-ou-sF2" id="wcT-Ow-nwY"/>
                         <outlet property="tableView" destination="0LD-4X-UHQ" id="UCj-Hn-TAF"/>
                         <segue destination="qjF-TJ-7Qs" kind="show" identifier="ToLikedViewSegue" id="2YZ-p3-8zG"/>
+                        <segue destination="PVU-gl-3TV" kind="show" identifier="ToFilterViewSegue" id="Tj7-o4-Rj2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
@@ -174,6 +175,24 @@
             </objects>
             <point key="canvasLocation" x="1696.8" y="-555.47226386806597"/>
         </scene>
+        <!--Filter Result View Controller-->
+        <scene sceneID="Xli-os-Sud">
+            <objects>
+                <viewController id="BN9-MG-aLr" customClass="FilterResultViewController" customModule="Woof" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zxF-wq-oxc"/>
+                        <viewControllerLayoutGuide type="bottom" id="ESh-Hf-S1u"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fPp-g5-4EM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bNj-2K-tyB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="796" y="-1242"/>
+        </scene>
         <!--Filter View Controller-->
         <scene sceneID="eTl-Ly-bvr">
             <objects>
@@ -188,6 +207,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems/>
+                    <connections>
+                        <segue destination="BN9-MG-aLr" kind="show" identifier="ToFilterResultViewSegue" id="jxb-2h-eUb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sza-Zy-MRW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -549,7 +571,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="tIV-Pn-8bj"/>
-        <segue reference="D7L-ma-JW7"/>
+        <segue reference="Ngo-1w-MZM"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="0.97739707450220481" blue="0.98941910780827447" alpha="1" colorSpace="calibratedRGB"/>
 </document>

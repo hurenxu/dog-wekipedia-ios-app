@@ -29,14 +29,10 @@ class FilterResultViewController: UIViewController, UINavigationBarDelegate ,UIT
     var breedArray = Functionalities.breedList
     //var breeds: [Int] = [Int]()
     //var breeds = ["1","2","3"]
-    // scroll view
-    var scrollView: UIScrollView! = nil
-    
     
     // origins
-    let anounce_origin = CGPoint(x: 10, y: 30)
-    let result_origin = CGPoint(x:12, y:100)
-    
+    let anounce_origin = CGPoint(x: 10, y: 80)
+    let result_origin = CGPoint(x: 10, y: 140)
     
     // the radius of the corner
     let CORNER_RADIUS = 10
@@ -55,7 +51,7 @@ class FilterResultViewController: UIViewController, UINavigationBarDelegate ,UIT
     
     
     // the tables
-    let TABLE_SIZE: CGSize = CGSize(width: 353, height: 500)
+    let TABLE_SIZE: CGSize = CGSize(width: 353, height: 450)
     let TABLE_COLOR: UIColor = UIColor.white
     let CELL_HEIGHT: Int! = 50
     var table: UITableView! = nil
@@ -69,7 +65,7 @@ class FilterResultViewController: UIViewController, UINavigationBarDelegate ,UIT
         myLabel.backgroundColor = myColor
         myLabel.layer.cornerRadius = CGFloat(CORNER_RADIUS)
         myLabel.clipsToBounds = true
-        scrollView.addSubview(myLabel)
+        self.view.addSubview(myLabel)
     }
     
     func setUpTable(myColor: UIColor, myTable: UITableView) {
@@ -77,8 +73,8 @@ class FilterResultViewController: UIViewController, UINavigationBarDelegate ,UIT
         myTable.backgroundColor = myColor
         myTable.layer.cornerRadius = CGFloat(CORNER_RADIUS)
         myTable.rowHeight = CGFloat(CELL_HEIGHT)
-        myTable.register(BreedTableViewCell.self, forCellReuseIdentifier: "BreedTableViewCell")
-        scrollView.addSubview(myTable)
+        // myTable.register(BreedTableViewCell.self, forCellReuseIdentifier: "BreedTableViewCell")
+        self.view.addSubview(myTable)
     }
     
     
@@ -138,18 +134,16 @@ class FilterResultViewController: UIViewController, UINavigationBarDelegate ,UIT
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.white
         
         //self.title = "Filter Result"
         
         //self.view.addSubview(backButton)
         
+        /**
         let navigationBar = UINavigationBar(frame: CGRect(x:0, y:0, width:self.view.frame.size.width, height:64)) // Offset by 20 pixels vertically to take the status bar into account
         
         let navigationItem = UINavigationItem()
         navigationItem.title = "Filter Result"
-        
-        
         
         navigationBar.backgroundColor = UIColor.white
         navigationBar.delegate = self;
@@ -160,21 +154,16 @@ class FilterResultViewController: UIViewController, UINavigationBarDelegate ,UIT
         navigationBar.pushItem(navigationItem, animated: true)
         
         //navigationItem.items[navigationItem]
-        self.view.addSubview(navigationBar)
+        self.view.addSubview(navigationBar)*/
         
         print("size is\(size)")
         print("train is\(train)")
         
-        
+        self.title = "Filter Search"
+        self.tabBarItem.title = "Filter Search"
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "backgroundHomeLarge-shade.jpg")!)
         
         // Do any additional setup after loading the view.
-        
-        scrollView = UIScrollView(frame: CGRect(x:0, y:58, width:self.view.frame.size.width, height:self.view.frame.size.height-CGFloat(50)))
-        scrollView.backgroundColor = UIColor(patternImage: UIImage(named: "backgroundHomeLarge.jpg")!)
-        self.view.addSubview(scrollView)
-        
-        //self.view.backgroundColor = UIColor.orange
-        
         
         anounce_label = UILabel(frame: CGRect(origin: anounce_origin, size: TITLE_SIZE))
         if Functionalities.myUser == nil {

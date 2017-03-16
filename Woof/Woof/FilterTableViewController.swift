@@ -30,7 +30,7 @@ class FilterTableViewController: UIViewController, UINavigationBarDelegate{
     
     let CORNER_RADIUS: Int = 10
     var scrollView: UIScrollView! = nil
-    let SCROLL_OFFSET = 100
+    let SCROLL_OFFSET = 60
     var noLogInFilters = [String]()
     
     //buttons:
@@ -276,21 +276,23 @@ class FilterTableViewController: UIViewController, UINavigationBarDelegate{
             currentFavFilters = (Functionalities.myUser?.favoriteCategoryFilters)!
         }
         
+        self.title = "Filter"
+        self.tabBarItem.title = "Filter"
+        
+        /**
         let navigationBar = UINavigationBar(frame: CGRect(x:0, y:0, width:self.view.frame.size.width, height:58)) // Offset by 20 pixels vertically to take the status bar into account
         
         let navigationItem = UINavigationItem()
         navigationItem.title = "Filter"
-        
-        
-        
+         
         navigationBar.backgroundColor = UIColor.white
         navigationBar.delegate = self;
-        self.view.addSubview(navigationBar)
+        self.view.addSubview(navigationBar)*/
         
         
         //self.title = "Filter"
         //scrolling
-        scrollView = UIScrollView(frame: CGRect(x:0, y:58, width:self.view.frame.size.width, height:self.view.frame.size.height-CGFloat(38)))
+        scrollView = UIScrollView(frame: CGRect(x:0, y:0, width:self.view.frame.size.width, height:self.view.frame.size.height-CGFloat(38)))
         scrollView.backgroundColor = UIColor(patternImage: UIImage(named: "backgroundHomeLarge-shade.jpg")!)
         
         //start adding labels
@@ -514,7 +516,7 @@ class FilterTableViewController: UIViewController, UINavigationBarDelegate{
         
         scrollView.addSubview(save)
         
-        save.addTarget(self, action: #selector(self.showResult(_:)), for: .touchUpInside)
+        save.addTarget(self, action: #selector(self.showResult(sender:)), for: .touchUpInside)
         
         /*let end = UIButton(frame: CGRect(origin: label_end_origin, size: save_button_size))
          //setup save button
@@ -531,11 +533,11 @@ class FilterTableViewController: UIViewController, UINavigationBarDelegate{
         self.view.addSubview(scrollView)
         scrollView.contentSize.height = button.center.y + CGFloat(SCROLL_OFFSET)
         
-        
+        /**
         let backButton = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(goBack))
         backButton.tintColor = UIColor.black
         navigationItem.leftBarButtonItem = backButton
-        navigationBar.pushItem(navigationItem, animated: true)
+        navigationBar.pushItem(navigationItem, animated: true)*/
         
         
         
@@ -554,66 +556,59 @@ class FilterTableViewController: UIViewController, UINavigationBarDelegate{
         }
     }
     
-    func showResult(_ Sender: UIButton!){
-        let secondViewController:FilterResultViewController = FilterResultViewController()
+    func showResult(sender: UIButton!){
         
-        setZero()
-        
-        print(typeDictionary)
-        print(filtersString)
-        
-        for myFilter in filtersString {
-            
-            let value: String! = filtersDictionary[myFilter]!
-            
-            let end = value.index(before: value.endIndex)
-            
-            let filterType = value.substring(to: end)
-            let filterNum = Int(value.substring(from: end))
-            print("end index \(filterType) & \(filterNum)")
-            typeSizeDictionary[filterType]! += 1
-            
-            if typeDictionary[filterType] != 0 {
-                
-                typeDictionary[filterType] = 100
-            }
-                
-            else {
-                
-                typeDictionary[filterType] = filterNum
-            }
-        }
-        
-        print(typeDictionary)
-        
-        secondViewController.size = typeDictionary["Size"]
-        secondViewController.groom = typeDictionary["Grooming"]
-        secondViewController.train = typeDictionary["Trainability"]
-        secondViewController.bark = typeDictionary["Barking"]
-        secondViewController.group = typeDictionary["Group"]
-        secondViewController.shed = typeDictionary["Shedding"]
-        
-        print("done processing filters")
-        
-        self.present(secondViewController, animated: true, completion: nil)
+        self.performSegue(withIdentifier: "ToFilterResultViewSegue", sender: sender)
     }
-    //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    //        //override func prepare(sender: Any?) {
-    //        print("Prepare for Filter Result Segue")
-    //        if segue.identifier == "switch" {
-    //
-    //            print("enter indexpath")
-    //            let controller = (segue.destination as! UINavigationController).topViewController as!FilterResultViewController
-    //
-    //            controller.hair = hair
-    //            controller.size = size
-    //            controller.groom = groom
-    //            controller.train = train
-    //            controller.bark = bark
-    //            controller.group = group
-    //            controller.shed = shed
-    //        }
-    //    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+        print("Prepare for Filter Result Segue")
+        
+        if segue.identifier == "ToFilterResultViewSegue" {
+
+            let resultVC = segue.destination as! FilterResultViewController
+            
+            setZero()
+            
+            print(typeDictionary)
+            print(filtersString)
+            
+            for myFilter in filtersString {
+                
+                let value: String! = filtersDictionary[myFilter]!
+                
+                let end = value.index(before: value.endIndex)
+                
+                let filterType = value.substring(to: end)
+                let filterNum = Int(value.substring(from: end))
+                print("end index \(filterType) & \(filterNum)")
+                typeSizeDictionary[filterType]! += 1
+                
+                if typeDictionary[filterType] != 0 {
+                    
+                    typeDictionary[filterType] = 100
+                }
+                    
+                else {
+                    
+                    typeDictionary[filterType] = filterNum
+                }
+            }
+            
+            print(typeDictionary)
+            
+            resultVC.size = typeDictionary["Size"]
+            resultVC.groom = typeDictionary["Grooming"]
+            resultVC.train = typeDictionary["Trainability"]
+            resultVC.bark = typeDictionary["Barking"]
+            resultVC.group = typeDictionary["Group"]
+            resultVC.shed = typeDictionary["Shedding"]
+            
+            print("done processing filters")
+        }
+    }
+    
     func goBack(){
         print("call goBack function")
         dismiss(animated: true, completion: nil)

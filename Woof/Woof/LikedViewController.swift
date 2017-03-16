@@ -128,7 +128,7 @@ class LikedViewController: UIViewController, UINavigationBarDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        var currentString = tableView.cellForRow(at: indexPath)?.textLabel?.text
+        let currentString = tableView.cellForRow(at: indexPath)?.textLabel?.text
         
         for myBreed in breedList {
             

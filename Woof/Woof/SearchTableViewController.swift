@@ -34,7 +34,7 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
         // set page UI Nav bar and Nav Bar buttons
         self.navigationItem.title = "Wooftionary"
         
-        let filterButton = UIBarButtonItem(title: "Filter", style: .plain, target: self, action: #selector(toFilter))
+        let filterButton = UIBarButtonItem(title: "Filter", style: .plain, target: self, action: #selector(toFilter(sender:)))
         filterButton.tintColor = UIColor.black
         self.navigationItem.leftBarButtonItem = filterButton
         
@@ -61,9 +61,10 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
     }
     
     /* Nav bar filter button segue connection */
-    func toFilter(){
-        let secondViewController:FilterTableViewController = FilterTableViewController()
-        self.present(secondViewController, animated:true, completion:nil)
+    func toFilter(sender: UIButton){
+        
+        print("switch to like page")
+        self.performSegue(withIdentifier: "ToFilterViewSegue", sender: sender)
     }
     
     /* Nav bar liked button segue connection */
@@ -350,7 +351,11 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
             // let likeVC = segue.destination as! LikedViewController
             
             // pass data to stats page then switch to like page
+        }
+        
+        else if segue.identifier == "ToFilterViewSegue" {
             
+            print("Prepare for filter segue")
         }
     }
 }
