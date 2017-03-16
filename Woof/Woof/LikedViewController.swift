@@ -14,20 +14,21 @@ class LikedViewController: UIViewController, UINavigationBarDelegate, UITableVie
     let breedList = Functionalities.breedList
 
     var myTitle: UILabel! = nil
-    let TITLE_SIZE = CGSize(width: 320, height: 40)
-    let TITLE_OFFSET: CGFloat = CGFloat(75)
+    let TITLE_SIZE = CGSize(width: 353, height: 40)
+    let TITLE_OFFSET: CGFloat = CGFloat(85)
     let FONT = "Rubik"
     let FONT_SIZE = 20
     
     var table: UITableView! = nil
-    let TABLE_SIZE = CGSize(width: 320, height: 480)
+    let TABLE_SIZE = CGSize(width: 353, height: 450)
     let TABLE_OFFSET: CGFloat = CGFloat(55)
 
     let HALF: CGFloat = CGFloat(2)
     let CORNER_RADIUS: CGFloat = CGFloat(10)
         
     let pink: UIColor = UIColor(red: 253/255, green: 127/255, blue: 124/255, alpha: 0.8)
-
+    let white_half: UIColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.7)
+    
     var breedSelected: Breed! = nil
     
     override func viewDidLoad() {
@@ -62,7 +63,7 @@ class LikedViewController: UIViewController, UINavigationBarDelegate, UITableVie
         let TABLE_ORIGIN = CGPoint(x: TITLE_ORIGIN.x, y: TITLE_ORIGIN.y + TABLE_OFFSET)
         
         myTitle = UILabel(frame: CGRect(origin: TITLE_ORIGIN, size: TITLE_SIZE))
-        setUpLabel(myText: "Select to View Detail Page", myFont: FONT, myFontSize: FONT_SIZE, myAlignment: NSTextAlignment.center, myLabel: myTitle, myColor: pink)
+        setUpLabel(myText: "Select to View Detail Page", myFont: FONT, myFontSize: FONT_SIZE, myAlignment: NSTextAlignment.center, myLabel: myTitle, myColor: white_half)
         
         table = UITableView(frame: CGRect(origin: TABLE_ORIGIN, size: TABLE_SIZE))
         setUpTable(myColor: UIColor.white, myTable: table)
@@ -77,7 +78,7 @@ class LikedViewController: UIViewController, UINavigationBarDelegate, UITableVie
         
         myTable.backgroundColor = myColor
         myTable.layer.cornerRadius = CGFloat(10)
-        myTable.rowHeight = CGFloat(80)
+        myTable.rowHeight = CGFloat(50)
         //myTable.register(BreedTableViewCell.self, forCellReuseIdentifier: "BreedTableViewCell")
         //myTable.contentInset = UIEdgeInsetsMake(0, 0, 10, 0)
         self.view.addSubview(myTable)
