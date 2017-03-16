@@ -21,12 +21,12 @@ class UserViewController: UIViewController, UINavigationBarDelegate, UINavigatio
     // Offsets
     let EDIT_OFFSET = CGFloat(210)
     let FIELD_OFFSET = CGFloat(55)
+    let BUTTON_OFFSET = CGFloat(65)
     
     // Configurations
     let FONT = "Rubik"
     let FONT_SIZE = 19
     let CORNER_RADIUS = 10
-    let DOUBLE = CGFloat(2)
     
     // Labels
     var nameLabel: UILabel! = nil
@@ -63,7 +63,6 @@ class UserViewController: UIViewController, UINavigationBarDelegate, UINavigatio
         myLabel.backgroundColor = myColor
         myLabel.layer.cornerRadius = CGFloat(CORNER_RADIUS)
         myLabel.clipsToBounds = true
-        myLabel.isHidden = true
         self.view.addSubview(myLabel)
     }
     
@@ -80,6 +79,7 @@ class UserViewController: UIViewController, UINavigationBarDelegate, UINavigatio
         myTextField.borderStyle = UITextBorderStyle.roundedRect
         myTextField.autocapitalizationType = UITextAutocapitalizationType.words
         myTextField.delegate = self
+        myTextField.isHidden = true
         self.view.addSubview(myTextField)
     }
     
@@ -94,6 +94,33 @@ class UserViewController: UIViewController, UINavigationBarDelegate, UINavigatio
         myButton.layer.cornerRadius = CGFloat(CORNER_RADIUS)
         myButton.addTarget(self, action: #selector(self.buttonPressed(sender:)), for: UIControlEvents.touchDown)
         self.view.addSubview(myButton)
+    }
+    
+    func setLabelsHidden(myBool: Bool) {
+    
+        nameLabel.isHidden = myBool
+        ageLabel.isHidden = myBool
+        genderLabel.isHidden = myBool
+        zipLabel.isHidden = myBool
+        emailLabel.isHidden = myBool
+    }
+    
+    func setFieldsHidden(myBool: Bool) {
+        
+        nameField.isHidden = myBool
+        ageField.isHidden = myBool
+        genderField.isHidden = myBool
+        zipField.isHidden = myBool
+        emailField.isHidden = myBool
+    }
+    
+    func updateLabels() {
+        
+        nameLabel.text = "Name: \(nameField.text!)"
+        ageLabel.text = "Age: \(ageField.text!)"
+        genderLabel.text = "Gender: \(genderField.text!)"
+        zipLabel.text = "Zip Code: \(zipField.text!)"
+        emailLabel.text = "Email: \(emailField.text!)"
     }
     
     func goBack() {
@@ -112,15 +139,32 @@ class UserViewController: UIViewController, UINavigationBarDelegate, UINavigatio
         else if sender == editButton {
             
             // hide labels
+            setLabelsHidden(myBool: true)
+            
             // show text fields and save button
+            setFieldsHidden(myBool: false)
+            saveButton.isHidden = false
         }
         
         else if sender == saveButton {
             
-            // hide text fields
+            // hide text fields and save button
+            setFieldsHidden(myBool: true)
+            saveButton.isHidden = true
+            
             // update labels
+            updateLabels()
+            
             // show labels
+            setLabelsHidden(myBool: false)
         }
+    }
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        
+        // user begins typing
+        
+        return true
     }
     
     override func viewDidLoad() {
@@ -159,12 +203,12 @@ class UserViewController: UIViewController, UINavigationBarDelegate, UINavigatio
         let EMAIL_ORIGIN = CGPoint(x: NAME_ORIGIN.x, y: ZIP_ORIGIN.y + FIELD_OFFSET)
         
         // text fields plus save button
-        let NAME_TEXT_ORIGIN = CGPoint(x: 20, y: 230)
+        let NAME_TEXT_ORIGIN = CGPoint(x: 20, y: 260)
         let AGE_TEXT_ORIGIN = CGPoint(x: NAME_TEXT_ORIGIN.x, y: NAME_TEXT_ORIGIN.y + FIELD_OFFSET)
         let GENDER_TEXT_ORIGIN = CGPoint(x: NAME_TEXT_ORIGIN.x, y: AGE_TEXT_ORIGIN.y + FIELD_OFFSET)
         let ZIP_TEXT_ORIGIN = CGPoint(x: NAME_TEXT_ORIGIN.x, y: GENDER_TEXT_ORIGIN.y + FIELD_OFFSET)
         let EMAIL_TEXT_ORIGIN = CGPoint(x: NAME_TEXT_ORIGIN.x, y: ZIP_TEXT_ORIGIN.y + FIELD_OFFSET)
-        let SAVE_BUTTON_ORIGIN = CGPoint(x: NAME_TEXT_ORIGIN.x, y: ZIP_TEXT_ORIGIN.y + FIELD_OFFSET * DOUBLE)
+        let SAVE_BUTTON_ORIGIN = CGPoint(x: NAME_TEXT_ORIGIN.x, y: EMAIL_TEXT_ORIGIN.y + BUTTON_OFFSET)
         
         // sets up the top buttons
         imageButton = UIButton(frame: CGRect(origin: IMAGE_BUTTON_ORIGIN, size: TOP_BUTTONS_SIZE))
@@ -195,12 +239,14 @@ class UserViewController: UIViewController, UINavigationBarDelegate, UINavigatio
         
         ageField = UITextField(frame: CGRect(origin: AGE_TEXT_ORIGIN, size: TEXT_SIZE))
         setUpText(myPlaceholder: "Age", myFont: FONT, myFontSize: FONT_SIZE, myFontColor: UIColor.blue, myAlignment: NSTextAlignment.center, myTextField: ageField, myColor: UIColor.white)
+        ageField.keyboardType = UIKeyboardType.numberPad
         
         genderField = UITextField(frame: CGRect(origin: GENDER_TEXT_ORIGIN, size: TEXT_SIZE))
         setUpText(myPlaceholder: "Gender", myFont: FONT, myFontSize: FONT_SIZE, myFontColor: UIColor.blue, myAlignment: NSTextAlignment.center, myTextField: genderField, myColor: UIColor.white)
         
         zipField = UITextField(frame: CGRect(origin: ZIP_TEXT_ORIGIN, size: TEXT_SIZE))
         setUpText(myPlaceholder: "Zip", myFont: FONT, myFontSize: FONT_SIZE, myFontColor: UIColor.blue, myAlignment: NSTextAlignment.center, myTextField: zipField, myColor: UIColor.white)
+        zipField.keyboardType = UIKeyboardType.numberPad
         
         emailField = UITextField(frame: CGRect(origin: EMAIL_TEXT_ORIGIN, size: TEXT_SIZE))
         setUpText(myPlaceholder: "Email", myFont: FONT, myFontSize: FONT_SIZE, myFontColor: UIColor.blue, myAlignment: NSTextAlignment.center, myTextField: emailField, myColor: UIColor.white)
@@ -208,6 +254,7 @@ class UserViewController: UIViewController, UINavigationBarDelegate, UINavigatio
         // sets up the save button
         saveButton = UIButton(frame: CGRect(origin: SAVE_BUTTON_ORIGIN, size: SAVE_BUTTON_SIZE))
         setUpButtons(myLabel: "save", myFontSize: FONT_SIZE, myFontColor: UIColor.white, myButton: saveButton, myColor: UIColor.black)
+        saveButton.isHidden = true
     }
 
     override func didReceiveMemoryWarning() {
