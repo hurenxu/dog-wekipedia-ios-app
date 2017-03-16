@@ -46,6 +46,13 @@ UICollectionViewDelegate, UICollectionViewDataSource {
     let cellID = "dogCell"
     //var collectView = UICollectionView()
     
+    func switchToUser(sender: UIButton) {
+        
+        let userVC: UserViewController = UserViewController()
+        
+        self.present(userVC, animated: true, completion: nil)
+    }
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -114,8 +121,9 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         editProfButton.layer.cornerRadius = 5
         editProfButton.clipsToBounds = true
         /* action when user click on button --> call handleSelectProfileImageView function */
-        editProfButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectProfileImageView)))
-        
+        //editProfButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectProfileImageView)))
+        editProfButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(switchToUser(sender:))))
+
         
         
        

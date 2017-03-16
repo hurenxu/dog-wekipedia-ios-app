@@ -219,7 +219,7 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         let navigationBar = UINavigationBar(frame: CGRect(x:0, y:0, width:self.view.frame.size.width, height:58)) // Offset by 20 pixels vertically to take the status bar into account
         
         let navigationItem = UINavigationItem()
-        navigationItem.title = "My dog"
+        navigationItem.title = "My Dog"
         
         
         
