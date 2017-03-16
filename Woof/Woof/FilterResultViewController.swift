@@ -31,7 +31,7 @@ class FilterResultViewController: UIViewController, UINavigationBarDelegate ,UIT
     //var breeds = ["1","2","3"]
     
     // origins
-    let anounce_origin = CGPoint(x: 10, y: 80)
+    let announce_origin = CGPoint(x: 10, y: 80)
     let result_origin = CGPoint(x: 10, y: 140)
     
     // the radius of the corner
@@ -41,7 +41,7 @@ class FilterResultViewController: UIViewController, UINavigationBarDelegate ,UIT
     let TITLE_SIZE: CGSize = CGSize(width: 353, height: 40)
     let TITLE_FONT_SIZE: Int = 4
     let FONT = "Rubik_Medium"
-    var anounce_label: UILabel! = nil
+    var announce_label: UILabel! = nil
     
     //colors
     let pale_green: UIColor = UIColor(red: 165/255, green: 195/255, blue: 187/255, alpha: 0.5)
@@ -55,6 +55,8 @@ class FilterResultViewController: UIViewController, UINavigationBarDelegate ,UIT
     let TABLE_COLOR: UIColor = UIColor.white
     let CELL_HEIGHT: Int! = 50
     var table: UITableView! = nil
+    
+    let HALF = CGFloat(2)
     
     // function to set up the common specs of labels
     func setUpLabel(myText: String, myFont: String, myFontSize: Int, myAlignment: NSTextAlignment, myLabel: UILabel, myColor: UIColor) {
@@ -163,13 +165,16 @@ class FilterResultViewController: UIViewController, UINavigationBarDelegate ,UIT
         self.tabBarItem.title = "Filter Search"
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "backgroundHomeLarge-shade.jpg")!)
         
+        announce_origin.x = (self.view.frame.width - TITLE_SIZE.width) / HALF
+        result_origin.x = announce_origin.x
+        
         // Do any additional setup after loading the view.
         
-        anounce_label = UILabel(frame: CGRect(origin: anounce_origin, size: TITLE_SIZE))
+        announce_label = UILabel(frame: CGRect(origin: announce_origin, size: TITLE_SIZE))
         if Functionalities.myUser == nil {
-            setUpLabel(myText: "FILTER RESULT, LOGIN TO SAVE TAG", myFont: FONT, myFontSize: TITLE_FONT_SIZE, myAlignment: NSTextAlignment.center, myLabel: anounce_label, myColor: white_half)
+            setUpLabel(myText: "FILTER RESULT, LOGIN TO SAVE TAG", myFont: FONT, myFontSize: TITLE_FONT_SIZE, myAlignment: NSTextAlignment.center, myLabel: announce_label, myColor: white_half)
         } else {
-            setUpLabel(myText: "ALL TAGS SAVED    Σ(っ°Д°)っ", myFont: FONT, myFontSize: TITLE_FONT_SIZE, myAlignment: NSTextAlignment.center, myLabel: anounce_label, myColor: white_half)
+            setUpLabel(myText: "ALL TAGS SAVED    Σ(っ°Д°)っ", myFont: FONT, myFontSize: TITLE_FONT_SIZE, myAlignment: NSTextAlignment.center, myLabel: announce_label, myColor: white_half)
             
         }
         
@@ -178,7 +183,7 @@ class FilterResultViewController: UIViewController, UINavigationBarDelegate ,UIT
         setUpTable(myColor: TABLE_COLOR, myTable: table)
         let a = search()
         if a == -1{
-            setUpLabel(myText: "More than 1 tag each category  !!!∑(ﾟДﾟノ)ノ", myFont: FONT, myFontSize: TITLE_FONT_SIZE, myAlignment: NSTextAlignment.center, myLabel: anounce_label, myColor: white_half)
+            setUpLabel(myText: "More than 1 tag each category  !!!∑(ﾟДﾟノ)ノ", myFont: FONT, myFontSize: TITLE_FONT_SIZE, myAlignment: NSTextAlignment.center, myLabel: announce_label, myColor: white_half)
             //table = nil
             return
         }

@@ -152,7 +152,7 @@ class FilterTableViewController: UIViewController, UINavigationBarDelegate{
         "Shedding": 0,
         "Group": 0,
         "Barking Level": 0,
-        "Trainabilty": 0
+        "Trainability": 0
     ]
     
     var typeSizeDictionary: [String: Int]! = [
@@ -571,9 +571,6 @@ class FilterTableViewController: UIViewController, UINavigationBarDelegate{
             
             setZero()
             
-            print(typeDictionary)
-            print(filtersString)
-            
             for myFilter in filtersString {
                 
                 let value: String! = filtersDictionary[myFilter]!
@@ -582,7 +579,7 @@ class FilterTableViewController: UIViewController, UINavigationBarDelegate{
                 
                 let filterType = value.substring(to: end)
                 let filterNum = Int(value.substring(from: end))
-                print("end index \(filterType) & \(filterNum)")
+
                 typeSizeDictionary[filterType]! += 1
                 
                 if typeDictionary[filterType] != 0 {
@@ -595,9 +592,7 @@ class FilterTableViewController: UIViewController, UINavigationBarDelegate{
                     typeDictionary[filterType] = filterNum
                 }
             }
-            
-            print(typeDictionary)
-            
+                        
             resultVC.size = typeDictionary["Size"]
             resultVC.groom = typeDictionary["Grooming"]
             resultVC.train = typeDictionary["Trainability"]
