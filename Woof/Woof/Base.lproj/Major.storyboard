@@ -188,10 +188,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <segue destination="Iry-G2-eFg" kind="show" identifier="ToDetailViewSegue3" id="ofo-EY-wRd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bNj-2K-tyB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="796" y="-1242"/>
+            <point key="canvasLocation" x="1761" y="-1515"/>
         </scene>
         <!--Filter View Controller-->
         <scene sceneID="eTl-Ly-bvr">
@@ -213,7 +216,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sza-Zy-MRW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1697" y="-1302"/>
+            <point key="canvasLocation" x="708" y="-1435"/>
         </scene>
         <!--Liked View Controller-->
         <scene sceneID="e3b-WH-jNs">
@@ -539,24 +542,6 @@
             </objects>
             <point key="canvasLocation" x="505" y="1012"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="au0-gy-CAc">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="V84-9r-r8h" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="os0-Jo-CL0">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="Iry-G2-eFg" kind="relationship" relationship="rootViewController" id="Zld-aX-HHB"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4SE-NJ-KPJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4750" y="-949"/>
-        </scene>
     </scenes>
     <resources>
         <image name="DogImage" width="309" height="356"/>
@@ -571,7 +556,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="tIV-Pn-8bj"/>
-        <segue reference="Ngo-1w-MZM"/>
+        <segue reference="ofo-EY-wRd"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="0.97739707450220481" blue="0.98941910780827447" alpha="1" colorSpace="calibratedRGB"/>
 </document>

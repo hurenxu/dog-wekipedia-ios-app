@@ -10,9 +10,9 @@ import UIKit
 
 class FilterResultViewController: UIViewController, UINavigationBarDelegate ,UITableViewDelegate, UITableViewDataSource{
     
-    //tags
-    //var dogs = Functionalities.breedList
+    let breedList = Functionalities.breedList
     
+    var breedSelected: Breed! = nil
     
     var filterDogs = [Breed]()
     //var hair:Int? //default 0. short 1, long 2
@@ -31,8 +31,8 @@ class FilterResultViewController: UIViewController, UINavigationBarDelegate ,UIT
     //var breeds = ["1","2","3"]
     
     // origins
-    let announce_origin = CGPoint(x: 10, y: 80)
-    let result_origin = CGPoint(x: 10, y: 140)
+    var announce_origin = CGPoint(x: 10, y: 80)
+    var result_origin = CGPoint(x: 10, y: 140)
     
     // the radius of the corner
     let CORNER_RADIUS = 10
@@ -107,32 +107,38 @@ class FilterResultViewController: UIViewController, UINavigationBarDelegate ,UIT
         
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let currentString = tableView.cellForRow(at: indexPath)?.textLabel?.text
+        
+        for myBreed in breedList {
+            
+            if myBreed.getBreedName() == currentString {
+                
+                breedSelected = myBreed
+                self.performSegue(withIdentifier: "ToDetailViewSegue3", sender: tableView)
+            }
+        }
+    }
+    
+    // segue to switch to detail page
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        print("Prepare for Detail View Segue")
+        
+        if segue.identifier == "ToDetailViewSegue3" {
+            
+            let detailVC = segue.destination as! DetailViewController
+            
+            detailVC.detailDog = breedSelected
+        }
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         print("return sectin !!")
         return 1
     }
-    
-    
-    public func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
-        
-        print("nohighlight \(indexPath.row)")
-        
-        // go to wiki page
-        
-        if tableView == table {
-            
-            // switch
-        }
-            
-        else {
-            
-            // switch
-        }
-        
-        return false
-    }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
