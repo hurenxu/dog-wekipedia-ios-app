@@ -152,6 +152,7 @@ class User{
     
     func setName(name: String) {
         self.name = name
+        updateUser()
     }
     
     func getName() -> String {
@@ -160,6 +161,7 @@ class User{
     
     func setEmail(email: String) {
         self.email = email
+        updateUser()
     }
     
     func getEmail() -> String {
@@ -168,6 +170,7 @@ class User{
     
     func setAge(age: Int) {
         self.age = age
+        updateUser()
     }
     
     func getAge() -> Int {
@@ -176,6 +179,7 @@ class User{
     
     func setGender(gender: String) {
         self.gender = gender
+        updateUser()
     }
     
     func getGender() -> String {
@@ -184,6 +188,7 @@ class User{
     
     func setZipCode(code: String) {
         self.zipCode = code
+        updateUser()
     }
     
     func getZipCode() -> String {
@@ -192,6 +197,7 @@ class User{
     
     func setImage(imageURL: String) {
         self.image = imageURL
+        updateUser()
     }
     
     func getImage() -> String {

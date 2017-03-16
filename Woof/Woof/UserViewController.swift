@@ -10,7 +10,7 @@ import UIKit
 
 class UserViewController: UIViewController, UINavigationBarDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
 
-    let myUser = Functionalities.myUser
+    let myUser: User! = Functionalities.myUser
     
     // Sizes
     let LABEL_SIZE: CGSize = CGSize(width: 330, height: 40)
@@ -117,14 +117,26 @@ class UserViewController: UIViewController, UINavigationBarDelegate, UINavigatio
     
     func update() {
         
+        // information
+        let myName: String = nameField.text!
+        let myAge: String = ageField.text!
+        let myGender: String = genderField.text!
+        let myZip: String = zipField.text!
+        let myEmail: String = emailField.text!
+        
         // update labels
-        nameLabel.text = "Name: \(nameField.text!)"
-        ageLabel.text = "Age: \(ageField.text!)"
-        genderLabel.text = "Gender: \(genderField.text!)"
-        zipLabel.text = "Zip Code: \(zipField.text!)"
-        emailLabel.text = "Email: \(emailField.text!)"
+        nameLabel.text = "Name: \(myName)"
+        ageLabel.text = "Age: \(myAge)"
+        genderLabel.text = "Gender: \(myGender)"
+        zipLabel.text = "Zip Code: \(myZip)"
+        emailLabel.text = "Email: \(myEmail)"
         
         // user update
+        myUser.setName(name: myName)
+        myUser.setAge(age: Int(myAge)!)
+        myUser.setGender(gender: myGender)
+        myUser.setZipCode(code: myZip)
+        myUser.setEmail(email: myEmail)
     }
     
     func goBack() {
@@ -167,7 +179,7 @@ class UserViewController: UIViewController, UINavigationBarDelegate, UINavigatio
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         
         // put up view
-        if textField == emailField || textField == zipField {
+        if textField == emailField || textField == zipField || textField == genderField {
             
             self.view.frame.origin.y -= CGFloat(VIEW_UP)
         }
@@ -178,7 +190,7 @@ class UserViewController: UIViewController, UINavigationBarDelegate, UINavigatio
     func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
         
         // put back view
-        if textField == emailField || textField == zipField {
+        if textField == emailField || textField == zipField || textField == genderField {
             
             self.view.frame.origin.y += CGFloat(VIEW_UP)
         }
@@ -261,41 +273,46 @@ class UserViewController: UIViewController, UINavigationBarDelegate, UINavigatio
         editButton = UIButton(frame: CGRect(origin: EDIT_BUTTON_ORIGIN, size: TOP_BUTTONS_SIZE))
         setUpButtons(myLabel: "edit", myFontSize: FONT_SIZE, myFontColor: UIColor.black, myButton: editButton, myColor: yellow)
         
-        // sets up the labels
-        nameLabel = UILabel(frame: CGRect(origin: NAME_ORIGIN, size: LABEL_SIZE))
-        setUpLabel(myText: "Name: ", myFont: FONT, myFontSize: FONT_SIZE, myAlignment: NSTextAlignment.center, myLabel: nameLabel, myColor: green_half)
-        
-        ageLabel = UILabel(frame: CGRect(origin: AGE_ORIGIN, size: LABEL_SIZE))
-        setUpLabel(myText: "Age: ", myFont: FONT, myFontSize: FONT_SIZE, myAlignment: NSTextAlignment.center, myLabel: ageLabel, myColor: green_half)
-        
-        genderLabel = UILabel(frame: CGRect(origin: GENDER_ORIGIN, size: LABEL_SIZE))
-        setUpLabel(myText: "gender: ", myFont: FONT, myFontSize: FONT_SIZE, myAlignment: NSTextAlignment.center, myLabel: genderLabel, myColor: green_half)
-        
-        zipLabel = UILabel(frame: CGRect(origin: ZIP_ORIGIN, size: LABEL_SIZE))
-        setUpLabel(myText: "Zip Code: ", myFont: FONT, myFontSize: FONT_SIZE, myAlignment: NSTextAlignment.center, myLabel: zipLabel, myColor: green_half)
-        
-        emailLabel = UILabel(frame: CGRect(origin: EMAIL_ORIGIN, size: LABEL_SIZE))
-        setUpLabel(myText: "Email: ", myFont: FONT, myFontSize: FONT_SIZE, myAlignment: NSTextAlignment.center, myLabel: emailLabel, myColor: green_half)
-        
         // sets up the text fields
         nameField = UITextField(frame: CGRect(origin: NAME_TEXT_ORIGIN, size: TEXT_SIZE))
         setUpText(myPlaceholder: "Name", myFont: FONT, myFontSize: FONT_SIZE, myFontColor: UIColor.blue, myAlignment: NSTextAlignment.center, myTextField: nameField, myColor: UIColor.white)
+        nameField.text = myUser.getName()
         
         ageField = UITextField(frame: CGRect(origin: AGE_TEXT_ORIGIN, size: TEXT_SIZE))
         setUpText(myPlaceholder: "Age", myFont: FONT, myFontSize: FONT_SIZE, myFontColor: UIColor.blue, myAlignment: NSTextAlignment.center, myTextField: ageField, myColor: UIColor.white)
         ageField.keyboardType = UIKeyboardType.numberPad
         addDoneButtonOnKeyboard(myField: ageField)
+        ageField.text = "\(myUser.getAge())"
         
         genderField = UITextField(frame: CGRect(origin: GENDER_TEXT_ORIGIN, size: TEXT_SIZE))
         setUpText(myPlaceholder: "Gender", myFont: FONT, myFontSize: FONT_SIZE, myFontColor: UIColor.blue, myAlignment: NSTextAlignment.center, myTextField: genderField, myColor: UIColor.white)
+        genderField.text = myUser.getGender()
         
         zipField = UITextField(frame: CGRect(origin: ZIP_TEXT_ORIGIN, size: TEXT_SIZE))
         setUpText(myPlaceholder: "Zip", myFont: FONT, myFontSize: FONT_SIZE, myFontColor: UIColor.blue, myAlignment: NSTextAlignment.center, myTextField: zipField, myColor: UIColor.white)
         zipField.keyboardType = UIKeyboardType.numberPad
         addDoneButtonOnKeyboard(myField: zipField)
+        zipField.text = myUser.getZipCode()
         
         emailField = UITextField(frame: CGRect(origin: EMAIL_TEXT_ORIGIN, size: TEXT_SIZE))
         setUpText(myPlaceholder: "Email", myFont: FONT, myFontSize: FONT_SIZE, myFontColor: UIColor.blue, myAlignment: NSTextAlignment.center, myTextField: emailField, myColor: UIColor.white)
+        emailField.text = myUser.getEmail()
+        
+        // sets up the labels
+        nameLabel = UILabel(frame: CGRect(origin: NAME_ORIGIN, size: LABEL_SIZE))
+        setUpLabel(myText: "Name: \(nameField.text!)", myFont: FONT, myFontSize: FONT_SIZE, myAlignment: NSTextAlignment.center, myLabel: nameLabel, myColor: green_half)
+        
+        ageLabel = UILabel(frame: CGRect(origin: AGE_ORIGIN, size: LABEL_SIZE))
+        setUpLabel(myText: "Age: \(ageField.text!)", myFont: FONT, myFontSize: FONT_SIZE, myAlignment: NSTextAlignment.center, myLabel: ageLabel, myColor: green_half)
+        
+        genderLabel = UILabel(frame: CGRect(origin: GENDER_ORIGIN, size: LABEL_SIZE))
+        setUpLabel(myText: "Gender: \(genderField.text!)", myFont: FONT, myFontSize: FONT_SIZE, myAlignment: NSTextAlignment.center, myLabel: genderLabel, myColor: green_half)
+        
+        zipLabel = UILabel(frame: CGRect(origin: ZIP_ORIGIN, size: LABEL_SIZE))
+        setUpLabel(myText: "Zip Code: \(zipField.text!)", myFont: FONT, myFontSize: FONT_SIZE, myAlignment: NSTextAlignment.center, myLabel: zipLabel, myColor: green_half)
+        
+        emailLabel = UILabel(frame: CGRect(origin: EMAIL_ORIGIN, size: LABEL_SIZE))
+        setUpLabel(myText: "Email: \(emailField.text!)", myFont: FONT, myFontSize: FONT_SIZE, myAlignment: NSTextAlignment.center, myLabel: emailLabel, myColor: green_half)
         
         // sets up the save button
         saveButton = UIButton(frame: CGRect(origin: SAVE_BUTTON_ORIGIN, size: SAVE_BUTTON_SIZE))
