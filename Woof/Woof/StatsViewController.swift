@@ -71,7 +71,7 @@ class StatsViewController: UIViewController {
     // the buttons
     var currentButton: UIButton! = nil
     var buttonOrigin: CGPoint! = nil
-    let BUTTON_SIZE: CGSize = CGSize(width: 220, height: 30)
+    let BUTTON_SIZE: CGSize = CGSize(width: 250, height: 30)
     let NEXT_BUTTON_SIZE: CGSize = CGSize(width: 100, height: 60)
     let NEXT_BUTTON_FONT_SIZE: Int = 28
     let BUTTON_FONT_SIZE: Int = 15
@@ -133,7 +133,7 @@ class StatsViewController: UIViewController {
             
             print("store \(buttonLabel)")
             Functionalities.myUser?.addFavoriteCategoryFilter(filter: (sender.titleLabel?.text!)!)
-            sender.backgroundColor = UIColor.gray
+            sender.backgroundColor = yellow
         }
         
         else {
