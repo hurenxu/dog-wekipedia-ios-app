@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -97,7 +97,7 @@
                                 <rect key="frame" x="0.0" y="72" width="375" height="101"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4h3-QR-Lbh" id="PHB-Fw-bzD">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="100.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="101"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DogImage" translatesAutoresizingMaskIntoConstraints="NO" id="7Dw-su-0tz">
@@ -158,6 +158,7 @@
                     <connections>
                         <outlet property="searchDisplayController" destination="yAG-ou-sF2" id="wcT-Ow-nwY"/>
                         <outlet property="tableView" destination="0LD-4X-UHQ" id="UCj-Hn-TAF"/>
+                        <segue destination="qjF-TJ-7Qs" kind="show" identifier="ToLikedViewSegue" id="2YZ-p3-8zG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
@@ -191,6 +192,27 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sza-Zy-MRW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1697" y="-1302"/>
+        </scene>
+        <!--Liked View Controller-->
+        <scene sceneID="e3b-WH-jNs">
+            <objects>
+                <viewController id="qjF-TJ-7Qs" customClass="LikedViewController" customModule="Woof" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="BEO-w1-zg7"/>
+                        <viewControllerLayoutGuide type="bottom" id="r2H-TM-831"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="otZ-Rk-8DV">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="Iry-G2-eFg" kind="show" identifier="ToDetailViewSegue2" id="D7L-ma-JW7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Evf-vA-Iej" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2663" y="-1260"/>
         </scene>
         <!--Animated Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -403,7 +425,7 @@
                         </connections>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="FgG-aF-CJq">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="FgG-aF-CJq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -442,7 +464,7 @@
                         </connections>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="szK-7W-ENY">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="szK-7W-ENY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -481,7 +503,7 @@
                         </connections>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="w8L-5L-583">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="w8L-5L-583">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -500,7 +522,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="V84-9r-r8h" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="os0-Jo-CL0">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="os0-Jo-CL0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -526,8 +548,8 @@
         <image name="unlike" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Ngo-1w-MZM"/>
         <segue reference="tIV-Pn-8bj"/>
+        <segue reference="D7L-ma-JW7"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="0.97739707450220481" blue="0.98941910780827447" alpha="1" colorSpace="calibratedRGB"/>
 </document>

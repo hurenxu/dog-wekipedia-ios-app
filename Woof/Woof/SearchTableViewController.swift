@@ -37,7 +37,8 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
         let filterButton = UIBarButtonItem(title: "Filter", style: .plain, target: self, action: #selector(toFilter))
         filterButton.tintColor = UIColor.black
         self.navigationItem.leftBarButtonItem = filterButton
-        let likedButton = UIBarButtonItem(title: "Likes", style: .plain, target: self, action: #selector(toLiked))
+        
+        let likedButton = UIBarButtonItem(title: "Likes", style: .plain, target: self, action: #selector(toLiked(sender:)))
         likedButton.tintColor = UIColor.black
         self.navigationItem.rightBarButtonItem = likedButton
         
@@ -66,8 +67,10 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
     }
     
     /* Nav bar liked button segue connection */
-    func toLiked(){
+    func toLiked(sender: UIButton){
+        
         if Functionalities.myUser == nil{
+            
             // create the alert
             let alert = UIAlertController(title: "Login Needed", message: "Would you like to login to add your favoriate dogs to your profile?", preferredStyle: UIAlertControllerStyle.alert)
             
@@ -85,9 +88,12 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
             
             // show the alert
             self.present(alert, animated: true, completion: nil)
-        }else{
-            let secondViewController:LikedViewController = LikedViewController()
-            self.present(secondViewController, animated:true, completion:nil)
+        }
+        
+        else{
+            
+            print("switch to like page")
+            self.performSegue(withIdentifier: "ToLikedViewSegue", sender: sender)
         }
     }
     
@@ -335,6 +341,16 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
                 let controller = segue.destination as! DetailViewController
                 controller.detailDog = breed
             }
+        }
+        
+        else if segue.identifier == "ToLikedViewSegue" {
+            
+            print("Prepare for like Segue")
+            
+            // let likeVC = segue.destination as! LikedViewController
+            
+            // pass data to stats page then switch to like page
+            
         }
     }
 }
