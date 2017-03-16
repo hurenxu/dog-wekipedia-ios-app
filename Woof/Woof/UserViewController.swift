@@ -75,7 +75,7 @@ class UserViewController: UIViewController, UINavigationBarDelegate, UINavigatio
         myTextField.textColor = myFontColor
         myTextField.textAlignment = myAlignment
         myTextField.backgroundColor = myColor
-        myTextField.layer.cornerRadius = CGFloat(CORNER_RADIUS)
+        //myTextField.layer.cornerRadius = CGFloat(CORNER_RADIUS)
         myTextField.clipsToBounds = true
         myTextField.borderStyle = UITextBorderStyle.roundedRect
         myTextField.autocapitalizationType = UITextAutocapitalizationType.words
@@ -184,6 +184,8 @@ class UserViewController: UIViewController, UINavigationBarDelegate, UINavigatio
             self.view.frame.origin.y -= CGFloat(VIEW_UP)
         }
         
+        saveButton.isUserInteractionEnabled = false
+        
         return true
     }
     
@@ -196,6 +198,8 @@ class UserViewController: UIViewController, UINavigationBarDelegate, UINavigatio
         }
         
         textField.enablesReturnKeyAutomatically = true
+        
+        saveButton.isUserInteractionEnabled = true
     }
     
     func addDoneButtonOnKeyboard(myField: UITextField) {
