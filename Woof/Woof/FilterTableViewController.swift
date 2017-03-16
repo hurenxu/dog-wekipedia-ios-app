@@ -405,7 +405,7 @@ class FilterTableViewController: UIViewController, UINavigationBarDelegate{
             setUpButtons(myLabel: key, myFontSize: button_font_size, myButton: button)
             button.addTarget(self, action: #selector(self.filterPressed(sender:)), for: UIControlEvents.touchDown)
             
-            if currentFavFilters.contains("Barking Level: \(key)") {
+            if currentFavFilters.contains("Barking: \(key)") {
                 
                 filterPressed(sender: button)
             }
