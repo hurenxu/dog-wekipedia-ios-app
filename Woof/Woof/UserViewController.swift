@@ -27,6 +27,7 @@ class UserViewController: UIViewController, UINavigationBarDelegate, UINavigatio
     let FONT = "Rubik"
     let FONT_SIZE = 19
     let CORNER_RADIUS = 10
+    let VIEW_UP = 200
     
     // Labels
     var nameLabel: UILabel! = nil
@@ -114,13 +115,16 @@ class UserViewController: UIViewController, UINavigationBarDelegate, UINavigatio
         emailField.isHidden = myBool
     }
     
-    func updateLabels() {
+    func update() {
         
+        // update labels
         nameLabel.text = "Name: \(nameField.text!)"
         ageLabel.text = "Age: \(ageField.text!)"
         genderLabel.text = "Gender: \(genderField.text!)"
         zipLabel.text = "Zip Code: \(zipField.text!)"
         emailLabel.text = "Email: \(emailField.text!)"
+        
+        // user update
     }
     
     func goBack() {
@@ -152,8 +156,8 @@ class UserViewController: UIViewController, UINavigationBarDelegate, UINavigatio
             setFieldsHidden(myBool: true)
             saveButton.isHidden = true
             
-            // update labels
-            updateLabels()
+            // update labels and user
+            update()
             
             // show labels
             setLabelsHidden(myBool: false)
@@ -162,14 +166,54 @@ class UserViewController: UIViewController, UINavigationBarDelegate, UINavigatio
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         
-        // user begins typing
+        // put up view
+        if textField == emailField || textField == zipField {
+            
+            self.view.frame.origin.y -= CGFloat(VIEW_UP)
+        }
         
         return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
+        
+        // put back view
+        if textField == emailField || textField == zipField {
+            
+            self.view.frame.origin.y += CGFloat(VIEW_UP)
+        }
+        
+        textField.enablesReturnKeyAutomatically = true
+    }
+    
+    func addDoneButtonOnKeyboard(myField: UITextField) {
+        
+        let doneToolbar: UIToolbar = UIToolbar(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width:320, height: 50)))
+        doneToolbar.barStyle = UIBarStyle.default
+        
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+        let done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.done, target: self, action: #selector(donePressed))
+        
+        var items = [UIBarButtonItem]()
+        items.append(flexSpace)
+        items.append(done)
+        
+        doneToolbar.items = items
+        doneToolbar.sizeToFit()
+        
+        myField.inputAccessoryView = doneToolbar
+    }
+    
+    func donePressed() {
+        
+        self.ageField.resignFirstResponder()
+        self.zipField.resignFirstResponder()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
         // Do any additional setup after loading the view.
 
         // background
@@ -240,6 +284,7 @@ class UserViewController: UIViewController, UINavigationBarDelegate, UINavigatio
         ageField = UITextField(frame: CGRect(origin: AGE_TEXT_ORIGIN, size: TEXT_SIZE))
         setUpText(myPlaceholder: "Age", myFont: FONT, myFontSize: FONT_SIZE, myFontColor: UIColor.blue, myAlignment: NSTextAlignment.center, myTextField: ageField, myColor: UIColor.white)
         ageField.keyboardType = UIKeyboardType.numberPad
+        addDoneButtonOnKeyboard(myField: ageField)
         
         genderField = UITextField(frame: CGRect(origin: GENDER_TEXT_ORIGIN, size: TEXT_SIZE))
         setUpText(myPlaceholder: "Gender", myFont: FONT, myFontSize: FONT_SIZE, myFontColor: UIColor.blue, myAlignment: NSTextAlignment.center, myTextField: genderField, myColor: UIColor.white)
@@ -247,6 +292,7 @@ class UserViewController: UIViewController, UINavigationBarDelegate, UINavigatio
         zipField = UITextField(frame: CGRect(origin: ZIP_TEXT_ORIGIN, size: TEXT_SIZE))
         setUpText(myPlaceholder: "Zip", myFont: FONT, myFontSize: FONT_SIZE, myFontColor: UIColor.blue, myAlignment: NSTextAlignment.center, myTextField: zipField, myColor: UIColor.white)
         zipField.keyboardType = UIKeyboardType.numberPad
+        addDoneButtonOnKeyboard(myField: zipField)
         
         emailField = UITextField(frame: CGRect(origin: EMAIL_TEXT_ORIGIN, size: TEXT_SIZE))
         setUpText(myPlaceholder: "Email", myFont: FONT, myFontSize: FONT_SIZE, myFontColor: UIColor.blue, myAlignment: NSTextAlignment.center, myTextField: emailField, myColor: UIColor.white)
