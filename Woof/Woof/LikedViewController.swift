@@ -16,6 +16,8 @@ class LikedViewController: UIViewController, UINavigationBarDelegate, UITableVie
     let result_origin = CGPoint(x:12, y:40)
     //let TITLE_SIZE: CGSize = CGSize(width: 353, height: 40)
     
+    let TABLE_OFFSET: CGFloat = CGFloat(200)
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +47,7 @@ class LikedViewController: UIViewController, UINavigationBarDelegate, UITableVie
         self.view.addSubview(scrollView)
         
 
-        table = UITableView(frame: CGRect(origin: result_origin, size: CGSize(width: 353, height: self.view.frame.height-12)))
+        table = UITableView(frame: CGRect(origin: result_origin, size: CGSize(width: 353, height: self.view.frame.height-TABLE_OFFSET)))
         setUpTable(myColor: UIColor.white, myTable: table)
         
         table.delegate = self
