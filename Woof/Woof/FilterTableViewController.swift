@@ -31,6 +31,7 @@ class FilterTableViewController: UIViewController, UINavigationBarDelegate{
     let CORNER_RADIUS: Int = 10
     var scrollView: UIScrollView! = nil
     let SCROLL_OFFSET = 100
+    var noLogInFilters = [String]()
     
     //buttons:
     var button: UIButton! = nil
@@ -180,10 +181,15 @@ class FilterTableViewController: UIViewController, UINavigationBarDelegate{
             let typeWithNum: String! = filtersDictionary[buttonLabel]!
             let end = typeWithNum.index(before: typeWithNum.endIndex)
             let type = typeWithNum.substring(to: end)
-            
-            Functionalities.myUser?.addFavoriteCategoryFilter(filter: "\(type): \(myButton.titleLabel!.text!)")
+            if Functionalities.myUser == nil {
+                noLogInFilters.append("\(type): \(myButton.titleLabel!.text!)")
+                myButton.backgroundColor = yellow
 
-            myButton.backgroundColor = yellow
+            } else {
+                Functionalities.myUser?.addFavoriteCategoryFilter(filter: "\(type): \(myButton.titleLabel!.text!)")
+
+                myButton.backgroundColor = yellow
+            }
         }
             
         else {
@@ -193,11 +199,18 @@ class FilterTableViewController: UIViewController, UINavigationBarDelegate{
             let typeWithNum: String = filtersDictionary[buttonLabel]!
             let end = typeWithNum.index(before: typeWithNum.endIndex)
             let type = typeWithNum.substring(to: end)
+            if Functionalities.myUser == nil {
+                noLogInFilters.append("\(type): \(myButton.titleLabel!.text!)")
+                filtersString.remove(at: filtersString.index(of: buttonLabel)!)
+                myButton.backgroundColor = white_half
+                
+            } else {
+
+                Functionalities.myUser?.removeFavoriteCategoryFilter(filter: (filter: "\(type): \(myButton.titleLabel!.text!)"))
             
-            Functionalities.myUser?.removeFavoriteCategoryFilter(filter: (filter: "\(type): \(myButton.titleLabel!.text!)"))
-            
-            filtersString.remove(at: filtersString.index(of: buttonLabel)!)
-            myButton.backgroundColor = white_half
+                filtersString.remove(at: filtersString.index(of: buttonLabel)!)
+                myButton.backgroundColor = white_half
+            }
         }
     }
     
@@ -254,8 +267,14 @@ class FilterTableViewController: UIViewController, UINavigationBarDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let currentFavFilters: [String] = (Functionalities.myUser?.favoriteCategoryFilters)!
+        var currentFavFilters: [String] = [""]
+        if Functionalities.myUser == nil {
+            currentFavFilters = noLogInFilters
+            
+        } else {
+
+            currentFavFilters = (Functionalities.myUser?.favoriteCategoryFilters)!
+        }
         
         let navigationBar = UINavigationBar(frame: CGRect(x:0, y:0, width:self.view.frame.size.width, height:58)) // Offset by 20 pixels vertically to take the status bar into account
         
