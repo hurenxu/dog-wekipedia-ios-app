@@ -14,7 +14,7 @@ class User{
     var favoriteDogBreeds: [String] = []
     var favoriteCategoryFilters: [String] = []
     var zipCode: String?
-    var image: String?
+    var image = ""
     var dogIDs: [String] = []
     
     
@@ -201,6 +201,6 @@ class User{
     }
     
     func getImage() -> String {
-        return self.image!
+        return self.image
     }
 }
