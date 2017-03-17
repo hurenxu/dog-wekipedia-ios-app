@@ -79,7 +79,7 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
     let ageLabel = UILabel(frame: CGRect(x: 20, y: 515, width: 330, height: 40))
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        
+        flag = false
         if textField == breedtextField && flag == false{
             
             
@@ -372,6 +372,7 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         datePickerView.datePickerMode = UIDatePickerMode.date
         sender.inputView = datePickerView
         datePickerView.addTarget(self, action: #selector(OwnedDogDetailViewController.datePickerValueChanged), for: UIControlEvents.valueChanged)
+        
     }
     
     func textFieldEditing2(sender: UITextField) {
@@ -547,6 +548,7 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         
         
         breedtextField.isHidden = false
+        breedtextField.delegate = self
         
         
         
@@ -567,7 +569,17 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
+//        if (textField != breedtextField){
+//            self.view.frame.origin.y = 0
+//        }
+    
         return false
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
+        if textField == breedtextField{
+            self.view.frame.origin.y = 0
+        }
     }
     
     
