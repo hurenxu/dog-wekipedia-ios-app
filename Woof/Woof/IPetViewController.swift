@@ -174,7 +174,7 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         collectView = UICollectionView(frame: CGRect(x: 0, y:300, width:view.frame.width, height: view.frame.height/2), collectionViewLayout: cLayout)
         
         
-        cLayout.sectionInset = UIEdgeInsets(top: 25, left:40, bottom: 25, right:40)
+        cLayout.sectionInset = UIEdgeInsets(top: 25, left:40, bottom: 40, right:40)
         cLayout.itemSize = CGSize(width: view.frame.width, height: view.frame.height / 2)
         
         
@@ -217,7 +217,7 @@ UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width:120, height:140)
+        return CGSize(width:120, height:120)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {

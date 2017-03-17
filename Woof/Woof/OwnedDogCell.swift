@@ -20,7 +20,7 @@ class OwnedDogCell: UICollectionViewCell {
         
         self.backgroundColor = UIColor(red: 255.0/255.0, green: 228.0/255.0, blue: 196.0/255.0, alpha: 1)
         //imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height*2/3))
-        imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height))
+        imageView = UIImageView(frame: CGRect(x: 5, y: 0, width: frame.size.width-15, height: frame.size.height-15))
         imageView?.contentMode = UIViewContentMode.scaleAspectFit
         //self.imageView?.layer.cornerRadius = self.imageView!.frame.size.width / 2
         imageView?.setRounded()
@@ -29,7 +29,7 @@ class OwnedDogCell: UICollectionViewCell {
         
         imageView?.isUserInteractionEnabled = true
         
-        textLabel = UILabel(frame: CGRect(x: 0, y: (imageView?.frame.size.height)! - 16, width: frame.size.width, height: frame.size.height/2))
+        textLabel = UILabel(frame: CGRect(x: 0, y: (imageView?.frame.size.height)! - 20, width: frame.size.width, height: frame.size.height/2))
         textLabel?.font = UIFont(name: "Rubik", size: 14)
         textLabel?.textAlignment = .center
         //textLabel?.text = "test"

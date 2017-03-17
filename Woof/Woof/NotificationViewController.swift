@@ -20,7 +20,7 @@ class NotificationViewController: UIViewController, UIPickerViewDelegate, UIPick
     let arraysize = Functionalities.dogList.count
     
     //declare a new textfield that allows user to select which dog
-    var dogNametextField = UITextField(frame: CGRect(20.0, 230, 330.0, 40.0))
+    var dogNametextField = UITextField(frame: CGRect(310, 60, 60.0, 30.0))
     
     //declare a new picker to pick the dog
     var picker2 = UIPickerView()
@@ -608,6 +608,8 @@ class NotificationViewController: UIViewController, UIPickerViewDelegate, UIPick
         self.view.addSubview(dogNametextField)
         dogNametextField.isHidden = false
         
+        dogNametextField.layer.cornerRadius = CGFloat(CORNER_RADIUS)
+        dogNametextField.clipsToBounds = true
         dogNametextField.inputView = picker2
         
         // Do any additional setup after loading the view, typically from a nib.
