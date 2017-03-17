@@ -13,7 +13,7 @@ class User{
     var gender: String?
     var favoriteDogBreeds: [String] = []
     var favoriteCategoryFilters: [String] = []
-    var zipCode: String?
+    var zipCode = ""
     var image = ""
     var dogIDs: [String] = []
     
@@ -196,7 +196,7 @@ class User{
     }
     
     func getZipCode() -> String {
-        return self.zipCode!
+        return self.zipCode
     }
     
     func setImage(imageURL: String) {
