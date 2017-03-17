@@ -552,9 +552,10 @@ class NotificationViewController: UIViewController, UIPickerViewDelegate, UIPick
         
         if pickerView == picker2{
             dogNametextField.text = dogNameData[row]
-            picker2.isHidden = true
+            //picker2.isHidden = true
             self.view.endEditing(true)
         }
+        
     }
     
     
