@@ -8,7 +8,7 @@
 
 import UIKit
 
-//Group :"Herding"; "Hound"; "Non-sporting"; "Sporting"; "Terrier"; "Toy"; "Working"
+//Group :"Herding"; "Hound"; "Non sporting"; "Sporting"; "Terrier"; "Toy"; "Working"
 //Body size :"Large" ; "Medium" ; "Small"
 //Hair length :"Long"; "Short"
 //Trainability: "Bright"; "Average"; "Fair"
@@ -21,7 +21,7 @@ class FilterTableViewController: UIViewController, UINavigationBarDelegate{
     //var hair=0 //default 0. short 1, long 2
     var size=0 //default 0. small 1, medium 2, large 3
     //var sizeA = {0}
-    var group=0 //default 0. Herding 1; Hound 2; Non-sporting 3; Sporting 4; Terrier 5; Toy 6; Working 7
+    var group=0 //default 0. Herding 1; Hound 2; Non Sporting 7; Sporting 4; Terrier 5; Toy 6; Working 3
     var train=0 //default 0. easy 1; difficult 2; fair 3
     var bark=0 //default 0. frequent 1; occasional 2; rare 3
     
@@ -39,7 +39,7 @@ class FilterTableViewController: UIViewController, UINavigationBarDelegate{
     var label: UILabel! = nil
     //var hair_buttons = [ "Short hair", "Long hair"]
     var body_buttons = ["Small", "Medium", "Large"]
-    var group_buttons = ["Herding", "Hound", "Working", "Sporting", "Terrier", "Toy", "Non-sporting"]
+    var group_buttons = ["Herding", "Hound", "Working", "Sporting", "Terrier", "Toy", "Non Sporting"]
     var train_buttons = ["Easy", "Difficult", "Fair"]
     var bark_buttons = ["Frequent", "Occasional","Rare"]
     var groom_buttons = ["High","Average","Low"]
@@ -126,7 +126,7 @@ class FilterTableViewController: UIViewController, UINavigationBarDelegate{
         "Sporting":"Group4",
         "Terrier":"Group5",
         "Toy":"Group6",
-        "Non-sporting":"Group7",
+        "Non Sporting":"Group7",
         
         "Easy":"Trainability1",
         "Difficult":"Trainability2",
@@ -489,7 +489,7 @@ class FilterTableViewController: UIViewController, UINavigationBarDelegate{
             button.frame.origin.x += CGFloat(button_offset)
             
             buttonOrigin = CGPoint(x: button.frame.origin.x, y: top_origin.y + CGFloat(line_offset))
-            if key == "Non-sporting" {
+            if key == "Non Sporting" {
                 button = UIButton(frame: CGRect(origin: buttonOrigin, size: large_button_size))
                 
             }else{

@@ -17,9 +17,9 @@ class FilterResultViewController: UIViewController, UINavigationBarDelegate ,UIT
     var filterDogs = [Breed]()
     //var hair:Int? //default 0. short 1, long 2
     var size:Int? //default 0. small 1, medium 2, large 3
-    var group:Int? //default 0. Herding 1; Hound 2; Non-sporting 3; Sporting 4; Terrier 5; Toy 6; Working 7
+    var group:Int? //default 0. Herding 1; Hound 2; Non Sporting 7; Sporting 4; Terrier 5; Toy 6; Working 3
     var train:Int? //default 0. easy 1; aveg 2; moderately easy 3
-    var bark:Int? //default 0. frequent 1; occasional 2; rare s
+    var bark:Int? //default 0. frequent 1; occasional 2; rare 3
     
     var groom:Int? //default 0; "High" 1; "Moderate" 2; "Low" 3
     var shed:Int?  //default 0; minimal 1; moderate 2; constant 3; seasonal 4
@@ -231,6 +231,7 @@ class FilterResultViewController: UIViewController, UINavigationBarDelegate ,UIT
                 }
             }
             else if type == "group" {
+                print("group: \(curr.getGroup())")
                 if curr.getGroup().lowercased().contains(filter){
                     toRe.append(curr)
                 }
@@ -306,9 +307,9 @@ class FilterResultViewController: UIViewController, UINavigationBarDelegate ,UIT
             
         }else if bark == 2{/*
              filterDogs = filterDogs.filter({( dog : Breed) -> Bool in
-             return dog.barkingLevel.lowercased().contains("occational")
+             return dog.barkingLevel.lowercased().contains("occasional")
              })*/
-            filterDogs = searchBy(from:filterDogs, type: "bark", filter: "occational")
+            filterDogs = searchBy(from:filterDogs, type: "bark", filter: "occasional")
             
         }else if bark == 3{/*
              filterDogs = filterDogs.filter({( dog : Breed) -> Bool in
@@ -395,9 +396,9 @@ class FilterResultViewController: UIViewController, UINavigationBarDelegate ,UIT
             
         }else if group == 3{/*
              filterDogs = filterDogs.filter({( dog : Breed) -> Bool in
-             return dog.group.lowercased().contains("non-sporting")
+             return dog.group.lowercased().contains("working")
              })*/
-            filterDogs = searchBy(from:filterDogs, type: "group", filter: "non-sporting")
+            filterDogs = searchBy(from:filterDogs, type: "group", filter: "working")
             
         }else if group == 4{/*
              filterDogs = filterDogs.filter({( dog : Breed) -> Bool in
@@ -419,13 +420,13 @@ class FilterResultViewController: UIViewController, UINavigationBarDelegate ,UIT
             
         }else if group == 7{/*
              filterDogs = filterDogs.filter({( dog : Breed) -> Bool in
-             return dog.group.lowercased().contains("working")
+             return dog.group.lowercased().contains("non sporting")
              })*/
-            filterDogs = searchBy(from:filterDogs, type: "group", filter: "working")
+            filterDogs = searchBy(from:filterDogs, type: "group", filter: "non sporting")
             
         }
         
-        //        var group=0 //default 0. Herding 1; Hound 2; Non-sporting 3; Sporting 4; Terrier 5; Toy 6; Working 7
+        //        var group=0 //default 0. Herding 1; Hound 2; Non Sporting 3; Sporting 4; Terrier 5; Toy 6; Working 7
         
         return 0
     }
