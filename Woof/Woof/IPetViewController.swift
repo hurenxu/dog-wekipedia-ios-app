@@ -48,7 +48,8 @@ UICollectionViewDelegate, UICollectionViewDataSource {
     
     func switchToUser(sender: UIButton) {
         
-        let userVC: UserViewController = UserViewController()
+        print("switch to user")
+        let userVC: UserViewController! = UserViewController()
         
         self.present(userVC, animated: true, completion: nil)
     }
@@ -76,7 +77,6 @@ UICollectionViewDelegate, UICollectionViewDataSource {
 
         }
         else {
-        
         // let image = UIImage(named:"bacgroundHome.png")
         let shade = UIImageView(frame:UIScreen.main.bounds)
         shade.backgroundColor = UIColor.black
@@ -109,9 +109,7 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         userImg.setRounded()
         self.view.addSubview(userImg)
         ImageViewConstraints(Img: userImg)
-        
-        
-       
+            
         editProfButton.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.8)
         editProfButton.setTitle("Edit", for: .normal)
         self.view.addSubview(editProfButton)
@@ -122,8 +120,8 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         editProfButton.clipsToBounds = true
         /* action when user click on button --> call handleSelectProfileImageView function */
         //editProfButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectProfileImageView)))
-        editProfButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(switchToUser(sender:))))
-
+        //editProfButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(switchToUser(sender:))))
+            editProfButton.addTarget(self, action: #selector(self.switchToUser(sender:)), for: UIControlEvents.touchDown)
         
         
        
@@ -146,8 +144,6 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         addDogProfileButton.addTarget(self, action: #selector(addDogProfileButtonClick), for: .touchUpInside)
         self.view.addSubview(addDogProfileButton)
 
-    
-
         
         //let controller:LoginViewController = LoginViewController()
         
@@ -168,13 +164,12 @@ UICollectionViewDelegate, UICollectionViewDataSource {
             user?.addUserProfileEntry()
            
         }
-        
+
         print(tools.retrieveDogList(controller:self))
 
         //add finished
         
         tools.retrieveUserImage(UIImageView: profileImgContainer)
-        
         
         collectView = UICollectionView(frame: CGRect(x: 0, y:300, width:view.frame.width, height: view.frame.height/2), collectionViewLayout: cLayout)
         

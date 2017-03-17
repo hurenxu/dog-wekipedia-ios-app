@@ -24,6 +24,10 @@ class User{
         email = authData.email!
         gender = "F"
         
+        // NOTE: Didn't initialize zip and image for new user which produces bug
+        zipCode = ""
+        image = ""
+        
 //        if (!self.userExist()) {
 //            self.addUserProfileEntry()
 //        }

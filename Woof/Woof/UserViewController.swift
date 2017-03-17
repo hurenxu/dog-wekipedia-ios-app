@@ -230,6 +230,8 @@ class UserViewController: UIViewController, UINavigationBarDelegate, UINavigatio
         super.viewDidLoad()
 
         
+        print("in user profile")
+        
         // Do any additional setup after loading the view.
 
         // background
