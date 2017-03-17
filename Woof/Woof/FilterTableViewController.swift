@@ -136,9 +136,9 @@ class FilterTableViewController: UIViewController, UINavigationBarDelegate{
         "Average": "Grooming2",
         "Low": "Grooming3",
         
-        "Frequent": "Barking1",
-        "Occasional": "Barking2",
-        "Rare": "Barking3",
+        "Frequent": "Barking Level1",
+        "Occasional": "Barking Level2",
+        "Rare": "Barking Level3",
         
         "Minimal": "Shedding1",
         "Moderate": "Shedding2",
@@ -161,7 +161,7 @@ class FilterTableViewController: UIViewController, UINavigationBarDelegate{
         "Grooming": 0,
         "Shedding": 0,
         "Group": 0,
-        "Barking": 0,
+        "Barking Level": 0,
         "Trainability": 0
     ]
     
@@ -405,7 +405,7 @@ class FilterTableViewController: UIViewController, UINavigationBarDelegate{
             setUpButtons(myLabel: key, myFontSize: button_font_size, myButton: button)
             button.addTarget(self, action: #selector(self.filterPressed(sender:)), for: UIControlEvents.touchDown)
             
-            if currentFavFilters.contains("Barking: \(key)") {
+            if currentFavFilters.contains("Barking Level: \(key)") {
                 
                 filterPressed(sender: button)
             }
@@ -596,7 +596,7 @@ class FilterTableViewController: UIViewController, UINavigationBarDelegate{
             resultVC.size = typeDictionary["Size"]
             resultVC.groom = typeDictionary["Grooming"]
             resultVC.train = typeDictionary["Trainability"]
-            resultVC.bark = typeDictionary["Barking"]
+            resultVC.bark = typeDictionary["Barking Level"]
             resultVC.group = typeDictionary["Group"]
             resultVC.shed = typeDictionary["Shedding"]
             
