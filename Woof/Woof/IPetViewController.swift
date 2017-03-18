@@ -399,12 +399,12 @@ UICollectionViewDelegate, UICollectionViewDataSource {
     }
 
 
-    override func viewDidAppear(_ animated: Bool) {
-        print("hello again?")
-        
-        //let tool: Functionalities = Functionalities()
-        //tool.retrieveUserImage(UIImageView: userImg)
-    }
+//    override func viewDidAppear(_ animated: Bool) {
+//        print("hello again?")
+//        
+//        //let tool: Functionalities = Functionalities()
+//        //tool.retrieveUserImage(UIImageView: userImg)
+//    }
 }
 
 extension UIImagePickerController {
