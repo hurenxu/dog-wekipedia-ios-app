@@ -30,7 +30,8 @@ class UserViewController: UIViewController, UINavigationBarDelegate, UINavigatio
     let FONT = "Rubik"
     let FONT_SIZE = 19
     let CORNER_RADIUS = 10
-    let VIEW_UP = 200
+    let VIEW_UP_REGULAR = 250
+    let VIEW_UP_NUM = 200
     
     // Labels
     var nameLabel: UILabel! = nil
@@ -64,7 +65,6 @@ class UserViewController: UIViewController, UINavigationBarDelegate, UINavigatio
     let imagePicker = UIImagePickerController()
     
     var iPet: iPetViewController? = nil
-    var testString: String = ""
     
     // function to set up the common specs of labels
     func setUpLabel(myText: String, myFont: String, myFontSize: Int, myAlignment: NSTextAlignment, myLabel: UILabel, myColor: UIColor) {
@@ -91,6 +91,7 @@ class UserViewController: UIViewController, UINavigationBarDelegate, UINavigatio
         myTextField.autocapitalizationType = UITextAutocapitalizationType.words
         myTextField.delegate = self
         myTextField.isHidden = true
+        addDoneButtonOnKeyboard(myField: myTextField)
         self.view.addSubview(myTextField)
     }
     
@@ -169,8 +170,6 @@ class UserViewController: UIViewController, UINavigationBarDelegate, UINavigatio
             imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
             imagePicker.mediaTypes = UIImagePickerController.availableMediaTypes(for: UIImagePickerControllerSourceType.photoLibrary)!
             present(imagePicker, animated: true, completion: nil)
-            
-            print("my word: \(testString)")
         }
         
         else if sender == editButton {
@@ -202,7 +201,15 @@ class UserViewController: UIViewController, UINavigationBarDelegate, UINavigatio
         // put up view
         if textField == emailField || textField == zipField || textField == genderField {
             
-            self.view.frame.origin.y -= CGFloat(VIEW_UP)
+            if textField == zipField {
+                
+                self.view.frame.origin.y -= CGFloat(VIEW_UP_NUM)
+            }
+                
+            else {
+                
+                self.view.frame.origin.y -= CGFloat(VIEW_UP_REGULAR)
+            }
         }
         
         saveButton.isUserInteractionEnabled = false
@@ -215,10 +222,18 @@ class UserViewController: UIViewController, UINavigationBarDelegate, UINavigatio
         // put back view
         if textField == emailField || textField == zipField || textField == genderField {
             
-            self.view.frame.origin.y += CGFloat(VIEW_UP)
+            if textField == zipField {
+                
+                self.view.frame.origin.y += CGFloat(VIEW_UP_NUM)
+            }
+                
+            else {
+                
+                self.view.frame.origin.y += CGFloat(VIEW_UP_REGULAR)
+            }
         }
         
-        textField.enablesReturnKeyAutomatically = true
+        //textField.enablesReturnKeyAutomatically = true
         
         saveButton.isUserInteractionEnabled = true
     }
@@ -243,8 +258,11 @@ class UserViewController: UIViewController, UINavigationBarDelegate, UINavigatio
     
     func donePressed() {
         
+        self.nameField.resignFirstResponder()
         self.ageField.resignFirstResponder()
+        self.genderField.resignFirstResponder()
         self.zipField.resignFirstResponder()
+        self.emailField.resignFirstResponder()
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
@@ -257,8 +275,8 @@ class UserViewController: UIViewController, UINavigationBarDelegate, UINavigatio
         let tool: Functionalities = Functionalities()
         tool.addUserImage(chosenImage: profileImage.image!, user: Functionalities.myUser!)
         
+        // update the user image in ipet
         iPet?.userImg.image = profileImage.image
-        
     }
     
     // dismiss the selection screen when cancel is pressed
@@ -270,7 +288,6 @@ class UserViewController: UIViewController, UINavigationBarDelegate, UINavigatio
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
         print("in user profile")
         
         // Do any additional setup after loading the view.
@@ -340,7 +357,6 @@ class UserViewController: UIViewController, UINavigationBarDelegate, UINavigatio
         ageField = UITextField(frame: CGRect(origin: AGE_TEXT_ORIGIN, size: TEXT_SIZE))
         setUpText(myPlaceholder: "Age", myFont: FONT, myFontSize: FONT_SIZE, myFontColor: UIColor.blue, myAlignment: NSTextAlignment.center, myTextField: ageField, myColor: UIColor.white)
         ageField.keyboardType = UIKeyboardType.numberPad
-        addDoneButtonOnKeyboard(myField: ageField)
         ageField.text = "\(myUser.getAge())"
         
         genderField = UITextField(frame: CGRect(origin: GENDER_TEXT_ORIGIN, size: TEXT_SIZE))
@@ -350,7 +366,6 @@ class UserViewController: UIViewController, UINavigationBarDelegate, UINavigatio
         zipField = UITextField(frame: CGRect(origin: ZIP_TEXT_ORIGIN, size: TEXT_SIZE))
         setUpText(myPlaceholder: "Zip", myFont: FONT, myFontSize: FONT_SIZE, myFontColor: UIColor.blue, myAlignment: NSTextAlignment.center, myTextField: zipField, myColor: UIColor.white)
         zipField.keyboardType = UIKeyboardType.numberPad
-        addDoneButtonOnKeyboard(myField: zipField)
         zipField.text = myUser.getZipCode()
         
         emailField = UITextField(frame: CGRect(origin: EMAIL_TEXT_ORIGIN, size: TEXT_SIZE))
