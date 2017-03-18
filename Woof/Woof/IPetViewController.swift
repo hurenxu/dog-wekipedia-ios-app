@@ -35,7 +35,7 @@ UICollectionViewDelegate, UICollectionViewDataSource {
     
     var user:User?
     
-    
+    var userImg: UIImageView! = nil
     
      let editProfButton:UIButton = UIButton(frame: CGRect(x: 155, y: 220, width: 60, height: 20))
      let notificationButton:UIButton = UIButton(frame: CGRect(x:330, y: 70, width: 40, height:40))
@@ -45,16 +45,19 @@ UICollectionViewDelegate, UICollectionViewDataSource {
     
     let cellID = "dogCell"
     //var collectView = UICollectionView()
-    
+        
     func switchToUser(sender: UIButton) {
         
         print("switch to user")
         let userVC: UserViewController! = UserViewController()
-        
+        userVC.iPet = self
+        userVC.testString = "hello world"
+        //self.navigationController?.pushViewController(userVC, animated: true)
         self.present(userVC, animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
+        
         
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -105,7 +108,7 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         
         
         /* user profile image */
-        let userImg = profileImgContainer
+        userImg = profileImgContainer
         userImg.setRounded()
         self.view.addSubview(userImg)
         ImageViewConstraints(Img: userImg)
@@ -390,7 +393,14 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         tabBarItem = UITabBarItem(title: "ipet", image: UIImage(named: "ipet"), tag: 1)
         tabBarItem.badgeValue = "3"
     }
-    
+
+
+    override func viewDidAppear(_ animated: Bool) {
+        print("hello again?")
+        
+        //let tool: Functionalities = Functionalities()
+        //tool.retrieveUserImage(UIImageView: userImg)
+    }
 }
 
 extension UIImagePickerController {

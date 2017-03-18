@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UserViewController: UIViewController, UINavigationBarDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
+class UserViewController: UIViewController, UINavigationBarDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UIImagePickerControllerDelegate {
 
     let myUser: User! = Functionalities.myUser
     
@@ -17,11 +17,14 @@ class UserViewController: UIViewController, UINavigationBarDelegate, UINavigatio
     let TEXT_SIZE: CGSize = CGSize(width: 330, height: 40)
     let TOP_BUTTONS_SIZE: CGSize = CGSize(width: 80, height: 30)
     let SAVE_BUTTON_SIZE: CGSize = CGSize(width: 330, height: 40)
+    let IMAGE_SIZE: CGSize = CGSize(width: 100, height: 100)
     
     // Offsets
     let EDIT_OFFSET = CGFloat(210)
     let FIELD_OFFSET = CGFloat(55)
     let BUTTON_OFFSET = CGFloat(65)
+    let IMAGE_OFFSET_X = CGFloat(95)
+    let IMAGE_OFFSET_Y = CGFloat(70)
     
     // Configurations
     let FONT = "Rubik"
@@ -44,9 +47,12 @@ class UserViewController: UIViewController, UINavigationBarDelegate, UINavigatio
     var emailField: UITextField! = nil
     
     // Buttons
-    var editButton:UIButton = UIButton(frame: CGRect(x: 250, y: 175, width: 80, height: 30))
-    var imageButton:UIButton = UIButton(frame: CGRect(x: 40, y: 175, width: 80, height: 30))
-    var saveButton:UIButton = UIButton(frame: CGRect(x: 20, y: 550, width: 330, height: 40))
+    var editButton: UIButton = UIButton(frame: CGRect(x: 250, y: 175, width: 80, height: 30))
+    var imageButton: UIButton = UIButton(frame: CGRect(x: 40, y: 175, width: 80, height: 30))
+    var saveButton: UIButton = UIButton(frame: CGRect(x: 20, y: 550, width: 330, height: 40))
+    
+    // The image
+    var profileImage: UIImageView! = UIImageView()
     
     // Colors
     let pink: UIColor = UIColor(red: 253/255, green: 127/255, blue: 124/255, alpha: 0.8)
@@ -54,6 +60,11 @@ class UserViewController: UIViewController, UINavigationBarDelegate, UINavigatio
     let yellow: UIColor = UIColor(red: 225/255, green: 210/255, blue: 161/255, alpha: 0.9)
     let green_half: UIColor = UIColor(red: 165/255, green: 195/255, blue: 187/255, alpha: 0.8)
     let black : UIColor = UIColor(red: 1/255, green: 1/255, blue: 1/255, alpha: 1)
+    
+    let imagePicker = UIImagePickerController()
+    
+    var iPet: iPetViewController? = nil
+    var testString: String = ""
     
     // function to set up the common specs of labels
     func setUpLabel(myText: String, myFont: String, myFontSize: Int, myAlignment: NSTextAlignment, myLabel: UILabel, myColor: UIColor) {
@@ -75,7 +86,6 @@ class UserViewController: UIViewController, UINavigationBarDelegate, UINavigatio
         myTextField.textColor = myFontColor
         myTextField.textAlignment = myAlignment
         myTextField.backgroundColor = myColor
-        //myTextField.layer.cornerRadius = CGFloat(CORNER_RADIUS)
         myTextField.clipsToBounds = true
         myTextField.borderStyle = UITextBorderStyle.roundedRect
         myTextField.autocapitalizationType = UITextAutocapitalizationType.words
@@ -95,6 +105,11 @@ class UserViewController: UIViewController, UINavigationBarDelegate, UINavigatio
         myButton.layer.cornerRadius = CGFloat(CORNER_RADIUS)
         myButton.addTarget(self, action: #selector(self.buttonPressed(sender:)), for: UIControlEvents.touchDown)
         self.view.addSubview(myButton)
+    }
+    
+    func setUpImage(mySource: UIImage, myImage: UIImageView) {
+        
+        myImage.image = mySource
     }
     
     func setLabelsHidden(myBool: Bool) {
@@ -149,7 +164,13 @@ class UserViewController: UIViewController, UINavigationBarDelegate, UINavigatio
         
         if sender == imageButton {
             
-            // image access
+            // image access and assign the image
+            imagePicker.allowsEditing = true
+            imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
+            imagePicker.mediaTypes = UIImagePickerController.availableMediaTypes(for: UIImagePickerControllerSourceType.photoLibrary)!
+            present(imagePicker, animated: true, completion: nil)
+            
+            print("my word: \(testString)")
         }
         
         else if sender == editButton {
@@ -226,6 +247,26 @@ class UserViewController: UIViewController, UINavigationBarDelegate, UINavigatio
         self.zipField.resignFirstResponder()
     }
     
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        
+        let chosenImage = info[UIImagePickerControllerEditedImage] as! UIImage
+        profileImage.image = chosenImage
+        dismiss(animated:true, completion: nil)
+        
+        // change the image at the ipet page
+        let tool: Functionalities = Functionalities()
+        tool.addUserImage(chosenImage: profileImage.image!, user: Functionalities.myUser!)
+        
+        iPet?.userImg.image = profileImage.image
+        
+    }
+    
+    // dismiss the selection screen when cancel is pressed
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        
+        dismiss(animated: true, completion: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -257,6 +298,8 @@ class UserViewController: UIViewController, UINavigationBarDelegate, UINavigatio
         let IMAGE_BUTTON_ORIGIN = CGPoint(x: 40, y: 175)
         let EDIT_BUTTON_ORIGIN = CGPoint(x: IMAGE_BUTTON_ORIGIN.x + EDIT_OFFSET, y: IMAGE_BUTTON_ORIGIN.y)
         
+        let IMAGE_ORIGIN = CGPoint(x: IMAGE_BUTTON_ORIGIN.x + IMAGE_OFFSET_X, y: IMAGE_BUTTON_ORIGIN.y - IMAGE_OFFSET_Y)
+        
         // labels
         let NAME_ORIGIN = CGPoint(x: 20, y: 240)
         let AGE_ORIGIN = CGPoint(x: NAME_ORIGIN.x, y: NAME_ORIGIN.y + FIELD_OFFSET)
@@ -275,6 +318,16 @@ class UserViewController: UIViewController, UINavigationBarDelegate, UINavigatio
         // sets up the top buttons
         imageButton = UIButton(frame: CGRect(origin: IMAGE_BUTTON_ORIGIN, size: TOP_BUTTONS_SIZE))
         setUpButtons(myLabel: "image", myFontSize: FONT_SIZE, myFontColor: UIColor.black, myButton: imageButton, myColor: yellow)
+        
+        // sets up the image picker
+        imagePicker.delegate = self
+        
+        profileImage = UIImageView(frame: CGRect(origin: IMAGE_ORIGIN, size: IMAGE_SIZE))
+        profileImage.setRound()
+        let tool: Functionalities = Functionalities()
+        tool.retrieveUserImage(UIImageView: profileImage)
+        self.view.addSubview(profileImage)
+        // setUpImage(myURL: "", myImage: profileImage)
         
         editButton = UIButton(frame: CGRect(origin: EDIT_BUTTON_ORIGIN, size: TOP_BUTTONS_SIZE))
         setUpButtons(myLabel: "edit", myFontSize: FONT_SIZE, myFontColor: UIColor.black, myButton: editButton, myColor: yellow)

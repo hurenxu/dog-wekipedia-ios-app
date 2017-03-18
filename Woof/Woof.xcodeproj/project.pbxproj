@@ -388,6 +388,7 @@
 				07AFF23C1E6A55D20089867C /* SearchTableViewController.swift */,
 				07AFF23A1E6A55D20089867C /* ProfileViewController.swift */,
 				07AFF2371E6A55D20089867C /* IPetViewController.swift */,
+				A4B8E0111E7AD41C0053F9A0 /* UserViewController.swift */,
 				076A4D881E6E53C400ABFC98 /* NotificationViewController.swift */,
 				076A4D841E6E52E800ABFC98 /* OwnedDogCell.swift */,
 				076A4D851E6E52E800ABFC98 /* OwnedDogDetailViewController.swift */,
@@ -403,7 +404,6 @@
 				0314E5241E6FC43A00E73DF9 /* LaunchViewController.swift */,
 				2FFCB09A1E7271DB00B4D6E9 /* AddDogViewController.swift */,
 				2FD7622F1E73CDB500E315D0 /* LikedViewController.swift */,
-				A4B8E0111E7AD41C0053F9A0 /* UserViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
