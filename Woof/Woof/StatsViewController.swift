@@ -174,6 +174,8 @@ class StatsViewController: UIViewController {
         
         super.viewDidLoad()
 
+        self.title = "Statistics"
+        
         // initialize user here
         // user = USER(  )
         

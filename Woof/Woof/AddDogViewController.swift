@@ -17,6 +17,7 @@ class AddDogViewController: UIViewController, UINavigationBarDelegate, UIImagePi
     var discription = ""
     var breed = ""
     var age = ""
+    var color = ""
     var image = UIImage(named:"BlackEmptyDog")
     
     var updateMyNewDog: Dog?
@@ -39,6 +40,7 @@ class AddDogViewController: UIViewController, UINavigationBarDelegate, UIImagePi
     var dogVaccinationDatetextField = UITextField(frame: CGRect(20.0, 365, 330.0, 40.0))
     var breedtextField = UITextField(frame: CGRect(20.0, 410, 330.0, 40.0))
     var agetextField = UITextField(frame: CGRect(20.0, 455, 330.0, 40.0))
+    var colortextField = UITextField(frame: CGRect(20.0, 500, 330.0, 40.0))
 
     let editProfButton:UIButton = UIButton(frame: CGRect(x: 250, y: 170, width: 50, height: 25))
     let saveProfButton:UIButton = UIButton(frame: CGRect(x: 20, y: 550, width: 330, height: 40))
@@ -62,6 +64,9 @@ class AddDogViewController: UIViewController, UINavigationBarDelegate, UIImagePi
     
     //Declare the age Label
     let ageLabel = UILabel(frame: CGRect(x: 20, y: 455, width: 330, height: 40))
+    
+    //Declare the color Label
+    let colorLabel = UILabel(frame: CGRect(x: 20, y: 500, width: 330, height: 40))
 
 
     override func viewDidLoad() {
@@ -158,6 +163,19 @@ class AddDogViewController: UIViewController, UINavigationBarDelegate, UIImagePi
         genderLabel.clipsToBounds = true
         view.addSubview(genderLabel)
         
+        colorLabel.textAlignment = .center
+        
+        colorLabel.text = "Color: " + color
+        colorLabel.textColor = UIColor.white
+        colorLabel.font = genderLabel.font.withSize(30)
+        colorLabel.font = UIFont(name: "Rubik", size: 25)
+        colorLabel.backgroundColor = UIColor(red: 100/255, green: 120/255, blue: 150/255, alpha: 0.65)
+        colorLabel.layer.cornerRadius = 5
+        colorLabel.clipsToBounds = true
+        view.addSubview(colorLabel)
+
+        
+        
         //     var dogGendertextField = UITextField(frame: CGRect(20.0, 400.0, 330.0, 40.0))
         dogGendertextField.textAlignment = NSTextAlignment.center
         dogGendertextField.textColor = UIColor.blue
@@ -188,6 +206,11 @@ class AddDogViewController: UIViewController, UINavigationBarDelegate, UIImagePi
        
         self.view.addSubview(dogBirhDatetextField)
         dogBirhDatetextField.isHidden = true
+        
+        
+        
+        
+        
         
         self.dogBirhDatetextField.delegate = self;
         
@@ -258,6 +281,15 @@ class AddDogViewController: UIViewController, UINavigationBarDelegate, UIImagePi
         breedtextField.placeholder = "Breed"
         breedtextField.autocapitalizationType = UITextAutocapitalizationType.words // If you need any capitalization
         self.view.addSubview(breedtextField)
+        
+        colortextField.textAlignment = NSTextAlignment.center
+        colortextField.textColor = UIColor.blue
+        colortextField.borderStyle = UITextBorderStyle.roundedRect
+        colortextField.placeholder = "Breed"
+        colortextField.autocapitalizationType = UITextAutocapitalizationType.words // If you need any capitalization
+        self.view.addSubview(colortextField)
+
+        
 
         self.editProfButtonClick()
         // Do any additional setup after loading the view.
@@ -385,6 +417,7 @@ class AddDogViewController: UIViewController, UINavigationBarDelegate, UIImagePi
         agetextField.isHidden = true
         saveProfButton.isHidden = true
         breedtextField.isHidden = true
+        colortextField.isHidden = true
         
         name = dogNametextField.text!
         gender = dogGendertextField.text!
@@ -392,6 +425,7 @@ class AddDogViewController: UIViewController, UINavigationBarDelegate, UIImagePi
         birthdate = dogBirhDatetextField.text!
         age = agetextField.text!
         breed = breedtextField.text!
+        color = colortextField.text!
         
         nameLabel.text = "Name: " + name
         genderLabel.text = "Gender: " + gender
@@ -399,6 +433,7 @@ class AddDogViewController: UIViewController, UINavigationBarDelegate, UIImagePi
         vaccinationDateLabel.text = "Vaccination Date: " + vaccinationdate
         ageLabel.text = "Age: " + age
         breedLabel.text = "Breed: " + breed
+        colorLabel.text = "Color: " + color
         
         nameLabel.isHidden = false
         genderLabel.isHidden = false
@@ -407,6 +442,7 @@ class AddDogViewController: UIViewController, UINavigationBarDelegate, UIImagePi
         breedLabel.isHidden = false
         ageLabel.isHidden = false
         breedLabel.isHidden = false
+        colorLabel.isHidden = false
         
 //        var breedObj = Breed(breedName: "Unknown Breed", popularity: "", origin: "", group: "", size: "", type: "", lifeExpectancy: "", personality: "", height: "", weight: "", colors: "", litterSize: "", price: "", barkingLevel: "", childFriendly: "",
 //            grooming: "",shedding: "", trainability: "", breeders: "", image: "")
@@ -434,7 +470,7 @@ class AddDogViewController: UIViewController, UINavigationBarDelegate, UIImagePi
         }
         
 
-        updateMyNewDog = Dog(dogID: dogID, name: name, breed: breedObj!, birthDate: Date(), age: age, gender: gender, vaccination: Date(), color: "", description: "", image: "")
+        updateMyNewDog = Dog(dogID: dogID, name: name, breed: breedObj!, birthDate: Date(), age: age, gender: gender, vaccination: Date(), color: color, description: "", image: "")
         Functionalities.myUser?.addDog(dog: updateMyNewDog!)
         
         let tools = Functionalities()

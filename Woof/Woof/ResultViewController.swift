@@ -195,6 +195,8 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
         print("i'm result")
         
+        self.title = "Result"
+        
         // Do any additional setup after loading the view.
         
         scrollView = UIScrollView(frame: self.view.bounds)
