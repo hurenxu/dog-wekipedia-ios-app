@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , GIDSignInDelegate{
         
         // change navigation item title color
         navigationBarAppearance.titleTextAttributes = [NSForegroundColorAttributeName : UIColor(netHex: 0x000000)]
-        navigationBarAppearance.titleTextAttributes = [NSFontAttributeName: UIFont(name: "Hiragino Kaku Gothic ProN", size: 19)!]
+        navigationBarAppearance.titleTextAttributes = [NSFontAttributeName: UIFont(name: "Rubik", size: 19)!]
         
         FIRApp.configure()
         let facebook = FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
