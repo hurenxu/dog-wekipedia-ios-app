@@ -49,10 +49,10 @@ UICollectionViewDelegate, UICollectionViewDataSource {
     func switchToUser(sender: UIButton) {
         
         print("switch to user")
+        
         let userVC: UserViewController! = UserViewController()
         userVC.iPet = self
-        userVC.testString = "hello world"
-        //self.navigationController?.pushViewController(userVC, animated: true)
+        
         self.present(userVC, animated: true, completion: nil)
     }
     
@@ -404,9 +404,6 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         tabBarItem = UITabBarItem(title: "", image: UIImage(named: "ipet"), tag: 1)
         tabBarItem.badgeValue = "3"
     }
-
-
-
 }
 
 extension UIImagePickerController {
