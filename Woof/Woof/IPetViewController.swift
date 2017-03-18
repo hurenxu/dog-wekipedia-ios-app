@@ -100,9 +100,16 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         
         
         
-        self.view.backgroundColor = .white
-
-        self.title = "User Profile"
+//        self.view.backgroundColor = .white
+//        //self.title = "iPet"
+//        let frame = CGRect(x: 0, y: 0, width: 200, height: 40)
+//        let tlabel = UILabel(frame: frame)
+//        tlabel.text = self.title
+//        tlabel.textColor = UIColor.black
+//        tlabel.backgroundColor = UIColor.clear
+//        tlabel.adjustsFontSizeToFitWidth = true
+//        tlabel.textAlignment = .center
+//        self.navigationItem.titleView = tlabel
         //print("iPet Page loaded")
         //self.view.backgroundColor = UIColor.lightGray
         
@@ -394,17 +401,12 @@ UICollectionViewDelegate, UICollectionViewDataSource {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         // Initialize Tab Bar Item
-        tabBarItem = UITabBarItem(title: "ipet", image: UIImage(named: "ipet"), tag: 1)
+        tabBarItem = UITabBarItem(title: "", image: UIImage(named: "ipet"), tag: 1)
         tabBarItem.badgeValue = "3"
     }
 
 
-    override func viewDidAppear(_ animated: Bool) {
-        print("hello again?")
-        
-        //let tool: Functionalities = Functionalities()
-        //tool.retrieveUserImage(UIImageView: userImg)
-    }
+
 }
 
 extension UIImagePickerController {

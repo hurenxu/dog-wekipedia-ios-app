@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -73,7 +73,7 @@
             </objects>
             <point key="canvasLocation" x="-876" y="0.0"/>
         </scene>
-        <!--Woofipedia-->
+        <!--Wooftionary-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
                 <viewController id="8rJ-Kc-sve" customClass="SearchTableViewController" customModule="Woof" customModuleProvider="target" sceneMemberID="viewController">
@@ -97,7 +97,7 @@
                                 <rect key="frame" x="0.0" y="72" width="375" height="101"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4h3-QR-Lbh" id="PHB-Fw-bzD">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="100.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DogImage" translatesAutoresizingMaskIntoConstraints="NO" id="7Dw-su-0tz">
@@ -151,7 +151,7 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Woofipedia" id="tTo-ev-gZB">
+                    <navigationItem key="navigationItem" title="Wooftionary" id="tTo-ev-gZB">
                         <barButtonItem key="backBarButtonItem" title="Home" id="JF2-XG-AVk"/>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
@@ -367,7 +367,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PbC-FO-5hM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1615" y="1012"/>
+            <point key="canvasLocation" x="1588" y="1012"/>
         </scene>
         <!--Detail-->
         <scene sceneID="uFi-hN-VVc">
@@ -443,11 +443,11 @@
             </objects>
             <point key="canvasLocation" x="2742" y="1013"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Wooftionary-->
         <scene sceneID="pjl-fk-oAS">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ukb-3V-0FP" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="WoofipediaIcon" selectedImage="WoofipediaIcon" id="cPa-gy-q4n" customClass="RAMAnimatedTabBarItem" customModule="RAMAnimatedTabBarController">
+                    <tabBarItem key="tabBarItem" title="Wooftionary" image="WoofipediaIcon" selectedImage="WoofipediaIcon" id="cPa-gy-q4n" customClass="RAMAnimatedTabBarItem" customModule="RAMAnimatedTabBarController">
                         <inset key="imageInsets" minX="0.0" minY="6" maxX="0.0" maxY="-6"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="iconColor">
@@ -486,8 +486,9 @@
         <scene sceneID="K2y-Kd-DHm">
             <objects>
                 <navigationController title="Discover" automaticallyAdjustsScrollViewInsets="NO" id="Vn1-eE-3tb" userLabel="Discover Tab" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="discoverTab.png" selectedImage="discoverTab.png" id="Qcz-Ki-ccI" customClass="RAMAnimatedTabBarItem" customModule="RAMAnimatedTabBarController">
+                    <tabBarItem key="tabBarItem" title="Discover" image="discoverTab.png" selectedImage="discoverTab.png" id="Qcz-Ki-ccI" customClass="RAMAnimatedTabBarItem" customModule="RAMAnimatedTabBarController">
                         <inset key="imageInsets" minX="0.0" minY="6" maxX="0.0" maxY="-6"/>
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="-5" vertical="0.0"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="iconColor">
                                 <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -521,11 +522,11 @@
             </objects>
             <point key="canvasLocation" x="757.60000000000002" y="204.64767616191907"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--iPet-->
         <scene sceneID="JQg-gD-EZR">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uTt-g1-nEQ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="iPetTab.png" selectedImage="iPetTab.png" id="KhS-bD-SjT" customClass="RAMAnimatedTabBarItem" customModule="RAMAnimatedTabBarController">
+                    <tabBarItem key="tabBarItem" title="iPet" image="iPetTab.png" selectedImage="iPetTab.png" id="KhS-bD-SjT" customClass="RAMAnimatedTabBarItem" customModule="RAMAnimatedTabBarController">
                         <inset key="imageInsets" minX="0.0" minY="6" maxX="0.0" maxY="-6"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="iconColor">
@@ -573,8 +574,8 @@
         <image name="unlike" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="tIV-Pn-8bj"/>
-        <segue reference="ofo-EY-wRd"/>
+        <segue reference="XBh-hc-ejf"/>
+        <segue reference="Ngo-1w-MZM"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="0.97739707450220481" blue="0.98941910780827447" alpha="1" colorSpace="calibratedRGB"/>
 </document>
