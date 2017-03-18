@@ -610,7 +610,10 @@ class SuggestionViewController: UIViewController, UINavigationBarDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
+        
+        let tabBarTitleOffset = UIOffsetMake(0,50)
+        print(self.tabBarItem.title ?? "not found")
+        self.tabBarItem.titlePositionAdjustment = tabBarTitleOffset
         //let navigationBar = UINavigationBar(frame: CGRect(x:0, y:30, width:self.view.frame.size.width, height:58))
         
         //let navigationBar: UINavigationBar! = self.navigationController?.navigationBar
@@ -698,8 +701,8 @@ class SuggestionViewController: UIViewController, UINavigationBarDelegate {
         
         // colored background
         
-        self.title = "Suggestion"
-        self.tabBarItem.title="Suggestion"
+        
+
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "backgroundHomeLarge-shade.jpg")!)
         
         // the center of all components
