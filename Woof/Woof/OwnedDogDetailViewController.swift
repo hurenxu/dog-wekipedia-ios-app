@@ -18,6 +18,7 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
     var discription = ""
     var breed = ""
     var age = ""
+    var color = ""
     
     var flag = false
     
@@ -48,16 +49,18 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
     var dogVaccinationDatetextField = UITextField(frame: CGRect(20.0, 365, 330.0, 40.0))
     var breedtextField = UITextField(frame: CGRect(20.0, 410, 330.0, 40.0))
     var agetextField = UITextField(frame: CGRect(20.0, 455, 330.0, 40.0))
-    
+    var colortextField = UITextField(frame: CGRect(20.0, 500, 330.0, 40.0))
+
     
     
     
     //Declare the button in this view
     let editProfButton:UIButton = UIButton(frame: CGRect(x: 250, y: 175, width: 80, height: 30))
-    let saveProfButton:UIButton = UIButton(frame: CGRect(x: 20, y: 550, width: 330, height: 40))
+    let saveProfButton:UIButton = UIButton(frame: CGRect(x: 20, y: 595, width: 330, height: 40))
     let changeImageButton:UIButton = UIButton(frame: CGRect(x: 40, y: 175, width: 80, height: 30))
     
-    let deleteProfButton:UIButton = UIButton(frame: CGRect(x: 20, y: 505, width: 330, height: 40))
+    let deleteProfButton:UIButton = UIButton(frame: CGRect(x: 20, y: 550, width: 330, height: 40))
+    
     
     
     //Declare nameLabel of the dog
@@ -78,6 +81,10 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
     
     //Declare the age Label
     let ageLabel = UILabel(frame: CGRect(x: 20, y: 515, width: 330, height: 40))
+    
+    //Declare the color Label
+    let colorLabel = UILabel(frame: CGRect(x: 20, y: 570, width: 330, height: 40))
+
     
     
     
@@ -206,6 +213,19 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         view.addSubview(ageLabel)
         
         
+        //color Label
+        colorLabel.textAlignment = .center
+        colorLabel.text = "color: " + (thisDog?.color)!
+        colorLabel.textColor = UIColor.black
+        colorLabel.font = ageLabel.font.withSize(30)
+        colorLabel.font = UIFont(name: "Rubik", size: 19)
+        colorLabel.backgroundColor = green_half
+        colorLabel.layer.cornerRadius = 5
+        colorLabel.clipsToBounds = true
+        view.addSubview(colorLabel)
+
+        
+        
         
         
         //---------------------------------------------------------------------------------------------------------------------
@@ -219,7 +239,7 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         
         //self.view.addSubview(backButton)
         
-        let navigationBar = UINavigationBar(frame: CGRect(x:0, y:0, width:self.view.frame.size.width, height:58)) // Offset by 20 pixels vertically to take the status bar into account
+        let navigationBar = UINavigationBar(frame: CGRect(x:0, y:0, width:self.view.frame.size.width, height:65)) // Offset by 20 pixels vertically to take the status bar into account
         
         let navigationItem = UINavigationItem()
         navigationItem.title = "My Dog"
@@ -347,6 +367,19 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         breedtextField.delegate = self
         
         
+        colortextField.textAlignment = NSTextAlignment.center
+        colortextField.textColor = UIColor.blue
+        colortextField.borderStyle = UITextBorderStyle.roundedRect
+        colortextField.placeholder = "Color"
+        colortextField.autocapitalizationType = UITextAutocapitalizationType.words // If you need any capitalization
+        self.view.addSubview(colortextField)
+        colortextField.isHidden = true
+        colortextField.delegate = self
+
+        
+        
+        
+        
         picker2.center = CGPoint(x: 180, y: 560)
         picker2.backgroundColor = UIColor.white
         picker2.layer.masksToBounds = true
@@ -458,6 +491,7 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         dogNametextField.isHidden = true
         agetextField.isHidden = true
         breedtextField.isHidden = true
+        colortextField.isHidden = true
         saveProfButton.isHidden = true
         deleteProfButton.isHidden = true
         
@@ -467,6 +501,7 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         birthdate = dogBirhDatetextField.text!
         age = agetextField.text!
         breed = breedtextField.text!
+        color = colortextField.text!
         
         nameLabel.text = "Name: " + name
         genderLabel.text = "Gender: " + gender
@@ -474,6 +509,7 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         vaccinationDateLabel.text = "Vaccination Date: " + vaccinationdate
         ageLabel.text = "Age: " + age
         breedLabel.text = "Breed: " + breed
+        colorLabel.text = "Color: " + color
         
         nameLabel.isHidden = false
         genderLabel.isHidden = false
@@ -482,6 +518,9 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         breedLabel.isHidden = false
         ageLabel.isHidden = false
         breedLabel.isHidden = false
+        colorLabel.isHidden = false
+        
+        
         
         if (name == "") {
             name = (thisDog?.name)!
@@ -526,9 +565,15 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         else {
             newVaccineDate = dateFormatter.date(from: vaccinationdate)!
         }
+        let newColor: String
+        if (color == ""){
+            newColor = (thisDog?.color)!
+        }
+        else {
+            newColor = color;
+        }
         
-        
-        let newDog = Dog(dogID: (thisDog?.dogID)!, name: name, breed: newBreed, birthDate: newBirthDate,age: age, gender: gender,  vaccination: newVaccineDate, color: (thisDog?.color)!, description: (thisDog?.description)!, image: (thisDog?.image)!)
+        let newDog = Dog(dogID: (thisDog?.dogID)!, name: name, breed: newBreed, birthDate: newBirthDate,age: age, gender: gender,  vaccination: newVaccineDate, color: newColor, description: (thisDog?.description)!, image: (thisDog?.image)!)
         
         print(newDog.name)
         print(newDog.dogID)
@@ -573,6 +618,10 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         breedtextField.delegate = self
         
         
+        colortextField.isHidden = false
+        colortextField.text = color
+        
+        
         deleteProfButton.isHidden = false
         
         saveProfButton.isHidden = false
@@ -585,6 +634,7 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         breedLabel.isHidden = true
         ageLabel.isHidden = true
         breedLabel.isHidden = true
+        colorLabel.isHidden = true
         
         
     }

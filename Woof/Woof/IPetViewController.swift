@@ -295,6 +295,7 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         secondViewController.birthdate = strBir
         
         secondViewController.age = Functionalities.dogList[indexPath.row].getAge()
+        secondViewController.color = Functionalities.dogList[indexPath.row].getColor()
         
         secondViewController.profileImgContainer.image = dogImages[Functionalities.dogList[indexPath.row].dogID]
         
