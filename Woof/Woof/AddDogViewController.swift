@@ -297,7 +297,24 @@ class AddDogViewController: UIViewController, UINavigationBarDelegate, UIImagePi
         
         breedObj = Breed(breedName: "Unknown Breed", popularity: "", origin: "", group: "", size: "", type: "", lifeExpectancy: "", personality: "", height: "", weight: "", colors: "", litterSize: "", price: "", barkingLevel: "", childFriendly: "",
                              grooming: "",shedding: "", trainability: "", breeders: "", image: "")
-        dogID = (Functionalities.myUser?.userID)! + (Functionalities.myUser?.dogIDs.count.description)!
+        
+        //add
+        let toUse: String
+        var largest: String
+        largest = "0"
+        
+        for index in (Functionalities.myUser?.dogIDs)! {
+            let end = index.index(before: index.endIndex)   //end is int
+            let charOfLast = index.substring(from: end)     //charOfLast is string
+            largest = charOfLast        //largest is string
+        }
+        var newIDNum: Int = Int(largest) as Int!
+        newIDNum += 1
+        
+        
+        //add end
+        //dogID = (Functionalities.myUser?.userID)! + (Functionalities.myUser?.dogIDs.count.description)!
+        dogID = (Functionalities.myUser?.userID)! + newIDNum.description
         
         updateMyNewDog = Dog(dogID: dogID, name: name, breed: breedObj!, birthDate: Date(), age: age, gender: gender, vaccination: Date(), color: "", description: "", image: "")
 

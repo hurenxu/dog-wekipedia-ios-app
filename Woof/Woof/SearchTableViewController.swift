@@ -18,13 +18,16 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
     
     override func viewDidLoad() {
         
-        // set up Search Result Controller
+        // setup title nav bar text
+        self.definesPresentationContext = true
         self.resultSearchController = UISearchController(searchResultsController: nil)
         self.resultSearchController.searchResultsUpdater = self
         
         self.resultSearchController.dimsBackgroundDuringPresentation = false
         self.resultSearchController.searchBar.sizeToFit()
         self.tableView.tableHeaderView = self.resultSearchController.searchBar
+        self.resultSearchController.definesPresentationContext = true
+        
         
         
         // configure Breed list
@@ -32,7 +35,6 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
         print(tools.getBreedList(controller:self))
 
         // set page UI Nav bar and Nav Bar buttons
-        self.navigationItem.title = "Wooftionary"
         
         let filterButton = UIBarButtonItem(title: "Filter", style: .plain, target: self, action: #selector(toFilter(sender:)))
         filterButton.tintColor = UIColor.black

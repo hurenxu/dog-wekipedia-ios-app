@@ -16,6 +16,7 @@ class User{
     var zipCode = ""
     var image = ""
     var dogIDs: [String] = []
+    var toUsedogIDs: [String] = []
     
     
     init(authData:FIRUser) {
@@ -132,6 +133,7 @@ class User{
     func deleteDog(dog: Dog) {
         
         Functionalities.dogList.removeAll()
+        
         for (index, element) in self.dogIDs.enumerated() {
             if (element == dog.getDogID()) {
                 print(element)

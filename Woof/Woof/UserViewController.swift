@@ -301,7 +301,7 @@ class UserViewController: UIViewController, UINavigationBarDelegate, UINavigatio
         backButton.tintColor = UIColor.black
         
         let navigationItem = UINavigationItem()
-        navigationItem.title = "My Profile"
+        navigationItem.title = "User Profile"
         navigationItem.leftBarButtonItem = backButton
         
         let navigationBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 65))
