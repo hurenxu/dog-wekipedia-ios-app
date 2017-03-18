@@ -13,19 +13,19 @@ class iPetViewController: UIViewController, UIImagePickerControllerDelegate,
 UICollectionViewDelegate, UICollectionViewDataSource {
     
     
-    var ownedDog = [String]()
-    
-    var breed = [String]()
-    
-    var age = [String]()
-    
-    var gender = [String]()
-    
-    var color = [String]()
-    
-    var dogID = [String]()
-    
-    var dogList: [Dog] = []
+//    var ownedDog = [String]()
+//    
+//    var breed = [String]()
+//    
+//    var age = [String]()
+//    
+//    var gender = [String]()
+//    
+//    var color = [String]()
+//    
+//    var dogID = [String]()
+//    
+//    var dogList: [Dog] = []
     
     var dogImages = [String: UIImage]()
     
@@ -191,10 +191,14 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        collectView.reloadData()
+    }
+    
     func transition(_ Sender: UIButton!) {
         let secondViewController:NotificationViewController = NotificationViewController()
         
-        if dogList.count == 0 {
+        if Functionalities.dogList.count == 0 {
             
             // create the alert
             let alert = UIAlertController(title: "Dog Needed", message: "Please add a new dog profile to enter the notification page", preferredStyle: UIAlertControllerStyle.alert)
@@ -227,8 +231,8 @@ UICollectionViewDelegate, UICollectionViewDataSource {
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(ownedDog.count)
-        return ownedDog.count
+        print(Functionalities.dogList.count)
+        return Functionalities.dogList.count
     }
     
     var i:Int = 0
@@ -236,7 +240,7 @@ UICollectionViewDelegate, UICollectionViewDataSource {
 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! OwnedDogCell
         
-        cell.textLabel?.text = ownedDog[indexPath.row]
+        cell.textLabel?.text = Functionalities.dogList[indexPath.row].getName()
         var Img = UIImage(named: "bone")
         
         let dog = Functionalities.dogList[indexPath.row]
@@ -267,32 +271,32 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         
         collectionView.deselectItem(at: indexPath, animated: true)
         let secondViewController:OwnedDogDetailViewController = OwnedDogDetailViewController()
-        secondViewController.name = ownedDog[indexPath.row]
+        secondViewController.name = Functionalities.dogList[indexPath.row].getName()
         
         
-        secondViewController.gender = dogList[indexPath.row].getGender()
-        secondViewController.thisDogID = dogID[indexPath.item]
-        secondViewController.thisDog = dogList[indexPath.item]
+        secondViewController.gender = Functionalities.dogList[indexPath.row].getGender()
+        secondViewController.thisDogID = Functionalities.dogList[indexPath.item].getDogID()
+        secondViewController.thisDog = Functionalities.dogList[indexPath.item]
         
         
-        secondViewController.breed = dogList[indexPath.row].breed.getBreedName()
+        secondViewController.breed = Functionalities.dogList[indexPath.row].breed.getBreedName()
         
         
         let newdateFormatter = DateFormatter()
         newdateFormatter.dateStyle = .long
         newdateFormatter.timeStyle = .none
-        let strVac = newdateFormatter.string(from: (dogList[indexPath.row].getVaccination()))
+        let strVac = newdateFormatter.string(from: (Functionalities.dogList[indexPath.row].getVaccination()))
         secondViewController.vaccinationdate = strVac
         
-        let strBir = newdateFormatter.string(from: (dogList[indexPath.row].getBirthDate()))
+        let strBir = newdateFormatter.string(from: (Functionalities.dogList[indexPath.row].getBirthDate()))
         secondViewController.birthdate = strBir
         
-        secondViewController.age = dogList[indexPath.row].getAge()
+        secondViewController.age = Functionalities.dogList[indexPath.row].getAge()
         
-        secondViewController.profileImgContainer.image = dogImages[dogList[indexPath.row].dogID]
+        secondViewController.profileImgContainer.image = dogImages[Functionalities.dogList[indexPath.row].dogID]
         
-        print(dogImages[dogList[indexPath.row].dogID])
-        print(dogImages[dogList[indexPath.row].dogID])
+        //print(dogImages[Functionalities.dogList[indexPath.row].dogID])
+        //print(dogImages[Functionalities.dogList[indexPath.row].dogID])
         
         self.present(secondViewController, animated: true, completion: nil)
         

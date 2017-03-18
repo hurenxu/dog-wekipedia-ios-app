@@ -441,7 +441,8 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         Functionalities.myUser?.deleteDog(dog: thisDog!)
         goBack()
         
-        
+//        let tools = Functionalities()
+//        tools.deleteDogFromList(dogID: thisDogID)
     }
     
     

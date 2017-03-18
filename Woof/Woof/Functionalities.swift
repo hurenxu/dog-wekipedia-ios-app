@@ -75,27 +75,27 @@ class Functionalities{
                         let dog = dogs?[key] as? NSDictionary
                         let thisDog = Dog(dictionary: dog!)
                         var toCheck = 0
-                        for index in controller.dogID {
-                            if (index == key as String) {
+                        for index in Functionalities.dogList {
+                            if (index.dogID == key as String) {
                                 toCheck = 1
                             }
                         }
                         if (toCheck != 1) {
                             thisDog.dogID = key as String
                             Functionalities.dogList.append(thisDog)
-                            controller.ownedDog.append(thisDog.name)
-                            controller.age.append(thisDog.age)
-                            controller.breed.append(thisDog.breed.breedName)
-                            controller.gender.append(thisDog.gender)
-                            controller.color.append(thisDog.color)
-                            controller.dogID.append(key as String)
-                            controller.dogList.append(thisDog)
+//                            controller.ownedDog.append(thisDog.name)
+//                            controller.age.append(thisDog.age)
+//                            controller.breed.append(thisDog.breed.breedName)
+//                            controller.gender.append(thisDog.gender)
+//                            controller.color.append(thisDog.color)
+//                            controller.dogID.append(key as String)
+//                            controller.dogList.append(thisDog)
                             
                             controller.collectView.reloadData()
                         }
                         else {
                             var count = 0
-                            for index in controller.dogList {
+                            for index in Functionalities.dogList {
                                 if (index.dogID == key as String) {
                                     break
                                 }
@@ -103,13 +103,13 @@ class Functionalities{
                             }
                             thisDog.dogID = key as String
                             Functionalities.dogList[count] = thisDog
-                            controller.ownedDog[count] = thisDog.name
-                            controller.age[count] = thisDog.age
-                            controller.breed[count] = thisDog.breed.breedName
-                            controller.gender[count] = thisDog.gender
-                            controller.color[count] = thisDog.color
-                            controller.dogList[count] = thisDog
-                            controller.dogID[count] = thisDog.dogID
+//                            controller.ownedDog[count] = thisDog.name
+//                            controller.age[count] = thisDog.age
+//                            controller.breed[count] = thisDog.breed.breedName
+//                            controller.gender[count] = thisDog.gender
+//                            controller.color[count] = thisDog.color
+//                            controller.dogList[count] = thisDog
+//                            controller.dogID[count] = thisDog.dogID
                             
                             controller.collectView.reloadData()
                         }
@@ -237,6 +237,17 @@ class Functionalities{
             controller.dogImages[dog.dogID] = Img!
         }
     }
+    
+//    func deleteDogFromList(dogID: String) {
+//        var i = 0
+//        for dog in Functionalities.dogList {
+//            if dog.getDogID() == dogID {
+//                Functionalities.dogList.remove(at: i)
+//                break
+//            }
+//            i += 1
+//        }
+//    }
     
     func getBreedList(controller: SearchTableViewController) -> [Breed] {
         retrieveBreedList(controller: controller)

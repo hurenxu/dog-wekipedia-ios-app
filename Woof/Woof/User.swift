@@ -131,14 +131,17 @@ class User{
     }
     func deleteDog(dog: Dog) {
         
+        Functionalities.dogList.removeAll()
         for (index, element) in self.dogIDs.enumerated() {
             if (element == dog.getDogID()) {
+                print(element)
                 self.dogIDs.remove(at: index)
             }
         }
         let dao = DataAccessObject()
         dog.deleteDogProfileEntry()
         dao.updateUser(user: self)
+
         
     }
     func viewUser(user: User) -> Any {
