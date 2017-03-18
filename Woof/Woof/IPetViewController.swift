@@ -202,7 +202,9 @@ UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        collectView.reloadData()
+        if (Functionalities.myUser != nil) {
+            collectView.reloadData()
+        }
     }
     
     func transition(_ Sender: UIButton!) {
