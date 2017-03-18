@@ -57,6 +57,7 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
     let saveProfButton:UIButton = UIButton(frame: CGRect(x: 20, y: 550, width: 330, height: 40))
     let changeImageButton:UIButton = UIButton(frame: CGRect(x: 40, y: 175, width: 80, height: 30))
     
+    let deleteProfButton:UIButton = UIButton(frame: CGRect(x: 20, y: 505, width: 330, height: 40))
     
     
     //Declare nameLabel of the dog
@@ -78,8 +79,10 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
     //Declare the age Label
     let ageLabel = UILabel(frame: CGRect(x: 20, y: 515, width: 330, height: 40))
     
+    
+    
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        
+        flag = false
         if textField == breedtextField && flag == false{
             
             
@@ -256,6 +259,18 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         saveProfButton.addTarget(self, action: #selector(saveProfButtonClick), for: UIControlEvents.touchUpInside)
         saveProfButton.isHidden = true
         
+        //The Delete Button
+        
+        deleteProfButton.backgroundColor = .red
+        deleteProfButton.setTitle("Delete", for: .normal)
+        self.view.addSubview(deleteProfButton)
+        
+        deleteProfButton.addTarget(self, action: #selector(deleteButtonClick), for: UIControlEvents.touchUpInside)
+        deleteProfButton.isHidden = true
+        
+        
+        
+        
         changeImageButton.backgroundColor = yellow
         changeImageButton.setTitle("image", for: .normal)
         changeImageButton.setTitleColor(.black, for: .normal)
@@ -372,6 +387,7 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         datePickerView.datePickerMode = UIDatePickerMode.date
         sender.inputView = datePickerView
         datePickerView.addTarget(self, action: #selector(OwnedDogDetailViewController.datePickerValueChanged), for: UIControlEvents.valueChanged)
+        
     }
     
     func textFieldEditing2(sender: UITextField) {
@@ -421,6 +437,13 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         //datePicker.isHidden = true
     }
     
+    func deleteButtonClick(sender: UIButton!){
+        Functionalities.myUser?.deleteDog(dog: thisDog!)
+        goBack()
+        
+//        let tools = Functionalities()
+//        tools.deleteDogFromList(dogID: thisDogID)
+    }
     
     
     
@@ -436,7 +459,7 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         agetextField.isHidden = true
         breedtextField.isHidden = true
         saveProfButton.isHidden = true
-        
+        deleteProfButton.isHidden = true
         
         name = dogNametextField.text!
         gender = dogGendertextField.text!
@@ -547,9 +570,10 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         
         
         breedtextField.isHidden = false
+        breedtextField.delegate = self
         
         
-        
+        deleteProfButton.isHidden = false
         
         saveProfButton.isHidden = false
         
@@ -567,7 +591,17 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
+//        if (textField != breedtextField){
+//            self.view.frame.origin.y = 0
+//        }
+    
         return false
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
+        if textField == breedtextField{
+            self.view.frame.origin.y = 0
+        }
     }
     
     
