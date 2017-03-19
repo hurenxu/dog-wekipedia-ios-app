@@ -20,8 +20,6 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
     var age = ""
     var color = ""
     
-    var flag = false
-    
     var ageData = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30"]
     var picker = UIPickerView()
     var picker2 = UIPickerView()
@@ -84,22 +82,6 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
     
     //Declare the color Label
     let colorLabel = UILabel(frame: CGRect(x: 20, y: 570, width: 330, height: 40))
-
-    
-    
-    
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        flag = false
-        if textField == breedtextField && flag == false{
-            
-            
-            self.view.frame.origin.y -= CGFloat(200)
-            flag = true
-        }
-        
-        return true
-    }
-    
     
     override func viewDidLoad() {
         //super.viewDidLoad()
@@ -110,10 +92,11 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         print(name)
         // Do any additional setup after loading the view.
         
+        /**
         picker.delegate = self
         picker.dataSource = self
         agetextField.inputView = picker
-        
+        */
         
         picker2.delegate = self
         picker2.dataSource = self
@@ -353,8 +336,11 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         agetextField.borderStyle = UITextBorderStyle.roundedRect
         agetextField.placeholder = "Age"
         agetextField.autocapitalizationType = UITextAutocapitalizationType.words // If you need any capitalization
-        self.view.addSubview(agetextField)
         agetextField.isHidden = true
+        addDoneButtonOnKeyboard(myField: agetextField)
+        agetextField.keyboardType = UIKeyboardType.numberPad
+        agetextField.delegate = self
+        self.view.addSubview(agetextField)
         
         
         breedtextField.textAlignment = NSTextAlignment.center
@@ -411,8 +397,8 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row:Int, inComponent component : Int)
     {
-        agetextField.text = ageData[row]
-        self.view.endEditing(true)
+        //agetextField.text = ageData[row]
+        //self.view.endEditing(true)
     }
     
     func textFieldEditing(sender: UITextField) {
@@ -588,9 +574,6 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         print(newDog.image)
         
         Functionalities.myUser?.updateDog(dog: newDog)
-        
-        self.view.frame.origin.y = 0
-        flag = false
     }
     
     //Action when user clicks the edit Button
@@ -645,12 +628,25 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
 //            self.view.frame.origin.y = 0
 //        }
     
-        return false
+        
+        return true
+    }
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        
+        if textField == breedtextField || textField == agetextField || textField == colortextField {
+            
+            
+            self.view.frame.origin.y -= CGFloat(250)
+        }
+        
+        return true
     }
     
     func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
-        if textField == breedtextField{
-            self.view.frame.origin.y = 0
+        if textField == breedtextField || textField == agetextField || textField == colortextField {
+            
+            self.view.frame.origin.y += CGFloat(250)
         }
     }
     
@@ -663,7 +659,7 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         return 1
     }
     
-    // returns the # of rows in each component..
+    // returns the # of rows each component..
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int
     {
         return ageData.count
@@ -755,8 +751,28 @@ class OwnedDogDetailViewController: UIViewController, UINavigationBarDelegate, U
         dismiss(animated: true, completion: nil)
     }
     
+    func addDoneButtonOnKeyboard(myField: UITextField) {
+        
+        let doneToolbar: UIToolbar = UIToolbar(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width:320, height: 50)))
+        doneToolbar.barStyle = UIBarStyle.default
+        
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+        let done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.done, target: self, action: #selector(donePressed))
+        
+        var items = [UIBarButtonItem]()
+        items.append(flexSpace)
+        items.append(done)
+        
+        doneToolbar.items = items
+        doneToolbar.sizeToFit()
+        
+        myField.inputAccessoryView = doneToolbar
+    }
     
-    
+    func donePressed() {
+        
+        self.agetextField.resignFirstResponder()
+    }
 }
 
 //used to replace CGRectMake

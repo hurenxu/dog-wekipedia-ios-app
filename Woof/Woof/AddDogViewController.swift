@@ -34,13 +34,13 @@ class AddDogViewController: UIViewController, UINavigationBarDelegate, UIImagePi
     //var position: [String?: NSObject?] = [:]
     
     //Declare the texctfield in this view
-    var dogNametextField = UITextField(frame: CGRect(20.0, 230, 330.0, 40.0))
-    var dogGendertextField = UITextField(frame: CGRect(20.0, 275, 330.0, 40.0))
-    var dogBirhDatetextField = UITextField(frame: CGRect(20.0, 320, 330.0, 40.0))
-    var dogVaccinationDatetextField = UITextField(frame: CGRect(20.0, 365, 330.0, 40.0))
-    var breedtextField = UITextField(frame: CGRect(20.0, 410, 330.0, 40.0))
-    var agetextField = UITextField(frame: CGRect(20.0, 455, 330.0, 40.0))
-    var colortextField = UITextField(frame: CGRect(20.0, 500, 330.0, 40.0))
+    var dogNametextField: UITextField! = UITextField(frame: CGRect(20.0, 230, 330.0, 40.0))
+    var dogGendertextField: UITextField! = UITextField(frame: CGRect(20.0, 275, 330.0, 40.0))
+    var dogBirhDatetextField: UITextField! = UITextField(frame: CGRect(20.0, 320, 330.0, 40.0))
+    var dogVaccinationDatetextField: UITextField! = UITextField(frame: CGRect(20.0, 365, 330.0, 40.0))
+    var breedtextField: UITextField! = UITextField(frame: CGRect(20.0, 410, 330.0, 40.0))
+    var agetextField: UITextField! = UITextField(frame: CGRect(20.0, 455, 330.0, 40.0))
+    var colortextField: UITextField! = UITextField(frame: CGRect(20.0, 500, 330.0, 40.0))
 
     let editProfButton:UIButton = UIButton(frame: CGRect(x: 250, y: 170, width: 50, height: 25))
     let saveProfButton:UIButton = UIButton(frame: CGRect(x: 20, y: 550, width: 330, height: 40))
@@ -68,6 +68,8 @@ class AddDogViewController: UIViewController, UINavigationBarDelegate, UIImagePi
     //Declare the color Label
     let colorLabel = UILabel(frame: CGRect(x: 20, y: 500, width: 330, height: 40))
 
+    
+    let VIEW_UP: Int = 200
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -272,21 +274,26 @@ class AddDogViewController: UIViewController, UINavigationBarDelegate, UIImagePi
         agetextField.borderStyle = UITextBorderStyle.roundedRect
         agetextField.placeholder = "Age"
         agetextField.autocapitalizationType = UITextAutocapitalizationType.words // If you need any capitalization
+        agetextField.delegate = self
         self.view.addSubview(agetextField)
         agetextField.isHidden = false
+        agetextField.keyboardType = UIKeyboardType.numberPad
+        addDoneButtonOnKeyboard(myField: agetextField)
         
         breedtextField.textAlignment = NSTextAlignment.center
         breedtextField.textColor = UIColor.blue
         breedtextField.borderStyle = UITextBorderStyle.roundedRect
         breedtextField.placeholder = "Breed"
         breedtextField.autocapitalizationType = UITextAutocapitalizationType.words // If you need any capitalization
+        breedtextField.delegate = self
         self.view.addSubview(breedtextField)
         
         colortextField.textAlignment = NSTextAlignment.center
         colortextField.textColor = UIColor.blue
         colortextField.borderStyle = UITextBorderStyle.roundedRect
-        colortextField.placeholder = "Breed"
+        colortextField.placeholder = "Color"
         colortextField.autocapitalizationType = UITextAutocapitalizationType.words // If you need any capitalization
+        colortextField.delegate = self
         self.view.addSubview(colortextField)
 
         
@@ -501,10 +508,49 @@ class AddDogViewController: UIViewController, UINavigationBarDelegate, UIImagePi
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
-        return false
+        return true
     }
 
 
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        
+        // put up view
+        if textField == breedtextField || textField == agetextField || textField == colortextField {
+            
+            if textField == agetextField {
+                
+                self.view.frame.origin.y -= CGFloat(VIEW_UP)
+            }
+                
+            else {
+                
+                self.view.frame.origin.y -= CGFloat(VIEW_UP)
+            }
+        }
+        
+        saveProfButton.isUserInteractionEnabled = false
+        
+        return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
+        
+        // put back view
+        if textField == breedtextField || textField == agetextField || textField == colortextField {
+            
+            if textField == agetextField {
+                
+                self.view.frame.origin.y += CGFloat(VIEW_UP)
+            }
+                
+            else {
+                
+                self.view.frame.origin.y += CGFloat(VIEW_UP)
+            }
+        }
+        
+        saveProfButton.isUserInteractionEnabled = true
+    }
     
     
     /* layout constriants for profile image */
@@ -560,6 +606,28 @@ class AddDogViewController: UIViewController, UINavigationBarDelegate, UIImagePi
     }
 
 
+    func addDoneButtonOnKeyboard(myField: UITextField) {
+        
+        let doneToolbar: UIToolbar = UIToolbar(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width:320, height: 50)))
+        doneToolbar.barStyle = UIBarStyle.default
+        
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+        let done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.done, target: self, action: #selector(donePressed))
+        
+        var items = [UIBarButtonItem]()
+        items.append(flexSpace)
+        items.append(done)
+        
+        doneToolbar.items = items
+        doneToolbar.sizeToFit()
+        
+        myField.inputAccessoryView = doneToolbar
+    }
+    
+    func donePressed() {
+        
+        self.agetextField.resignFirstResponder()
+    }
     
 
     /*
