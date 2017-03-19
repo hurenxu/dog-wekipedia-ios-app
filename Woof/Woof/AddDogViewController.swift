@@ -469,8 +469,28 @@ class AddDogViewController: UIViewController, UINavigationBarDelegate, UIImagePi
                           grooming: "",shedding: "", trainability: "", breeders: "", image: "")
         }
         
+        let newBirthDate: Date
+        let newVaccineDate: Date
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .long
+        dateFormatter.timeStyle = .none
+        if (birthdate == "") {
+            newBirthDate = Date()
+        }
+        else {
+            
+            newBirthDate = dateFormatter.date(from: birthdate)!
+        }
+        
+        if (vaccinationdate == "") {
+            newVaccineDate = Date()
+        }
+        else {
+            newVaccineDate = dateFormatter.date(from: vaccinationdate)!
+        }
+        
 
-        updateMyNewDog = Dog(dogID: dogID, name: name, breed: breedObj!, birthDate: Date(), age: age, gender: gender, vaccination: Date(), color: color, description: "", image: "")
+        updateMyNewDog = Dog(dogID: dogID, name: name, breed: breedObj!, birthDate: newBirthDate, age: age, gender: gender, vaccination: newVaccineDate, color: color, description: "", image: "")
         Functionalities.myUser?.addDog(dog: updateMyNewDog!)
         
         let tools = Functionalities()
